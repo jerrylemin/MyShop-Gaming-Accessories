@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Page
+    x:Class="ProjectTest.Views.Pages.ReportsPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:controls="using:ProjectTest.Controls"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    RequestedTheme="Light"
+    NavigationCacheMode="Required"
+    Background="{ThemeResource AppCanvasBrush}">
+
+    <ScrollViewer HorizontalScrollBarVisibility="Disabled" HorizontalScrollMode="Disabled">
+        <StackPanel Margin="28" Spacing="18">
+            <Grid ColumnSpacing="16">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+                <TextBlock
+                    Foreground="#FF5C5750"
+                    Text="Revenue by day, week, month, year, plus top-selling gaming accessories for a selected date range."
+                    TextWrapping="WrapWholeWords" />
+
+                <StackPanel
+                    Grid.Column="1"
+                    Orientation="Horizontal"
+                    Spacing="10">
+                    <DatePicker Date="{Binding FromDate, Mode=TwoWay}" />
+                    <DatePicker Date="{Binding ToDate, Mode=TwoWay}" />
+                    <Button
+                        Command="{Binding RefreshCommand}"
+                        Content="Apply Range" />
+                </StackPanel>
+            </Grid>
+
+            <TextBlock
+                Style="{ThemeResource CaptionTextBlockStyle}"
+                Text="{Binding RangeLabel}" />
+
+            <Border Style="{ThemeResource CardBorderStyle}">
+                <StackPanel Spacing="14">
+                    <TextBlock
+                        Style="{ThemeResource SectionHeaderTextBlockStyle}"
+                        Text="Revenue by Day" />
+                    <controls:SimpleLineChart ItemsSource="{Binding RevenueByDay}" />
+                </StackPanel>
+            </Border>
+
+            <Grid ColumnSpacing="16">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+
+                <Border Style="{ThemeResource CardBorderStyle}">
+                    <StackPanel Spacing="14">
+                        <TextBlock
+                            Style="{ThemeResource SectionHeaderTextBlockStyle}"
+                            Text="Revenue by Week" />
+                        <controls:SimpleBarChart ItemsSource="{Binding RevenueByWeek}" />
+                    </StackPanel>
+                </Border>
+
+                <Border Grid.Column="1" Style="{ThemeResource CardBorderStyle}">
+                    <StackPanel Spacing="14">
+                        <TextBlock
+                            Style="{ThemeResource SectionHeaderTextBlockStyle}"
+                            Text="Revenue by Month" />
+                        <controls:SimpleBarChart ItemsSource="{Binding RevenueByMonth}" />
+                    </StackPanel>
+                </Border>
+            </Grid>
+
+            <Border Style="{ThemeResource CardBorderStyle}">
+                <StackPanel Spacing="14">
+                    <TextBlock
+                        Style="{ThemeResource SectionHeaderTextBlockStyle}"
+                        Text="Revenue by Year" />
+                    <controls:SimpleBarChart ItemsSource="{Binding RevenueByYear}" />
+                </StackPanel>
+            </Border>
+
+            <Grid ColumnSpacing="16">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+
+                <Border Style="{ThemeResource CardBorderStyle}">
+                    <StackPanel Spacing="14">
+                        <TextBlock
+                            Style="{ThemeResource SectionHeaderTextBlockStyle}"
+                            Text="Top Selling Gaming Accessories" />
+                        <controls:SimpleBarChart ItemsSource="{Binding ProductSalesByRange}" />
+                    </StackPanel>
+                </Border>
+
+                <Border Grid.Column="1" Style="{ThemeResource CardBorderStyle}">
+                    <StackPanel Spacing="14">
+                        <TextBlock
+                            Style="{ThemeResource SectionHeaderTextBlockStyle}"
+                            Text="Gaming Accessories Sales Share" />
+                        <controls:SimplePieChart ItemsSource="{Binding ProductSalesShare}" />
+                    </StackPanel>
+                </Border>
+            </Grid>
+        </StackPanel>
+    </ScrollViewer>
+</Page>

@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Application
+    x:Class="ProjectTest.App"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:helpers="using:ProjectTest.Helpers"
+    xmlns:local="using:ProjectTest"
+    RequestedTheme="Light">
+    <Application.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <XamlControlsResources xmlns="using:Microsoft.UI.Xaml.Controls" />
+            </ResourceDictionary.MergedDictionaries>
+            <SolidColorBrush x:Key="AppCanvasBrush" Color="#FFF4F1EA" />
+            <SolidColorBrush x:Key="CardBrush" Color="#FFFDFBF7" />
+            <SolidColorBrush x:Key="CardStrokeBrush" Color="#FFD7CFC3" />
+            <SolidColorBrush x:Key="AccentBrush" Color="#FF1C6B5D" />
+            <SolidColorBrush x:Key="AccentSoftBrush" Color="#FFE3F3EF" />
+            <SolidColorBrush x:Key="HighlightBrush" Color="#FFC46A2D" />
+            <SolidColorBrush x:Key="PageHeroBrush" Color="#FFF9F4EC" />
+            <SolidColorBrush x:Key="PrimaryTextBrush" Color="#FF1D1C19" />
+            <SolidColorBrush x:Key="SecondaryTextBrush" Color="#FF5C5750" />
+            <helpers:ImagePathConverter x:Key="ImagePathConverter" />
+            <helpers:CurrencyConverter x:Key="CurrencyConverter" />
+
+            <Style TargetType="TextBlock">
+                <Setter Property="Foreground" Value="{ThemeResource PrimaryTextBrush}" />
+            </Style>
+
+            <Style x:Key="PageTitleTextBlockStyle" TargetType="TextBlock">
+                <Setter Property="FontFamily" Value="Bahnschrift" />
+                <Setter Property="FontSize" Value="30" />
+                <Setter Property="Foreground" Value="{ThemeResource PrimaryTextBrush}" />
+            </Style>
+
+            <Style x:Key="SectionHeaderTextBlockStyle" TargetType="TextBlock">
+                <Setter Property="FontFamily" Value="Bahnschrift" />
+                <Setter Property="FontSize" Value="18" />
+                <Setter Property="Foreground" Value="{ThemeResource PrimaryTextBrush}" />
+            </Style>
+
+            <Style x:Key="CaptionTextBlockStyle" TargetType="TextBlock">
+                <Setter Property="FontSize" Value="12" />
+                <Setter Property="Foreground" Value="{ThemeResource SecondaryTextBrush}" />
+            </Style>
+
+            <Style x:Key="CardBorderStyle" TargetType="Border">
+                <Setter Property="Background" Value="{ThemeResource CardBrush}" />
+                <Setter Property="BorderBrush" Value="{ThemeResource CardStrokeBrush}" />
+                <Setter Property="BorderThickness" Value="1" />
+                <Setter Property="CornerRadius" Value="20" />
+                <Setter Property="Padding" Value="18" />
+            </Style>
+        </ResourceDictionary>
+    </Application.Resources>
+</Application>

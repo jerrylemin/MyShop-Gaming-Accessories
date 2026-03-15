@@ -1,0 +1,266 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Page
+    x:Class="ProjectTest.Views.Pages.ProductsPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    RequestedTheme="Light"
+    Background="{ThemeResource AppCanvasBrush}">
+
+    <ScrollViewer>
+        <StackPanel Margin="28" Spacing="18">
+            <Grid ColumnSpacing="16">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+
+                <TextBlock
+                    Width="760"
+                    Foreground="#FF5C5750"
+                    Text="Manage the gaming accessories catalog with filters, search, sorting, Excel import, and packaged image galleries."
+                    TextWrapping="WrapWholeWords" />
+
+                <StackPanel
+                    Grid.Column="1"
+                    Orientation="Horizontal"
+                    HorizontalAlignment="Right"
+                    Spacing="10">
+                    <Button Click="ImportExcelButton_Click" Content="Import Excel" />
+                    <Button Command="{Binding AddCommand}" Content="Add" />
+                    <Button Command="{Binding EditCommand}" Content="Edit" />
+                    <Button Click="DeleteButton_Click" Content="Delete" />
+                </StackPanel>
+            </Grid>
+
+            <Border Style="{ThemeResource CardBorderStyle}">
+                <StackPanel Spacing="12">
+                    <Grid ColumnSpacing="12">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="2*" />
+                            <ColumnDefinition Width="1.2*" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="Auto" />
+                        </Grid.ColumnDefinitions>
+
+                        <TextBox
+                            PlaceholderText="Search by name, SKU, brand, description, or accessory specs"
+                            Text="{Binding Keyword, Mode=TwoWay}" />
+                        <ComboBox
+                            Grid.Column="1"
+                            DisplayMemberPath="Name"
+                            ItemsSource="{Binding CategoryFilters}"
+                            SelectedItem="{Binding SelectedCategoryFilter, Mode=TwoWay}" />
+                        <TextBox
+                            Grid.Column="2"
+                            PlaceholderText="Min price"
+                            Text="{Binding MinPrice, Mode=TwoWay}" />
+                        <TextBox
+                            Grid.Column="3"
+                            PlaceholderText="Max price"
+                            Text="{Binding MaxPrice, Mode=TwoWay}" />
+                        <ComboBox
+                            Grid.Column="4"
+                            ItemsSource="{Binding SortOptions}"
+                            SelectedItem="{Binding SelectedSortOption, Mode=TwoWay}" />
+                        <Button
+                            Grid.Column="5"
+                            Command="{Binding RefreshCommand}"
+                            Content="Apply" />
+                    </Grid>
+
+                    <TextBlock
+                        Foreground="{ThemeResource AccentBrush}"
+                        Text="{Binding StatusMessage}"
+                        TextWrapping="WrapWholeWords" />
+
+                    <Grid ColumnSpacing="16">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="1.5*" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+
+                        <StackPanel Spacing="12">
+                            <ListView
+                                ItemsSource="{Binding Products}"
+                                SelectedItem="{Binding SelectedProduct, Mode=TwoWay}">
+                                <ListView.ItemTemplate>
+                                    <DataTemplate>
+                                        <Border
+                                            Margin="0,4"
+                                            Padding="12"
+                                            Background="#FFFFFFFF"
+                                            BorderBrush="{ThemeResource CardStrokeBrush}"
+                                            BorderThickness="1"
+                                            CornerRadius="18">
+                                            <Grid ColumnSpacing="14">
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="Auto" />
+                                                    <ColumnDefinition Width="*" />
+                                                    <ColumnDefinition Width="Auto" />
+                                                    <ColumnDefinition Width="Auto" />
+                                                </Grid.ColumnDefinitions>
+
+                                                <Image
+                                                    Width="90"
+                                                    Height="68"
+                                                    Stretch="UniformToFill"
+                                                    Source="{Binding Image1, Converter={StaticResource ImagePathConverter}}" />
+
+                                                <StackPanel Grid.Column="1" Spacing="4">
+                                                    <TextBlock
+                                                        FontWeight="SemiBold"
+                                                        Text="{Binding Name}" />
+                                                    <TextBlock Style="{ThemeResource CaptionTextBlockStyle}" Text="{Binding Brand}" />
+                                                    <TextBlock
+                                                        Foreground="#FF5C5750"
+                                                        Text="{Binding Category.Name}" />
+                                                </StackPanel>
+
+                                                <StackPanel Grid.Column="2" HorizontalAlignment="Right">
+                                                    <TextBlock
+                                                        FontWeight="SemiBold"
+                                                        Text="{Binding SalePrice, Converter={StaticResource CurrencyConverter}}" />
+                                                    <TextBlock Style="{ThemeResource CaptionTextBlockStyle}" Text="Price" />
+                                                </StackPanel>
+
+                                                <StackPanel Grid.Column="3" HorizontalAlignment="Right">
+                                                    <TextBlock FontWeight="SemiBold" Text="{Binding Stock}" />
+                                                    <TextBlock Style="{ThemeResource CaptionTextBlockStyle}" Text="In stock" />
+                                                </StackPanel>
+                                            </Grid>
+                                        </Border>
+                                    </DataTemplate>
+                                </ListView.ItemTemplate>
+                            </ListView>
+
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="Auto" />
+                                </Grid.ColumnDefinitions>
+                                <TextBlock
+                                    VerticalAlignment="Center"
+                                    Text="{Binding PageSummary}" />
+                                <StackPanel
+                                    Grid.Column="1"
+                                    Orientation="Horizontal"
+                                    Spacing="8">
+                                    <Button Command="{Binding PreviousPageCommand}" Content="Previous" />
+                                    <Button Command="{Binding NextPageCommand}" Content="Next" />
+                                </StackPanel>
+                            </Grid>
+                        </StackPanel>
+
+                        <Border
+                            Grid.Column="1"
+                            Padding="16"
+                            Background="#FFFFFFFF"
+                            BorderBrush="{ThemeResource CardStrokeBrush}"
+                            BorderThickness="1"
+                            CornerRadius="18">
+                            <StackPanel Spacing="12">
+                                <TextBlock
+                                    Style="{ThemeResource SectionHeaderTextBlockStyle}"
+                                    Text="Product Detail" />
+
+                                <TextBlock
+                                    FontFamily="Bahnschrift"
+                                    FontSize="24"
+                                    Text="{Binding SelectedProduct.Name}" />
+                                <TextBlock FontWeight="SemiBold" Text="Brand" />
+                                <TextBlock
+                                    Style="{ThemeResource CaptionTextBlockStyle}"
+                                    Text="{Binding SelectedProduct.Brand}" />
+
+                                <Grid ColumnSpacing="10">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*" />
+                                        <ColumnDefinition Width="*" />
+                                    </Grid.ColumnDefinitions>
+
+                                    <StackPanel Spacing="4">
+                                        <TextBlock FontWeight="SemiBold" Text="Category" />
+                                        <TextBlock Text="{Binding SelectedProduct.Category.Name}" />
+                                    </StackPanel>
+                                    <StackPanel Grid.Column="1" Spacing="4">
+                                        <TextBlock FontWeight="SemiBold" Text="SKU" />
+                                        <TextBlock Text="{Binding SelectedProduct.SKU}" />
+                                    </StackPanel>
+                                </Grid>
+
+                                <TextBlock FontWeight="SemiBold" Text="Accessory Specs" />
+                                <ItemsControl ItemsSource="{Binding SelectedProduct.AccessorySpecs}">
+                                    <ItemsControl.ItemTemplate>
+                                        <DataTemplate>
+                                            <Border
+                                                Margin="0,0,0,8"
+                                                Padding="10"
+                                                Background="{ThemeResource AppCanvasBrush}"
+                                                CornerRadius="12">
+                                                <TextBlock Text="{Binding}" TextWrapping="WrapWholeWords" />
+                                            </Border>
+                                        </DataTemplate>
+                                    </ItemsControl.ItemTemplate>
+                                </ItemsControl>
+
+                                <Grid ColumnSpacing="10">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*" />
+                                        <ColumnDefinition Width="*" />
+                                        <ColumnDefinition Width="*" />
+                                    </Grid.ColumnDefinitions>
+                                    <StackPanel Spacing="4">
+                                        <TextBlock FontWeight="SemiBold" Text="Import price" />
+                                        <TextBlock Text="{Binding SelectedProduct.ImportPrice, Converter={StaticResource CurrencyConverter}}" />
+                                    </StackPanel>
+                                    <StackPanel Grid.Column="1" Spacing="4">
+                                        <TextBlock FontWeight="SemiBold" Text="Sale price" />
+                                        <TextBlock Text="{Binding SelectedProduct.SalePrice, Converter={StaticResource CurrencyConverter}}" />
+                                    </StackPanel>
+                                    <StackPanel Grid.Column="2" Spacing="4">
+                                        <TextBlock FontWeight="SemiBold" Text="Stock" />
+                                        <TextBlock Text="{Binding SelectedProduct.Stock}" />
+                                    </StackPanel>
+                                </Grid>
+
+                                <TextBlock FontWeight="SemiBold" Text="Description" />
+                                <TextBlock
+                                    Text="{Binding SelectedProduct.Description}"
+                                    TextWrapping="WrapWholeWords" />
+
+                                <TextBlock FontWeight="SemiBold" Text="Image Gallery" />
+                                <Grid ColumnSpacing="8">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*" />
+                                        <ColumnDefinition Width="*" />
+                                        <ColumnDefinition Width="*" />
+                                    </Grid.ColumnDefinitions>
+
+                                    <Image
+                                        Height="110"
+                                        Stretch="UniformToFill"
+                                        Source="{Binding SelectedProduct.Image1, Converter={StaticResource ImagePathConverter}}" />
+                                    <Image
+                                        Grid.Column="1"
+                                        Height="110"
+                                        Stretch="UniformToFill"
+                                        Source="{Binding SelectedProduct.Image2, Converter={StaticResource ImagePathConverter}}" />
+                                    <Image
+                                        Grid.Column="2"
+                                        Height="110"
+                                        Stretch="UniformToFill"
+                                        Source="{Binding SelectedProduct.Image3, Converter={StaticResource ImagePathConverter}}" />
+                                </Grid>
+                            </StackPanel>
+                        </Border>
+                    </Grid>
+                </StackPanel>
+            </Border>
+        </StackPanel>
+    </ScrollViewer>
+</Page>

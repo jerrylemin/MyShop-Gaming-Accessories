@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Window
+    x:Class="ProjectTest.Views.LoginWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Title="MyShop Gaming Accessories POS Login">
+
+    <Grid
+        x:Name="RootGrid"
+        Background="{ThemeResource AppCanvasBrush}"
+        Padding="40">
+        <Border
+            MaxWidth="420"
+            Padding="28"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Center"
+            Background="{ThemeResource CardBrush}"
+            BorderBrush="{ThemeResource CardStrokeBrush}"
+            BorderThickness="1"
+            CornerRadius="24">
+            <StackPanel Spacing="14">
+                <TextBlock
+                    Style="{ThemeResource PageTitleTextBlockStyle}"
+                    Text="MyShop Gaming Accessories POS" />
+                <TextBlock Text="Sign in to open the POS system." />
+                <TextBlock
+                    Style="{ThemeResource CaptionTextBlockStyle}"
+                    Text="{Binding VersionText}" />
+
+                <TextBlock Text="Username" />
+                <TextBox Text="{Binding Username, Mode=TwoWay}" />
+
+                <TextBlock Text="Password" />
+                <PasswordBox PasswordChanged="PasswordBox_PasswordChanged" />
+
+                <TextBlock
+                    Foreground="{ThemeResource AccentBrush}"
+                    Text="{Binding DefaultCredentialsHint}"
+                    TextWrapping="WrapWholeWords" />
+
+                <TextBlock
+                    Foreground="IndianRed"
+                    Text="{Binding ErrorMessage}"
+                    TextWrapping="WrapWholeWords" />
+
+                <Button
+                    Height="44"
+                    Command="{Binding LoginCommand}"
+                    Content="Login" />
+
+                <Button
+                    Click="ServerConfigButton_Click"
+                    Content="Server Config" />
+            </StackPanel>
+        </Border>
+    </Grid>
+</Window>

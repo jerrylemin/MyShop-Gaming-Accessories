@@ -1,0 +1,14 @@
+App.xbf
+Controls\SimpleBarChart.xbf
+Controls\SimpleLineChart.xbf
+Controls\SimplePieChart.xbf
+Controls\StatCard.xbf
+Views\DatabaseSetupWindow.xbf
+Views\LoginWindow.xbf
+Views\MainWindow.xbf
+Views\Pages\DashboardPage.xbf
+Views\Pages\OrdersPage.xbf
+Views\Pages\ProductEditPage.xbf
+Views\Pages\ProductsPage.xbf
+Views\Pages\ReportsPage.xbf
+Views\Pages\SettingsPage.xbf

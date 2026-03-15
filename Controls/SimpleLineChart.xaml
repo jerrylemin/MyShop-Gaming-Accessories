@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<UserControl
+    x:Class="ProjectTest.Controls.SimpleLineChart"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    RequestedTheme="Light">
+
+    <Grid RowDefinitions="*,Auto">
+        <Border
+            Padding="12"
+            Background="{ThemeResource CardBrush}"
+            BorderBrush="{ThemeResource CardStrokeBrush}"
+            BorderThickness="1"
+            CornerRadius="20">
+            <Canvas
+                x:Name="ChartCanvas"
+                MinHeight="220"
+                SizeChanged="ChartCanvas_SizeChanged" />
+        </Border>
+
+        <Grid
+            x:Name="LabelsGrid"
+            Grid.Row="1"
+            Margin="8,10,8,0" />
+    </Grid>
+</UserControl>

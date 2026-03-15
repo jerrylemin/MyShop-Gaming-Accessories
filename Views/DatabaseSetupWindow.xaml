@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Window
+    x:Class="ProjectTest.Views.DatabaseSetupWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Title="Database Setup">
+
+    <Grid
+        x:Name="RootGrid"
+        Background="{ThemeResource AppCanvasBrush}"
+        Padding="40">
+        <Border
+            MaxWidth="760"
+            Padding="28"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Center"
+            Background="{ThemeResource CardBrush}"
+            BorderBrush="{ThemeResource CardStrokeBrush}"
+            BorderThickness="1"
+            CornerRadius="24">
+            <StackPanel Spacing="14">
+                <TextBlock
+                    Style="{ThemeResource PageTitleTextBlockStyle}"
+                    Text="Database Connection Required" />
+                <TextBlock Text="MyShop Gaming Accessories POS could not connect to PostgreSQL during startup." />
+
+                <TextBlock
+                    Foreground="IndianRed"
+                    Text="{Binding ErrorMessage}"
+                    TextWrapping="WrapWholeWords" />
+
+                <TextBlock Text="Connection string" />
+                <TextBox
+                    AcceptsReturn="True"
+                    Height="120"
+                    Text="{Binding ConnectionString, Mode=TwoWay}"
+                    TextWrapping="Wrap" />
+
+                <TextBlock
+                    Style="{ThemeResource CaptionTextBlockStyle}"
+                    Text="Environment variable MYSHOP_CONNECTION_STRING still overrides this saved value when present."
+                    TextWrapping="WrapWholeWords" />
+
+                <TextBlock Text="Template" />
+                <TextBox
+                    IsReadOnly="True"
+                    Text="{Binding TemplateConnectionString}"
+                    TextWrapping="Wrap" />
+
+                <TextBlock
+                    Foreground="{ThemeResource AccentBrush}"
+                    Text="{Binding StatusMessage}"
+                    TextWrapping="WrapWholeWords" />
+
+                <Button
+                    Height="44"
+                    Command="{Binding SaveCommand}"
+                    Content="Save And Retry" />
+            </StackPanel>
+        </Border>
+    </Grid>
+</Window>
