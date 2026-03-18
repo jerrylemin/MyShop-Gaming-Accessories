@@ -49,8 +49,6 @@ This repository is a coursework-style Windows programming project built around a
 - `Assets` contains WinUI package assets, source image caches, and the packaged `GamingProducts` gallery.
 - `scripts` contains developer automation such as database rebuild and seed asset generation.
 - `tools` contains small console utilities for database rebuild verification and proposal document generation.
-- `docs` contains project documentation, setup notes, architecture notes, and README support files.
-- `.ai_memory` contains condensed repository memory for future Codex sessions.
 
 ## Database
 
@@ -262,25 +260,3 @@ dotnet publish ProjectTest.csproj -c Release -p:Platform=x64 -p:PublishProfile=w
 - The shell is built programmatically in `Views/MainWindow.xaml.cs`; `Views/MainWindow.xaml` is only a minimal host.
 - The app currently forces a light theme and does not expose a theme switcher.
 - If you need signed MSIX distribution, add your own signing configuration outside the current repository state.
-
-## Documentation
-
-Project documentation:
-
-- `docs/project_overview.md`
-- `docs/architecture.md`
-- `docs/database_schema.md`
-- `docs/data_flow.md`
-- `docs/features.md`
-- `docs/navigation.md`
-- `docs/services.md`
-- `docs/viewmodels.md`
-- `docs/developer_notes.md`
-- `docs/sample_products.md`
-- `docs/readme_notes.md`
-
-Repository memory for future Codex sessions:
-
-- `.ai_memory/PROJECT_IDENTITY.md`
-- `.ai_memory/DATABASE_MAP.md`
-- `.ai_memory/CHANGE_LOG.md`
