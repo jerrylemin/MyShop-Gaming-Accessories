@@ -1,0 +1,18 @@
+# Visual Studio / WinUI local state
+.vs/
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# .NET build outputs
+[Bb]in/
+[Oo]bj/
+
+# Local-only workspace metadata
+.ai_memory/
+tmp/
+
+# Project-external documents and Office temp files
+docs/
+~$*
