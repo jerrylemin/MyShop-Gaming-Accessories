@@ -15,30 +15,27 @@
     <ScrollViewer HorizontalScrollBarVisibility="Disabled" HorizontalScrollMode="Disabled">
         <StackPanel Margin="28" Spacing="24">
             <Border Style="{ThemeResource HeroCardBorderStyle}">
-                <Grid ColumnSpacing="20">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="*" />
-                        <ColumnDefinition Width="Auto" />
-                    </Grid.ColumnDefinitions>
+                <StackPanel Spacing="18">
+                    <Border
+                        HorizontalAlignment="Left"
+                        Style="{ThemeResource BadgeBorderStyle}">
+                        <TextBlock
+                            Style="{ThemeResource BadgeTextBlockStyle}"
+                            Text="Daily Control Center" />
+                    </Border>
 
-                    <StackPanel Spacing="12">
-                        <Border Style="{ThemeResource BadgeBorderStyle}">
-                            <TextBlock
-                                Style="{ThemeResource BadgeTextBlockStyle}"
-                                Text="Daily Control Center" />
-                        </Border>
-                        <TextBlock
-                            FontFamily="Segoe UI Variable Display Semib"
-                            FontSize="38"
-                            FontWeight="SemiBold"
-                            Text="Tổng quan hoạt động cửa hàng hôm nay." />
-                        <TextBlock
-                            Style="{ThemeResource PageIntroTextBlockStyle}"
-                            Text="Theo dõi tồn kho thấp, sản phẩm bán chạy, ba đơn gần nhất và xu hướng doanh thu theo ngày trong tháng hiện tại." />
-                    </StackPanel>
+                    <TextBlock
+                        FontFamily="Segoe UI Variable Display Semib"
+                        FontSize="38"
+                        FontWeight="SemiBold"
+                        Text="Store activity overview for today."
+                        TextWrapping="WrapWholeWords" />
+
+                    <TextBlock
+                        Style="{ThemeResource PageIntroTextBlockStyle}"
+                        Text="Track low stock items, best-selling products, the latest three orders, and the daily revenue trend for the current month." />
 
                     <Border
-                        Grid.Column="1"
                         Padding="18"
                         Background="#FFFFFFFF"
                         BorderBrush="{ThemeResource CardStrokeBrush}"
@@ -52,22 +49,25 @@
                                 FontFamily="Segoe UI Variable Display Semib"
                                 FontSize="28"
                                 FontWeight="SemiBold"
-                                Text="{Binding LowStockProductsText}" />
+                                Text="{Binding LowStockProductsText}"
+                                TextWrapping="WrapWholeWords" />
                             <TextBlock
                                 Style="{ThemeResource PageIntroTextBlockStyle}"
-                                Text="Sản phẩm đang chạm ngưỡng cần nhập thêm." />
+                                Text="Products that are reaching the restock threshold." />
                         </StackPanel>
                     </Border>
-                </Grid>
+                </StackPanel>
             </Border>
 
-            <Grid ColumnSpacing="16">
+            <Grid ColumnSpacing="16" RowSpacing="16">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*" />
                     <ColumnDefinition Width="*" />
-                    <ColumnDefinition Width="*" />
-                    <ColumnDefinition Width="*" />
                 </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
 
                 <controls:StatCard
                     Title="Total Products"
@@ -80,148 +80,141 @@
                     Value="{Binding LowStockProductsText}"
                     Subtitle="Gaming accessories at or below the replenishment threshold." />
                 <controls:StatCard
-                    Grid.Column="2"
+                    Grid.Row="1"
                     AccentBrush="{ThemeResource AccentBrush}"
                     Title="Today Orders"
                     Value="{Binding TodayOrderCountText}"
                     Subtitle="Orders created today across all statuses." />
                 <controls:StatCard
-                    Grid.Column="3"
+                    Grid.Row="1"
+                    Grid.Column="1"
                     AccentBrush="{ThemeResource AccentBrush}"
                     Title="Today Revenue"
                     Value="{Binding TodayRevenueText}"
                     Subtitle="Completed sales captured since midnight." />
             </Grid>
 
-                <Border Style="{ThemeResource CardBorderStyle}">
-                    <StackPanel Spacing="14">
-                        <TextBlock
-                            Style="{ThemeResource SectionHeaderTextBlockStyle}"
+            <Border Style="{ThemeResource CardBorderStyle}">
+                <StackPanel Spacing="14">
+                    <TextBlock
+                        Style="{ThemeResource SectionHeaderTextBlockStyle}"
                         Text="Current Month Revenue" />
                     <controls:SimpleLineChart ItemsSource="{Binding RevenuePoints}" />
                 </StackPanel>
             </Border>
 
-            <Grid ColumnSpacing="16">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*" />
-                    <ColumnDefinition Width="*" />
-                    <ColumnDefinition Width="*" />
-                </Grid.ColumnDefinitions>
+            <Border Style="{ThemeResource CardBorderStyle}">
+                <StackPanel Spacing="12">
+                    <TextBlock
+                        Style="{ThemeResource SectionHeaderTextBlockStyle}"
+                        Text="Top 5 Low Stock" />
+                    <ListView
+                        IsItemClickEnabled="False"
+                        ItemsSource="{Binding TopLowStockProducts}"
+                        SelectionMode="None">
+                        <ListView.ItemTemplate>
+                            <DataTemplate x:DataType="models:Product">
+                                <Border
+                                    Margin="0,5"
+                                    Padding="12"
+                                    Background="{ThemeResource AppCanvasBrush}"
+                                    CornerRadius="18">
+                                    <Grid ColumnSpacing="12">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*" />
+                                            <ColumnDefinition Width="Auto" />
+                                        </Grid.ColumnDefinitions>
+                                        <StackPanel>
+                                            <TextBlock FontWeight="SemiBold" Text="{x:Bind Name}" TextWrapping="WrapWholeWords" />
+                                            <TextBlock Style="{ThemeResource CaptionTextBlockStyle}" Text="{x:Bind Category.Name}" />
+                                        </StackPanel>
+                                        <StackPanel Grid.Column="1" HorizontalAlignment="Right">
+                                            <TextBlock FontWeight="SemiBold" Text="{x:Bind Stock}" />
+                                            <TextBlock Style="{ThemeResource CaptionTextBlockStyle}" Text="Units left" />
+                                        </StackPanel>
+                                    </Grid>
+                                </Border>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+                </StackPanel>
+            </Border>
 
-                <Border Style="{ThemeResource CardBorderStyle}">
-                    <StackPanel Spacing="12">
-                        <TextBlock
-                            Style="{ThemeResource SectionHeaderTextBlockStyle}"
-                            Text="Top 5 Low Stock" />
-                        <ListView
-                            IsItemClickEnabled="False"
-                            ItemsSource="{Binding TopLowStockProducts}"
-                            SelectionMode="None">
-                            <ListView.ItemTemplate>
-                                <DataTemplate x:DataType="models:Product">
-                                    <Border
-                                        Margin="0,5"
-                                        Padding="12"
-                                        Background="{ThemeResource AppCanvasBrush}"
-                                        CornerRadius="18">
-                                        <Grid ColumnSpacing="12">
-                                            <Grid.ColumnDefinitions>
-                                                <ColumnDefinition Width="*" />
-                                                <ColumnDefinition Width="Auto" />
-                                            </Grid.ColumnDefinitions>
-                                            <StackPanel>
-                                                <TextBlock FontWeight="SemiBold" Text="{x:Bind Name}" />
-                                                <TextBlock Style="{ThemeResource CaptionTextBlockStyle}" Text="{x:Bind Category.Name}" />
-                                            </StackPanel>
-                                            <StackPanel Grid.Column="1" HorizontalAlignment="Right">
-                                                <TextBlock FontWeight="SemiBold" Text="{x:Bind Stock}" />
-                                                <TextBlock Style="{ThemeResource CaptionTextBlockStyle}" Text="Units left" />
-                                            </StackPanel>
-                                        </Grid>
-                                    </Border>
-                                </DataTemplate>
-                            </ListView.ItemTemplate>
-                        </ListView>
-                    </StackPanel>
-                </Border>
+            <Border Style="{ThemeResource CardBorderStyle}">
+                <StackPanel Spacing="12">
+                    <TextBlock
+                        Style="{ThemeResource SectionHeaderTextBlockStyle}"
+                        Text="Top 5 Best Selling" />
+                    <ListView
+                        IsItemClickEnabled="False"
+                        ItemsSource="{Binding TopSellingProducts}"
+                        SelectionMode="None">
+                        <ListView.ItemTemplate>
+                            <DataTemplate x:DataType="models:ProductSalesSummary">
+                                <Border
+                                    Margin="0,5"
+                                    Padding="12"
+                                    Background="{ThemeResource AppCanvasBrush}"
+                                    CornerRadius="18">
+                                    <Grid ColumnSpacing="12">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*" />
+                                            <ColumnDefinition Width="Auto" />
+                                        </Grid.ColumnDefinitions>
+                                        <StackPanel>
+                                            <TextBlock FontWeight="SemiBold" Text="{x:Bind ProductName}" TextWrapping="WrapWholeWords" />
+                                            <TextBlock Style="{ThemeResource CaptionTextBlockStyle}" Text="{x:Bind Manufacturer}" />
+                                        </StackPanel>
+                                        <StackPanel Grid.Column="1" HorizontalAlignment="Right">
+                                            <TextBlock FontWeight="SemiBold" Text="{x:Bind QuantitySold}" />
+                                            <TextBlock
+                                                Style="{ThemeResource CaptionTextBlockStyle}"
+                                                Text="{x:Bind RevenueText}" />
+                                        </StackPanel>
+                                    </Grid>
+                                </Border>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+                </StackPanel>
+            </Border>
 
-                <Border Grid.Column="1" Style="{ThemeResource CardBorderStyle}">
-                    <StackPanel Spacing="12">
-                        <TextBlock
-                            Style="{ThemeResource SectionHeaderTextBlockStyle}"
-                            Text="Top 5 Best Selling" />
-                        <ListView
-                            IsItemClickEnabled="False"
-                            ItemsSource="{Binding TopSellingProducts}"
-                            SelectionMode="None">
-                            <ListView.ItemTemplate>
-                                <DataTemplate x:DataType="models:ProductSalesSummary">
-                                    <Border
-                                        Margin="0,5"
-                                        Padding="12"
-                                        Background="{ThemeResource AppCanvasBrush}"
-                                        CornerRadius="18">
-                                        <Grid ColumnSpacing="12">
-                                            <Grid.ColumnDefinitions>
-                                                <ColumnDefinition Width="*" />
-                                                <ColumnDefinition Width="Auto" />
-                                            </Grid.ColumnDefinitions>
-                                            <StackPanel>
-                                                <TextBlock FontWeight="SemiBold" Text="{x:Bind ProductName}" />
-                                                <TextBlock Style="{ThemeResource CaptionTextBlockStyle}" Text="{x:Bind Manufacturer}" />
-                                            </StackPanel>
-                                            <StackPanel Grid.Column="1" HorizontalAlignment="Right">
-                                                <TextBlock FontWeight="SemiBold" Text="{x:Bind QuantitySold}" />
-                                                <TextBlock
-                                                    Style="{ThemeResource CaptionTextBlockStyle}"
-                                                    Text="{x:Bind RevenueText}" />
-                                            </StackPanel>
-                                        </Grid>
-                                    </Border>
-                                </DataTemplate>
-                            </ListView.ItemTemplate>
-                        </ListView>
-                    </StackPanel>
-                </Border>
-
-                <Border Grid.Column="2" Style="{ThemeResource CardBorderStyle}">
-                    <StackPanel Spacing="12">
-                        <TextBlock
-                            Style="{ThemeResource SectionHeaderTextBlockStyle}"
-                            Text="Latest 3 Orders" />
-                        <ListView
-                            IsItemClickEnabled="False"
-                            ItemsSource="{Binding LatestOrders}"
-                            SelectionMode="None">
-                            <ListView.ItemTemplate>
-                                <DataTemplate x:DataType="models:OrderSummary">
-                                    <Border
-                                        Margin="0,5"
-                                        Padding="12"
-                                        Background="{ThemeResource AppCanvasBrush}"
-                                        CornerRadius="18">
-                                        <Grid ColumnSpacing="12">
-                                            <Grid.ColumnDefinitions>
-                                                <ColumnDefinition Width="*" />
-                                                <ColumnDefinition Width="Auto" />
-                                            </Grid.ColumnDefinitions>
-                                            <StackPanel>
-                                                <TextBlock FontWeight="SemiBold" Text="{x:Bind OrderLabel}" />
-                                                <TextBlock Style="{ThemeResource CaptionTextBlockStyle}" Text="{x:Bind CreatedDisplay}" />
-                                            </StackPanel>
-                                            <StackPanel Grid.Column="1" HorizontalAlignment="Right">
-                                                <TextBlock FontWeight="SemiBold" Text="{x:Bind FinalPriceText}" />
-                                                <TextBlock Style="{ThemeResource CaptionTextBlockStyle}" Text="{x:Bind StatusLabel}" />
-                                            </StackPanel>
-                                        </Grid>
-                                    </Border>
-                                </DataTemplate>
-                            </ListView.ItemTemplate>
-                        </ListView>
-                    </StackPanel>
-                </Border>
-            </Grid>
+            <Border Style="{ThemeResource CardBorderStyle}">
+                <StackPanel Spacing="12">
+                    <TextBlock
+                        Style="{ThemeResource SectionHeaderTextBlockStyle}"
+                        Text="Latest 3 Orders" />
+                    <ListView
+                        IsItemClickEnabled="False"
+                        ItemsSource="{Binding LatestOrders}"
+                        SelectionMode="None">
+                        <ListView.ItemTemplate>
+                            <DataTemplate x:DataType="models:OrderSummary">
+                                <Border
+                                    Margin="0,5"
+                                    Padding="12"
+                                    Background="{ThemeResource AppCanvasBrush}"
+                                    CornerRadius="18">
+                                    <Grid ColumnSpacing="12">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*" />
+                                            <ColumnDefinition Width="Auto" />
+                                        </Grid.ColumnDefinitions>
+                                        <StackPanel>
+                                            <TextBlock FontWeight="SemiBold" Text="{x:Bind OrderLabel}" TextWrapping="WrapWholeWords" />
+                                            <TextBlock Style="{ThemeResource CaptionTextBlockStyle}" Text="{x:Bind CreatedDisplay}" />
+                                        </StackPanel>
+                                        <StackPanel Grid.Column="1" HorizontalAlignment="Right">
+                                            <TextBlock FontWeight="SemiBold" Text="{x:Bind FinalPriceText}" />
+                                            <TextBlock Style="{ThemeResource CaptionTextBlockStyle}" Text="{x:Bind StatusLabel}" />
+                                        </StackPanel>
+                                    </Grid>
+                                </Border>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+                </StackPanel>
+            </Border>
         </StackPanel>
     </ScrollViewer>
 </Page>

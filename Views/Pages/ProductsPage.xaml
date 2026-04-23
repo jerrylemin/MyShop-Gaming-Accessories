@@ -10,316 +10,331 @@
     RequestedTheme="Light"
     Background="{ThemeResource AppCanvasBrush}">
 
-    <ScrollViewer>
+    <ScrollViewer HorizontalScrollBarVisibility="Disabled" HorizontalScrollMode="Disabled">
         <StackPanel Margin="28" Spacing="18">
             <Border Style="{ThemeResource HeroCardBorderStyle}">
-                <Grid ColumnSpacing="18">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="*" />
-                        <ColumnDefinition Width="Auto" />
-                    </Grid.ColumnDefinitions>
-
-                    <StackPanel Spacing="10">
-                        <Border Style="{ThemeResource BadgeBorderStyle}">
-                            <TextBlock
-                                Style="{ThemeResource BadgeTextBlockStyle}"
-                                Text="Master Data" />
-                        </Border>
+                <StackPanel Spacing="14">
+                    <Border
+                        HorizontalAlignment="Left"
+                        Style="{ThemeResource BadgeBorderStyle}">
                         <TextBlock
-                            FontFamily="Segoe UI Variable Display Semib"
-                            FontSize="32"
-                            FontWeight="SemiBold"
-                            Text="Quản lý sản phẩm theo cách trực quan hơn." />
-                        <TextBlock
-                            Width="760"
-                            Style="{ThemeResource PageIntroTextBlockStyle}"
-                            Text="Lọc theo loại, tìm theo từ khóa, giới hạn giá, nhập dữ liệu Excel và xem nhanh chi tiết từng sản phẩm kèm thư viện ảnh." />
-                    </StackPanel>
+                            Style="{ThemeResource BadgeTextBlockStyle}"
+                            Text="Master Data" />
+                    </Border>
+                    <TextBlock
+                        FontFamily="Segoe UI Variable Display Semib"
+                        FontSize="32"
+                        FontWeight="SemiBold"
+                        Text="Manage products in a cleaner, clearer workflow."
+                        TextWrapping="WrapWholeWords" />
+                    <TextBlock
+                        MaxWidth="860"
+                        Style="{ThemeResource PageIntroTextBlockStyle}"
+                        Text="Filter by category, search by keyword, limit by price, import from Excel, and review each product together with its image gallery." />
 
-                    <StackPanel
-                        Grid.Column="1"
-                        Orientation="Horizontal"
-                        HorizontalAlignment="Right"
-                        VerticalAlignment="Center"
-                        Spacing="10">
+                    <Grid ColumnSpacing="12" RowSpacing="12">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+
                         <Button
+                            Grid.Column="0"
                             Style="{ThemeResource SubtleButtonStyle}"
                             Click="ImportExcelButton_Click"
                             Content="Import Excel" />
                         <Button
+                            Grid.Column="1"
                             Style="{ThemeResource AccentButtonStyle}"
                             Command="{Binding AddCommand}"
-                            Content="Add" />
+                            Content="Add Product" />
                         <Button
+                            Grid.Row="1"
+                            Grid.Column="0"
                             Style="{ThemeResource SubtleButtonStyle}"
                             Command="{Binding EditCommand}"
-                            Content="Edit" />
+                            Content="Edit Product" />
                         <Button
+                            Grid.Row="1"
+                            Grid.Column="1"
                             Style="{ThemeResource SubtleButtonStyle}"
                             Click="DeleteButton_Click"
-                            Content="Delete" />
-                    </StackPanel>
-                </Grid>
-            </Border>
-
-            <Border Style="{ThemeResource CardBorderStyle}">
-                <StackPanel Spacing="12">
-                    <Grid ColumnSpacing="12">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="2*" />
-                            <ColumnDefinition Width="1.2*" />
-                            <ColumnDefinition Width="*" />
-                            <ColumnDefinition Width="*" />
-                            <ColumnDefinition Width="*" />
-                            <ColumnDefinition Width="Auto" />
-                        </Grid.ColumnDefinitions>
-
-                        <TextBox
-                            PlaceholderText="Search by name, SKU, brand, description, or accessory specs"
-                            Text="{Binding Keyword, Mode=TwoWay}" />
-                        <ComboBox
-                            Grid.Column="1"
-                            DisplayMemberPath="Name"
-                            ItemsSource="{Binding CategoryFilters}"
-                            SelectedItem="{Binding SelectedCategoryFilter, Mode=TwoWay}" />
-                        <TextBox
-                            Grid.Column="2"
-                            PlaceholderText="Min price"
-                            Text="{Binding MinPrice, Mode=TwoWay}" />
-                        <TextBox
-                            Grid.Column="3"
-                            PlaceholderText="Max price"
-                            Text="{Binding MaxPrice, Mode=TwoWay}" />
-                        <ComboBox
-                            Grid.Column="4"
-                            ItemsSource="{Binding SortOptions}"
-                            SelectedItem="{Binding SelectedSortOption, Mode=TwoWay}" />
-                        <Button
-                            Grid.Column="5"
-                            Command="{Binding RefreshCommand}"
-                            Content="Apply" />
-                    </Grid>
-
-                    <TextBlock
-                        Foreground="{ThemeResource AccentBrush}"
-                        Text="{Binding StatusMessage}"
-                        TextWrapping="WrapWholeWords" />
-
-                    <Grid ColumnSpacing="16">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="1.5*" />
-                            <ColumnDefinition Width="*" />
-                        </Grid.ColumnDefinitions>
-
-                        <StackPanel Spacing="12">
-                            <ListView
-                                ItemsSource="{Binding Products}"
-                                SelectedItem="{Binding SelectedProduct, Mode=TwoWay}">
-                                <ListView.ItemTemplate>
-                                    <DataTemplate>
-                                        <Border
-                                            Margin="0,4"
-                                            Padding="12"
-                                            Background="{ThemeResource PageSurfaceBrush}"
-                                            BorderBrush="{ThemeResource CardStrokeBrush}"
-                                            BorderThickness="1"
-                                            CornerRadius="18">
-                                            <Grid ColumnSpacing="14">
-                                                <Grid.ColumnDefinitions>
-                                                    <ColumnDefinition Width="Auto" />
-                                                    <ColumnDefinition Width="*" />
-                                                    <ColumnDefinition Width="Auto" />
-                                                    <ColumnDefinition Width="Auto" />
-                                                </Grid.ColumnDefinitions>
-
-                                                <Image
-                                                    Width="90"
-                                                    Height="68"
-                                                    Stretch="UniformToFill"
-                                                    Source="{Binding Image1, Converter={StaticResource ImagePathConverter}}" />
-
-                                                <StackPanel Grid.Column="1" Spacing="4">
-                                                    <TextBlock
-                                                        FontWeight="SemiBold"
-                                                        Text="{Binding Name}" />
-                                                    <TextBlock Style="{ThemeResource CaptionTextBlockStyle}" Text="{Binding Brand}" />
-                                                    <TextBlock
-                                                        Foreground="#FF5C5750"
-                                                        Text="{Binding Category.Name}" />
-                                                </StackPanel>
-
-                                                <StackPanel Grid.Column="2" HorizontalAlignment="Right">
-                                                    <TextBlock
-                                                        FontWeight="SemiBold"
-                                                        Text="{Binding SalePrice, Converter={StaticResource CurrencyConverter}}" />
-                                                    <TextBlock Style="{ThemeResource CaptionTextBlockStyle}" Text="Price" />
-                                                </StackPanel>
-
-                                                <StackPanel Grid.Column="3" HorizontalAlignment="Right">
-                                                    <TextBlock FontWeight="SemiBold" Text="{Binding Stock}" />
-                                                    <TextBlock Style="{ThemeResource CaptionTextBlockStyle}" Text="In stock" />
-                                                </StackPanel>
-                                            </Grid>
-                                        </Border>
-                                    </DataTemplate>
-                                </ListView.ItemTemplate>
-                            </ListView>
-
-                            <Grid>
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="*" />
-                                    <ColumnDefinition Width="Auto" />
-                                </Grid.ColumnDefinitions>
-                                <TextBlock
-                                    VerticalAlignment="Center"
-                                    Text="{Binding PageSummary}" />
-                                <StackPanel
-                                    Grid.Column="1"
-                                    Orientation="Horizontal"
-                                    Spacing="8">
-                                    <Button Command="{Binding PreviousPageCommand}" Content="Previous" />
-                                    <Button Command="{Binding NextPageCommand}" Content="Next" />
-                                </StackPanel>
-                            </Grid>
-                        </StackPanel>
-
-                        <Border
-                            Grid.Column="1"
-                            Style="{ThemeResource CardBorderStyle}">
-                            <StackPanel Spacing="12">
-                                <TextBlock
-                                    Style="{ThemeResource SectionHeaderTextBlockStyle}"
-                                    Text="Product Detail" />
-
-                                <TextBlock
-                                    FontFamily="Bahnschrift"
-                                    FontSize="24"
-                                    Text="{Binding SelectedProduct.Name}" />
-                                <TextBlock FontWeight="SemiBold" Text="Brand" />
-                                <TextBlock
-                                    Style="{ThemeResource CaptionTextBlockStyle}"
-                                    Text="{Binding SelectedProduct.Brand}" />
-
-                                <Grid ColumnSpacing="10">
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="*" />
-                                        <ColumnDefinition Width="*" />
-                                    </Grid.ColumnDefinitions>
-
-                                    <StackPanel Spacing="4">
-                                        <TextBlock FontWeight="SemiBold" Text="Category" />
-                                        <TextBlock Text="{Binding SelectedProduct.Category.Name}" />
-                                    </StackPanel>
-                                    <StackPanel Grid.Column="1" Spacing="4">
-                                        <TextBlock FontWeight="SemiBold" Text="SKU" />
-                                        <TextBlock Text="{Binding SelectedProduct.SKU}" />
-                                    </StackPanel>
-                                </Grid>
-
-                                <TextBlock FontWeight="SemiBold" Text="Accessory Specs" />
-                                <ItemsControl ItemsSource="{Binding SelectedProduct.AccessorySpecs}">
-                                    <ItemsControl.ItemTemplate>
-                                        <DataTemplate>
-                                            <Border
-                                                Margin="0,0,0,8"
-                                                Padding="10"
-                                                Background="{ThemeResource AppCanvasBrush}"
-                                                CornerRadius="12">
-                                                <TextBlock Text="{Binding}" TextWrapping="WrapWholeWords" />
-                                            </Border>
-                                        </DataTemplate>
-                                    </ItemsControl.ItemTemplate>
-                                </ItemsControl>
-
-                                <Grid ColumnSpacing="10">
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="*" />
-                                        <ColumnDefinition Width="*" />
-                                        <ColumnDefinition Width="*" />
-                                    </Grid.ColumnDefinitions>
-                                    <StackPanel Spacing="4">
-                                        <TextBlock FontWeight="SemiBold" Text="Import price" />
-                                        <TextBlock Text="{Binding SelectedProduct.ImportPrice, Converter={StaticResource CurrencyConverter}}" />
-                                    </StackPanel>
-                                    <StackPanel Grid.Column="1" Spacing="4">
-                                        <TextBlock FontWeight="SemiBold" Text="Sale price" />
-                                        <TextBlock Text="{Binding SelectedProduct.SalePrice, Converter={StaticResource CurrencyConverter}}" />
-                                    </StackPanel>
-                                    <StackPanel Grid.Column="2" Spacing="4">
-                                        <TextBlock FontWeight="SemiBold" Text="Stock" />
-                                        <TextBlock Text="{Binding SelectedProduct.Stock}" />
-                                    </StackPanel>
-                                </Grid>
-
-                                <TextBlock FontWeight="SemiBold" Text="Description" />
-                                <TextBlock
-                                    Text="{Binding SelectedProduct.Description}"
-                                    TextWrapping="WrapWholeWords" />
-
-                                <TextBlock FontWeight="SemiBold" Text="Image Gallery" />
-                                <Grid ColumnSpacing="8">
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="*" />
-                                        <ColumnDefinition Width="*" />
-                                        <ColumnDefinition Width="*" />
-                                    </Grid.ColumnDefinitions>
-
-                                    <Image
-                                        Height="110"
-                                        Stretch="UniformToFill"
-                                        Source="{Binding SelectedProduct.Image1, Converter={StaticResource ImagePathConverter}}" />
-                                    <Image
-                                        Grid.Column="1"
-                                        Height="110"
-                                        Stretch="UniformToFill"
-                                        Source="{Binding SelectedProduct.Image2, Converter={StaticResource ImagePathConverter}}" />
-                                    <Image
-                                        Grid.Column="2"
-                                        Height="110"
-                                        Stretch="UniformToFill"
-                                        Source="{Binding SelectedProduct.Image3, Converter={StaticResource ImagePathConverter}}" />
-                                </Grid>
-                            </StackPanel>
-                        </Border>
+                            Content="Delete Product" />
                     </Grid>
                 </StackPanel>
             </Border>
 
             <Border Style="{ThemeResource CardBorderStyle}">
-                <StackPanel Spacing="14">
-                    <Grid ColumnSpacing="16">
+                <StackPanel Spacing="12">
+                    <Grid ColumnSpacing="12" RowSpacing="12">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="*" />
-                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="*" />
                         </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
 
-                        <StackPanel Spacing="6">
-                            <TextBlock
-                                Style="{ThemeResource SectionHeaderTextBlockStyle}"
-                                Text="Category Management" />
-                            <TextBlock
-                                Style="{ThemeResource PageIntroTextBlockStyle}"
-                                Text="Thêm, sửa, xóa loại sản phẩm an toàn. Không thể xóa category đang còn sản phẩm sử dụng." />
-                        </StackPanel>
-
-                        <StackPanel
+                        <TextBox
+                            Grid.Row="0"
+                            Grid.ColumnSpan="2"
+                            PlaceholderText="Search by name, SKU, brand, description, or accessory specs"
+                            Text="{Binding Keyword, Mode=TwoWay}" />
+                        <ComboBox
+                            Grid.Row="1"
+                            Grid.Column="0"
+                            DisplayMemberPath="Name"
+                            ItemsSource="{Binding CategoryFilters}"
+                            SelectedItem="{Binding SelectedCategoryFilter, Mode=TwoWay}" />
+                        <ComboBox
+                            Grid.Row="1"
                             Grid.Column="1"
-                            Orientation="Horizontal"
-                            VerticalAlignment="Center"
-                            Spacing="10">
-                            <Button
-                                Style="{ThemeResource AccentButtonStyle}"
-                                Command="{Binding AddCategoryCommand}"
-                                Content="Add Category" />
-                            <Button
-                                Style="{ThemeResource SubtleButtonStyle}"
-                                Command="{Binding EditCategoryCommand}"
-                                Content="Edit Category" />
-                            <Button
-                                Style="{ThemeResource SubtleButtonStyle}"
-                                Command="{Binding DeleteCategoryCommand}"
-                                Content="Delete Category" />
+                            ItemsSource="{Binding SortOptions}"
+                            SelectedItem="{Binding SelectedSortOption, Mode=TwoWay}" />
+                        <TextBox
+                            Grid.Row="2"
+                            Grid.Column="0"
+                            PlaceholderText="Min price"
+                            Text="{Binding MinPrice, Mode=TwoWay}" />
+                        <TextBox
+                            Grid.Row="2"
+                            Grid.Column="1"
+                            PlaceholderText="Max price"
+                            Text="{Binding MaxPrice, Mode=TwoWay}" />
+                    </Grid>
+
+                    <Button
+                        Style="{ThemeResource AccentButtonStyle}"
+                        Command="{Binding RefreshCommand}"
+                        Content="Apply Filters" />
+
+                    <TextBlock
+                        Foreground="{ThemeResource AccentBrush}"
+                        Text="{Binding StatusMessage}"
+                        TextWrapping="WrapWholeWords" />
+                </StackPanel>
+            </Border>
+
+            <Border Style="{ThemeResource CardBorderStyle}">
+                <StackPanel Spacing="12">
+                    <TextBlock
+                        Style="{ThemeResource SectionHeaderTextBlockStyle}"
+                        Text="Product List" />
+
+                    <ListView
+                        ItemsSource="{Binding Products}"
+                        SelectedItem="{Binding SelectedProduct, Mode=TwoWay}">
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <Border
+                                    Margin="0,4"
+                                    Padding="12"
+                                    Background="{ThemeResource PageSurfaceBrush}"
+                                    BorderBrush="{ThemeResource CardStrokeBrush}"
+                                    BorderThickness="1"
+                                    CornerRadius="18">
+                                    <StackPanel Spacing="12">
+                                        <Grid ColumnSpacing="14">
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="Auto" />
+                                                <ColumnDefinition Width="*" />
+                                            </Grid.ColumnDefinitions>
+
+                                            <Image
+                                                Width="90"
+                                                Height="68"
+                                                Stretch="UniformToFill"
+                                                Source="{Binding Image1, Converter={StaticResource ImagePathConverter}}" />
+
+                                            <StackPanel Grid.Column="1" Spacing="4">
+                                                <TextBlock
+                                                    FontWeight="SemiBold"
+                                                    Text="{Binding Name}"
+                                                    TextWrapping="WrapWholeWords" />
+                                                <TextBlock Style="{ThemeResource CaptionTextBlockStyle}" Text="{Binding Brand}" />
+                                                <TextBlock
+                                                    Foreground="#FF5C5750"
+                                                    Text="{Binding Category.Name}"
+                                                    TextWrapping="WrapWholeWords" />
+                                            </StackPanel>
+                                        </Grid>
+
+                                        <Grid ColumnSpacing="14">
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="*" />
+                                                <ColumnDefinition Width="*" />
+                                            </Grid.ColumnDefinitions>
+                                            <StackPanel Spacing="2">
+                                                <TextBlock
+                                                    FontWeight="SemiBold"
+                                                    Text="{Binding SalePrice, Converter={StaticResource CurrencyConverter}}" />
+                                                <TextBlock Style="{ThemeResource CaptionTextBlockStyle}" Text="Price" />
+                                            </StackPanel>
+                                            <StackPanel Grid.Column="1" Spacing="2">
+                                                <TextBlock FontWeight="SemiBold" Text="{Binding Stock}" />
+                                                <TextBlock Style="{ThemeResource CaptionTextBlockStyle}" Text="In stock" />
+                                            </StackPanel>
+                                        </Grid>
+                                    </StackPanel>
+                                </Border>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+
+                    <StackPanel Spacing="10">
+                        <TextBlock
+                            Text="{Binding PageSummary}"
+                            TextWrapping="WrapWholeWords" />
+                        <Grid ColumnSpacing="10">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+                            <Button Grid.Column="0" Command="{Binding PreviousPageCommand}" Content="Previous" />
+                            <Button Grid.Column="1" Command="{Binding NextPageCommand}" Content="Next" />
+                        </Grid>
+                    </StackPanel>
+                </StackPanel>
+            </Border>
+
+            <Border Style="{ThemeResource CardBorderStyle}">
+                <StackPanel Spacing="12">
+                    <TextBlock
+                        Style="{ThemeResource SectionHeaderTextBlockStyle}"
+                        Text="Product Detail" />
+
+                    <TextBlock
+                        FontFamily="Bahnschrift"
+                        FontSize="24"
+                        Text="{Binding SelectedProduct.Name}"
+                        TextWrapping="WrapWholeWords" />
+
+                    <Grid ColumnSpacing="10" RowSpacing="10">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+
+                        <StackPanel Spacing="4">
+                            <TextBlock FontWeight="SemiBold" Text="Brand" />
+                            <TextBlock Style="{ThemeResource CaptionTextBlockStyle}" Text="{Binding SelectedProduct.Brand}" />
                         </StackPanel>
+                        <StackPanel Grid.Column="1" Spacing="4">
+                            <TextBlock FontWeight="SemiBold" Text="Category" />
+                            <TextBlock Text="{Binding SelectedProduct.Category.Name}" TextWrapping="WrapWholeWords" />
+                        </StackPanel>
+                        <StackPanel Grid.Row="1" Spacing="4">
+                            <TextBlock FontWeight="SemiBold" Text="SKU" />
+                            <TextBlock Text="{Binding SelectedProduct.SKU}" TextWrapping="WrapWholeWords" />
+                        </StackPanel>
+                    </Grid>
+
+                    <TextBlock FontWeight="SemiBold" Text="Accessory Specs" />
+                    <ItemsControl ItemsSource="{Binding SelectedProduct.AccessorySpecs}">
+                        <ItemsControl.ItemTemplate>
+                            <DataTemplate>
+                                <Border
+                                    Margin="0,0,0,8"
+                                    Padding="10"
+                                    Background="{ThemeResource AppCanvasBrush}"
+                                    CornerRadius="12">
+                                    <TextBlock Text="{Binding}" TextWrapping="WrapWholeWords" />
+                                </Border>
+                            </DataTemplate>
+                        </ItemsControl.ItemTemplate>
+                    </ItemsControl>
+
+                    <Grid ColumnSpacing="10" RowSpacing="10">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+                        <StackPanel Spacing="4">
+                            <TextBlock FontWeight="SemiBold" Text="Import price" />
+                            <TextBlock Text="{Binding SelectedProduct.ImportPrice, Converter={StaticResource CurrencyConverter}}" />
+                        </StackPanel>
+                        <StackPanel Grid.Column="1" Spacing="4">
+                            <TextBlock FontWeight="SemiBold" Text="Sale price" />
+                            <TextBlock Text="{Binding SelectedProduct.SalePrice, Converter={StaticResource CurrencyConverter}}" />
+                        </StackPanel>
+                        <StackPanel Grid.Row="1" Spacing="4">
+                            <TextBlock FontWeight="SemiBold" Text="Stock" />
+                            <TextBlock Text="{Binding SelectedProduct.Stock}" />
+                        </StackPanel>
+                    </Grid>
+
+                    <TextBlock FontWeight="SemiBold" Text="Description" />
+                    <TextBlock
+                        Text="{Binding SelectedProduct.Description}"
+                        TextWrapping="WrapWholeWords" />
+
+                    <TextBlock FontWeight="SemiBold" Text="Image Gallery" />
+                    <StackPanel Spacing="10">
+                        <Image
+                            MaxHeight="220"
+                            Stretch="Uniform"
+                            Source="{Binding SelectedProduct.Image1, Converter={StaticResource ImagePathConverter}}" />
+                        <Image
+                            MaxHeight="220"
+                            Stretch="Uniform"
+                            Source="{Binding SelectedProduct.Image2, Converter={StaticResource ImagePathConverter}}" />
+                        <Image
+                            MaxHeight="220"
+                            Stretch="Uniform"
+                            Source="{Binding SelectedProduct.Image3, Converter={StaticResource ImagePathConverter}}" />
+                    </StackPanel>
+                </StackPanel>
+            </Border>
+
+            <Border Style="{ThemeResource CardBorderStyle}">
+                <StackPanel Spacing="14">
+                    <TextBlock
+                        Style="{ThemeResource SectionHeaderTextBlockStyle}"
+                        Text="Category Management" />
+                    <TextBlock
+                        Style="{ThemeResource PageIntroTextBlockStyle}"
+                        Text="Add, edit, and delete categories safely. Categories that are still used by products cannot be deleted." />
+
+                    <Grid ColumnSpacing="12" RowSpacing="12">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+
+                        <Button
+                            Grid.Column="0"
+                            Style="{ThemeResource AccentButtonStyle}"
+                            Command="{Binding AddCategoryCommand}"
+                            Content="Add Category" />
+                        <Button
+                            Grid.Column="1"
+                            Style="{ThemeResource SubtleButtonStyle}"
+                            Command="{Binding EditCategoryCommand}"
+                            Content="Edit Category" />
+                        <Button
+                            Grid.Row="1"
+                            Grid.ColumnSpan="2"
+                            Style="{ThemeResource SubtleButtonStyle}"
+                            Command="{Binding DeleteCategoryCommand}"
+                            Content="Delete Category" />
                     </Grid>
 
                     <ListView
@@ -334,25 +349,15 @@
                                     BorderBrush="{ThemeResource CardStrokeBrush}"
                                     BorderThickness="1"
                                     CornerRadius="18">
-                                    <Grid ColumnSpacing="16">
-                                        <Grid.ColumnDefinitions>
-                                            <ColumnDefinition Width="*" />
-                                            <ColumnDefinition Width="Auto" />
-                                        </Grid.ColumnDefinitions>
-
-                                        <StackPanel Spacing="4">
-                                            <TextBlock
-                                                FontWeight="SemiBold"
-                                                Text="{x:Bind Name}" />
-                                            <TextBlock
-                                                Style="{ThemeResource CaptionTextBlockStyle}"
-                                                Text="{x:Bind Description}" />
-                                        </StackPanel>
-
-                                        <StackPanel
-                                            Grid.Column="1"
-                                            HorizontalAlignment="Right"
-                                            Spacing="4">
+                                    <StackPanel Spacing="8">
+                                        <TextBlock
+                                            FontWeight="SemiBold"
+                                            Text="{x:Bind Name}"
+                                            TextWrapping="WrapWholeWords" />
+                                        <TextBlock
+                                            Style="{ThemeResource CaptionTextBlockStyle}"
+                                            Text="{x:Bind Description}" />
+                                        <StackPanel Spacing="2">
                                             <TextBlock
                                                 FontWeight="SemiBold"
                                                 Text="{x:Bind ProductCount}" />
@@ -360,7 +365,7 @@
                                                 Style="{ThemeResource CaptionTextBlockStyle}"
                                                 Text="{x:Bind ProductCountText}" />
                                         </StackPanel>
-                                    </Grid>
+                                    </StackPanel>
                                 </Border>
                             </DataTemplate>
                         </ListView.ItemTemplate>

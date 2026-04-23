@@ -8,24 +8,25 @@
     mc:Ignorable="d"
     Title="Database Setup">
 
-    <Grid
+    <ScrollViewer
         x:Name="RootGrid"
-        Background="{ThemeResource AppCanvasBrush}">
+        Background="{ThemeResource AppCanvasBrush}"
+        HorizontalScrollBarVisibility="Disabled"
+        HorizontalScrollMode="Disabled"
+        VerticalScrollBarVisibility="Auto">
         <Grid
-            MaxWidth="1180"
-            Margin="32"
-            HorizontalAlignment="Center"
-            VerticalAlignment="Center">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="0.92*" />
-                <ColumnDefinition Width="1.08*" />
-            </Grid.ColumnDefinitions>
+            MaxWidth="1100"
+            Margin="24"
+            HorizontalAlignment="Center">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
 
             <Border
-                MinHeight="650"
-                Padding="40"
+                Padding="36"
                 Background="{ThemeResource SidebarBrush}"
-                CornerRadius="34,0,0,34">
+                CornerRadius="34,34,0,0">
                 <Grid>
                     <Ellipse
                         Width="340"
@@ -43,7 +44,7 @@
                         Fill="#16FFFFFF" />
 
                     <StackPanel
-                        MaxWidth="360"
+                        MaxWidth="620"
                         VerticalAlignment="Center"
                         Spacing="16">
                         <Border
@@ -59,14 +60,14 @@
                         </Border>
                         <TextBlock
                             FontFamily="Segoe UI Variable Display Semib"
-                            FontSize="44"
+                            FontSize="40"
                             FontWeight="SemiBold"
                             Foreground="White"
-                            Text="Cấu hình kết nối trước khi vào ứng dụng." />
+                            Text="Connect the database before entering the app." />
                         <TextBlock
                             FontSize="16"
                             Foreground="#D9FFFFFF"
-                            Text="App sẽ kiểm tra lại kết nối, áp dụng migration và mở đúng màn hình làm việc sau khi chuỗi kết nối hợp lệ."
+                            Text="Save a working connection string, test it again, then continue directly into the main workspace."
                             TextWrapping="WrapWholeWords" />
 
                         <Border
@@ -77,11 +78,11 @@
                                 <TextBlock
                                     FontSize="13"
                                     Foreground="#E7FFFFFF"
-                                    Text="Lưu ý" />
+                                    Text="Note" />
                                 <TextBlock
                                     FontSize="12"
                                     Foreground="#D4FFFFFF"
-                                    Text="Biến môi trường `MYSHOP_CONNECTION_STRING` vẫn sẽ được ưu tiên nếu tồn tại."
+                                    Text="If `MYSHOP_CONNECTION_STRING` exists, the app still gives that value top priority."
                                     TextWrapping="WrapWholeWords" />
                             </StackPanel>
                         </Border>
@@ -90,14 +91,15 @@
             </Border>
 
             <Border
-                Grid.Column="1"
-                MinHeight="650"
-                Padding="40"
+                Grid.Row="1"
+                Padding="36"
                 Background="{ThemeResource PageSurfaceBrush}"
                 BorderBrush="{ThemeResource CardStrokeBrush}"
                 BorderThickness="1"
-                CornerRadius="0,34,34,0">
+                CornerRadius="0,0,34,34">
                 <StackPanel
+                    MaxWidth="760"
+                    HorizontalAlignment="Center"
                     VerticalAlignment="Center"
                     Spacing="18">
                     <StackPanel Spacing="10">
@@ -106,7 +108,7 @@
                             Text="Database Connection Required" />
                         <TextBlock
                             Style="{ThemeResource PageIntroTextBlockStyle}"
-                            Text="MyShop Gaming Accessories POS chưa thể kết nối PostgreSQL trong lúc khởi động. Bạn có thể sửa chuỗi kết nối rồi thử lại ngay tại đây." />
+                            Text="MyShop Gaming Accessories could not connect to PostgreSQL during startup. Update the connection string here and try again." />
                     </StackPanel>
 
                     <Border
@@ -125,7 +127,7 @@
                             Text="Connection string" />
                         <TextBox
                             AcceptsReturn="True"
-                            Height="130"
+                            MinHeight="140"
                             Text="{Binding ConnectionString, Mode=TwoWay}"
                             TextWrapping="Wrap" />
                     </StackPanel>
@@ -135,7 +137,9 @@
                             Style="{ThemeResource FieldLabelTextBlockStyle}"
                             Text="Template" />
                         <TextBox
+                            AcceptsReturn="True"
                             IsReadOnly="True"
+                            MinHeight="96"
                             Text="{Binding TemplateConnectionString}"
                             TextWrapping="Wrap" />
                     </StackPanel>
@@ -148,9 +152,9 @@
                     <Button
                         Style="{ThemeResource AccentButtonStyle}"
                         Command="{Binding SaveCommand}"
-                        Content="Lưu và kết nối lại" />
+                        Content="Save and reconnect" />
                 </StackPanel>
             </Border>
         </Grid>
-    </Grid>
+    </ScrollViewer>
 </Window>

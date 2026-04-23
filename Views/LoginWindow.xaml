@@ -6,26 +6,27 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
-    Title="MyShop Gaming Accessories POS Login">
+    Title="MyShop Gaming Accessories">
 
-    <Grid
+    <ScrollViewer
         x:Name="RootGrid"
-        Background="{ThemeResource AppCanvasBrush}">
+        Background="{ThemeResource AppCanvasBrush}"
+        HorizontalScrollBarVisibility="Disabled"
+        HorizontalScrollMode="Disabled"
+        VerticalScrollBarVisibility="Auto">
         <Grid
-            MaxWidth="1240"
-            Margin="32"
-            HorizontalAlignment="Center"
-            VerticalAlignment="Center">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="1.05*" />
-                <ColumnDefinition Width="0.95*" />
-            </Grid.ColumnDefinitions>
+            MaxWidth="1100"
+            Margin="24"
+            HorizontalAlignment="Center">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
 
             <Border
-                MinHeight="700"
-                Padding="42"
+                Padding="36"
                 Background="{StaticResource LoginHeroBrush}"
-                CornerRadius="34,0,0,34">
+                CornerRadius="34,34,0,0">
                 <Grid>
                     <Ellipse
                         Width="420"
@@ -41,21 +42,11 @@
                         HorizontalAlignment="Right"
                         VerticalAlignment="Bottom"
                         Fill="#1EFFFFFF" />
-                    <Ellipse
-                        Width="280"
-                        Height="280"
-                        Margin="0,80,-70,0"
-                        HorizontalAlignment="Right"
-                        VerticalAlignment="Top"
-                        Fill="#16FFFFFF" />
 
-                    <Grid RowSpacing="18">
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="Auto" />
-                            <RowDefinition Height="*" />
-                            <RowDefinition Height="Auto" />
-                        </Grid.RowDefinitions>
-
+                    <StackPanel
+                        MaxWidth="620"
+                        VerticalAlignment="Center"
+                        Spacing="16">
                         <Border
                             HorizontalAlignment="Left"
                             Padding="14,7"
@@ -65,34 +56,32 @@
                                 FontSize="12"
                                 FontWeight="SemiBold"
                                 Foreground="White"
-                                Text="MyShop Gaming POS" />
+                                Text="MyShop Gaming Accessories" />
                         </Border>
 
-                        <StackPanel
-                            Grid.Row="1"
-                            VerticalAlignment="Center"
-                            Spacing="16">
-                            <TextBlock
-                                FontFamily="Segoe UI Variable Display Semib"
-                                FontSize="58"
-                                FontWeight="SemiBold"
-                                Foreground="White"
-                                Text="Bán hàng gọn, nhìn số liệu nhanh." />
-                            <TextBlock
-                                MaxWidth="470"
-                                FontSize="17"
-                                Foreground="#F3FFFFFF"
-                                Text="Một không gian làm việc sáng sủa cho chủ cửa hàng: đăng nhập, quản lý hàng hóa, lên đơn và theo dõi doanh thu trong cùng một ứng dụng."
-                                TextWrapping="WrapWholeWords" />
-                        </StackPanel>
+                        <TextBlock
+                            FontFamily="Segoe UI Variable Display Semib"
+                            FontSize="44"
+                            FontWeight="SemiBold"
+                            Foreground="White"
+                            Text="MyShop Gaming Accessories" />
 
-                        <Grid
-                            Grid.Row="2"
-                            ColumnSpacing="14">
+                        <TextBlock
+                            MaxWidth="560"
+                            FontSize="17"
+                            Foreground="#F3FFFFFF"
+                            Text="Sign in to open the store workspace, review inventory, and continue your sales flow without clipped content."
+                            TextWrapping="WrapWholeWords" />
+
+                        <Grid ColumnSpacing="14" RowSpacing="14">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="*" />
                                 <ColumnDefinition Width="*" />
                             </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                            </Grid.RowDefinitions>
 
                             <Border
                                 Padding="18"
@@ -102,17 +91,18 @@
                                     <TextBlock
                                         FontSize="13"
                                         Foreground="#E8FFFFFF"
-                                        Text="Smart Catalog" />
+                                        Text="Catalog" />
                                     <TextBlock
                                         FontFamily="Segoe UI Variable Display Semib"
                                         FontSize="28"
                                         FontWeight="SemiBold"
                                         Foreground="White"
-                                        Text="50+" />
+                                        Text="110 products" />
                                     <TextBlock
                                         FontSize="12"
                                         Foreground="#D9FFFFFF"
-                                        Text="Sản phẩm mẫu với thư viện ảnh đi kèm." />
+                                        Text="Seed data and packaged images stay aligned with the current database."
+                                        TextWrapping="WrapWholeWords" />
                                 </StackPanel>
                             </Border>
 
@@ -125,39 +115,42 @@
                                     <TextBlock
                                         FontSize="13"
                                         Foreground="#E8FFFFFF"
-                                        Text="Daily Insight" />
+                                        Text="Insight" />
                                     <TextBlock
                                         FontFamily="Segoe UI Variable Display Semib"
                                         FontSize="28"
                                         FontWeight="SemiBold"
                                         Foreground="White"
-                                        Text="Real-time" />
+                                        Text="Revenue + profit" />
                                     <TextBlock
                                         FontSize="12"
                                         Foreground="#D9FFFFFF"
-                                        Text="Xem nhanh đơn gần nhất, tồn kho thấp và doanh thu ngày." />
+                                        Text="Track recent orders, low stock, revenue, and profit in one place."
+                                        TextWrapping="WrapWholeWords" />
                                 </StackPanel>
                             </Border>
                         </Grid>
-                    </Grid>
+                    </StackPanel>
                 </Grid>
             </Border>
 
             <Border
-                Grid.Column="1"
-                MinHeight="700"
-                Padding="48"
+                Grid.Row="1"
+                Padding="36"
                 Background="{ThemeResource PageSurfaceBrush}"
                 BorderBrush="{ThemeResource CardStrokeBrush}"
                 BorderThickness="1"
-                CornerRadius="0,34,34,0">
+                CornerRadius="0,0,34,34">
                 <Grid>
                     <StackPanel
-                        MaxWidth="420"
+                        MaxWidth="520"
+                        HorizontalAlignment="Center"
                         VerticalAlignment="Center"
                         Spacing="18">
                         <StackPanel Spacing="10">
-                            <Border Style="{ThemeResource BadgeBorderStyle}">
+                            <Border
+                                HorizontalAlignment="Left"
+                                Style="{ThemeResource BadgeBorderStyle}">
                                 <TextBlock
                                     Style="{ThemeResource BadgeTextBlockStyle}"
                                     Text="{Binding VersionText}" />
@@ -167,7 +160,7 @@
                                 Text="Login" />
                             <TextBlock
                                 Style="{ThemeResource PageIntroTextBlockStyle}"
-                                Text="Đăng nhập để vào không gian quản lý cửa hàng. Thông tin đăng nhập được lưu cục bộ và mã hóa để hỗ trợ tự đăng nhập lần sau." />
+                                Text="Use your local account to continue. Saved credentials remain encrypted for the next launch." />
                         </StackPanel>
 
                         <StackPanel Spacing="8">
@@ -175,8 +168,7 @@
                                 Style="{ThemeResource FieldLabelTextBlockStyle}"
                                 Text="Username" />
                             <TextBox
-                                Height="46"
-                                PlaceholderText="Nhập tên đăng nhập"
+                                PlaceholderText="Enter your username"
                                 Text="{Binding Username, Mode=TwoWay}" />
                         </StackPanel>
 
@@ -184,9 +176,7 @@
                             <TextBlock
                                 Style="{ThemeResource FieldLabelTextBlockStyle}"
                                 Text="Password" />
-                            <PasswordBox
-                                Height="46"
-                                PasswordChanged="PasswordBox_PasswordChanged" />
+                            <PasswordBox PasswordChanged="PasswordBox_PasswordChanged" />
                         </StackPanel>
 
                         <Border
@@ -198,7 +188,7 @@
                                     FontSize="12"
                                     FontWeight="SemiBold"
                                     Foreground="{ThemeResource AccentBrush}"
-                                    Text="Tài khoản mặc định" />
+                                    Text="Default account" />
                                 <TextBlock
                                     Foreground="{ThemeResource AccentBrush}"
                                     Text="{Binding DefaultCredentialsHint}"
@@ -211,19 +201,26 @@
                             Text="{Binding ErrorMessage}"
                             TextWrapping="WrapWholeWords" />
 
-                        <StackPanel Spacing="12">
+                        <Grid ColumnSpacing="12">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+
                             <Button
+                                Grid.Column="0"
                                 Style="{ThemeResource AccentButtonStyle}"
                                 Command="{Binding LoginCommand}"
-                                Content="Đăng nhập" />
+                                Content="Sign in" />
                             <Button
+                                Grid.Column="1"
                                 Style="{ThemeResource SubtleButtonStyle}"
                                 Click="ServerConfigButton_Click"
-                                Content="Cấu hình server" />
-                        </StackPanel>
+                                Content="Server config" />
+                        </Grid>
                     </StackPanel>
                 </Grid>
             </Border>
         </Grid>
-    </Grid>
+    </ScrollViewer>
 </Window>

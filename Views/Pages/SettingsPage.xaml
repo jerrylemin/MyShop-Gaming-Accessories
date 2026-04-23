@@ -70,7 +70,6 @@
                 TextWrapping="WrapWholeWords" />
 
             <Button
-                Width="180"
                 Style="{ThemeResource AccentButtonStyle}"
                 Command="{Binding SaveCommand}"
                 Content="Save Settings" />

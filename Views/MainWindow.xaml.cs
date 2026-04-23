@@ -205,13 +205,13 @@ public sealed partial class MainWindow : Window, INotifyPropertyChanged
     {
         return pageKey switch
         {
-            "Dashboard" => "Theo dõi nhanh tình hình cửa hàng, tồn kho và doanh thu trong ngày.",
-            "Products" => "Quản lý danh mục, sản phẩm, bộ lọc và nguồn dữ liệu nhập khẩu.",
-            "Product Editor" => "Cập nhật thông tin sản phẩm, hình ảnh và thông số trưng bày.",
-            "Orders" => "Tạo và chỉnh sửa đơn hàng, theo dõi trạng thái thanh toán và đồng bộ tồn kho.",
-            "Reports" => "Quan sát doanh thu theo nhiều chu kỳ và xu hướng bán hàng của cửa hàng.",
-            "Settings" => "Tùy chỉnh cách hiển thị dữ liệu và hành vi đăng nhập cho ứng dụng.",
-            _ => "Điều hướng giữa các khu vực làm việc chính của cửa hàng."
+            "Dashboard" => "Quickly review store status, inventory, and revenue for the day.",
+            "Products" => "Manage categories, products, filters, and imported catalog data.",
+            "Product Editor" => "Update product details, images, pricing, and storefront specs.",
+            "Orders" => "Create and edit orders, track payment status, and keep inventory synchronized.",
+            "Reports" => "Compare revenue, profit, and sales trends across multiple reporting ranges.",
+            "Settings" => "Adjust page size and saved-login behavior for the application.",
+            _ => "Move between the main work areas of the store application."
         };
     }
 

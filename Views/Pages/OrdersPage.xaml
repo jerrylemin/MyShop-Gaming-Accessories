@@ -11,20 +11,13 @@
     RequestedTheme="Light"
     Background="{ThemeResource AppCanvasBrush}">
 
-    <Grid Padding="28" RowSpacing="18">
-        <Grid.RowDefinitions>
-            <RowDefinition Height="Auto" />
-            <RowDefinition Height="*" />
-        </Grid.RowDefinitions>
-
-        <Border Style="{ThemeResource HeroCardBorderStyle}">
-            <Grid ColumnSpacing="18">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*" />
-                    <ColumnDefinition Width="Auto" />
-                </Grid.ColumnDefinitions>
-                <StackPanel Spacing="10">
-                    <Border Style="{ThemeResource BadgeBorderStyle}">
+    <ScrollViewer HorizontalScrollBarVisibility="Disabled" HorizontalScrollMode="Disabled">
+        <StackPanel Margin="28" Spacing="18">
+            <Border Style="{ThemeResource HeroCardBorderStyle}">
+                <StackPanel Spacing="14">
+                    <Border
+                        HorizontalAlignment="Left"
+                        Style="{ThemeResource BadgeBorderStyle}">
                         <TextBlock
                             Style="{ThemeResource BadgeTextBlockStyle}"
                             Text="Transaction Workspace" />
@@ -33,42 +26,47 @@
                         FontFamily="Segoe UI Variable Display Semib"
                         FontSize="32"
                         FontWeight="SemiBold"
-                        Text="Lên đơn và kiểm soát tồn kho theo thời gian thực." />
+                        Text="Create orders and keep stock in sync in real time."
+                        TextWrapping="WrapWholeWords" />
                     <TextBlock
                         Style="{ThemeResource PageIntroTextBlockStyle}"
-                        Text="Tạo, sửa, tìm theo khoảng ngày, xem chi tiết và xóa đơn hàng trong khi tồn kho được cập nhật đồng bộ." />
-                </StackPanel>
+                        Text="Create, edit, filter by date range, inspect details, and delete orders while inventory stays synchronized." />
 
-                <StackPanel
-                    Grid.Column="1"
-                    Orientation="Horizontal"
-                    VerticalAlignment="Center"
-                    Spacing="10">
-                    <Button
-                        Style="{ThemeResource AccentButtonStyle}"
-                        Command="{Binding NewOrderCommand}"
-                        Content="New Order" />
-                    <Button
-                        Style="{ThemeResource SubtleButtonStyle}"
-                        Command="{Binding SaveCommand}"
-                        Content="Save Order" />
-                    <Button
-                        Style="{ThemeResource SubtleButtonStyle}"
-                        Click="DeleteButton_Click"
-                        Content="Delete Order" />
-                    <Button
-                        Style="{ThemeResource SubtleButtonStyle}"
-                        Command="{Binding RefreshCommand}"
-                        Content="Refresh" />
-                </StackPanel>
-            </Grid>
-        </Border>
+                    <Grid ColumnSpacing="12" RowSpacing="12">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
 
-        <Grid Grid.Row="1" ColumnSpacing="16">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="1.05*" />
-                <ColumnDefinition Width="1.2*" />
-            </Grid.ColumnDefinitions>
+                        <Button
+                            Grid.Column="0"
+                            Style="{ThemeResource AccentButtonStyle}"
+                            Command="{Binding NewOrderCommand}"
+                            Content="New Order" />
+                        <Button
+                            Grid.Column="1"
+                            Style="{ThemeResource SubtleButtonStyle}"
+                            Command="{Binding SaveCommand}"
+                            Content="Save Order" />
+                        <Button
+                            Grid.Row="1"
+                            Grid.Column="0"
+                            Style="{ThemeResource SubtleButtonStyle}"
+                            Click="DeleteButton_Click"
+                            Content="Delete Order" />
+                        <Button
+                            Grid.Row="1"
+                            Grid.Column="1"
+                            Style="{ThemeResource SubtleButtonStyle}"
+                            Command="{Binding RefreshCommand}"
+                            Content="Refresh" />
+                    </Grid>
+                </StackPanel>
+            </Border>
 
             <Border Style="{ThemeResource CardBorderStyle}">
                 <StackPanel Spacing="12">
@@ -76,36 +74,47 @@
                         Style="{ThemeResource SectionHeaderTextBlockStyle}"
                         Text="Order History" />
 
-                    <Grid ColumnSpacing="10">
+                    <Grid ColumnSpacing="10" RowSpacing="10">
                         <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="1.2*" />
                             <ColumnDefinition Width="*" />
                             <ColumnDefinition Width="*" />
-                            <ColumnDefinition Width="*" />
-                            <ColumnDefinition Width="*" />
-                            <ColumnDefinition Width="Auto" />
                         </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+
                         <TextBox
+                            Grid.Row="0"
+                            Grid.ColumnSpan="2"
                             PlaceholderText="Search by order id, status, product name, brand, or SKU"
                             Text="{Binding Keyword, Mode=TwoWay}" />
                         <ComboBox
-                            Grid.Column="1"
+                            Grid.Row="1"
+                            Grid.Column="0"
                             DisplayMemberPath="Name"
                             ItemsSource="{Binding StatusFilters}"
                             SelectedItem="{Binding SelectedStatusFilter, Mode=TwoWay}" />
-                        <DatePicker Date="{Binding FromDate, Mode=TwoWay}" />
-                        <DatePicker
-                            Grid.Column="3"
-                            Date="{Binding ToDate, Mode=TwoWay}" />
                         <ComboBox
-                            Grid.Column="4"
+                            Grid.Row="1"
+                            Grid.Column="1"
                             ItemsSource="{Binding SortOptions}"
                             SelectedItem="{Binding SelectedSortOption, Mode=TwoWay}" />
-                        <Button
-                            Grid.Column="5"
-                            Command="{Binding ApplyDateFilterCommand}"
-                            Content="Apply Range" />
+                        <DatePicker
+                            Grid.Row="2"
+                            Grid.Column="0"
+                            Date="{Binding FromDate, Mode=TwoWay}" />
+                        <DatePicker
+                            Grid.Row="2"
+                            Grid.Column="1"
+                            Date="{Binding ToDate, Mode=TwoWay}" />
                     </Grid>
+
+                    <Button
+                        Style="{ThemeResource AccentButtonStyle}"
+                        Command="{Binding ApplyDateFilterCommand}"
+                        Content="Apply Range" />
 
                     <ListView
                         x:Name="OrdersListView"
@@ -121,51 +130,42 @@
                                     BorderBrush="{ThemeResource CardStrokeBrush}"
                                     BorderThickness="1"
                                     CornerRadius="16">
-                                    <Grid ColumnSpacing="12">
-                                        <Grid.ColumnDefinitions>
-                                            <ColumnDefinition Width="*" />
-                                            <ColumnDefinition Width="Auto" />
-                                        </Grid.ColumnDefinitions>
-                                        <StackPanel>
-                                            <TextBlock FontWeight="SemiBold" Text="{Binding OrderLabel}" />
-                                            <TextBlock Style="{ThemeResource CaptionTextBlockStyle}" Text="{Binding CreatedDisplay}" />
-                                        </StackPanel>
-                                        <StackPanel Grid.Column="1" HorizontalAlignment="Right">
-                                            <TextBlock FontWeight="SemiBold" Text="{Binding FinalPriceText}" />
-                                            <TextBlock Style="{ThemeResource CaptionTextBlockStyle}" Text="{Binding StatusLabel}" />
-                                        </StackPanel>
-                                    </Grid>
+                                    <StackPanel Spacing="8">
+                                        <TextBlock FontWeight="SemiBold" Text="{Binding OrderLabel}" TextWrapping="WrapWholeWords" />
+                                        <TextBlock Style="{ThemeResource CaptionTextBlockStyle}" Text="{Binding CreatedDisplay}" />
+                                        <TextBlock FontWeight="SemiBold" Text="{Binding FinalPriceText}" />
+                                        <TextBlock Style="{ThemeResource CaptionTextBlockStyle}" Text="{Binding StatusLabel}" />
+                                    </StackPanel>
                                 </Border>
                             </DataTemplate>
                         </ListView.ItemTemplate>
-                        </ListView>
+                    </ListView>
 
-                    <Grid ColumnSpacing="10">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="*" />
-                            <ColumnDefinition Width="Auto" />
-                        </Grid.ColumnDefinitions>
-
+                    <StackPanel Spacing="10">
                         <TextBlock
-                            VerticalAlignment="Center"
                             Text="{Binding PageSummary}"
                             TextWrapping="WrapWholeWords" />
+                        <Grid ColumnSpacing="10" RowSpacing="10">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                            </Grid.RowDefinitions>
 
-                        <StackPanel
-                            Grid.Column="1"
-                            Orientation="Horizontal"
-                            Spacing="8">
-                            <Button Command="{Binding FirstPageCommand}" Content="First" />
-                            <Button Command="{Binding PreviousPageCommand}" Content="Previous" />
-                            <Button Command="{Binding NextPageCommand}" Content="Next" />
-                            <Button Command="{Binding LastPageCommand}" Content="Last" />
-                        </StackPanel>
-                    </Grid>
+                            <Button Grid.Row="0" Grid.Column="0" Command="{Binding FirstPageCommand}" Content="First" />
+                            <Button Grid.Row="0" Grid.Column="1" Command="{Binding PreviousPageCommand}" Content="Previous" />
+                            <Button Grid.Row="1" Grid.Column="0" Command="{Binding NextPageCommand}" Content="Next" />
+                            <Button Grid.Row="1" Grid.Column="1" Command="{Binding LastPageCommand}" Content="Last" />
+                        </Grid>
+                    </StackPanel>
                 </StackPanel>
             </Border>
 
-            <Border Grid.Column="1" Style="{ThemeResource CardBorderStyle}">
-                <ScrollViewer>
+            <Border Style="{ThemeResource CardBorderStyle}">
+                <ScrollViewer HorizontalScrollBarVisibility="Disabled" HorizontalScrollMode="Disabled">
                     <StackPanel Spacing="14">
                         <TextBlock
                             Style="{ThemeResource SectionHeaderTextBlockStyle}"
@@ -175,12 +175,11 @@
                             Style="{ThemeResource CaptionTextBlockStyle}"
                             Text="Paid and cancelled orders remain visible for detail review but can no longer be changed." />
 
-                        <Grid ColumnSpacing="12">
+                        <Grid ColumnSpacing="12" RowSpacing="12">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="*" />
                                 <ColumnDefinition Width="*" />
                             </Grid.ColumnDefinitions>
-
                             <StackPanel Spacing="6">
                                 <TextBlock Text="Created date" />
                                 <DatePicker
@@ -196,21 +195,16 @@
                             </StackPanel>
                         </Grid>
 
-                        <Grid ColumnSpacing="10">
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="*" />
-                                <ColumnDefinition Width="Auto" />
-                            </Grid.ColumnDefinitions>
+                        <StackPanel Spacing="10">
                             <ComboBox
                                 DisplayMemberPath="DisplayName"
                                 IsEnabled="{Binding CanEditCurrentOrder}"
                                 ItemsSource="{Binding AvailableProducts}"
                                 SelectedItem="{Binding SelectedProductToAdd, Mode=TwoWay}" />
                             <Button
-                                Grid.Column="1"
                                 Command="{Binding AddItemCommand}"
                                 Content="Add Item" />
-                        </Grid>
+                        </StackPanel>
 
                         <ListView
                             ItemsSource="{Binding DraftItems}"
@@ -224,41 +218,54 @@
                                         BorderBrush="{ThemeResource CardStrokeBrush}"
                                         BorderThickness="1"
                                         CornerRadius="16">
-                                        <Grid ColumnSpacing="12">
-                                            <Grid.ColumnDefinitions>
-                                                <ColumnDefinition Width="Auto" />
-                                                <ColumnDefinition Width="*" />
-                                                <ColumnDefinition Width="Auto" />
-                                                <ColumnDefinition Width="Auto" />
-                                                <ColumnDefinition Width="Auto" />
-                                            </Grid.ColumnDefinitions>
+                                        <StackPanel Spacing="12">
+                                            <Grid ColumnSpacing="12">
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="Auto" />
+                                                    <ColumnDefinition Width="*" />
+                                                </Grid.ColumnDefinitions>
 
-                                            <Image
-                                                Width="72"
-                                                Height="54"
-                                                Stretch="UniformToFill"
-                                                Source="{Binding ImagePath, Converter={StaticResource ImagePathConverter}}" />
-                                            <StackPanel Grid.Column="1">
-                                                <TextBlock FontWeight="SemiBold" Text="{Binding ProductName}" />
-                                                <TextBlock Style="{ThemeResource CaptionTextBlockStyle}" Text="{Binding Manufacturer}" />
-                                            </StackPanel>
-                                            <NumberBox
-                                                Grid.Column="2"
-                                                IsEnabled="{Binding DataContext.CanEditCurrentOrder, ElementName=RootPage}"
-                                                MinWidth="110"
-                                                SmallChange="1"
-                                                SpinButtonPlacementMode="Inline"
-                                                Value="{Binding QuantityValue, Mode=TwoWay}" />
-                                            <StackPanel Grid.Column="3" HorizontalAlignment="Right">
-                                                <TextBlock FontWeight="SemiBold" Text="{Binding UnitSalePrice, Converter={StaticResource CurrencyConverter}}" />
-                                                <TextBlock Style="{ThemeResource CaptionTextBlockStyle}" Text="{Binding LineTotalText}" />
-                                            </StackPanel>
-                                            <Button
-                                                Grid.Column="4"
-                                                Click="RemoveLineButton_Click"
-                                                Content="Remove"
-                                                IsEnabled="{Binding DataContext.CanEditCurrentOrder, ElementName=RootPage}" />
-                                        </Grid>
+                                                <Image
+                                                    Width="72"
+                                                    Height="54"
+                                                    Stretch="UniformToFill"
+                                                    Source="{Binding ImagePath, Converter={StaticResource ImagePathConverter}}" />
+                                                <StackPanel Grid.Column="1">
+                                                    <TextBlock FontWeight="SemiBold" Text="{Binding ProductName}" TextWrapping="WrapWholeWords" />
+                                                    <TextBlock Style="{ThemeResource CaptionTextBlockStyle}" Text="{Binding Manufacturer}" />
+                                                </StackPanel>
+                                            </Grid>
+
+                                            <Grid ColumnSpacing="10" RowSpacing="10">
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="*" />
+                                                    <ColumnDefinition Width="*" />
+                                                </Grid.ColumnDefinitions>
+                                                <Grid.RowDefinitions>
+                                                    <RowDefinition Height="Auto" />
+                                                    <RowDefinition Height="Auto" />
+                                                </Grid.RowDefinitions>
+
+                                                <NumberBox
+                                                    Grid.Row="0"
+                                                    Grid.ColumnSpan="2"
+                                                    IsEnabled="{Binding DataContext.CanEditCurrentOrder, ElementName=RootPage}"
+                                                    MinWidth="110"
+                                                    SmallChange="1"
+                                                    SpinButtonPlacementMode="Inline"
+                                                    Value="{Binding QuantityValue, Mode=TwoWay}" />
+                                                <StackPanel Grid.Row="1" Grid.Column="0" Spacing="2">
+                                                    <TextBlock FontWeight="SemiBold" Text="{Binding UnitSalePrice, Converter={StaticResource CurrencyConverter}}" />
+                                                    <TextBlock Style="{ThemeResource CaptionTextBlockStyle}" Text="{Binding LineTotalText}" />
+                                                </StackPanel>
+                                                <Button
+                                                    Grid.Row="1"
+                                                    Grid.Column="1"
+                                                    Click="RemoveLineButton_Click"
+                                                    Content="Remove"
+                                                    IsEnabled="{Binding DataContext.CanEditCurrentOrder, ElementName=RootPage}" />
+                                            </Grid>
+                                        </StackPanel>
                                     </Border>
                                 </DataTemplate>
                             </ListView.ItemTemplate>
@@ -268,18 +275,14 @@
                             Padding="14"
                             Background="{ThemeResource AccentSoftBrush}"
                             CornerRadius="16">
-                            <Grid>
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="*" />
-                                    <ColumnDefinition Width="Auto" />
-                                </Grid.ColumnDefinitions>
+                            <StackPanel Spacing="6">
                                 <TextBlock FontWeight="SemiBold" Text="Draft Total" />
                                 <TextBlock
-                                    Grid.Column="1"
                                     FontFamily="Bahnschrift"
                                     FontSize="22"
-                                    Text="{Binding DraftTotalText}" />
-                            </Grid>
+                                    Text="{Binding DraftTotalText}"
+                                    TextWrapping="WrapWholeWords" />
+                            </StackPanel>
                         </Border>
 
                         <TextBlock
@@ -289,6 +292,6 @@
                     </StackPanel>
                 </ScrollViewer>
             </Border>
-        </Grid>
-    </Grid>
+        </StackPanel>
+    </ScrollViewer>
 </Page>

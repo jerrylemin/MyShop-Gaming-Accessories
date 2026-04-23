@@ -9,7 +9,7 @@
     Title="MyShop Gaming Accessories POS">
     <Grid Background="{ThemeResource AppCanvasBrush}">
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="300" />
+            <ColumnDefinition Width="280" />
             <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
 
@@ -60,7 +60,8 @@
                                 Text="MyShop" />
                             <TextBlock
                                 Foreground="{ThemeResource SidebarMutedTextBrush}"
-                                Text="Gaming accessories POS" />
+                                Text="Gaming accessories POS"
+                                TextWrapping="WrapWholeWords" />
                         </StackPanel>
                     </Grid>
 
@@ -78,11 +79,13 @@
                                 FontSize="18"
                                 FontWeight="SemiBold"
                                 Foreground="White"
-                                Text="Single-owner storefront" />
+                                Text="Single-owner storefront"
+                                TextWrapping="WrapWholeWords" />
                             <TextBlock
                                 FontSize="12"
                                 Foreground="{ThemeResource SidebarMutedTextBrush}"
-                                Text="Theo dõi tồn kho, doanh thu và vận hành bán hàng mỗi ngày." />
+                                Text="Track inventory, revenue, and daily store operations."
+                                TextWrapping="WrapWholeWords" />
                         </StackPanel>
                     </Border>
                 </StackPanel>
@@ -111,7 +114,8 @@
                             <TextBlock
                                 Grid.Column="1"
                                 VerticalAlignment="Center"
-                                Text="Dashboard" />
+                                Text="Dashboard"
+                                TextWrapping="WrapWholeWords" />
                         </Grid>
                     </Button>
 
@@ -129,7 +133,8 @@
                             <TextBlock
                                 Grid.Column="1"
                                 VerticalAlignment="Center"
-                                Text="Products" />
+                                Text="Products"
+                                TextWrapping="WrapWholeWords" />
                         </Grid>
                     </Button>
 
@@ -147,7 +152,8 @@
                             <TextBlock
                                 Grid.Column="1"
                                 VerticalAlignment="Center"
-                                Text="Orders" />
+                                Text="Orders"
+                                TextWrapping="WrapWholeWords" />
                         </Grid>
                     </Button>
 
@@ -165,7 +171,8 @@
                             <TextBlock
                                 Grid.Column="1"
                                 VerticalAlignment="Center"
-                                Text="Reports" />
+                                Text="Reports"
+                                TextWrapping="WrapWholeWords" />
                         </Grid>
                     </Button>
 
@@ -183,7 +190,8 @@
                             <TextBlock
                                 Grid.Column="1"
                                 VerticalAlignment="Center"
-                                Text="Settings" />
+                                Text="Settings"
+                                TextWrapping="WrapWholeWords" />
                         </Grid>
                     </Button>
                 </StackPanel>
@@ -203,7 +211,8 @@
                             <TextBlock
                                 FontWeight="SemiBold"
                                 Foreground="White"
-                                Text="Encrypted local sign-in enabled" />
+                                Text="Encrypted local sign-in enabled"
+                                TextWrapping="WrapWholeWords" />
                         </StackPanel>
                     </Border>
 
@@ -221,7 +230,8 @@
                             <TextBlock
                                 Grid.Column="1"
                                 VerticalAlignment="Center"
-                                Text="Log out" />
+                                Text="Log out"
+                                TextWrapping="WrapWholeWords" />
                         </Grid>
                     </Button>
                 </StackPanel>
@@ -243,17 +253,20 @@
                 BorderBrush="{ThemeResource CardStrokeBrush}"
                 BorderThickness="1"
                 CornerRadius="30">
-                <Grid ColumnSpacing="18">
+                <Grid ColumnSpacing="18" RowSpacing="14">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="Auto" />
                         <ColumnDefinition Width="*" />
-                        <ColumnDefinition Width="Auto" />
                     </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
 
                     <Button
                         x:Name="BackButton"
                         Width="48"
-                        Height="48"
+                        MinHeight="48"
                         MinWidth="48"
                         Padding="0"
                         Background="{ThemeResource AccentSoftBrush}"
@@ -277,20 +290,19 @@
                         <TextBlock
                             x:Name="PageSubtitleTextBlock"
                             Style="{ThemeResource PageIntroTextBlockStyle}"
-                            Text="Theo dõi nhanh tình hình cửa hàng, tồn kho và doanh thu trong ngày." />
+                            Text="Quickly review store status, inventory, and revenue for the day." />
                     </StackPanel>
 
                     <StackPanel
-                        Grid.Column="2"
-                        HorizontalAlignment="Right"
+                        Grid.Row="1"
+                        Grid.ColumnSpan="2"
+                        HorizontalAlignment="Left"
                         Spacing="10">
                         <TextBlock
                             x:Name="HeaderDateTextBlock"
-                            HorizontalAlignment="Right"
                             FontWeight="SemiBold"
                             Text="Today" />
                         <StackPanel
-                            HorizontalAlignment="Right"
                             Orientation="Horizontal"
                             Spacing="8">
                             <Border Style="{ThemeResource BadgeBorderStyle}">

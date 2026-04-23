@@ -9,6 +9,7 @@
     RequestedTheme="Light">
 
     <Border
+        MinWidth="180"
         Padding="18"
         Background="{ThemeResource CardBrush}"
         BorderBrush="{x:Bind AccentBrush, Mode=OneWay}"
@@ -23,6 +24,7 @@
                 Margin="0,10,0,0"
                 FontFamily="Bahnschrift"
                 FontSize="30"
+                TextWrapping="WrapWholeWords"
                 Text="{x:Bind Value, Mode=OneWay}" />
             <TextBlock
                 Grid.Row="2"

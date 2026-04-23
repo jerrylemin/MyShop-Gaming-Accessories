@@ -9,9 +9,9 @@
     RequestedTheme="Light"
     Background="{ThemeResource AppCanvasBrush}">
 
-    <ScrollViewer>
+    <ScrollViewer HorizontalScrollBarVisibility="Disabled" HorizontalScrollMode="Disabled">
         <StackPanel Margin="28" Spacing="18">
-            <StackPanel Orientation="Horizontal" Spacing="12">
+            <StackPanel Spacing="12">
                 <Button Click="BackButton_Click" Content="Back" />
                 <StackPanel>
                     <TextBlock
@@ -19,7 +19,8 @@
                         Text="{Binding PageTitle}" />
                     <TextBlock
                         Foreground="#FF5C5750"
-                        Text="Maintain gaming accessory details, generic specs, prices, inventory, and gallery paths." />
+                        Text="Maintain gaming accessory details, generic specs, prices, inventory, and gallery paths."
+                        TextWrapping="WrapWholeWords" />
                 </StackPanel>
             </StackPanel>
 
@@ -83,12 +84,15 @@
                             <TextBlock Text="Spec 5" />
                             <TextBox Text="{Binding Screen, Mode=TwoWay}" />
                         </StackPanel>
-                        <Grid Grid.Row="4" Grid.Column="1" ColumnSpacing="10">
+                        <Grid Grid.Row="4" Grid.Column="1" ColumnSpacing="10" RowSpacing="10">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="*" />
                                 <ColumnDefinition Width="*" />
-                                <ColumnDefinition Width="*" />
                             </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="Auto" />
+                            </Grid.RowDefinitions>
                             <StackPanel Spacing="6">
                                 <TextBlock Text="Import price" />
                                 <TextBox Text="{Binding ImportPrice, Mode=TwoWay}" />
@@ -97,7 +101,7 @@
                                 <TextBlock Text="Sale price" />
                                 <TextBox Text="{Binding SalePrice, Mode=TwoWay}" />
                             </StackPanel>
-                            <StackPanel Grid.Column="2" Spacing="6">
+                            <StackPanel Grid.Row="1" Grid.ColumnSpan="2" Spacing="6">
                                 <TextBlock Text="Stock" />
                                 <TextBox Text="{Binding Stock, Mode=TwoWay}" />
                             </StackPanel>
@@ -107,54 +111,52 @@
                             <TextBlock Text="Description" />
                             <TextBox
                                 AcceptsReturn="True"
-                                Height="120"
+                                MinHeight="120"
                                 Text="{Binding Description, Mode=TwoWay}"
                                 TextWrapping="Wrap" />
                         </StackPanel>
                     </Grid>
 
-                    <Grid ColumnSpacing="14">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="*" />
-                            <ColumnDefinition Width="*" />
-                            <ColumnDefinition Width="*" />
-                        </Grid.ColumnDefinitions>
-
+                    <StackPanel Spacing="14">
                         <StackPanel Spacing="8">
                             <TextBlock Text="Image 1" />
                             <TextBox Text="{Binding Image1, Mode=TwoWay}" />
                             <Image
-                                Height="120"
-                                Stretch="UniformToFill"
+                                MaxHeight="220"
+                                Stretch="Uniform"
                                 Source="{Binding Image1, Converter={StaticResource ImagePathConverter}}" />
                         </StackPanel>
-                        <StackPanel Grid.Column="1" Spacing="8">
+                        <StackPanel Spacing="8">
                             <TextBlock Text="Image 2" />
                             <TextBox Text="{Binding Image2, Mode=TwoWay}" />
                             <Image
-                                Height="120"
-                                Stretch="UniformToFill"
+                                MaxHeight="220"
+                                Stretch="Uniform"
                                 Source="{Binding Image2, Converter={StaticResource ImagePathConverter}}" />
                         </StackPanel>
-                        <StackPanel Grid.Column="2" Spacing="8">
+                        <StackPanel Spacing="8">
                             <TextBlock Text="Image 3" />
                             <TextBox Text="{Binding Image3, Mode=TwoWay}" />
                             <Image
-                                Height="120"
-                                Stretch="UniformToFill"
+                                MaxHeight="220"
+                                Stretch="Uniform"
                                 Source="{Binding Image3, Converter={StaticResource ImagePathConverter}}" />
                         </StackPanel>
-                    </Grid>
+                    </StackPanel>
 
                     <TextBlock
                         Foreground="{ThemeResource AccentBrush}"
                         Text="{Binding StatusMessage}"
                         TextWrapping="WrapWholeWords" />
 
-                    <StackPanel Orientation="Horizontal" Spacing="10">
-                        <Button Command="{Binding SaveCommand}" Content="Save Product" />
-                        <Button Click="BackButton_Click" Content="Cancel" />
-                    </StackPanel>
+                    <Grid ColumnSpacing="10">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <Button Grid.Column="0" Command="{Binding SaveCommand}" Content="Save Product" />
+                        <Button Grid.Column="1" Click="BackButton_Click" Content="Cancel" />
+                    </Grid>
                 </StackPanel>
             </Border>
         </StackPanel>
