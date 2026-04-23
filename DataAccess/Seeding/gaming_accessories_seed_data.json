@@ -8,8 +8,8 @@
     "shortDescription": "Bàn phím Razer BlackWidow V4 75% – Phantom White Edition là sự kết hợp hoàn hảo giữa hiệu năng gaming đỉnh cao và trải nghiệm gõ phím tinh tế.",
     "priceVnd": 4570000,
     "sourceRetailer": "Phong Vu",
-    "sourceUrl": "https://phongvu.vn/ban-phim-co-gaming-razer-blackwidow-v4-75-phantom-white-edition-rz03-05003500-r3m1--s251011303",
-    "sourceCheckedOn": "2026-03-15",
+    "sourceUrl": "https://phongvu.vn/ban-phim-gaming-co-day-razer-blackwidow-v4--p799444",
+    "sourceCheckedOn": "2026-04-23",
     "specs": [
       "Kết nối: Bàn phím có dây",
       "Kiểu switch: Mechanical Switches (Tactile)",
@@ -28,8 +28,8 @@
     "shortDescription": "Razer BlackWidow V4 75% Phantom Green Edition là một bàn phím cơ Razer được thiết kế đặc biệt cho game thủ, kết hợp hiệu suất cao và tính thẩm mỹ độc đáo.",
     "priceVnd": 4449000,
     "sourceRetailer": "Phong Vu",
-    "sourceUrl": "https://phongvu.vn/ban-phim-co-gaming-razer-blackwidow-v4-75-phantom-green-edition--s250807890",
-    "sourceCheckedOn": "2026-03-15",
+    "sourceUrl": "https://phongvu.vn/ban-phim-gaming-co-day-razer-blackwidow-v4--p770799",
+    "sourceCheckedOn": "2026-04-23",
     "specs": [
       "Kết nối: Bàn phím có dây",
       "Kiểu switch: Tactile",
@@ -41,26 +41,6 @@
   },
   {
     "sku": "GKB-003",
-    "name": "Bàn phím Gaming Razer BlackWidow V4 X - Green Switch - Minecraft Edition (RZ03-04704100-R3M1)",
-    "brand": "Razer",
-    "category": "Gaming Keyboard",
-    "sourceType": "keyboard",
-    "shortDescription": "Razer BlackWidow V4 X - Green Switch - Minecraft Edition là một chiếc bàn phím cơ đầy phong cách, kết hợp hiệu năng vượt trội cùng thiết kế độc đáo lấy cảm hứng từ thế giới Minecraft.",
-    "priceVnd": 3850000,
-    "sourceRetailer": "Phong Vu",
-    "sourceUrl": "https://phongvu.vn/ban-phim-vi-tinh-razer-blackwidow-v4-x-green-switch-minecraft-edition-rz03-04704100-r3m1--s250410571",
-    "sourceCheckedOn": "2026-03-15",
-    "specs": [
-      "Kết nối: Bàn phím có dây",
-      "Kiểu switch: Razer Green",
-      "Đèn của bàn phím: RGB",
-      "Màu sắc: Minecraft Editio",
-      "Kích thước: Full size"
-    ],
-    "imageSet": "keyboard"
-  },
-  {
-    "sku": "GKB-004",
     "name": "Bàn phím cơ Gaming không dây ASUS M704 ROG AZOTH X 90MP044G-BKUA30 (Storm Switch) (Trắng)",
     "brand": "Asus",
     "category": "Gaming Keyboard",
@@ -68,8 +48,8 @@
     "shortDescription": "Bàn phím Asus M704 ROG AZOTH X được thiết kế layout 75% nhỏ gọn, sản phẩm tích hợp switch cơ học Storm Switch độc quyền, mang lại cảm giác gõ mượt mà và phản hồi nhanh nhạy.",
     "priceVnd": 6590000,
     "sourceRetailer": "Phong Vu",
-    "sourceUrl": "https://phongvu.vn/ban-phim-co-gaming-khong-day-asus-m704-rog-azoth-x-90mp044g-bkua30-storm-switch-trang--s251005773",
-    "sourceCheckedOn": "2026-03-15",
+    "sourceUrl": "https://phongvu.vn/ban-phim-gaming-bluetooth-asus-rog-azoth-x--p792526",
+    "sourceCheckedOn": "2026-04-23",
     "specs": [
       "Kết nối: Bàn phím không dây",
       "Kiểu switch: Storm Switch",
@@ -80,7 +60,7 @@
     "imageSet": "keyboard"
   },
   {
-    "sku": "GKB-005",
+    "sku": "GKB-004",
     "name": "Bàn phím cơ Gaming có dây Razer Huntsman V3 Pro Tenkeyless - CS2 Counter-Strike 2 Edition RZ03-04982100-R3M1",
     "brand": "Razer",
     "category": "Gaming Keyboard",
@@ -88,8 +68,8 @@
     "shortDescription": "Bàn phím Razer Huntsman V3 Pro Tenkeyless - Counter-Strike 2 Edition là thiết bị cao cấp, thiết kế đặc biệt cho game thủ chuyên nghiệp.",
     "priceVnd": 5450000,
     "sourceRetailer": "Phong Vu",
-    "sourceUrl": "https://phongvu.vn/ban-phim-co-gaming-co-day-razer-huntsman-v3-pro-tenkeyless-counter-strike-2-edition-rz03-04982100-r3m1--s251103304",
-    "sourceCheckedOn": "2026-03-15",
+    "sourceUrl": "https://phongvu.vn/ban-phim-gaming-co-day-razer-huntsman-v3-pro-tkl--p814010",
+    "sourceCheckedOn": "2026-04-23",
     "specs": [
       "Kết nối: Bàn phím có dây",
       "Kiểu switch: Analog Optical Switch Gen-2",
@@ -100,7 +80,7 @@
     "imageSet": "keyboard"
   },
   {
-    "sku": "GKB-006",
+    "sku": "GKB-005",
     "name": "Bàn phím cơ Gaming Logitech G515 TKL 920-012912 (Đen)",
     "brand": "Logitech",
     "category": "Gaming Keyboard",
@@ -108,8 +88,8 @@
     "shortDescription": "Bàn phím Logitech G515 TKL là một lựa chọn nổi bật dành cho game thủ và người dùng chuyên nghiệp, kết hợp hiệu suất cao cùng thiết kế tối ưu.",
     "priceVnd": 2390000,
     "sourceRetailer": "Phong Vu",
-    "sourceUrl": "https://phongvu.vn/ban-phim-co-gaming-logitech-g515-tkl-920-012912-den--s250900527",
-    "sourceCheckedOn": "2026-03-15",
+    "sourceUrl": "https://phongvu.vn/ban-phim-gaming-co-day-logitech-g515-tkl--s250900527",
+    "sourceCheckedOn": "2026-04-23",
     "specs": [
       "Kết nối: Bàn phím có dây",
       "Kiểu switch: GL Tactile",
@@ -120,7 +100,7 @@
     "imageSet": "keyboard"
   },
   {
-    "sku": "GKB-007",
+    "sku": "GKB-006",
     "name": "Bàn phím cơ Gaming có dây Corsair K70 CORE TKL CH-911911E-NA (Đen)",
     "brand": "Corsair",
     "category": "Gaming Keyboard",
@@ -128,8 +108,8 @@
     "shortDescription": "Bàn phím Corsair K70 CORE TKL là lựa chọn hoàn hảo cho những ai tìm kiếm hiệu suất cao và sự gọn gàng tối ưu.",
     "priceVnd": 2180000,
     "sourceRetailer": "Phong Vu",
-    "sourceUrl": "https://phongvu.vn/ban-phim-gaming-co-day-corsair-k70-core-tkl-ch-911911e-na-den--s260201519",
-    "sourceCheckedOn": "2026-03-15",
+    "sourceUrl": "https://phongvu.vn/ban-phim-gaming-co-day-corsair-k70-core-tkl--s260201519",
+    "sourceCheckedOn": "2026-04-23",
     "specs": [
       "Kết nối: Bàn phím có dây",
       "Kiểu switch: CORSAIR MLX Red",
@@ -140,27 +120,27 @@
     "imageSet": "keyboard"
   },
   {
-    "sku": "GKB-008",
-    "name": "Bàn phím cơ Gaming có dây ASUS M605 ROG FALCHION ACE HFX 90MP03VE-BKUA20 (Đen)",
-    "brand": "Asus",
+    "sku": "GKB-007",
+    "name": "Bàn phím cơ Gaming có dây Corsair GALLEON 100 SD MLX PULSE CH-912A31I-NA (Đen)",
+    "brand": "Corsair",
     "category": "Gaming Keyboard",
     "sourceType": "keyboard",
-    "shortDescription": "Bàn phím ASUS M605 ROG FALCHION ACE HFX là lựa chọn hoàn hảo cho game thủ với thiết kế layout 65% nhỏ gọn, tối ưu không gian.",
-    "priceVnd": 4290000,
+    "shortDescription": "Bàn phím cơ Gaming có dây Corsair GALLEON 100 SD MLX PULSE CH-912A31I-NA (Đen) is a current Vietnam-market gaming accessory sourced from Phong Vu with seeded retail pricing in VND.",
+    "priceVnd": 8490000,
     "sourceRetailer": "Phong Vu",
-    "sourceUrl": "https://phongvu.vn/ban-phim-co-gaming-co-day-asus-m605-rog-falchion-ace-hfx-90mp03ve-bkua20-den--s251005762",
-    "sourceCheckedOn": "2026-03-15",
+    "sourceUrl": "https://phongvu.vn/ban-phim-gaming-co-day-corsair-galleon-100-sd-mlx--s260201514",
+    "sourceCheckedOn": "2026-04-23",
     "specs": [
       "Kết nối: Bàn phím có dây",
-      "Kiểu switch: ROG HFX Magnetic",
+      "Kiểu switch: CORSAIR MLX Pulse",
       "Đèn của bàn phím: RGB",
       "Màu sắc: Đen",
-      "Kích thước: Layout 65"
+      "Kích thước: Full size"
     ],
     "imageSet": "keyboard"
   },
   {
-    "sku": "GKB-009",
+    "sku": "GKB-008",
     "name": "Bàn phím cơ Gaming có dây Corsair MAKR PRO 75 MGX v2 CH-91CE21G-NA2 (Đen)",
     "brand": "Corsair",
     "category": "Gaming Keyboard",
@@ -168,8 +148,8 @@
     "shortDescription": "Bàn phím Corsair MAKR PRO 75 là sự kết hợp hoàn hảo giữa hiệu suất cao và thiết kế tinh gọn, hướng đến trải nghiệm người dùng tối ưu.",
     "priceVnd": 6499000,
     "sourceRetailer": "Phong Vu",
-    "sourceUrl": "https://phongvu.vn/ban-phim-gaming-co-day-corsair-makr-pro-75-mgx-v2-ch-91ce21g-na2-den--s260201508",
-    "sourceCheckedOn": "2026-03-15",
+    "sourceUrl": "https://phongvu.vn/ban-phim-co-day-corsair-makr-pro-75-mgx-v2--s260201508",
+    "sourceCheckedOn": "2026-04-23",
     "specs": [
       "Kết nối: Bàn phím có dây",
       "Kiểu switch: CORSAIR MGX V2",
@@ -180,7 +160,7 @@
     "imageSet": "keyboard"
   },
   {
-    "sku": "GKB-010",
+    "sku": "GKB-009",
     "name": "Bàn phím cơ Gaming có dây Corsair VANGUARD 96 MLX Pulse CH-91E921I-NA (Trắng đen- Dual Tone)",
     "brand": "Corsair",
     "category": "Gaming Keyboard",
@@ -188,8 +168,8 @@
     "shortDescription": "Bàn phím Corsair VANGUARD 96 MLX Pulse là lựa chọn lý tưởng cho người dùng tìm kiếm sự kết hợp hoàn hảo giữa hiệu năng và tính thẩm mỹ.",
     "priceVnd": 4150000,
     "sourceRetailer": "Phong Vu",
-    "sourceUrl": "https://phongvu.vn/ban-phim-gaming-co-day-corsair-vanguard-96-mlx-pulse-ch-91e921i-na-trang-den-dual-tone--s260201532",
-    "sourceCheckedOn": "2026-03-15",
+    "sourceUrl": "https://phongvu.vn/ban-phim-gaming-co-day-corsair-vanguard-96-mlx--p849884",
+    "sourceCheckedOn": "2026-04-23",
     "specs": [
       "Kết nối: USB",
       "Kiểu switch: CORSAIR MLX Pulse",
@@ -200,16 +180,276 @@
     "imageSet": "keyboard"
   },
   {
-    "sku": "GMS-011",
+    "sku": "GKB-010",
+    "name": "Bàn phím cơ Gaming có dây Corsair VANGUARD 96 MLX Plasma CH-91E901E-NA (Đen)",
+    "brand": "Corsair",
+    "category": "Gaming Keyboard",
+    "sourceType": "keyboard",
+    "shortDescription": "Bàn phím Corsair VANGUARD 96 MLX Plasma là sự kết hợp hoàn hảo giữa hiệu năng vượt trội và thiết kế tinh tế, đáp ứng mọi nhu cầu từ làm việc đến giải trí.",
+    "priceVnd": 3950000,
+    "sourceRetailer": "Phong Vu",
+    "sourceUrl": "https://phongvu.vn/ban-phim-co-day-corsair-vanguard-96-mlx--p849865",
+    "sourceCheckedOn": "2026-04-23",
+    "specs": [
+      "Kết nối: Bàn phím có dây",
+      "Kiểu switch: CORSAIR MLX Plasma",
+      "Đèn của bàn phím: RGB",
+      "Màu sắc: Đen",
+      "Kích thước: Layout 96"
+    ],
+    "imageSet": "keyboard"
+  },
+  {
+    "sku": "GKB-011",
+    "name": "Bàn phím cơ Gaming có dây Corsair VANGUARD PRO 96 MGX Hyperdrive CH-91E911G-NA (Đen)",
+    "brand": "Corsair",
+    "category": "Gaming Keyboard",
+    "sourceType": "keyboard",
+    "shortDescription": "Bàn phím Corsair VANGUARD PRO 96 MGX Hyperdrive là sự kết hợp hoàn hảo giữa hiệu suất vượt trội và thiết kế tinh tế, mang đến trải nghiệm gõ phím đỉnh cao cho mọi đối tượng người dùng.",
+    "priceVnd": 5380000,
+    "sourceRetailer": "Phong Vu",
+    "sourceUrl": "https://phongvu.vn/ban-phim-gaming-co-day-corsair-vanguard-pro-96-mgx--s260201493",
+    "sourceCheckedOn": "2026-04-23",
+    "specs": [
+      "Kết nối: Bàn phím có dây",
+      "Kiểu switch: CORSAIR MGX V2",
+      "Đèn của bàn phím: RGB",
+      "Màu sắc: Đen",
+      "Kích thước: Layout 96"
+    ],
+    "imageSet": "keyboard"
+  },
+  {
+    "sku": "GKB-012",
+    "name": "Bàn Phím Cơ Gaming 3 Mode AULA S100 PRO  (Xanh dương+trắng+tím đậm/ Brown switch)",
+    "brand": "Aula",
+    "category": "Gaming Keyboard",
+    "sourceType": "keyboard",
+    "shortDescription": "Bàn Phím Cơ Gaming 3 Mode AULA S100 PRO (Xanh dương+trắng+tím đậm/ Brown switch) là một lựa chọn nổi bật trong phân khúc bàn phím Aula .",
+    "priceVnd": 749000,
+    "sourceRetailer": "Phong Vu",
+    "sourceUrl": "https://phongvu.vn/ban-phim-gaming-co-day-aula-s100-pro--p725250",
+    "sourceCheckedOn": "2026-04-23",
+    "specs": [
+      "Kết nối: Bàn phím không dây",
+      "Kiểu switch: Brown Switch",
+      "Đèn của bàn phím: Rainbow",
+      "Màu sắc: Xanh Dương+Trắng+Tím Đậm",
+      "Kích thước: Layout 99"
+    ],
+    "imageSet": "keyboard"
+  },
+  {
+    "sku": "GKB-013",
+    "name": "Bàn phím cơ Gaming AULA F75 Max 3 Mode (Xanh + trắng + tím) Reaper switch",
+    "brand": "Aula",
+    "category": "Gaming Keyboard",
+    "sourceType": "keyboard",
+    "shortDescription": "Bàn phím Aula F75 Max 3 Mode là lựa chọn lý tưởng cho game thủ và những ai yêu thích trải nghiệm gõ phím mượt mà, chính xác.",
+    "priceVnd": 1399000,
+    "sourceRetailer": "Phong Vu",
+    "sourceUrl": "https://phongvu.vn/ban-phim-gaming-bluetooth-aula-f75-max--p800656",
+    "sourceCheckedOn": "2026-04-23",
+    "specs": [
+      "Kết nối: Bàn phím không dây",
+      "Kiểu switch: Reaper switch",
+      "Đèn của bàn phím: RGB",
+      "Màu sắc: Xanh Dương + Trắng + Tím",
+      "Kích thước: Layout 80"
+    ],
+    "imageSet": "keyboard"
+  },
+  {
+    "sku": "GKB-014",
+    "name": "Bàn phím cơ Gaming có dây AULA AG60 PRO (Xám)",
+    "brand": "Aula",
+    "category": "Gaming Keyboard",
+    "sourceType": "keyboard",
+    "shortDescription": "Bàn phím Aula AG60 PRO Cloudy Aqua là một sản phẩm hướng đến game thủ và người dùng yêu thích trải nghiệm gõ tùy biến.",
+    "priceVnd": 3499000,
+    "sourceRetailer": "Phong Vu",
+    "sourceUrl": "https://phongvu.vn/ban-phim-co-day-aula-ag60-pro--s251113496",
+    "sourceCheckedOn": "2026-04-23",
+    "specs": [
+      "Kết nối: Bàn phím có dây",
+      "Kiểu switch: Aether Magnetic Switch",
+      "Đèn của bàn phím: RGB",
+      "Màu sắc: Xám",
+      "Kích thước: Layout 61"
+    ],
+    "imageSet": "keyboard"
+  },
+  {
+    "sku": "GKB-015",
+    "name": "Bàn phím cơ Gaming có dây AULA F2058, Đen (Red Switch)",
+    "brand": "Aula",
+    "category": "Gaming Keyboard",
+    "sourceType": "keyboard",
+    "shortDescription": "Bàn phím Aula F2058 là sản phẩm nổi bật của thương hiệu bàn phím Aula , được thiết kế để đáp ứng tối ưu cả nhu cầu gaming và văn phòng.",
+    "priceVnd": 690000,
+    "sourceRetailer": "Phong Vu",
+    "sourceUrl": "https://phongvu.vn/ban-phim-co-day-aula-f2058--s250719881",
+    "sourceCheckedOn": "2026-04-23",
+    "specs": [
+      "Kết nối: Bàn phím có dây",
+      "Kiểu switch: Red Switch",
+      "Đèn của bàn phím: Rainbow",
+      "Màu sắc: Đen",
+      "Kích thước: Full size"
+    ],
+    "imageSet": "keyboard"
+  },
+  {
+    "sku": "GKB-016",
+    "name": "Bàn phím cơ Gaming có dây AULA HERO84HE (Tím + trắng/ Black King magnetic switch/ Rapid trigger)",
+    "brand": "Aula",
+    "category": "Gaming Keyboard",
+    "sourceType": "keyboard",
+    "shortDescription": "Bàn phím Aula HERO84HE là lựa chọn hoàn hảo cho những game thủ tìm kiếm sự kết hợp giữa hiệu suất vượt trội và thiết kế độc đáo.",
+    "priceVnd": 1279000,
+    "sourceRetailer": "Phong Vu",
+    "sourceUrl": "https://phongvu.vn/ban-phim-gaming-co-day-aula-hero84he--p771517",
+    "sourceCheckedOn": "2026-04-23",
+    "specs": [
+      "Kết nối: Bàn phím có dây",
+      "Kiểu switch: Black King magnetic switch",
+      "Đèn của bàn phím: RGB",
+      "Màu sắc: Tím + trắng",
+      "Cân nặng (g): 910"
+    ],
+    "imageSet": "keyboard"
+  },
+  {
+    "sku": "GKB-017",
+    "name": "Bàn phím cơ Gaming có dây AULA S2022 Pro (Xám)",
+    "brand": "Aula",
+    "category": "Gaming Keyboard",
+    "sourceType": "keyboard",
+    "shortDescription": "Bàn phím Aula S2022 Pro là một lựa chọn nổi bật dành cho cộng đồng game thủ, kết hợp giữa hiệu năng mạnh mẽ và thiết kế tinh tế.",
+    "priceVnd": 499000,
+    "sourceRetailer": "Phong Vu",
+    "sourceUrl": "https://phongvu.vn/ban-phim-gaming-co-day-aula-s2022-pro--p837865",
+    "sourceCheckedOn": "2026-04-23",
+    "specs": [
+      "Kết nối: Bàn phím có dây",
+      "Kiểu switch: Red Switch",
+      "Màu sắc: Xám",
+      "Cân nặng (g): 720",
+      "Kết nối bàn phím: USB 2.0"
+    ],
+    "imageSet": "keyboard"
+  },
+  {
+    "sku": "GKB-018",
+    "name": "Bàn phím cơ Gaming có dây AULA S2022, Đen",
+    "brand": "Aula",
+    "category": "Gaming Keyboard",
+    "sourceType": "keyboard",
+    "shortDescription": "Bàn phím Aula S2022 là lựa chọn lý tưởng cho cả game thủ và người dùng văn phòng, kết hợp hiệu suất cao cùng thiết kế bền bỉ.",
+    "priceVnd": 429000,
+    "sourceRetailer": "Phong Vu",
+    "sourceUrl": "https://phongvu.vn/ban-phim-gaming-co-day-aula-s2022--s250719876",
+    "sourceCheckedOn": "2026-04-23",
+    "specs": [
+      "Kết nối: Bàn phím có dây",
+      "Kiểu switch: Blue Switch",
+      "Đèn của bàn phím: Rainbow",
+      "Màu sắc: Đen",
+      "Kích thước: Full size"
+    ],
+    "imageSet": "keyboard"
+  },
+  {
+    "sku": "GKB-019",
+    "name": "Bàn Phím Cơ Gaming không dây AULA F108 (Xám + đen gradient/ Nimbus switch)",
+    "brand": "Aula",
+    "category": "Gaming Keyboard",
+    "sourceType": "keyboard",
+    "shortDescription": "AULA F108 là bàn phím cơ gaming không dây nổi bật trong phân khúc tầm trung.",
+    "priceVnd": 1549000,
+    "sourceRetailer": "Phong Vu",
+    "sourceUrl": "https://phongvu.vn/ban-phim-gaming-bluetooth-aula-f108--p666229",
+    "sourceCheckedOn": "2026-04-23",
+    "specs": [
+      "Kết nối: Bàn phím không dây",
+      "Kiểu switch: Nimbus switch",
+      "Đèn của bàn phím: RGB",
+      "Màu sắc: Xám+Đen gradient",
+      "Cân nặng (g): 1050"
+    ],
+    "imageSet": "keyboard"
+  },
+  {
+    "sku": "GKB-020",
+    "name": "Bàn phím cơ Gaming không dây AULA F87 PRO V2 (2667)",
+    "brand": "Aula",
+    "category": "Gaming Keyboard",
+    "sourceType": "keyboard",
+    "shortDescription": "Bàn phím AULA F87 PRO V2 (2667) là một lựa chọn nổi bật dành cho game thủ và người dùng yêu thích sự linh hoạt.",
+    "priceVnd": 1899000,
+    "sourceRetailer": "Phong Vu",
+    "sourceUrl": "https://phongvu.vn/ban-phim-gaming-bluetooth-aula-f87-pro-v2--s251207554",
+    "sourceCheckedOn": "2026-04-23",
+    "specs": [
+      "Kết nối: Bàn phím không dây",
+      "Kiểu switch: Meteor Ice Cream Switch",
+      "Đèn của bàn phím: RGB",
+      "Màu sắc: Orange Juice",
+      "Kích thước: Layout 87"
+    ],
+    "imageSet": "keyboard"
+  },
+  {
+    "sku": "GKB-021",
+    "name": "Bàn phím cơ Gaming không dây AULA L99 (Xám đậm + Trắng + Xanh dương)",
+    "brand": "Aula",
+    "category": "Gaming Keyboard",
+    "sourceType": "keyboard",
+    "shortDescription": "Bàn phím AULA L99 là một sự kết hợp hoàn hảo giữa hiệu suất vượt trội và thiết kế độc đáo, mang đến trải nghiệm gõ phím đẳng cấp cho mọi game thủ và người dùng chuyên nghiệp.",
+    "priceVnd": 2599000,
+    "sourceRetailer": "Phong Vu",
+    "sourceUrl": "https://phongvu.vn/ban-phim-bluetooth-aula-f99-pro--p850893",
+    "sourceCheckedOn": "2026-04-23",
+    "specs": [
+      "Kết nối: Bàn phím không dây",
+      "Kiểu switch: Raindrop switch",
+      "Đèn của bàn phím: RGB",
+      "Màu sắc: Xám đậm + Trắng + Xanh dương",
+      "Cân nặng (g): 1220"
+    ],
+    "imageSet": "keyboard"
+  },
+  {
+    "sku": "GKB-022",
+    "name": "Bàn phím cơ Gaming không dây AULA S75 Pro (Xám + Đen Gradient)",
+    "brand": "Aula",
+    "category": "Gaming Keyboard",
+    "sourceType": "keyboard",
+    "shortDescription": "Bàn phím Aula S75 Pro là một lựa chọn nổi bật dành cho những ai tìm kiếm sự kết hợp hoàn hảo giữa hiệu năng và tính thẩm mỹ.",
+    "priceVnd": 1399000,
+    "sourceRetailer": "Phong Vu",
+    "sourceUrl": "https://phongvu.vn/ban-phim-gaming-co-day-aula-s75-pro--p802307",
+    "sourceCheckedOn": "2026-04-23",
+    "specs": [
+      "Kết nối: 2.4 GHz Wireless",
+      "Kiểu switch: Star Vector switch",
+      "Đèn của bàn phím: RGB",
+      "Màu sắc: Xám",
+      "Cân nặng (g): 958.5"
+    ],
+    "imageSet": "keyboard"
+  },
+  {
+    "sku": "GMS-023",
     "name": "Chuột Gaming không dây Razer DeathAdder V3 Pro RZ01-04630200-R3A1 (Trắng)",
     "brand": "Razer",
     "category": "Gaming Mouse",
     "sourceType": "mouse",
     "shortDescription": "Chuột Razer DeathAdder V3 Pro là lựa chọn hàng đầu cho game thủ chuyên nghiệp, kết hợp hiệu suất vượt trội cùng thiết kế công thái học.",
-    "priceVnd": 2599000,
+    "priceVnd": 2140000,
     "sourceRetailer": "Phong Vu",
-    "sourceUrl": "https://phongvu.vn/chuot-gaming-khong-day-razer-deathadder-v3-pro--p828661",
-    "sourceCheckedOn": "2026-03-15",
+    "sourceUrl": "https://phongvu.vn/chuot-gaming-razer-deathadder-v3-pro--p828661",
+    "sourceCheckedOn": "2026-04-23",
     "specs": [
       "Kết nối chuột: 2.4 GHz Wireless, USB Type C",
       "Kiểu cầm chuột: Ergonomic / Công thái học",
@@ -220,7 +460,7 @@
     "imageSet": "mouse"
   },
   {
-    "sku": "GMS-012",
+    "sku": "GMS-024",
     "name": "Chuột Gaming không dây Logitech Pro X Superlight 2C 910-007540 (Trắng)",
     "brand": "Logitech",
     "category": "Gaming Mouse",
@@ -228,8 +468,8 @@
     "shortDescription": "Chuột Gaming Logitech G Pro X Superlight 2 Trắng là lựa chọn hàng đầu cho game thủ chuyên nghiệp, mang đến trải nghiệm không dây đỉnh cao.",
     "priceVnd": 3190000,
     "sourceRetailer": "Phong Vu",
-    "sourceUrl": "https://phongvu.vn/chuot-gaming-khong-day-logitech-pro-x-superlight-2c-910-007540-trang--s251002000",
-    "sourceCheckedOn": "2026-03-15",
+    "sourceUrl": "https://phongvu.vn/chuot-khong-day-logitech-pro-x-superlight-2c--s251002000",
+    "sourceCheckedOn": "2026-04-23",
     "specs": [
       "Kết nối chuột: Lightspeed Wireless",
       "DPI tối đa: 44000DPI",
@@ -240,7 +480,7 @@
     "imageSet": "mouse"
   },
   {
-    "sku": "GMS-013",
+    "sku": "GMS-025",
     "name": "Chuột Gaming không dây Razer Viper V3 Pro - CS2 Counter-Strike 2 Edition RZ01-05120800-R3M1",
     "brand": "Razer",
     "category": "Gaming Mouse",
@@ -248,8 +488,8 @@
     "shortDescription": "Chuột Razer Viper V3 Pro - Counter-Strike 2 Edition là một lựa chọn cao cấp dành cho game thủ chuyên nghiệp eSports, đặc biệt là trong các tựa game FPS.",
     "priceVnd": 4270000,
     "sourceRetailer": "Phong Vu",
-    "sourceUrl": "https://phongvu.vn/chuot-gaming-khong-day-razer-viper-v3-pro-counter-strike-2-edition-rz01-05120800-r3m1--s251103297",
-    "sourceCheckedOn": "2026-03-15",
+    "sourceUrl": "https://phongvu.vn/chuot-khong-day-razer-razer-viper-v3-pro--s251103297",
+    "sourceCheckedOn": "2026-04-23",
     "specs": [
       "Kết nối chuột: Wireless, USB",
       "DPI tối đa: 35000DPI",
@@ -260,16 +500,16 @@
     "imageSet": "mouse"
   },
   {
-    "sku": "GMS-014",
+    "sku": "GMS-026",
     "name": "Chuột Gaming Không Dây Razer Viper V3 Pro SE RZ01-04550100-R3A1 (Đen)",
     "brand": "Razer",
     "category": "Gaming Mouse",
     "sourceType": "mouse",
     "shortDescription": "Chuột Razer Viper V3 Pro SE là một trong những lựa chọn nổi bật dành cho game thủ chuyên nghiệp, kết hợp hiệu suất cao cùng thiết kế tối ưu.",
-    "priceVnd": 2380000,
+    "priceVnd": 2360000,
     "sourceRetailer": "Phong Vu",
-    "sourceUrl": "https://phongvu.vn/chuot-gaming-khong-day-razer-viper-v3-pro-se-rz01-04550100-r3a1-den--s260106728",
-    "sourceCheckedOn": "2026-03-15",
+    "sourceUrl": "https://phongvu.vn/chuot-gaming-razer-viper-v3-pro-se--s260106728",
+    "sourceCheckedOn": "2026-04-23",
     "specs": [
       "Kết nối chuột: Wireless",
       "DPI tối đa: 35000DPI",
@@ -280,7 +520,7 @@
     "imageSet": "mouse"
   },
   {
-    "sku": "GMS-015",
+    "sku": "GMS-027",
     "name": "Chuột Gaming không dây Razer Basilisk Mobile RZ01-04310100-R3A1 (Đen)",
     "brand": "Razer",
     "category": "Gaming Mouse",
@@ -288,8 +528,8 @@
     "shortDescription": "Chuột Gaming Razer Basilisk Mobile là một trong những lựa chọn hàng đầu trong phân khúc chuột Gaming hiện nay.",
     "priceVnd": 1975000,
     "sourceRetailer": "Phong Vu",
-    "sourceUrl": "https://phongvu.vn/chuot-gaming-khong-day-razer-basilisk-mobile-rz01-04310100-r3a1-den--s250911679",
-    "sourceCheckedOn": "2026-03-15",
+    "sourceUrl": "https://phongvu.vn/chuot-gaming-razer-basilisk-mobile--s250911679",
+    "sourceCheckedOn": "2026-04-23",
     "specs": [
       "Kết nối chuột: USB, Bluetooth, Wireless",
       "Kiểu cầm chuột: Ergonomic / Công thái học",
@@ -300,27 +540,7 @@
     "imageSet": "mouse"
   },
   {
-    "sku": "GMS-016",
-    "name": "Chuột Gaming không dây Razer Basilisk V3 Pro 35K - Phantom White Edition (RZ01-05240400-R3A1)",
-    "brand": "Razer",
-    "category": "Gaming Mouse",
-    "sourceType": "mouse",
-    "shortDescription": "Chuột Gaming Razer Basilisk V3 Pro 35K - Phantom White Edition là một lựa chọn nổi bật dành cho game thủ, kết hợp công nghệ tiên tiến và thiết kế tối ưu.",
-    "priceVnd": 3780000,
-    "sourceRetailer": "Phong Vu",
-    "sourceUrl": "https://phongvu.vn/chuot-gaming-khong-day-razer-basilisk-v3-pro-35k-phantom-white-edition-rz01-05240400-r3a1--s251011300",
-    "sourceCheckedOn": "2026-03-15",
-    "specs": [
-      "Kết nối chuột: Wireless, Bluetooth, USB",
-      "DPI tối đa: 35000DPI",
-      "Cảm biến: Optical",
-      "Số nút bấm: 11",
-      "Khối lượng: 112g"
-    ],
-    "imageSet": "mouse"
-  },
-  {
-    "sku": "GMS-017",
+    "sku": "GMS-028",
     "name": "Chuột Gaming không dây Razer Basilisk V3 Pro 35K Phantom Green Edition",
     "brand": "Razer",
     "category": "Gaming Mouse",
@@ -328,8 +548,8 @@
     "shortDescription": "Razer Basilisk V3 Pro 35K Phantom Green Edition là một lựa chọn nổi bật trong phân khúc chuột Gaming cao cấp, được thiết kế cho game thủ chuyên nghiệp.",
     "priceVnd": 3680000,
     "sourceRetailer": "Phong Vu",
-    "sourceUrl": "https://phongvu.vn/chuot-gaming-khong-day-razer-basilisk-v3-pro-35k-phantom-green-edition--s250807894",
-    "sourceCheckedOn": "2026-03-15",
+    "sourceUrl": "https://phongvu.vn/chuot-gaming-razer-basilisk-v3-pro-35k-phantom-green-edition--s250807894",
+    "sourceCheckedOn": "2026-04-23",
     "specs": [
       "Kết nối chuột: Bluetooth, USB, Wireless",
       "DPI tối đa: 35000DPI",
@@ -340,87 +560,327 @@
     "imageSet": "mouse"
   },
   {
-    "sku": "GMS-018",
-    "name": "Chuột Gaming ASUS ROG KERIS II ORIGIN 90MP04A0-BMUA00 (Đen)",
-    "brand": "Asus",
+    "sku": "GMS-029",
+    "name": "Chuột Gaming không dây Razer Viper V4 Pro RZ01-05630100-R3A1 (Đen)",
+    "brand": "Razer",
     "category": "Gaming Mouse",
     "sourceType": "mouse",
-    "shortDescription": "Chuột Gaming Không Dây ASUS ROG KERIS II ORIGIN là một thiết bị chuyên dụng dành cho game thủ, mang đến trải nghiệm chơi game mượt mà và chính xác.",
-    "priceVnd": 2999000,
+    "shortDescription": "Chuột Gaming không dây Razer Viper V4 Pro RZ01-05630100-R3A1 (Đen) is a current Vietnam-market gaming accessory sourced from Phong Vu with seeded retail pricing in VND.",
+    "priceVnd": 4490000,
     "sourceRetailer": "Phong Vu",
-    "sourceUrl": "https://phongvu.vn/chuot-gaming-asus-rog-keris-ii-origin-90mp04a0-bmua00-den--s250911702",
-    "sourceCheckedOn": "2026-03-15",
+    "sourceUrl": "https://phongvu.vn/chuot-gaming-razer-viper-v4-pro--p858660",
+    "sourceCheckedOn": "2026-04-23",
     "specs": [
-      "Kết nối chuột: Bluetooth 5.1, USB 2.0, RF 2.4GHz",
-      "DPI tối đa: 42000DPI",
-      "Cảm biến: Optical",
-      "Số nút bấm: 5",
-      "Khối lượng: 70g"
-    ],
-    "imageSet": "mouse"
-  },
-  {
-    "sku": "GMS-019",
-    "name": "Chuột Gaming không dây ASUS TUF Mini Hatsune Miku Edition",
-    "brand": "Asus",
-    "category": "Gaming Mouse",
-    "sourceType": "mouse",
-    "shortDescription": "Chuột Gaming không dây ASUS TUF Mini Hatsune Miku Edition là sự kết hợp độc đáo giữa hiệu năng gaming mạnh mẽ và phong cách cá nhân cuốn hút.",
-    "priceVnd": 2480000,
-    "sourceRetailer": "Phong Vu",
-    "sourceUrl": "https://phongvu.vn/chuot-gaming-khong-day-asus-tuf-mini-hatsune-miku-edition--s251107199",
-    "sourceCheckedOn": "2026-03-15",
-    "specs": [
-      "Kết nối chuột: RF 2.4GHz, USB, Bluetooth",
+      "Kết nối chuột: Wireless, USB",
       "Kiểu cầm chuột: Ambidextrous / Đối xứng",
-      "DPI tối đa: 12000DPI",
+      "DPI tối đa: 50000DPI",
       "Cảm biến: Optical",
       "Số nút bấm: 6"
     ],
     "imageSet": "mouse"
   },
   {
-    "sku": "GMS-020",
-    "name": "Chuột Gaming không dây DAREU EM911T (Đen)",
+    "sku": "GMS-030",
+    "name": "Chuột Gaming không dây Logitech PRO X2 SUPERSTRIKE 910-007778 (GRAPHITE - Đen Trắng)",
+    "brand": "Logitech",
+    "category": "Gaming Mouse",
+    "sourceType": "mouse",
+    "shortDescription": "Chuột Gaming không dây Logitech PRO X2 SUPERSTRIKE 910-007778 (GRAPHITE - Đen Trắng) is a current Vietnam-market gaming accessory sourced from Phong Vu with seeded retail pricing in VND.",
+    "priceVnd": 4990000,
+    "sourceRetailer": "Phong Vu",
+    "sourceUrl": "https://phongvu.vn/chuot-khong-day-logitech-pro-x2-superstrike--s260304028",
+    "sourceCheckedOn": "2026-04-23",
+    "specs": [
+      "Kết nối chuột: 2.4 GHz Wireless",
+      "Kiểu cầm chuột: Ergonomic / Công thái học",
+      "DPI tối đa: 44000DPI",
+      "Cảm biến: Optical",
+      "Số nút bấm: 5"
+    ],
+    "imageSet": "mouse"
+  },
+  {
+    "sku": "GMS-031",
+    "name": "Chuột Gaming không dây DAREU EM911T (Trắng)",
     "brand": "Dareu",
     "category": "Gaming Mouse",
     "sourceType": "mouse",
     "shortDescription": "Chuột DareU EM911T là mẫu chuột Gaming không dây đáng chú ý, được thiết kế để mang lại trải nghiệm tối ưu cho game thủ.",
-    "priceVnd": 395000,
+    "priceVnd": 379000,
     "sourceRetailer": "Phong Vu",
-    "sourceUrl": "https://phongvu.vn/chuot-gaming-khong-day-dareu-em911t-den--s260202544",
-    "sourceCheckedOn": "2026-03-15",
+    "sourceUrl": "https://phongvu.vn/chuot-gaming-dareu-em911t--p850903",
+    "sourceCheckedOn": "2026-04-23",
     "specs": [
       "Kết nối chuột: 2.4 GHz Wireless, Bluetooth, USB Type C",
       "DPI tối đa: 8000DPI",
       "Số nút bấm: 6",
       "Khối lượng: 72g",
+      "Màu sắc: Trắng"
+    ],
+    "imageSet": "mouse"
+  },
+  {
+    "sku": "GMS-032",
+    "name": "Chuột Gaming không dây DAREU EM950T",
+    "brand": "Dareu",
+    "category": "Gaming Mouse",
+    "sourceType": "mouse",
+    "shortDescription": "Chuột DAREU EM950T là mẫu chuột Gaming không dây được thiết kế dành cho game thủ, mang đến sự kết hợp giữa hiệu năng và tính di động.",
+    "priceVnd": 489000,
+    "sourceRetailer": "Phong Vu",
+    "sourceUrl": "https://phongvu.vn/chuot-khong-day-dareu-em950t--s251202935",
+    "sourceCheckedOn": "2026-04-23",
+    "specs": [
+      "Kết nối chuột: 2.4 GHz Wireless, Bluetooth, USB",
+      "Kiểu cầm chuột: Ambidextrous / Đối xứng",
+      "DPI tối đa: 12000DPI",
+      "Số nút bấm: 5",
+      "Khối lượng: 63g"
+    ],
+    "imageSet": "mouse"
+  },
+  {
+    "sku": "GMS-033",
+    "name": "Chuột Gaming không dây DAREU EM950T (Magenta)",
+    "brand": "Dareu",
+    "category": "Gaming Mouse",
+    "sourceType": "mouse",
+    "shortDescription": "Chuột DareU EM950T là lựa chọn nổi bật dành cho các game thủ, mang đến trải nghiệm chuột không dây tiện lợi cùng hiệu năng vượt trội.",
+    "priceVnd": 489000,
+    "sourceRetailer": "Phong Vu",
+    "sourceUrl": "https://phongvu.vn/chuot-gaming-dareu-em950t--p850897",
+    "sourceCheckedOn": "2026-04-23",
+    "specs": [
+      "Kết nối chuột: 2.4 GHz Wireless, Bluetooth",
+      "Kiểu cầm chuột: Ambidextrous / Đối xứng",
+      "DPI tối đa: 12000DPI",
+      "Số nút bấm: 6",
+      "Khối lượng: 68g"
+    ],
+    "imageSet": "mouse"
+  },
+  {
+    "sku": "GMS-034",
+    "name": "Chuột Gaming có dây AULA F815 (Đen)",
+    "brand": "Aula",
+    "category": "Gaming Mouse",
+    "sourceType": "mouse",
+    "shortDescription": "Chuột Aula F815 là một lựa chọn nổi bật trong phân khúc chuột Gaming có dây, hướng đến người dùng tìm kiếm sự kết hợp giữa hiệu năng và giá thành hợp lý.",
+    "priceVnd": 229000,
+    "sourceRetailer": "Phong Vu",
+    "sourceUrl": "https://phongvu.vn/chuot-gaming-aula-f815--s250807874",
+    "sourceCheckedOn": "2026-04-23",
+    "specs": [
+      "Kết nối chuột: USB",
+      "DPI tối đa: 12800DPI",
+      "Số nút bấm: 7",
+      "Khối lượng: 130g",
       "Màu sắc: Đen"
     ],
     "imageSet": "mouse"
   },
   {
-    "sku": "GHS-021",
-    "name": "Tai nghe gaming không dây Razer BlackShark V3 X HyperSpeed (Đen)",
-    "brand": "Razer",
-    "category": "Gaming Headset",
-    "sourceType": "headset",
-    "shortDescription": "Tai nghe gaming không dây Razer BlackShark V3 X HyperSpeed là lựa chọn hàng đầu cho game thủ, kết hợp hiệu suất âm thanh vượt trội cùng sự tiện lợi của kết nối không dây.",
-    "priceVnd": 2469000,
+    "sku": "GMS-035",
+    "name": "Chuột Gaming có dây E-Dra EM631 (Đen)",
+    "brand": "E-Dra",
+    "category": "Gaming Mouse",
+    "sourceType": "mouse",
+    "shortDescription": "Chuột Gaming có dây E-Dra EM631 (Đen) is a current Vietnam-market gaming accessory sourced from Phong Vu with seeded retail pricing in VND.",
+    "priceVnd": 239000,
     "sourceRetailer": "Phong Vu",
-    "sourceUrl": "https://phongvu.vn/tai-nghe-gaming-khong-day-razer-blackshark-v3-x-hyperspeed-den--s250807896",
-    "sourceCheckedOn": "2026-03-15",
+    "sourceUrl": "https://phongvu.vn/chuot-gaming-e-dra-em631--p860365",
+    "sourceCheckedOn": "2026-04-23",
     "specs": [
-      "Kết nối: USB, Bluetooth, 2.4 GHz Wireless",
-      "Kiểu tai nghe: Over-ear",
-      "Kích thước driver: 50 mm",
-      "Microphone: Có",
-      "Độ nhạy: 106 dBSPL / mW @ 1 kHz của HATS"
+      "Kết nối chuột: USB",
+      "Kiểu cầm chuột: Ergonomic / Công thái học",
+      "DPI tối đa: 12800DPI",
+      "Số nút bấm: 7",
+      "Khối lượng: 68.2g"
     ],
-    "imageSet": "headset"
+    "imageSet": "mouse"
   },
   {
-    "sku": "GHS-022",
+    "sku": "GMS-036",
+    "name": "Chuột Gaming có dây Fuhlen G90L Pro (Đen)",
+    "brand": "Fuhlen",
+    "category": "Gaming Mouse",
+    "sourceType": "mouse",
+    "shortDescription": "Chuột Gaming có dây Fuhlen G90L Pro (Đen) is a current Vietnam-market gaming accessory sourced from Phong Vu with seeded retail pricing in VND.",
+    "priceVnd": 479000,
+    "sourceRetailer": "Phong Vu",
+    "sourceUrl": "https://phongvu.vn/chuot-gaming-fuhlen-g90l-pro--s251211498",
+    "sourceCheckedOn": "2026-04-23",
+    "specs": [
+      "Kết nối chuột: USB",
+      "Kiểu cầm chuột: Ergonomic / Công thái học",
+      "DPI tối đa: 12400DPI",
+      "Cảm biến: Optical",
+      "Số nút bấm: 6"
+    ],
+    "imageSet": "mouse"
+  },
+  {
+    "sku": "GMS-037",
+    "name": "Chuột Gaming không dây ATK A9 Ultra Tri-mode (Đen)",
+    "brand": "ATK",
+    "category": "Gaming Mouse",
+    "sourceType": "mouse",
+    "shortDescription": "ATK A9 Ultra Tri-mode là một trong những lựa chọn hàng đầu cho phân khúc chuột máy tính không dây cao cấp, hướng đến game thủ chuyên nghiệp và người dùng văn phòng yêu cầu hiệu suất cao.",
+    "priceVnd": 1549000,
+    "sourceRetailer": "Phong Vu",
+    "sourceUrl": "https://phongvu.vn/chuot-gaming-atk-a9-ultra-tri-mode--p773072",
+    "sourceCheckedOn": "2026-04-23",
+    "specs": [
+      "Kết nối chuột: Bluetooth, 2.4 GHz Wireless, USB",
+      "DPI tối đa: 42000DPI",
+      "Số nút bấm: 5",
+      "Khối lượng: 53g",
+      "Màu sắc: Đen"
+    ],
+    "imageSet": "mouse"
+  },
+  {
+    "sku": "GMS-038",
+    "name": "Chuột Gaming Không Dây ATK Dragonfly A9 (Đen)",
+    "brand": "ATK",
+    "category": "Gaming Mouse",
+    "sourceType": "mouse",
+    "shortDescription": "Chuột Gaming Không Dây ATK Dragonfly A9 (Đen) is a current Vietnam-market gaming accessory sourced from Phong Vu with seeded retail pricing in VND.",
+    "priceVnd": 549000,
+    "sourceRetailer": "Phong Vu",
+    "sourceUrl": "https://phongvu.vn/chuot-gaming-atk--dragonfly-a9--s251211486",
+    "sourceCheckedOn": "2026-04-23",
+    "specs": [
+      "Kết nối chuột: Bluetooth, NearLink, USB",
+      "Kiểu cầm chuột: Ergonomic / Công thái học",
+      "Số nút bấm: 6",
+      "Khối lượng: 53g",
+      "Màu sắc: Đen"
+    ],
+    "imageSet": "mouse"
+  },
+  {
+    "sku": "GMS-039",
+    "name": "Chuột Gaming Không Dây ATK Dragonfly A9 Plus Tri Mode, Trắng",
+    "brand": "ATK",
+    "category": "Gaming Mouse",
+    "sourceType": "mouse",
+    "shortDescription": "ATK Dragonfly A9 Plus Tri Mode là một lựa chọn nổi bật trong phân khúc chuột không dây hướng đến đối tượng game thủ chuyên nghiệp và người dùng yêu cầu độ chính xác cao.",
+    "priceVnd": 699000,
+    "sourceRetailer": "Phong Vu",
+    "sourceUrl": "https://phongvu.vn/chuot-khong-day-atk-dragonfly-a9-plus-tri-mode--p759358",
+    "sourceCheckedOn": "2026-04-23",
+    "specs": [
+      "Kết nối chuột: Bluetooth, USB, NearLink",
+      "DPI tối đa: 30000DPI",
+      "Khối lượng: 57g",
+      "Màu sắc: Trắng",
+      "Cân nặng (g): 75"
+    ],
+    "imageSet": "mouse"
+  },
+  {
+    "sku": "GMS-040",
+    "name": "Chuột Gaming Không Dây ATK Dragonfly A9 SE (Đen)",
+    "brand": "ATK",
+    "category": "Gaming Mouse",
+    "sourceType": "mouse",
+    "shortDescription": "Chuột Gaming Không Dây ATK Dragonfly A9 SE (Đen) is a current Vietnam-market gaming accessory sourced from Phong Vu with seeded retail pricing in VND.",
+    "priceVnd": 449000,
+    "sourceRetailer": "Phong Vu",
+    "sourceUrl": "https://phongvu.vn/chuot-gaming-atk--a9-se--s251211481",
+    "sourceCheckedOn": "2026-04-23",
+    "specs": [
+      "Kết nối chuột: NearLink, Bluetooth, USB",
+      "Kiểu cầm chuột: Ambidextrous / Đối xứng",
+      "Số nút bấm: 6",
+      "Khối lượng: 53g",
+      "Màu sắc: Đen"
+    ],
+    "imageSet": "mouse"
+  },
+  {
+    "sku": "GMS-041",
+    "name": "Chuột Gaming không dây ATK F1 PRO MAX dual-mode (Đen)",
+    "brand": "ATK",
+    "category": "Gaming Mouse",
+    "sourceType": "mouse",
+    "shortDescription": "ATK F1 PRO MAX dual-mode là một trong những lựa chọn chuột máy tính không dây cao cấp, hướng đến đối tượng game thủ chuyên nghiệp và người dùng văn phòng yêu cầu hiệu suất cao.",
+    "priceVnd": 1649000,
+    "sourceRetailer": "Phong Vu",
+    "sourceUrl": "https://phongvu.vn/chuot-gaming-atk-f1-pro-max--p773061",
+    "sourceCheckedOn": "2026-04-23",
+    "specs": [
+      "Kết nối chuột: 2.4 GHz Wireless, USB",
+      "DPI tối đa: 30000DPI",
+      "Số nút bấm: 5",
+      "Khối lượng: 50g",
+      "Màu sắc: Đen"
+    ],
+    "imageSet": "mouse"
+  },
+  {
+    "sku": "GMS-042",
+    "name": "Chuột Gaming không dây ATK U2 Plus Tri-mode (Trắng)",
+    "brand": "ATK",
+    "category": "Gaming Mouse",
+    "sourceType": "mouse",
+    "shortDescription": "ATK U2 Plus Tri-mode là một trong những lựa chọn đáng chú ý trong phân khúc chuột máy tính , hướng tới đối tượng game thủ chuyên nghiệp và người dùng yêu cầu cao về độ chính xác.",
+    "priceVnd": 749000,
+    "sourceRetailer": "Phong Vu",
+    "sourceUrl": "https://phongvu.vn/chuot-gaming-atk-a9-pro-tri-mode--p773091",
+    "sourceCheckedOn": "2026-04-23",
+    "specs": [
+      "Kết nối chuột: NearLink, Bluetooth, USB",
+      "Số nút bấm: 5",
+      "Khối lượng: 55g",
+      "Màu sắc: Trắng",
+      "Cân nặng (g): 53"
+    ],
+    "imageSet": "mouse"
+  },
+  {
+    "sku": "GMS-043",
+    "name": "Chuột Gaming không dây ATK U2 Pro Tri-mode (Trắng)",
+    "brand": "ATK",
+    "category": "Gaming Mouse",
+    "sourceType": "mouse",
+    "shortDescription": "ATK U2 Pro Tri-mode là một lựa chọn nổi bật dành cho game thủ và người dùng văn phòng, kết hợp hiệu suất cao với thiết kế tối ưu.",
+    "priceVnd": 989000,
+    "sourceRetailer": "Phong Vu",
+    "sourceUrl": "https://phongvu.vn/chuot-gaming-atk-u2-plus-tri-mode--p773053",
+    "sourceCheckedOn": "2026-04-23",
+    "specs": [
+      "Kết nối chuột: 2.4 GHz Wireless, USB",
+      "Số nút bấm: 5",
+      "Khối lượng: 44g",
+      "Màu sắc: Trắng",
+      "Cân nặng (g): 53"
+    ],
+    "imageSet": "mouse"
+  },
+  {
+    "sku": "GMS-044",
+    "name": "Chuột Gaming không dây ATK U2 Ultimate Tri-mode (Trắng)",
+    "brand": "ATK",
+    "category": "Gaming Mouse",
+    "sourceType": "mouse",
+    "shortDescription": "ATK U2 Ultimate Tri-mode là một chuột máy tính không dây cao cấp đến từ thương hiệu chuột ATK , được thiết kế hướng tới các game thủ và người dùng đòi hỏi hiệu năng vượt trội.",
+    "priceVnd": 1549000,
+    "sourceRetailer": "Phong Vu",
+    "sourceUrl": "https://phongvu.vn/chuot-gaming-atk-u2-ultimate-tri-mode--p773085",
+    "sourceCheckedOn": "2026-04-23",
+    "specs": [
+      "Kết nối chuột: 2.4 GHz Wireless, USB",
+      "DPI tối đa: 30000DPI",
+      "Số nút bấm: 5",
+      "Khối lượng: 49g",
+      "Màu sắc: Trắng"
+    ],
+    "imageSet": "mouse"
+  },
+  {
+    "sku": "GHS-045",
     "name": "Tai nghe Gaming không dây choàng đầu Razer Barracuda X Chroma - Phantom White Edition (RZ04-05220400-R3M1)",
     "brand": "Razer",
     "category": "Gaming Headset",
@@ -428,8 +888,8 @@
     "shortDescription": "Tai nghe Razer Barracuda X Chroma - Phantom White Edition là lựa chọn lý tưởng cho game thủ hiện đại, mang đến sự linh hoạt cao cùng trải nghiệm đa năng.",
     "priceVnd": 3370000,
     "sourceRetailer": "Phong Vu",
-    "sourceUrl": "https://phongvu.vn/tai-nghe-gaming-khong-day-choang-dau-razer-barracuda-x-chroma-phantom-white-edition-rz04-05220400-r3m1--s251011304",
-    "sourceCheckedOn": "2026-03-15",
+    "sourceUrl": "https://phongvu.vn/tai-nghe-razer-barracuda-x-chroma--p799443",
+    "sourceCheckedOn": "2026-04-23",
     "specs": [
       "Kết nối: Bluetooth, 2.4 GHz Wireless",
       "Kiểu tai nghe: Over-ear",
@@ -440,7 +900,7 @@
     "imageSet": "headset"
   },
   {
-    "sku": "GHS-023",
+    "sku": "GHS-046",
     "name": "Tai nghe Gaming không dây choàng đầu Razer Barracuda X Chroma RZ04-05220100-R3M1 (Đen)",
     "brand": "Razer",
     "category": "Gaming Headset",
@@ -448,8 +908,8 @@
     "shortDescription": "Razer Barracuda X Chroma là một lựa chọn nổi bật trong phân khúc tai nghe Razer không dây tầm trung, hướng đến trải nghiệm đa nền tảng.",
     "priceVnd": 3240000,
     "sourceRetailer": "Phong Vu",
-    "sourceUrl": "https://phongvu.vn/tai-nghe-gaming-khong-day-choang-dau-razer-barracuda-x-chroma--p799450",
-    "sourceCheckedOn": "2026-03-15",
+    "sourceUrl": "https://phongvu.vn/tai-nghe-razer-barracuda-x-chroma--p799450",
+    "sourceCheckedOn": "2026-04-23",
     "specs": [
       "Kết nối: Bluetooth, 2.4 GHz Wireless",
       "Kiểu tai nghe: Over-ear",
@@ -460,16 +920,16 @@
     "imageSet": "headset"
   },
   {
-    "sku": "GHS-024",
-    "name": "Tai nghe Gaming không dây choàng đầu Logitech G321 981-001564 (Đen)",
+    "sku": "GHS-047",
+    "name": "Tai nghe Gaming không dây choàng đầu Logitech G321 981-001570 (Trắng)",
     "brand": "Logitech",
     "category": "Gaming Headset",
     "sourceType": "headset",
     "shortDescription": "Logitech G321 là một lựa chọn nổi bật trong phân khúc tai nghe gaming không dây, hướng đến sự tiện lợi và hiệu năng ổn định.",
     "priceVnd": 1489000,
     "sourceRetailer": "Phong Vu",
-    "sourceUrl": "https://phongvu.vn/tai-nghe-gaming-khong-day-choang-dau-logitech-g321--p807316",
-    "sourceCheckedOn": "2026-03-15",
+    "sourceUrl": "https://phongvu.vn/tai-nghe-logitech-g321--s251017436",
+    "sourceCheckedOn": "2026-04-23",
     "specs": [
       "Kết nối: LIGHTSPEED Wireless, Bluetooth 5.2",
       "Kiểu tai nghe: Over-ear",
@@ -480,16 +940,16 @@
     "imageSet": "headset"
   },
   {
-    "sku": "GHS-025",
+    "sku": "GHS-048",
     "name": "Tai nghe Gaming không dây choàng đầu Logitech G325 (981-001532) (Trắng)",
     "brand": "Logitech",
     "category": "Gaming Headset",
     "sourceType": "headset",
-    "shortDescription": "Tai nghe Gaming không dây choàng đầu Logitech G325 (981-001532) (Trắng) is a current Vietnam-market gaming accessory sourced from Phong Vu with seeded retail pricing in VND.",
+    "shortDescription": "Tai nghe Logitech G325 là một lựa chọn lý tưởng dành cho những ai tìm kiếm trải nghiệm âm thanh chất lượng cao cùng sự linh hoạt tối đa.",
     "priceVnd": 2490000,
     "sourceRetailer": "Phong Vu",
-    "sourceUrl": "https://phongvu.vn/tai-nghe-gaming-khong-day-choang-dau-logitech-g325-981-001532-trang--s260300171",
-    "sourceCheckedOn": "2026-03-15",
+    "sourceUrl": "https://phongvu.vn/tai-nghe-logitech-g325--p852917",
+    "sourceCheckedOn": "2026-04-23",
     "specs": [
       "Kết nối: Bluetooth 5.2, LIGHTSPEED Wireless",
       "Kiểu tai nghe: Over-ear",
@@ -500,7 +960,7 @@
     "imageSet": "headset"
   },
   {
-    "sku": "GHS-026",
+    "sku": "GHS-049",
     "name": "Tai nghe Gaming có dây choàng đầu Razer Kraken Kitty V3 X - Quartz Edition RZ04-05350100-R3M1 (Hồng)",
     "brand": "Razer",
     "category": "Gaming Headset",
@@ -508,8 +968,8 @@
     "shortDescription": "Tai nghe Razer Kraken Kitty V3 X - Quartz Edition là mẫu tai nghe gaming over-ear có dây, được thiết kế đặc biệt dành cho những game thủ và streamer yêu thích phong cách độc đáo.",
     "priceVnd": 1750000,
     "sourceRetailer": "Phong Vu",
-    "sourceUrl": "https://phongvu.vn/tai-nghe-gaming-co-day-choang-dau-razer-kraken-kitty-v3-x-quartz-edition-rz04-05350100-r3m1-dai-tan-20-hz-20-khz-model-rz04-0535--s251011310",
-    "sourceCheckedOn": "2026-03-15",
+    "sourceUrl": "https://phongvu.vn/tai-nghe-razer-kraken-kitty-v3-x--s251011310",
+    "sourceCheckedOn": "2026-04-23",
     "specs": [
       "Kết nối: 3.5 mm",
       "Kiểu tai nghe: Over-ear",
@@ -520,7 +980,7 @@
     "imageSet": "headset"
   },
   {
-    "sku": "GHS-027",
+    "sku": "GHS-050",
     "name": "Tai nghe Gaming có dây Razer Hammerhead V3 RZ12-05590200-R3AC - White Edition",
     "brand": "Razer",
     "category": "Gaming Headset",
@@ -528,8 +988,8 @@
     "shortDescription": "Tai nghe Gaming có dây Razer Hammerhead V3 RZ12-05590200-R3AC - White Edition is a current Vietnam-market gaming accessory sourced from Phong Vu with seeded retail pricing in VND.",
     "priceVnd": 1189000,
     "sourceRetailer": "Phong Vu",
-    "sourceUrl": "https://phongvu.vn/tai-nghe-gaming-co-day-razer-hammerhead-v3-rz12-05590200-r3ac-white-edition--s251208420",
-    "sourceCheckedOn": "2026-03-15",
+    "sourceUrl": "https://phongvu.vn/tai-nghe-razer-razer-hammerhead-v3--s251208420",
+    "sourceCheckedOn": "2026-04-23",
     "specs": [
       "Kết nối: 3.5 mm",
       "Kiểu tai nghe: In-ear",
@@ -540,7 +1000,7 @@
     "imageSet": "headset"
   },
   {
-    "sku": "GHS-028",
+    "sku": "GHS-051",
     "name": "Tai nghe Gaming có dây ASUS TUF H1 Gen II - Hatsune Miku Edition",
     "brand": "Asus",
     "category": "Gaming Headset",
@@ -548,8 +1008,8 @@
     "shortDescription": "Tai nghe Gaming ASUS TUF H1 Gen II - Hatsune Miku Edition là sự kết hợp độc đáo giữa hiệu năng gaming mạnh mẽ và thiết kế lấy cảm hứng từ Hatsune Miku.",
     "priceVnd": 2080000,
     "sourceRetailer": "Phong Vu",
-    "sourceUrl": "https://phongvu.vn/tai-nghe-gaming-co-day-asus-tuf-h1-gen-ii-hatsune-miku-edition--s251107206",
-    "sourceCheckedOn": "2026-03-15",
+    "sourceUrl": "https://phongvu.vn/tai-nghe-asus-tuf-h1-gen-ii-hatsune-miku-edition--s251107206",
+    "sourceCheckedOn": "2026-04-23",
     "specs": [
       "Kết nối: USB",
       "Kiểu tai nghe: Over-ear",
@@ -560,7 +1020,7 @@
     "imageSet": "headset"
   },
   {
-    "sku": "GHS-029",
+    "sku": "GHS-052",
     "name": "Tai Nghe Gaming Không Dây choàng đầu Corsair HS55 Core (CA-9011290-AP) (Đen)",
     "brand": "Corsair",
     "category": "Gaming Headset",
@@ -568,8 +1028,8 @@
     "shortDescription": "Tai Nghe Gaming Không Dây choàng đầu Corsair HS55 Core (CA-9011290-AP) (Đen) is a current Vietnam-market gaming accessory sourced from Phong Vu with seeded retail pricing in VND.",
     "priceVnd": 1489000,
     "sourceRetailer": "Phong Vu",
-    "sourceUrl": "https://phongvu.vn/tai-nghe-gaming-khong-day-choang-dau-corsair-hs55-core-ca-9011290-ap-den--s251211494",
-    "sourceCheckedOn": "2026-03-15",
+    "sourceUrl": "https://phongvu.vn/tai-nghe-atk-hs55-core--s251211494",
+    "sourceCheckedOn": "2026-04-23",
     "specs": [
       "Kết nối: Bluetooth, 2.4 GHz Wireless",
       "Kiểu tai nghe: Over-ear",
@@ -580,7 +1040,7 @@
     "imageSet": "headset"
   },
   {
-    "sku": "GHS-030",
+    "sku": "GHS-053",
     "name": "Tai nghe Gaming có dây Choàng đầu Sony INZONE H3 MDR-G300/BZ E (Đen)",
     "brand": "Sony",
     "category": "Gaming Headset",
@@ -588,8 +1048,8 @@
     "shortDescription": "Tai nghe Sony INZONE H3 MDR-G300/BZ là lựa chọn hàng đầu cho các game thủ chuyên nghiệp, mang đến trải nghiệm âm thanh vòm không gian chân thực.",
     "priceVnd": 1190000,
     "sourceRetailer": "Phong Vu",
-    "sourceUrl": "https://phongvu.vn/tai-nghe-gaming-co-day-choang-dau-sony-inzone-h3-mdr-g300-bz-den--s251113485",
-    "sourceCheckedOn": "2026-03-15",
+    "sourceUrl": "https://phongvu.vn/tai-nghe-sony-inzone-h9-ii-wh-g910n--p824642",
+    "sourceCheckedOn": "2026-04-23",
     "specs": [
       "Kiểu kết nối: Tai nghe có dây",
       "Kiểu tai nghe: Over-ear",
@@ -600,27 +1060,267 @@
     "imageSet": "headset"
   },
   {
-    "sku": "MPD-031",
-    "name": "Miếng lót chuột SteelSeries QcK mini",
-    "brand": "Steelseries",
-    "category": "Mousepad",
-    "sourceType": "mousepad",
-    "shortDescription": "Giới thiệu sản phẩm Miếng lót chuột SteelSeries QcK mini Mô tả sản phẩm Miếng lót chuột SteelSeries QcK mini có hình chữ nhật với diện tích bề mặt trung bình.",
-    "priceVnd": 199000,
+    "sku": "GHS-054",
+    "name": "Tai nghe Gaming không dây choàng đầu Sony INZONE H9 II WH-G910N/WZ E (Trắng)",
+    "brand": "Sony",
+    "category": "Gaming Headset",
+    "sourceType": "headset",
+    "shortDescription": "Tai nghe Sony INZONE H9 II WH-G910N là mẫu tai nghe gaming không dây cao cấp của Sony, được thiết kế dành cho game thủ PC và PS5.",
+    "priceVnd": 6990000,
     "sourceRetailer": "Phong Vu",
-    "sourceUrl": "https://phongvu.vn/mieng-lot-chuot-steelseries-qck-mini--s1703430",
-    "sourceCheckedOn": "2026-03-15",
+    "sourceUrl": "https://phongvu.vn/tai-nghe-sony-inzone-h3-mdr-g300-bz--s251113497",
+    "sourceCheckedOn": "2026-04-23",
     "specs": [
-      "Kiểu kích thước: S",
-      "Chất liệu bề mặt: Vải",
-      "Màu sắc: Đen",
-      "Tính năng đặc biệt: KHT",
-      "Cân nặng (g): 100"
+      "Kết nối: 2.4 GHz Wireless, Bluetooth 5.3",
+      "Kiểu tai nghe: Over-ear",
+      "Kích thước driver: 30 mm",
+      "Microphone: Có",
+      "Độ nhạy: KHT"
     ],
-    "imageSet": "mousepad"
+    "imageSet": "headset"
   },
   {
-    "sku": "MPD-032",
+    "sku": "GHS-055",
+    "name": "Tai nghe không dây choàng đầu Sony WH-1000XM6/BME (Đen)",
+    "brand": "Sony",
+    "category": "Gaming Headset",
+    "sourceType": "headset",
+    "shortDescription": "Tai nghe Sony WH-1000XM6 là một biểu tượng của sự tinh hoa công nghệ âm thanh, hướng đến người dùng cao cấp yêu cầu chất lượng vượt trội.",
+    "priceVnd": 10390000,
+    "sourceRetailer": "Phong Vu",
+    "sourceUrl": "https://phongvu.vn/tai-nghe-sony-wh1000xm6-bme--s250808490",
+    "sourceCheckedOn": "2026-04-23",
+    "specs": [
+      "Kết nối: Bluetooth 5.3",
+      "Kiểu tai nghe: Over-ear",
+      "Kích thước driver: 30 mm",
+      "Microphone: Có",
+      "Độ nhạy: 103 dB/mW"
+    ],
+    "imageSet": "headset"
+  },
+  {
+    "sku": "GHS-056",
+    "name": "Tai nghe không dây choàng đầu Sony WH-1000XM6/PME (Hồng)",
+    "brand": "Sony",
+    "category": "Gaming Headset",
+    "sourceType": "headset",
+    "shortDescription": "Sony WH-1000XM6 là một trong những sản phẩm tai nghe được đánh giá cao mang đến trải nghiệm nghe nhạc vượt trội cùng khả năng khử ồn chủ động hàng đầu.",
+    "priceVnd": 10390000,
+    "sourceRetailer": "Phong Vu",
+    "sourceUrl": "https://phongvu.vn/tai-nghe-sony-wh-1000xm6-pme--s260108840",
+    "sourceCheckedOn": "2026-04-23",
+    "specs": [
+      "Kết nối: Bluetooth 5.3",
+      "Kiểu tai nghe: Over-ear",
+      "Kích thước driver: 30 mm",
+      "Microphone: Có",
+      "Độ nhạy: 103 dB/mW"
+    ],
+    "imageSet": "headset"
+  },
+  {
+    "sku": "GHS-057",
+    "name": "Tai nghe không dây choàng đầu Sony WH-CH520/CZ (Be)",
+    "brand": "Sony",
+    "category": "Gaming Headset",
+    "sourceType": "headset",
+    "shortDescription": "Tai nghe không dây choàng đầu Sony WH-CH520 là sự lựa chọn lý tưởng cho những ai tìm kiếm trải nghiệm âm thanh chất lượng cao cùng sự tiện lợi vượt trội.",
+    "priceVnd": 980000,
+    "sourceRetailer": "Phong Vu",
+    "sourceUrl": "https://phongvu.vn/tai-nghe-sony-whch520-cz-e--s250808538",
+    "sourceCheckedOn": "2026-04-23",
+    "specs": [
+      "Kết nối: Bluetooth 5.2",
+      "Kiểu tai nghe: On-ear",
+      "Kích thước driver: 30 mm",
+      "Microphone: Có",
+      "Độ nhạy: KHT"
+    ],
+    "imageSet": "headset"
+  },
+  {
+    "sku": "GHS-058",
+    "name": "Tai nghe không dây choàng đầu Sony WH-CH720N/BCE (Đen)",
+    "brand": "Sony",
+    "category": "Gaming Headset",
+    "sourceType": "headset",
+    "shortDescription": "Sony WH-CH720N là một lựa chọn nổi bật trong phân khúc tai nghe chụp tai không dây, kết hợp công nghệ chống ồn tiên tiến cùng chất âm sống động.",
+    "priceVnd": 2190000,
+    "sourceRetailer": "Phong Vu",
+    "sourceUrl": "https://phongvu.vn/tai-nghe-sony-whch720n-bce--s250808513",
+    "sourceCheckedOn": "2026-04-23",
+    "specs": [
+      "Kết nối: Bluetooth 5.2",
+      "Kiểu tai nghe: Over-ear",
+      "Kích thước driver: 30 mm",
+      "Microphone: Có",
+      "Độ nhạy: KHT"
+    ],
+    "imageSet": "headset"
+  },
+  {
+    "sku": "GHS-059",
+    "name": "Tai nghe không dây in-ear Sony WI-C100/LZ  E (Xanh dương)",
+    "brand": "Sony",
+    "category": "Gaming Headset",
+    "sourceType": "headset",
+    "shortDescription": "Tai nghe không dây in-ear Sony WI-C100/LZ E là lựa chọn lý tưởng cho người dùng phổ thông, mang đến trải nghiệm âm thanh ổn định cùng thiết kế tiện lợi.",
+    "priceVnd": 490000,
+    "sourceRetailer": "Phong Vu",
+    "sourceUrl": "https://phongvu.vn/tai-nghe-sony-wic100-lz-e--s250808519",
+    "sourceCheckedOn": "2026-04-23",
+    "specs": [
+      "Kết nối: Bluetooth 5.0",
+      "Kiểu tai nghe: In-ear",
+      "Kích thước driver: 9 mm",
+      "Microphone: Có",
+      "Độ nhạy: KHT"
+    ],
+    "imageSet": "headset"
+  },
+  {
+    "sku": "GHS-060",
+    "name": "Tai nghe không dây TWS Sony Linkbuds Fit WF-LS910N/GZE (Xanh lá)",
+    "brand": "Sony",
+    "category": "Gaming Headset",
+    "sourceType": "headset",
+    "shortDescription": "Tai nghe không dây TWS Sony Linkbuds Fit WF-LS910N/GZE (Xanh lá) is a current Vietnam-market gaming accessory sourced from Phong Vu with seeded retail pricing in VND.",
+    "priceVnd": 3450000,
+    "sourceRetailer": "Phong Vu",
+    "sourceUrl": "https://phongvu.vn/tai-nghe-sony-wfls910n-gze--s250808557",
+    "sourceCheckedOn": "2026-04-23",
+    "specs": [
+      "Kết nối: Bluetooth 5.3",
+      "Kiểu tai nghe: In-ear",
+      "Kích thước driver: 8.4 mm",
+      "Microphone: Có",
+      "Độ nhạy: KHT"
+    ],
+    "imageSet": "headset"
+  },
+  {
+    "sku": "GHS-061",
+    "name": "Tai nghe không dây TWS Sony WF-1000XM5/BCE (Đen)",
+    "brand": "Sony",
+    "category": "Gaming Headset",
+    "sourceType": "headset",
+    "shortDescription": "Sony WF-1000XM5 là tai nghe Sony không dây true wireless thuộc phân khúc cao cấp, mang đến trải nghiệm âm thanh xuất sắc cùng khả năng chống ồn chủ động hàng đầu thị trường.",
+    "priceVnd": 5390000,
+    "sourceRetailer": "Phong Vu",
+    "sourceUrl": "https://phongvu.vn/tai-nghe-sony-wf1000xm5-bce--s250808559",
+    "sourceCheckedOn": "2026-04-23",
+    "specs": [
+      "Kết nối: Bluetooth 5.3",
+      "Kiểu tai nghe: In-ear",
+      "Kích thước driver: 8.4 mm",
+      "Microphone: Có",
+      "Độ nhạy: KHT"
+    ],
+    "imageSet": "headset"
+  },
+  {
+    "sku": "GHS-062",
+    "name": "Tai nghe không dây TWS Sony WF-1000XM6/SZE (Bạc)",
+    "brand": "Sony",
+    "category": "Gaming Headset",
+    "sourceType": "headset",
+    "shortDescription": "Tai nghe không dây TWS Sony WF-1000XM6/SZE (Bạc) is a current Vietnam-market gaming accessory sourced from Phong Vu with seeded retail pricing in VND.",
+    "priceVnd": 7990000,
+    "sourceRetailer": "Phong Vu",
+    "sourceUrl": "https://phongvu.vn/tai-nghe-sony-wf1000xm6--p850367",
+    "sourceCheckedOn": "2026-04-23",
+    "specs": [
+      "Kết nối: Bluetooth 5.4",
+      "Kiểu tai nghe: In-ear",
+      "Microphone: Có",
+      "Độ nhạy: KHT",
+      "Tần số phản hồi: KHT"
+    ],
+    "imageSet": "headset"
+  },
+  {
+    "sku": "GHS-063",
+    "name": "Tai nghe không dây TWS Sony WF-C510/BZ E (Đen)",
+    "brand": "Sony",
+    "category": "Gaming Headset",
+    "sourceType": "headset",
+    "shortDescription": "Sony WF-C510 là lựa chọn tối ưu cho người dùng tìm kiếm tai nghe không dây chất lượng cao, mang đến trải nghiệm âm thanh sống động cùng sự tiện lợi vượt trội.",
+    "priceVnd": 879000,
+    "sourceRetailer": "Phong Vu",
+    "sourceUrl": "https://phongvu.vn/tai-nghe-sony-wfc510bz-e--s250808503",
+    "sourceCheckedOn": "2026-04-23",
+    "specs": [
+      "Kết nối: Bluetooth 5.3",
+      "Kiểu tai nghe: In-ear",
+      "Kích thước driver: 6 mm",
+      "Microphone: Có",
+      "Độ nhạy: KHT"
+    ],
+    "imageSet": "headset"
+  },
+  {
+    "sku": "GHS-064",
+    "name": "Tai nghe Open-ear không dây Sony Clip WF-LC900/GZ E (Xanh lá)",
+    "brand": "Sony",
+    "category": "Gaming Headset",
+    "sourceType": "headset",
+    "shortDescription": "Tai nghe Open-ear không dây Sony Clip WF-LC900/GZ E (Xanh lá) is a current Vietnam-market gaming accessory sourced from Phong Vu with seeded retail pricing in VND.",
+    "priceVnd": 4990000,
+    "sourceRetailer": "Phong Vu",
+    "sourceUrl": "https://phongvu.vn/tai-nghe-sony-clip-wf-lc900--p847719",
+    "sourceCheckedOn": "2026-04-23",
+    "specs": [
+      "Kết nối: 2.4 GHz Wireless, Bluetooth 5.3",
+      "Kiểu tai nghe: In-ear",
+      "Kích thước driver: 10 mm",
+      "Độ nhạy: KHT",
+      "Tần số phản hồi: 20Hz - 20.000 Hz"
+    ],
+    "imageSet": "headset"
+  },
+  {
+    "sku": "GHS-065",
+    "name": "Tai Nghe Bluetooth TWS Anker Soundcore K20i - A3994 đen",
+    "brand": "Anker",
+    "category": "Gaming Headset",
+    "sourceType": "headset",
+    "shortDescription": "Anker Soundcore K20i là mẫu tai nghe không dây mang đến trải nghiệm âm thanh sống động cùng nhiều tính năng tiện ích.",
+    "priceVnd": 310000,
+    "sourceRetailer": "Phong Vu",
+    "sourceUrl": "https://phongvu.vn/tai-nghe-anker-soundcore-k20i--p818380",
+    "sourceCheckedOn": "2026-04-23",
+    "specs": [
+      "Kết nối: Bluetooth 5.3",
+      "Kiểu tai nghe: In-ear",
+      "Kích thước driver: 13 mm",
+      "Microphone: Có",
+      "Độ nhạy: KHT"
+    ],
+    "imageSet": "headset"
+  },
+  {
+    "sku": "GHS-066",
+    "name": "Tai nghe Bluetooth TWS Anker Soundcore R60i NC - D1202 (Trắng)",
+    "brand": "Anker",
+    "category": "Gaming Headset",
+    "sourceType": "headset",
+    "shortDescription": "Tai nghe Anker Soundcore R60i NC D1202 là một lựa chọn nổi bật dành cho những ai tìm kiếm trải nghiệm âm thanh cao cấp.",
+    "priceVnd": 649000,
+    "sourceRetailer": "Phong Vu",
+    "sourceUrl": "https://phongvu.vn/tai-nghe-mchose-v9-pro--p840892",
+    "sourceCheckedOn": "2026-04-23",
+    "specs": [
+      "Kết nối: Bluetooth 6.1",
+      "Kiểu tai nghe: In-ear",
+      "Kích thước driver: 11 mm",
+      "Microphone: Có",
+      "Độ nhạy: KHT"
+    ],
+    "imageSet": "headset"
+  },
+  {
+    "sku": "MPD-067",
     "name": "Lót chuột Gaming Razer Gigantus V2 Soft - CS2 Counter-Strike 2 Edition RZ02-03333300-R3M1",
     "brand": "Razer",
     "category": "Mousepad",
@@ -629,7 +1329,7 @@
     "priceVnd": 1090000,
     "sourceRetailer": "Phong Vu",
     "sourceUrl": "https://phongvu.vn/lot-chuot-gaming-razer-gigantus-v2-soft-counter-strike-2-edition-rz02-03333300-r3m1--s251103291",
-    "sourceCheckedOn": "2026-03-15",
+    "sourceCheckedOn": "2026-04-23",
     "specs": [
       "Kiểu kích thước: Large",
       "Chất liệu bề mặt: Vải, Cao su",
@@ -640,7 +1340,7 @@
     "imageSet": "mousepad"
   },
   {
-    "sku": "MPD-033",
+    "sku": "MPD-068",
     "name": "Miếng lót chuột Razer Gigantus V2 Soft Mat Large (RZ02-03330300-R3M1)",
     "brand": "Razer",
     "category": "Mousepad",
@@ -649,7 +1349,7 @@
     "priceVnd": 439000,
     "sourceRetailer": "Phong Vu",
     "sourceUrl": "https://phongvu.vn/mieng-lot-chuot-razer-gigantus-v2-soft-mat-large-rz02-03330300-r3m1--s211004548",
-    "sourceCheckedOn": "2026-03-15",
+    "sourceCheckedOn": "2026-04-23",
     "specs": [
       "Kiểu kích thước: L",
       "Chất liệu bề mặt: Vải, Cao su",
@@ -660,7 +1360,7 @@
     "imageSet": "mousepad"
   },
   {
-    "sku": "MPD-034",
+    "sku": "MPD-069",
     "name": "Miếng lót chuột Razer Gigantus V2 Soft Mat Medium (RZ02-03330200-R3M1)",
     "brand": "Razer",
     "category": "Mousepad",
@@ -669,7 +1369,7 @@
     "priceVnd": 349000,
     "sourceRetailer": "Phong Vu",
     "sourceUrl": "https://phongvu.vn/mieng-lot-chuot-razer-gigantus-v2-soft-mat-medium-rz02-03330200-r3m1--s211004545",
-    "sourceCheckedOn": "2026-03-15",
+    "sourceCheckedOn": "2026-04-23",
     "specs": [
       "Kiểu kích thước: M",
       "Chất liệu bề mặt: Vải, Cao su",
@@ -680,7 +1380,7 @@
     "imageSet": "mousepad"
   },
   {
-    "sku": "MPD-035",
+    "sku": "MPD-070",
     "name": "Tấm lót chuột Razer Gigantus V2 - Soft Gaming Mouse Mat - Medium - Minecraft Edition (RZ02-03333800-R3M1)",
     "brand": "Razer",
     "category": "Mousepad",
@@ -689,7 +1389,7 @@
     "priceVnd": 695000,
     "sourceRetailer": "Phong Vu",
     "sourceUrl": "https://phongvu.vn/tam-lot-chuot-razer-gigantus-v2-soft-gaming-mouse-mat-medium-minecraft-edition-rz02-03333800-r3m1--s250410573",
-    "sourceCheckedOn": "2026-03-15",
+    "sourceCheckedOn": "2026-04-23",
     "specs": [
       "Kiểu kích thước: Medium",
       "Chất liệu bề mặt: Vải",
@@ -700,7 +1400,7 @@
     "imageSet": "mousepad"
   },
   {
-    "sku": "MPD-036",
+    "sku": "MPD-071",
     "name": "Tấm lót chuột Razer Gigantus V2 - Soft Gaming Mouse Mat XXXL (RZ02-03330500-R3M1) (1200x550 x4mm)",
     "brand": "Razer",
     "category": "Mousepad",
@@ -709,7 +1409,7 @@
     "priceVnd": 1299000,
     "sourceRetailer": "Phong Vu",
     "sourceUrl": "https://phongvu.vn/tam-lot-chuot-razer-gigantus-v2-soft-gaming-mouse-mat-xxxl-rz02-03330500-r3m1-1200x550-x4mm--s250203212",
-    "sourceCheckedOn": "2026-03-15",
+    "sourceCheckedOn": "2026-04-23",
     "specs": [
       "Kiểu kích thước: 3XL",
       "Chất liệu bề mặt: Vải",
@@ -720,7 +1420,7 @@
     "imageSet": "mousepad"
   },
   {
-    "sku": "MPD-037",
+    "sku": "MPD-072",
     "name": "Lót Chuột Gaming ATK G640 (Đen)",
     "brand": "ATK",
     "category": "Mousepad",
@@ -729,7 +1429,7 @@
     "priceVnd": 249000,
     "sourceRetailer": "Phong Vu",
     "sourceUrl": "https://phongvu.vn/lot-chuot-gaming-atk-g640-den--s251017447",
-    "sourceCheckedOn": "2026-03-15",
+    "sourceCheckedOn": "2026-04-23",
     "specs": [
       "Kích thước chính xác: 460 x 400 x 3mm",
       "Màu sắc: Đen",
@@ -739,7 +1439,7 @@
     "imageSet": "mousepad"
   },
   {
-    "sku": "MPD-038",
+    "sku": "MPD-073",
     "name": "Lót chuột Razer Firefly V2 Pro - Phantom White Edition (RZ02-04920400-R3M1)",
     "brand": "Razer",
     "category": "Mousepad",
@@ -748,7 +1448,7 @@
     "priceVnd": 2680000,
     "sourceRetailer": "Phong Vu",
     "sourceUrl": "https://phongvu.vn/lot-chuot-razer-firefly-v2-pro-phantom-white-edition-rz02-04920400-r3m1--s251011298",
-    "sourceCheckedOn": "2026-03-15",
+    "sourceCheckedOn": "2026-04-23",
     "specs": [
       "Kích thước chính xác: 27.8 x 36 x 0.46 cm",
       "Màu sắc: Phantom White",
@@ -759,7 +1459,7 @@
     "imageSet": "mousepad"
   },
   {
-    "sku": "MPD-039",
+    "sku": "MPD-074",
     "name": "Lót chuột Razer Firefly V2 Pro Phantom Green Edition",
     "brand": "Razer",
     "category": "Mousepad",
@@ -768,7 +1468,7 @@
     "priceVnd": 2950000,
     "sourceRetailer": "Phong Vu",
     "sourceUrl": "https://phongvu.vn/lot-chuot-razer-firefly-v2-pro-phantom-green-edition--s250807889",
-    "sourceCheckedOn": "2026-03-15",
+    "sourceCheckedOn": "2026-04-23",
     "specs": [
       "Kiểu kích thước: Medium",
       "Màu sắc: Phantom Green",
@@ -779,7 +1479,67 @@
     "imageSet": "mousepad"
   },
   {
-    "sku": "MPD-040",
+    "sku": "MPD-075",
+    "name": "Lót chuột Razer Pro Glide - Medium RZ02-03331500-R3M1 (Xám)",
+    "brand": "Razer",
+    "category": "Mousepad",
+    "sourceType": "mousepad",
+    "shortDescription": "Lót chuột Razer Pro Glide - Medium RZ02-03331500-R3M1 (Xám) is a current Vietnam-market gaming accessory sourced from Phong Vu with seeded retail pricing in VND.",
+    "priceVnd": 299000,
+    "sourceRetailer": "Phong Vu",
+    "sourceUrl": "https://phongvu.vn/lot-chuot-razer-pro-glide-medium-rz02-03331500-r3m1-xam--s260302626",
+    "sourceCheckedOn": "2026-04-23",
+    "specs": [
+      "Kiểu kích thước: M",
+      "Chất liệu bề mặt: Cao su",
+      "Màu sắc: Xám",
+      "Cân nặng (g): 210",
+      "Kích thước chính xác: 36 x 27.5 x 0.3 cm"
+    ],
+    "imageSet": "mousepad"
+  },
+  {
+    "sku": "MPD-076",
+    "name": "Lót chuột Razer Pro Glide - XXL RZ02-03332300-R3M1 (Xám)",
+    "brand": "Razer",
+    "category": "Mousepad",
+    "sourceType": "mousepad",
+    "shortDescription": "Lót chuột Razer Pro Glide - XXL RZ02-03332300-R3M1 (Xám) is a current Vietnam-market gaming accessory sourced from Phong Vu with seeded retail pricing in VND.",
+    "priceVnd": 799000,
+    "sourceRetailer": "Phong Vu",
+    "sourceUrl": "https://phongvu.vn/lot-chuot-razer-pro-glide-xxl-rz02-03332300-r3m1-xam--s260302635",
+    "sourceCheckedOn": "2026-04-23",
+    "specs": [
+      "Kiểu kích thước: XXL",
+      "Chất liệu bề mặt: Cao su",
+      "Màu sắc: Xám",
+      "Cân nặng (g): 950",
+      "Kích thước chính xác: 94 x 41 x 0.3 cm"
+    ],
+    "imageSet": "mousepad"
+  },
+  {
+    "sku": "MPD-077",
+    "name": "Lót chuột Razer Strider - XXL RZ02-03810100-R3M1 (Đen)",
+    "brand": "Razer",
+    "category": "Mousepad",
+    "sourceType": "mousepad",
+    "shortDescription": "Lót chuột Razer Strider - XXL RZ02-03810100-R3M1 (Đen) is a current Vietnam-market gaming accessory sourced from Phong Vu with seeded retail pricing in VND.",
+    "priceVnd": 1290000,
+    "sourceRetailer": "Phong Vu",
+    "sourceUrl": "https://phongvu.vn/lot-chuot-razer-strider-xxl-rz02-03810100-r3m1-den--s260302627",
+    "sourceCheckedOn": "2026-04-23",
+    "specs": [
+      "Kiểu kích thước: XXL",
+      "Màu sắc: Đen",
+      "Cân nặng (g): 950",
+      "Kích thước chính xác: 94 x 41 x 0.3 cm",
+      "Tên của lót chuột: Strider"
+    ],
+    "imageSet": "mousepad"
+  },
+  {
+    "sku": "MPD-078",
     "name": "Tấm lót chuột Razer Sphex V3 - Ultra Thin Mouse Mat - Large (RZ02-03820200-R3M1) (450x400x0.4mm)",
     "brand": "Razer",
     "category": "Mousepad",
@@ -788,7 +1548,7 @@
     "priceVnd": 399000,
     "sourceRetailer": "Phong Vu",
     "sourceUrl": "https://phongvu.vn/tam-lot-chuot-razer-sphex-v3-ultra-thin-mouse-mat-large-rz02-03820200-r3m1-450x400x0-4mm--s250203220",
-    "sourceCheckedOn": "2026-03-15",
+    "sourceCheckedOn": "2026-04-23",
     "specs": [
       "Kiểu kích thước: Large",
       "Chất liệu bề mặt: Nhựa",
@@ -799,16 +1559,216 @@
     "imageSet": "mousepad"
   },
   {
-    "sku": "STG-041",
+    "sku": "MPD-079",
+    "name": "Tấm lót chuột Razer Strider - Large RZ02-0381 (Đen)",
+    "brand": "Razer",
+    "category": "Mousepad",
+    "sourceType": "mousepad",
+    "shortDescription": "Tấm lót chuột Razer Strider - Large RZ02-0381 (Đen) is a current Vietnam-market gaming accessory sourced from Phong Vu with seeded retail pricing in VND.",
+    "priceVnd": 849000,
+    "sourceRetailer": "Phong Vu",
+    "sourceUrl": "https://phongvu.vn/tam-lot-chuot-razer-strider-large-rz02-0381--s251012821",
+    "sourceCheckedOn": "2026-04-23",
+    "specs": [
+      "Kiểu kích thước: Large",
+      "Chất liệu bề mặt: Vải",
+      "Màu sắc: Hồng",
+      "Cân nặng (g): 180",
+      "Kích thước chính xác: 45 x 40 x 0.3 cm"
+    ],
+    "imageSet": "mousepad"
+  },
+  {
+    "sku": "MPD-080",
+    "name": "Lót chuột Corsair MM500 v2 Extended CH-941B141-WW",
+    "brand": "Corsair",
+    "category": "Mousepad",
+    "sourceType": "mousepad",
+    "shortDescription": "Lót chuột Corsair MM500 v2 Extended CH-941B141-WW is a current Vietnam-market gaming accessory sourced from Phong Vu with seeded retail pricing in VND.",
+    "priceVnd": 2090000,
+    "sourceRetailer": "Phong Vu",
+    "sourceUrl": "https://phongvu.vn/lot-chuot-corsair-mm500-v2-extended-ch-941b141-ww--s260201495",
+    "sourceCheckedOn": "2026-04-23",
+    "specs": [
+      "Kiểu kích thước: Extended",
+      "Chất liệu bề mặt: Vải, Cao su",
+      "Màu sắc: Đen",
+      "Cân nặng (g): 560",
+      "Kích thước chính xác: 930mm x 300mm"
+    ],
+    "imageSet": "mousepad"
+  },
+  {
+    "sku": "MPD-081",
+    "name": "Miếng lót chuột Corsair MM100 (320mm x 270mm x 3mm)",
+    "brand": "Corsair",
+    "category": "Mousepad",
+    "sourceType": "mousepad",
+    "shortDescription": "Giới thiệu Miếng lót chuột Corsair MM100 (320mm x 270mm x 3mm) Miếng lót chuột Corsair MM100 với kiểm soát vượt trội, bề mặt dệt được thiết kế nhằm nắm mục tiêu chính xác trên từng pixel và ma sát thấp.",
+    "priceVnd": 220000,
+    "sourceRetailer": "Phong Vu",
+    "sourceUrl": "https://phongvu.vn/mieng-lot-chuot-corsair-mm100-320mm-x-270mm-x-3mm--s191004346",
+    "sourceCheckedOn": "2026-04-23",
+    "specs": [
+      "Kiểu kích thước: M",
+      "Chất liệu bề mặt: Vải",
+      "Màu sắc: Đen",
+      "Tính năng đặc biệt: KHT",
+      "Cân nặng (g): 200"
+    ],
+    "imageSet": "mousepad"
+  },
+  {
+    "sku": "MPD-082",
+    "name": "Bàn di chuột DAREU ESP119 _Orange TLX 900*400*4mm",
+    "brand": "Dareu",
+    "category": "Mousepad",
+    "sourceType": "mousepad",
+    "shortDescription": "Bàn di chuột DAREU ESP119 _Orange TLX 900*400*4mm is a current Vietnam-market gaming accessory sourced from Phong Vu with seeded retail pricing in VND.",
+    "priceVnd": 200000,
+    "sourceRetailer": "Phong Vu",
+    "sourceUrl": "https://phongvu.vn/ban-di-chuot-dareu-esp119-orange-tlx-900-400-4mm--s250501965",
+    "sourceCheckedOn": "2026-04-23",
+    "specs": [
+      "Kiểu kích thước: XXL",
+      "Chất liệu bề mặt: Vải",
+      "Màu sắc: Cam",
+      "Tính năng đặc biệt: KHT",
+      "Cân nặng (g): 500"
+    ],
+    "imageSet": "mousepad"
+  },
+  {
+    "sku": "MPD-083",
+    "name": "Bàn di chuột AKKO Corgi Butt",
+    "brand": "Akko",
+    "category": "Mousepad",
+    "sourceType": "mousepad",
+    "shortDescription": "Bàn di chuột AKKO Corgi Butt is a current Vietnam-market gaming accessory sourced from Phong Vu with seeded retail pricing in VND.",
+    "priceVnd": 149000,
+    "sourceRetailer": "Phong Vu",
+    "sourceUrl": "https://phongvu.vn/ban-di-chuot-akko-corgi-butt--s230800446",
+    "sourceCheckedOn": "2026-04-23",
+    "specs": [
+      "Kiểu kích thước: M",
+      "Chất liệu bề mặt: Vải",
+      "Màu sắc: Trắng",
+      "Tính năng đặc biệt: KHT",
+      "Cân nặng (g): 100"
+    ],
+    "imageSet": "mousepad"
+  },
+  {
+    "sku": "MPD-084",
+    "name": "Lót chuột AKKO Capybara",
+    "brand": "Akko",
+    "category": "Mousepad",
+    "sourceType": "mousepad",
+    "shortDescription": "Lót chuột AKKO Capybara is a current Vietnam-market gaming accessory sourced from Phong Vu with seeded retail pricing in VND.",
+    "priceVnd": 129000,
+    "sourceRetailer": "Phong Vu",
+    "sourceUrl": "https://phongvu.vn/lot-chuot-akko-capybara--s240908894",
+    "sourceCheckedOn": "2026-04-23",
+    "specs": [
+      "Kích thước chính xác: 360 x 280mm",
+      "Chất liệu bề mặt: Vải",
+      "Màu sắc: Nâu",
+      "Tính năng đặc biệt: KHT",
+      "Cân nặng (g): 100"
+    ],
+    "imageSet": "mousepad"
+  },
+  {
+    "sku": "MPD-085",
+    "name": "Lót chuột AKKO Cat Theme Mousepad - Gary MIMO",
+    "brand": "Akko",
+    "category": "Mousepad",
+    "sourceType": "mousepad",
+    "shortDescription": "Lót chuột AKKO Cat Theme Mousepad - Gary MIMO is a current Vietnam-market gaming accessory sourced from Phong Vu with seeded retail pricing in VND.",
+    "priceVnd": 129000,
+    "sourceRetailer": "Phong Vu",
+    "sourceUrl": "https://phongvu.vn/lot-chuot-akko-cat-theme-mousepad-gary-mimo--s240908929",
+    "sourceCheckedOn": "2026-04-23",
+    "specs": [
+      "Kích thước chính xác: 360 x 280mm",
+      "Chất liệu bề mặt: Vải",
+      "Màu sắc: Xám xanh",
+      "Tính năng đặc biệt: KHT",
+      "Cân nặng (g): 100"
+    ],
+    "imageSet": "mousepad"
+  },
+  {
+    "sku": "MPD-086",
+    "name": "Lót chuột AKKO Cat Theme Mousepad - Orange KATE",
+    "brand": "Akko",
+    "category": "Mousepad",
+    "sourceType": "mousepad",
+    "shortDescription": "Lót chuột AKKO Cat Theme Mousepad - Orange KATE is a current Vietnam-market gaming accessory sourced from Phong Vu with seeded retail pricing in VND.",
+    "priceVnd": 119000,
+    "sourceRetailer": "Phong Vu",
+    "sourceUrl": "https://phongvu.vn/lot-chuot-akko-cat-theme-mousepad-orange-kate--s240908886",
+    "sourceCheckedOn": "2026-04-23",
+    "specs": [
+      "Kích thước chính xác: 360 x 280mm",
+      "Chất liệu bề mặt: Vải",
+      "Màu sắc: Cam",
+      "Tính năng đặc biệt: KHT",
+      "Cân nặng (g): 100"
+    ],
+    "imageSet": "mousepad"
+  },
+  {
+    "sku": "MPD-087",
+    "name": "Lót chuột AKKO Joy of Life",
+    "brand": "Akko",
+    "category": "Mousepad",
+    "sourceType": "mousepad",
+    "shortDescription": "Lót chuột AKKO Joy of Life is a current Vietnam-market gaming accessory sourced from Phong Vu with seeded retail pricing in VND.",
+    "priceVnd": 349000,
+    "sourceRetailer": "Phong Vu",
+    "sourceUrl": "https://phongvu.vn/lot-chuot-akko-joy-of-life--s240908907",
+    "sourceCheckedOn": "2026-04-23",
+    "specs": [
+      "Kích thước chính xác: 900x400x4 mm",
+      "Chất liệu bề mặt: Vải",
+      "Tính năng đặc biệt: KHT",
+      "Cân nặng (g): 1000",
+      "Tên của lót chuột: AKKO Joy of Life"
+    ],
+    "imageSet": "mousepad"
+  },
+  {
+    "sku": "MPD-088",
+    "name": "Lót Chuột Gaming ATK 99G Air XSoft (Xanh lá)",
+    "brand": "ATK",
+    "category": "Mousepad",
+    "sourceType": "mousepad",
+    "shortDescription": "Lót Chuột Gaming ATK 99G Air XSoft (Xanh lá) is a current Vietnam-market gaming accessory sourced from Phong Vu with seeded retail pricing in VND.",
+    "priceVnd": 249000,
+    "sourceRetailer": "Phong Vu",
+    "sourceUrl": "https://phongvu.vn/lot-chuot-gaming-atk-99g-air-xsoft-xanh-la--s251017433",
+    "sourceCheckedOn": "2026-04-23",
+    "specs": [
+      "Kích thước chính xác: 49 x 42 x 0.45 cm",
+      "Màu sắc: Xanh lá",
+      "Tính năng đặc biệt: KHT",
+      "Cân nặng (g): 32",
+      "Tên của lót chuột: 99G Air XSoft"
+    ],
+    "imageSet": "mousepad"
+  },
+  {
+    "sku": "STG-089",
     "name": "Thiết bị ghi hình/ Webcam Logitech C922 Pro HD Stream",
     "brand": "Logitech",
     "category": "Streaming Gear",
     "sourceType": "webcam",
     "shortDescription": "► Logitech Full HD Webcam C922 Pro Stream ◄ Nếu nhắc đến các trào lưu nóng hổi trên mạng xã hội trong vài năm trở lại đây, live stream chắc chắn phải là cái tên được nhắc tới đầu tiên.",
-    "priceVnd": 2390000,
+    "priceVnd": 2145000,
     "sourceRetailer": "Phong Vu",
     "sourceUrl": "https://phongvu.vn/webcam-logitech-full-hd-c922-pro-stream--s1603530",
-    "sourceCheckedOn": "2026-03-15",
+    "sourceCheckedOn": "2026-04-23",
     "specs": [
       "Độ phân giải: 720/1080p",
       "Kết nối: USB",
@@ -819,16 +1779,16 @@
     "imageSet": "webcam"
   },
   {
-    "sku": "STG-042",
+    "sku": "STG-090",
     "name": "Thiết bị ghi hình/ Webcam hội nghị Logitech Brio 4K UHD Pro Business (960-001723)",
     "brand": "Logitech",
     "category": "Streaming Gear",
     "sourceType": "webcam",
     "shortDescription": "Thiết bị ghi hình/ Webcam hội nghị Logitech Brio 4K UHD Pro Business (960-001723) is a current Vietnam-market gaming accessory sourced from Phong Vu with seeded retail pricing in VND.",
-    "priceVnd": 4590000,
+    "priceVnd": 4290000,
     "sourceRetailer": "Phong Vu",
     "sourceUrl": "https://phongvu.vn/thiet-bi-ghi-hinh-webcam-hoi-nghi-logitech-brio-4k-uhd-pro-business-960-001723--s250718823",
-    "sourceCheckedOn": "2026-03-15",
+    "sourceCheckedOn": "2026-04-23",
     "specs": [
       "Độ phân giải: 4096 x 2160",
       "Kết nối: USB type -C",
@@ -839,7 +1799,7 @@
     "imageSet": "webcam"
   },
   {
-    "sku": "STG-043",
+    "sku": "STG-091",
     "name": "Thiết bị ghi hình/ Webcam Logitech BRIO 105 (Graphite)",
     "brand": "Logitech",
     "category": "Streaming Gear",
@@ -848,7 +1808,7 @@
     "priceVnd": 699000,
     "sourceRetailer": "Phong Vu",
     "sourceUrl": "https://phongvu.vn/thiet-bi-ghi-hinh-webcam-logitech-brio-105-graphite--s231000905",
-    "sourceCheckedOn": "2026-03-15",
+    "sourceCheckedOn": "2026-04-23",
     "specs": [
       "Độ phân giải: 1920 x 1080",
       "Kết nối: USB",
@@ -859,16 +1819,16 @@
     "imageSet": "webcam"
   },
   {
-    "sku": "STG-044",
+    "sku": "STG-092",
     "name": "Thiết bị ghi hình/ Webcam Logitech BRIO 300 (Hồng)",
     "brand": "Logitech",
     "category": "Streaming Gear",
     "sourceType": "webcam",
     "shortDescription": "Thiết bị ghi hình/ Webcam Logitech BRIO 300 (Hồng) is a current Vietnam-market gaming accessory sourced from Phong Vu with seeded retail pricing in VND.",
-    "priceVnd": 1490000,
+    "priceVnd": 1590000,
     "sourceRetailer": "Phong Vu",
     "sourceUrl": "https://phongvu.vn/thiet-bi-ghi-hinh-webcam-logitech-brio-300-hong--s230604099",
-    "sourceCheckedOn": "2026-03-15",
+    "sourceCheckedOn": "2026-04-23",
     "specs": [
       "Độ phân giải: 720/1080p",
       "Kết nối: USB",
@@ -879,16 +1839,16 @@
     "imageSet": "webcam"
   },
   {
-    "sku": "STG-045",
+    "sku": "STG-093",
     "name": "Thiết bị ghi hình/ Webcam Logitech BRIO 305 (Graphite)",
     "brand": "Logitech",
     "category": "Streaming Gear",
     "sourceType": "webcam",
     "shortDescription": "Thiết bị ghi hình/ Webcam Logitech BRIO 305 (Graphite) is a current Vietnam-market gaming accessory sourced from Phong Vu with seeded retail pricing in VND.",
-    "priceVnd": 1650000,
+    "priceVnd": 1590000,
     "sourceRetailer": "Phong Vu",
     "sourceUrl": "https://phongvu.vn/thiet-bi-ghi-hinh-webcam-logitech-brio-305-graphite--s231000894",
-    "sourceCheckedOn": "2026-03-15",
+    "sourceCheckedOn": "2026-04-23",
     "specs": [
       "Độ phân giải: 720/1080p",
       "Kết nối: USB type -C",
@@ -899,7 +1859,123 @@
     "imageSet": "webcam"
   },
   {
-    "sku": "STM-046",
+    "sku": "STG-094",
+    "name": "Thiết bị ghi hình/ Webcam Logitech Brio 4K Stream Edition",
+    "brand": "Logitech",
+    "category": "Streaming Gear",
+    "sourceType": "webcam",
+    "shortDescription": "Thiết bị ghi hình/ Webcam Logitech Brio 4K Stream Edition is a current Vietnam-market gaming accessory sourced from Phong Vu with seeded retail pricing in VND.",
+    "priceVnd": 4990000,
+    "sourceRetailer": "Phong Vu",
+    "sourceUrl": "https://phongvu.vn/thiet-bi-ghi-hinh-webcam-logitech-brio-4k-stream-edition--s230104603",
+    "sourceCheckedOn": "2026-04-23",
+    "specs": [
+      "Độ phân giải: 3840 x 2160",
+      "Kết nối: USB 2.0",
+      "Màu sắc: Đen",
+      "Tính năng: - Công nghệ RightLight 3 và khả năng mở rộng dải tương phản - Khả năng giảm thiểu tiếng ồn tốt - Cảm biến hồng ngoại",
+      "Cân nặng (g): 63"
+    ],
+    "imageSet": "webcam"
+  },
+  {
+    "sku": "STG-095",
+    "name": "Thiết bị ghi hình/ Webcam Logitech BRIO 505 (Graphite)",
+    "brand": "Logitech",
+    "category": "Streaming Gear",
+    "sourceType": "webcam",
+    "shortDescription": "Thiết bị ghi hình/ Webcam Logitech BRIO 505 (Graphite) is a current Vietnam-market gaming accessory sourced from Phong Vu with seeded retail pricing in VND.",
+    "priceVnd": 2990000,
+    "sourceRetailer": "Phong Vu",
+    "sourceUrl": "https://phongvu.vn/thiet-bi-ghi-hinh-webcam-logitech-brio-505-graphite--s231000897",
+    "sourceCheckedOn": "2026-04-23",
+    "specs": [
+      "Độ phân giải: 720/1080p",
+      "Kết nối: USB type -C",
+      "Màu sắc: Đen",
+      "Tính năng: - Rightlight 4 với HDR, đem lại hình ảnh rõ nét ở nhiều môi trường ánh sáng khác nhau - Thu phóng kỹ thuật số 4x - Hỗ trợ trong Logi Tune",
+      "Cân nặng (g): 121"
+    ],
+    "imageSet": "webcam"
+  },
+  {
+    "sku": "STG-096",
+    "name": "Thiết bị ghi hình/ Webcam Logitech HD BRIO 100 (Rose)",
+    "brand": "Logitech",
+    "category": "Streaming Gear",
+    "sourceType": "webcam",
+    "shortDescription": "Thiết bị ghi hình/ Webcam Logitech HD BRIO 100 (Rose) is a current Vietnam-market gaming accessory sourced from Phong Vu with seeded retail pricing in VND.",
+    "priceVnd": 699000,
+    "sourceRetailer": "Phong Vu",
+    "sourceUrl": "https://phongvu.vn/thiet-bi-ghi-hinh-webcam-logitech-hd-brio-100-rose--s230903444",
+    "sourceCheckedOn": "2026-04-23",
+    "specs": [
+      "Độ phân giải: 1920 x 1080",
+      "Kết nối: USB",
+      "Màu sắc: Hồng",
+      "Tính năng: Tự động điều chỉnh ánh sáng: RightLight 2 - Mic tích hợp - Màn che bảo mật",
+      "Cân nặng (g): 130"
+    ],
+    "imageSet": "webcam"
+  },
+  {
+    "sku": "STG-097",
+    "name": "Thiết bị họp trực tuyến Webcam Logitech MX Brio 4K Ultra HD (Pale Grey)",
+    "brand": "Logitech",
+    "category": "Streaming Gear",
+    "sourceType": "webcam",
+    "shortDescription": "Thiết bị họp trực tuyến Webcam Logitech MX Brio 4K Ultra HD (Pale Grey) is a current Vietnam-market gaming accessory sourced from Phong Vu with seeded retail pricing in VND.",
+    "priceVnd": 4590000,
+    "sourceRetailer": "Phong Vu",
+    "sourceUrl": "https://phongvu.vn/thiet-bi-hop-truc-tuyen-webcam-logitech-mx-brio-4k-ultra-hd-pale-grey--s240401751",
+    "sourceCheckedOn": "2026-04-23",
+    "specs": [
+      "Độ phân giải: 3840 x 2160",
+      "Kết nối: USB type -C",
+      "Màu sắc: Xám nhạt",
+      "Tính năng: - Với tính năng tăng cường hình ảnh AI và cảm biến webcam - Tự động lấy nét, HDR, cân bằng trắng, phơi sáng, cho hình ảnh rõ ràng trong nhiều môi trường ánh sáng khác nhau từ ánh sáng yếu tới ánh nắng trực tiếp",
+      "Cân nặng (g): 176"
+    ],
+    "imageSet": "webcam"
+  },
+  {
+    "sku": "STG-098",
+    "name": "Thiết bị họp trực tuyến Webcam Logitech MX BRIO 705 For Business New (VC)(USB-C)",
+    "brand": "Logitech",
+    "category": "Streaming Gear",
+    "sourceType": "webcam",
+    "shortDescription": "Thiết bị họp trực tuyến Webcam Logitech MX BRIO 705 For Business New (VC)(USB-C) is a current Vietnam-market gaming accessory sourced from Phong Vu with seeded retail pricing in VND.",
+    "priceVnd": 4990000,
+    "sourceRetailer": "Phong Vu",
+    "sourceUrl": "https://phongvu.vn/thiet-bi-hop-truc-tuyen-webcam-logitech-mx-brio-705-for-business-new-vc-usb-c--s240500584",
+    "sourceCheckedOn": "2026-04-23",
+    "specs": [
+      "Độ phân giải: 4096 x 2160",
+      "Kết nối: USB type -C",
+      "Màu sắc: Đen - Bạc",
+      "Tính năng: Micrô tích hợp, tạo chùm kép với phạm vi lên tới 1,2 m - Kẹp gắn phổ dụng phù hợp với máy tính xách tay, màn hiển thị LCD hoặc các màn hình - Tính năng tự động điều chỉnh ánh sáng RightLight 5 với HDR - Cảm biến Sony STARVIS 8,5MP",
+      "Cân nặng (g): 176"
+    ],
+    "imageSet": "webcam"
+  },
+  {
+    "sku": "STG-099",
+    "name": "Thiết bị ghi hình/ Webcam Elgato Facecam MK.2 (10WAC9901/ 1080p 60fps/ AF Lens)",
+    "brand": "Elgato",
+    "category": "Streaming Gear",
+    "sourceType": "webcam",
+    "shortDescription": "Thiết bị ghi hình/ Webcam Elgato Facecam MK.2 (10WAC9901/ 1080p 60fps/ AF Lens) is a current Vietnam-market gaming accessory sourced from Phong Vu with seeded retail pricing in VND.",
+    "priceVnd": 4390000,
+    "sourceRetailer": "Phong Vu",
+    "sourceUrl": "https://phongvu.vn/thiet-bi-truyen-hinh-anh-elgato-facecam-mk-2-10wac9901--s250511608",
+    "sourceCheckedOn": "2026-04-23",
+    "specs": [
+      "Cân nặng (g): 90"
+    ],
+    "imageSet": "webcam"
+  },
+  {
+    "sku": "STM-100",
     "name": "Micro HP HyperX QuadCast S 519P0AA (Trắng)",
     "brand": "HyperX",
     "category": "Streaming Gear",
@@ -908,7 +1984,7 @@
     "priceVnd": 4290000,
     "sourceRetailer": "Phong Vu",
     "sourceUrl": "https://phongvu.vn/micro-hp-hyperx-quadcast-s-519p0aa--s220806448",
-    "sourceCheckedOn": "2026-03-15",
+    "sourceCheckedOn": "2026-04-23",
     "specs": [
       "Kết nối: USB-C, 3.5mm headphone output",
       "Tần số âm thanh: 20Hz - 20kHz",
@@ -919,7 +1995,7 @@
     "imageSet": "microphone"
   },
   {
-    "sku": "STM-047",
+    "sku": "STM-101",
     "name": "Micro HyperX Quadcast 2 BK (872V1AA)",
     "brand": "HyperX",
     "category": "Streaming Gear",
@@ -928,7 +2004,7 @@
     "priceVnd": 3790000,
     "sourceRetailer": "Phong Vu",
     "sourceUrl": "https://phongvu.vn/micro-hyperx-quadcast-2-bk-872v1aa--s250900526",
-    "sourceCheckedOn": "2026-03-15",
+    "sourceCheckedOn": "2026-04-23",
     "specs": [
       "Kết nối: USB Type-C",
       "Tần số âm thanh: 20Hz - 20kHz",
@@ -939,7 +2015,7 @@
     "imageSet": "microphone"
   },
   {
-    "sku": "STM-048",
+    "sku": "STM-102",
     "name": "Micro HyperX Quadcast 2 S BK (9A273AA)",
     "brand": "HyperX",
     "category": "Streaming Gear",
@@ -948,7 +2024,7 @@
     "priceVnd": 4990000,
     "sourceRetailer": "Phong Vu",
     "sourceUrl": "https://phongvu.vn/micro-hyperx-quadcast-2-s-bk-872v1aa--s250900531",
-    "sourceCheckedOn": "2026-03-15",
+    "sourceCheckedOn": "2026-04-23",
     "specs": [
       "Kết nối: USB Type-C",
       "Tần số âm thanh: 20Hz - 20kHz",
@@ -959,7 +2035,7 @@
     "imageSet": "microphone"
   },
   {
-    "sku": "STM-049",
+    "sku": "STM-103",
     "name": "Micro thu âm Razer Seiren BT",
     "brand": "Razer",
     "category": "Streaming Gear",
@@ -968,7 +2044,7 @@
     "priceVnd": 2899000,
     "sourceRetailer": "Phong Vu",
     "sourceUrl": "https://phongvu.vn/micro-thu-am-razer-seiren-bt--s220706579",
-    "sourceCheckedOn": "2026-03-15",
+    "sourceCheckedOn": "2026-04-23",
     "specs": [
       "Kết nối: Bluetooth 5.0",
       "Tần số âm thanh: 48 kHz",
@@ -979,7 +2055,7 @@
     "imageSet": "microphone"
   },
   {
-    "sku": "STM-050",
+    "sku": "STM-104",
     "name": "Micro thu âm Razer Seiren V2 Pro",
     "brand": "Razer",
     "category": "Streaming Gear",
@@ -988,12 +2064,132 @@
     "priceVnd": 4090000,
     "sourceRetailer": "Phong Vu",
     "sourceUrl": "https://phongvu.vn/micro-thu-am-razer-seiren-v2-pro--s220706580",
-    "sourceCheckedOn": "2026-03-15",
+    "sourceCheckedOn": "2026-04-23",
     "specs": [
       "Kết nối: Cáp USB Type-C sang Type-A; 1 x 3.5 mm",
       "Tần số âm thanh: 20 Hz - 20 KHz",
       "Độ nhạy: -34 dB (1 V / Pa at 1 kHz)",
       "Tính năng: KHT",
+      "Màu sắc: Đen"
+    ],
+    "imageSet": "microphone"
+  },
+  {
+    "sku": "STM-105",
+    "name": "Micro thu âm Razer Seiren V2 X",
+    "brand": "Razer",
+    "category": "Streaming Gear",
+    "sourceType": "microphone",
+    "shortDescription": "Micro thu âm Razer Seiren V2 X is a current Vietnam-market gaming accessory sourced from Phong Vu with seeded retail pricing in VND.",
+    "priceVnd": 2790000,
+    "sourceRetailer": "Phong Vu",
+    "sourceUrl": "https://phongvu.vn/micro-thu-am-razer-seiren-v2-x--s220706578",
+    "sourceCheckedOn": "2026-04-23",
+    "specs": [
+      "Kết nối: Cáp USB loại A đến loại C; Jack 3.5 mm",
+      "Tần số âm thanh: 20 Hz - 20 KHz",
+      "Độ nhạy: -34 dB (1 V / Pa at 1 kHz)",
+      "Tính năng: - Được tích hợp tất cả các công nghệ cần thiết để làm cho giọng nói thực sự trở nên sống động - Độ nhạy ấn tưởng có khả năng thu giọng nói độ chính xác cao - Mẫu thu âm Supercardioid",
+      "Màu sắc: Đen"
+    ],
+    "imageSet": "microphone"
+  },
+  {
+    "sku": "STM-106",
+    "name": "Micro thu âm Razer Seiren V3 Chroma (RZ19-05060100-R3M1)",
+    "brand": "Razer",
+    "category": "Streaming Gear",
+    "sourceType": "microphone",
+    "shortDescription": "Micro thu âm Razer Seiren V3 Chroma (RZ19-05060100-R3M1) is a current Vietnam-market gaming accessory sourced from Phong Vu with seeded retail pricing in VND.",
+    "priceVnd": 3390000,
+    "sourceRetailer": "Phong Vu",
+    "sourceUrl": "https://phongvu.vn/micro-thu-am-razer-seiren-v3-chroma-rz19-05060100-r3m1--s251012947",
+    "sourceCheckedOn": "2026-04-23",
+    "specs": [
+      "Kết nối: Type-C",
+      "Tần số âm thanh: 20 Hz - 20 kHz",
+      "Độ nhạy: -34 dB (1 V / Pa at 1 kHz)",
+      "Tính năng: - Ánh sáng phản ứng với luồng và trò chơi - Cảm biến chạm để tắt tiếng đa chức năng - Micrô tụ điện siêu cardioid",
+      "Màu sắc: Đen"
+    ],
+    "imageSet": "microphone"
+  },
+  {
+    "sku": "STM-107",
+    "name": "Micro HyperX Solocast 2 - Đen (AR0A0AA)",
+    "brand": "HyperX",
+    "category": "Streaming Gear",
+    "sourceType": "microphone",
+    "shortDescription": "Micro HyperX Solocast 2 - Đen (AR0A0AA) is a current Vietnam-market gaming accessory sourced from Phong Vu with seeded retail pricing in VND.",
+    "priceVnd": 1690000,
+    "sourceRetailer": "Phong Vu",
+    "sourceUrl": "https://phongvu.vn/micro-hyperx-solocast-2-den-ar0a0aa--s250900523",
+    "sourceCheckedOn": "2026-04-23",
+    "specs": [
+      "Kết nối: USB Type-C",
+      "Độ nhạy: -7,8±3 dB (1 V/Pa ở 1 kHz)",
+      "Tính năng: - Âm thanh rõ nét với bộ giảm xóc và bộ lọc âm thanh tích hợp - Bộ lọc âm thanh có thể điều chỉnh thông qua phần mềm HyperX NGENUITY - Chạm để tắt tiếng với đèn LED báo trạng thái",
+      "Màu sắc: Đen",
+      "Cân nặng (g): 330"
+    ],
+    "imageSet": "microphone"
+  },
+  {
+    "sku": "STM-108",
+    "name": "Bộ micro không dây Saramonic Blink 100 B4 (RXDi+TX+TX) cho thiết bị iOS",
+    "brand": "Saramonic",
+    "category": "Streaming Gear",
+    "sourceType": "microphone",
+    "shortDescription": "Bộ micro không dây Saramonic Blink 100 B4 (RXDi+TX+TX) cho thiết bị iOS is a current Vietnam-market gaming accessory sourced from Phong Vu with seeded retail pricing in VND.",
+    "priceVnd": 2690000,
+    "sourceRetailer": "Phong Vu",
+    "sourceUrl": "https://phongvu.vn/bo-micro-khong-day-blink-100-b4-rxdi-tx-tx-cho-thiet-bi-ios--s221202108",
+    "sourceCheckedOn": "2026-04-23",
+    "specs": [
+      "Kết nối: Lightning, 2.4GHz wireless",
+      "Tần số âm thanh: 20Hz-16kHz",
+      "Độ nhạy: -39+2dB",
+      "Tính năng: - Ghép nối nhanh chóng, thao tác dễ dàng, Plug and Play - Mic tích hợp đa hướng để thu âm 360° - Pin 90mAh, hoạt động đến 10 giờ, Cổng sạc USB-C (DC 5V) - Khử tiếng ồn thông minh",
+      "Màu sắc: Đen"
+    ],
+    "imageSet": "microphone"
+  },
+  {
+    "sku": "STM-109",
+    "name": "Bộ micro không dây Saramonic Blink500 ProX B1 (TX+RX)",
+    "brand": "Saramonic",
+    "category": "Streaming Gear",
+    "sourceType": "microphone",
+    "shortDescription": "Bộ micro không dây Saramonic Blink500 ProX B1 (TX+RX) is a current Vietnam-market gaming accessory sourced from Phong Vu with seeded retail pricing in VND.",
+    "priceVnd": 2490000,
+    "sourceRetailer": "Phong Vu",
+    "sourceUrl": "https://phongvu.vn/bo-micro-khong-day-blink500-prox-b1-tx-rx--s221202111",
+    "sourceCheckedOn": "2026-04-23",
+    "specs": [
+      "Kết nối: KHT",
+      "Tần số âm thanh: 20Hz-20KHz",
+      "Độ nhạy: KHT",
+      "Tính năng: - Thời lượng pin lâu hơn, lên tới 10 giờ sau mỗi lần sạc đầy - Trang bị màn hình OLED độ tương phản cao - Có sẵn Cổng USB-C trên hộp sạc giúp dễ dàng kết nối.",
+      "Màu sắc: Đen"
+    ],
+    "imageSet": "microphone"
+  },
+  {
+    "sku": "STM-110",
+    "name": "Micro thu âm không dây Saramonic Blink500 ProX B3 (RXDi + TX)",
+    "brand": "Saramonic",
+    "category": "Streaming Gear",
+    "sourceType": "microphone",
+    "shortDescription": "Micro thu âm không dây Saramonic Blink500 ProX B3 (RXDi + TX) is a current Vietnam-market gaming accessory sourced from Phong Vu with seeded retail pricing in VND.",
+    "priceVnd": 4190000,
+    "sourceRetailer": "Phong Vu",
+    "sourceUrl": "https://phongvu.vn/micro-thu-am-khong-day-saramonic-blink500-prox-b3-rxdi-tx--s231000883",
+    "sourceCheckedOn": "2026-04-23",
+    "specs": [
+      "Kết nối: Kết nối không dây 2.4 GHz",
+      "Tần số âm thanh: KHT",
+      "Độ nhạy: KHT",
+      "Tính năng: - 6 mức điều chỉnh âm lượng - Tương thích với iPhone và iPad - Phạm vi hoạt động lên đến 100m",
       "Màu sắc: Đen"
     ],
     "imageSet": "microphone"

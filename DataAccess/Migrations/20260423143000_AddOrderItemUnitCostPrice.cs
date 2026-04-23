@@ -1,9 +1,12 @@
+using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
 namespace ProjectTest.DataAccess.Migrations;
 
+[DbContext(typeof(MyShopDbContext))]
+[Migration("20260423143000_AddOrderItemUnitCostPrice")]
 public partial class AddOrderItemUnitCostPrice : Migration
 {
     protected override void Up(MigrationBuilder migrationBuilder)

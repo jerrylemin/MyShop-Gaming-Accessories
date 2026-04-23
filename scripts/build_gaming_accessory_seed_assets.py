@@ -14,7 +14,7 @@ from datetime import date
 from pathlib import Path
 from typing import Iterable
 from urllib.error import HTTPError, URLError
-from urllib.parse import urljoin
+from urllib.parse import urlencode, urljoin, urlparse, parse_qsl, urlunparse
 from urllib.request import Request, urlopen
 
 
@@ -51,7 +51,7 @@ CATEGORY_CONFIGS: tuple[CategoryConfig, ...] = (
         source_key="keyboard",
         app_category="Gaming Keyboard",
         source_url="https://phongvu.vn/c/ban-phim-gaming",
-        count=10,
+        count=22,
         sku_prefix="GKB",
         image_ids=("mm2cc_I3-iM", "ePGW9e_gcz8", "OaPksPcVp50"),
         brand_priority=("Logitech", "Razer", "SteelSeries", "Asus", "HyperX", "Corsair", "Aula", "Dareu"),
@@ -64,7 +64,7 @@ CATEGORY_CONFIGS: tuple[CategoryConfig, ...] = (
         source_key="mouse",
         app_category="Gaming Mouse",
         source_url="https://phongvu.vn/c/chuot-gaming",
-        count=10,
+        count=22,
         sku_prefix="GMS",
         image_ids=("LaEOxuvzRnY", "KNefG4CVCnU", "Zah7GC6mNKg"),
         brand_priority=("Razer", "Logitech", "SteelSeries", "Asus", "HyperX", "Pulsar", "Dareu", "Fantech"),
@@ -76,20 +76,19 @@ CATEGORY_CONFIGS: tuple[CategoryConfig, ...] = (
         source_key="headset",
         app_category="Gaming Headset",
         source_url="https://phongvu.vn/c/tai-nghe-gaming",
-        count=10,
+        count=22,
         sku_prefix="GHS",
         image_ids=("ZPtfDDp_SlI", "u4YHPDVolT4", "FhMSavrbn1M"),
         brand_priority=("SteelSeries", "HyperX", "Logitech", "Razer", "Asus", "Corsair", "Sony"),
         name_priority=("Arctis Nova 7", "Cloud III", "BlackShark", "G Pro X", "ROG Delta", "Barracuda"),
         spec_priority=("kết nối", "kiểu tai nghe", "driver", "micro", "độ nhạy", "tần số", "màu sắc"),
-        required_terms=("gaming", "blackshark", "barracuda", "kraken", "g pro", "g335", "g435", "g535", "g733", "cloud", "arctis", "hs55", "tuf", "rog"),
         exclude_terms=("ier-",),
     ),
     CategoryConfig(
         source_key="mousepad",
         app_category="Mousepad",
         source_url="https://phongvu.vn/c/lot-chuot",
-        count=10,
+        count=22,
         sku_prefix="MPD",
         image_ids=("O53iMVN35VI", "ZxQzBGGllMQ", "yfQJ0T2RVyA"),
         brand_priority=("SteelSeries", "Razer", "Logitech", "HyperX", "Corsair", "Pulsar", "Dareu"),
@@ -101,7 +100,7 @@ CATEGORY_CONFIGS: tuple[CategoryConfig, ...] = (
         source_key="webcam",
         app_category="Streaming Gear",
         source_url="https://phongvu.vn/c/webcam",
-        count=5,
+        count=11,
         sku_prefix="STG",
         image_ids=("Qruwi3Ur3Ak", "jIrAUWcHOcI", "OKLqGsCT8qs"),
         brand_priority=("Logitech", "Elgato", "Avermedia", "Rapoo", "Microsoft"),
@@ -113,7 +112,7 @@ CATEGORY_CONFIGS: tuple[CategoryConfig, ...] = (
         source_key="microphone",
         app_category="Streaming Gear",
         source_url="https://phongvu.vn/c/microphone",
-        count=5,
+        count=11,
         sku_prefix="STM",
         image_ids=("UUPpu2sYV6E", "sY2fRBkcG1U", "KNYcGEgwZmg"),
         brand_priority=("HyperX", "Razer", "Elgato", "Audio-Technica", "Saramonic", "Maono"),
@@ -196,32 +195,47 @@ def build_category_rank(name: str, config: CategoryConfig) -> tuple[int, int, st
 
 
 def pick_category_products(config: CategoryConfig) -> list[dict]:
-    document = fetch_text(config.source_url)
-    payload = extract_next_data(document)
-    products = payload["props"]["pageProps"].get("serverProducts") or []
-
     unique_products: dict[str, dict] = {}
-    for product in products:
-        pathname = product.get("link", {}).get("as", {}).get("pathname")
-        latest_price = product.get("price", {}).get("latestPrice") or 0
-        if not pathname or latest_price <= 0:
-            continue
 
-        normalized_name = normalize_text(product.get("name", ""))
-        if config.required_terms and not any(
-            normalize_text(term) in normalized_name for term in config.required_terms
-        ):
-            continue
-        if any(normalize_text(term) in normalized_name for term in config.exclude_terms):
-            continue
+    for page in range(1, 7):
+        page_url = with_query_parameter(config.source_url, "page", str(page))
+        document = fetch_text(page_url)
+        payload = extract_next_data(document)
+        products = payload["props"]["pageProps"].get("serverProducts") or []
+        if not products:
+            break
 
-        unique_products[pathname] = product
+        for product in products:
+            pathname = product.get("link", {}).get("as", {}).get("pathname")
+            latest_price = product.get("price", {}).get("latestPrice") or 0
+            if not pathname or latest_price <= 0:
+                continue
+
+            normalized_name = normalize_text(product.get("name", ""))
+            if config.required_terms and not any(
+                normalize_text(term) in normalized_name for term in config.required_terms
+            ):
+                continue
+            if any(normalize_text(term) in normalized_name for term in config.exclude_terms):
+                continue
+
+            unique_products[pathname] = product
+
+        if len(unique_products) >= config.count:
+            break
 
     ranked = sorted(
         unique_products.values(),
         key=lambda product: build_category_rank(product.get("name", ""), config),
     )
     return ranked[: config.count]
+
+
+def with_query_parameter(url: str, key: str, value: str) -> str:
+    parsed = urlparse(url)
+    query = dict(parse_qsl(parsed.query, keep_blank_values=True))
+    query[key] = value
+    return urlunparse(parsed._replace(query=urlencode(query)))
 
 
 def strip_html(value: str) -> str:
@@ -372,6 +386,31 @@ def build_dataset() -> list[dict]:
     return dataset
 
 
+def validate_dataset(dataset: list[dict]) -> None:
+    category_counts: dict[str, int] = {}
+    for item in dataset:
+        category_counts[item["category"]] = category_counts.get(item["category"], 0) + 1
+
+    invalid = {
+        category: count
+        for category, count in category_counts.items()
+        if count < 22
+    }
+    expected_categories = {
+        "Gaming Keyboard",
+        "Gaming Mouse",
+        "Gaming Headset",
+        "Mousepad",
+        "Streaming Gear",
+    }
+
+    missing_categories = expected_categories.difference(category_counts)
+    if invalid or missing_categories:
+        raise RuntimeError(
+            f"Dataset validation failed. Counts={category_counts}, invalid={invalid}, missing={sorted(missing_categories)}"
+        )
+
+
 def write_dataset(dataset: list[dict]) -> None:
     DATASET_PATH.parent.mkdir(parents=True, exist_ok=True)
     DATASET_PATH.write_text(json.dumps(dataset, ensure_ascii=False, indent=2), encoding="utf-8")
@@ -457,6 +496,7 @@ def main() -> int:
         dataset = json.loads(DATASET_PATH.read_text(encoding="utf-8"))
     else:
         dataset = build_dataset()
+        validate_dataset(dataset)
         write_dataset(dataset)
         write_sample_doc(dataset)
 

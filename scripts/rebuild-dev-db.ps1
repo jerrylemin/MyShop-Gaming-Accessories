@@ -51,15 +51,40 @@ function Invoke-Psql {
         $env:PGPASSWORD = $script:Password
     }
 
-    $output = & $script:PsqlExe `
-        -h $script:DbHost `
-        -p $script:Port `
-        -U $script:Username `
-        -d $DatabaseName `
-        -v ON_ERROR_STOP=1 `
-        -tAc $Sql 2>&1
+    $stdoutPath = [System.IO.Path]::GetTempFileName()
+    $stderrPath = [System.IO.Path]::GetTempFileName()
+    $sqlPath = [System.IO.Path]::GetTempFileName()
 
-    if ($LASTEXITCODE -ne 0) {
+    try {
+        Set-Content -Path $sqlPath -Value $Sql -Encoding UTF8 -NoNewline
+        $arguments = @(
+            "-h", $script:DbHost,
+            "-p", $script:Port,
+            "-U", $script:Username,
+            "-d", $DatabaseName,
+            "-v", "ON_ERROR_STOP=1",
+            "-tA",
+            "-f", $sqlPath
+        )
+
+        $process = Start-Process `
+            -FilePath $script:PsqlExe `
+            -ArgumentList $arguments `
+            -NoNewWindow `
+            -Wait `
+            -PassThru `
+            -RedirectStandardOutput $stdoutPath `
+            -RedirectStandardError $stderrPath
+
+        $stdout = if (Test-Path $stdoutPath) { Get-Content $stdoutPath -Raw } else { "" }
+        $stderr = if (Test-Path $stderrPath) { Get-Content $stderrPath -Raw } else { "" }
+        $output = @($stdout, $stderr) -join [Environment]::NewLine
+    }
+    finally {
+        Remove-Item $stdoutPath, $stderrPath, $sqlPath -ErrorAction SilentlyContinue
+    }
+
+    if ($process.ExitCode -ne 0) {
         $message = ($output | Out-String).Trim()
         throw "psql failed: $message"
     }

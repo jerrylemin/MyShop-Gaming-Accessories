@@ -7,6 +7,7 @@ namespace ProjectTest.DataAccess.Seeding;
 public static class GamingAccessorySeedGenerator
 {
     private const string SeedResourceSuffix = "DataAccess.Seeding.gaming_accessories_seed_data.json";
+    private const int MinimumProductsPerCategory = 22;
     private static readonly Lazy<IReadOnlyList<SeedProductRecord>> SeedCatalog = new(LoadSeedCatalog);
 
     public static List<Category> BuildCategories()
@@ -80,8 +81,9 @@ public static class GamingAccessorySeedGenerator
         return products;
     }
 
-    public static List<Order> BuildOrders(IReadOnlyList<Product> products, int count = 180)
+    public static List<Order> BuildOrders(IReadOnlyList<Product> products, int count = 0)
     {
+        count = count <= 0 ? Math.Max(360, products.Count * 4) : count;
         var random = new Random(20260316);
         var inventory = products.ToDictionary(x => x.Id, x => x);
         var orders = new List<Order>(count);
@@ -198,9 +200,18 @@ public static class GamingAccessorySeedGenerator
             PropertyNameCaseInsensitive = true
         }) ?? [];
 
-        if (records.Count != 50)
+        var categoryCounts = records
+            .GroupBy(x => x.Category, StringComparer.OrdinalIgnoreCase)
+            .ToDictionary(group => group.Key, group => group.Count(), StringComparer.OrdinalIgnoreCase);
+
+        var invalidCategory = BuildCategories()
+            .Select(x => x.Name)
+            .FirstOrDefault(categoryName => !categoryCounts.TryGetValue(categoryName, out var count) || count < MinimumProductsPerCategory);
+
+        if (invalidCategory is not null)
         {
-            throw new InvalidOperationException($"The gaming accessories dataset must contain exactly 50 products. Current count: {records.Count}.");
+            throw new InvalidOperationException(
+                $"The gaming accessories dataset must contain at least {MinimumProductsPerCategory} products per category. Category failing validation: {invalidCategory}.");
         }
 
         return records;

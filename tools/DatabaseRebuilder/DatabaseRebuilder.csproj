@@ -4,6 +4,8 @@
     <TargetFramework>net8.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
+    <BaseOutputPath>bin\</BaseOutputPath>
+    <BaseIntermediateOutputPath>obj\</BaseIntermediateOutputPath>
   </PropertyGroup>
 
   <ItemGroup>
@@ -20,6 +22,7 @@
     <Compile Include="..\..\DataAccess\MyShopDbContext.cs" Link="DataAccess\MyShopDbContext.cs" />
     <Compile Include="..\..\DataAccess\MyShopDbContextFactory.cs" Link="DataAccess\MyShopDbContextFactory.cs" />
     <Compile Include="..\..\DataAccess\Migrations\20260309120000_InitialCreate.cs" Link="DataAccess\Migrations\20260309120000_InitialCreate.cs" />
+    <Compile Include="..\..\DataAccess\Migrations\20260423143000_AddOrderItemUnitCostPrice.cs" Link="DataAccess\Migrations\20260423143000_AddOrderItemUnitCostPrice.cs" />
     <Compile Include="..\..\DataAccess\Migrations\MyShopDbContextModelSnapshot.cs" Link="DataAccess\Migrations\MyShopDbContextModelSnapshot.cs" />
     <Compile Include="..\..\DataAccess\Seeding\GamingAccessorySeedGenerator.cs" Link="DataAccess\Seeding\GamingAccessorySeedGenerator.cs" />
     <Compile Include="..\..\Services\DatabaseInitializer.cs" Link="Services\DatabaseInitializer.cs" />
