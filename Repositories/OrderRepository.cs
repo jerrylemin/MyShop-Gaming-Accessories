@@ -197,6 +197,7 @@ public class OrderRepository
                 {
                     ProductId = item.ProductId,
                     Quantity = item.Quantity,
+                    UnitCostPrice = product.ImportPrice,
                     UnitSalePrice = item.UnitSalePrice,
                     TotalPrice = item.TotalPrice
                 });

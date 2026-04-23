@@ -207,6 +207,10 @@ partial class MyShopDbContextModelSnapshot : ModelSnapshot
                 .HasColumnType("numeric(12,2)")
                 .HasColumnName("total_price");
 
+            b.Property<decimal>("UnitCostPrice")
+                .HasColumnType("numeric(12,2)")
+                .HasColumnName("unit_cost_price");
+
             b.Property<decimal>("UnitSalePrice")
                 .HasColumnType("numeric(12,2)")
                 .HasColumnName("unit_sale_price");

@@ -54,14 +54,65 @@
                 Style="{ThemeResource CaptionTextBlockStyle}"
                 Text="{Binding RangeLabel}" />
 
-            <Border Style="{ThemeResource CardBorderStyle}">
-                <StackPanel Spacing="14">
-                    <TextBlock
-                        Style="{ThemeResource SectionHeaderTextBlockStyle}"
-                        Text="Revenue by Day" />
-                    <controls:SimpleLineChart ItemsSource="{Binding RevenueByDay}" />
-                </StackPanel>
-            </Border>
+            <Grid ColumnSpacing="16">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+
+                <Border Style="{ThemeResource CardBorderStyle}">
+                    <StackPanel Spacing="8">
+                        <TextBlock
+                            Style="{ThemeResource CaptionTextBlockStyle}"
+                            Text="Total Revenue In Range" />
+                        <TextBlock
+                            FontFamily="Segoe UI Variable Display Semib"
+                            FontSize="28"
+                            FontWeight="SemiBold"
+                            Text="{Binding TotalRevenueText}" />
+                    </StackPanel>
+                </Border>
+
+                <Border
+                    Grid.Column="1"
+                    Style="{ThemeResource CardBorderStyle}">
+                    <StackPanel Spacing="8">
+                        <TextBlock
+                            Style="{ThemeResource CaptionTextBlockStyle}"
+                            Text="Total Profit In Range" />
+                        <TextBlock
+                            FontFamily="Segoe UI Variable Display Semib"
+                            FontSize="28"
+                            FontWeight="SemiBold"
+                            Text="{Binding TotalProfitText}" />
+                    </StackPanel>
+                </Border>
+            </Grid>
+
+            <Grid ColumnSpacing="16">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+
+                <Border Style="{ThemeResource CardBorderStyle}">
+                    <StackPanel Spacing="14">
+                        <TextBlock
+                            Style="{ThemeResource SectionHeaderTextBlockStyle}"
+                            Text="Revenue by Day" />
+                        <controls:SimpleLineChart ItemsSource="{Binding RevenueByDay}" />
+                    </StackPanel>
+                </Border>
+
+                <Border Grid.Column="1" Style="{ThemeResource CardBorderStyle}">
+                    <StackPanel Spacing="14">
+                        <TextBlock
+                            Style="{ThemeResource SectionHeaderTextBlockStyle}"
+                            Text="Profit by Day" />
+                        <controls:SimpleLineChart ItemsSource="{Binding ProfitByDay}" />
+                    </StackPanel>
+                </Border>
+            </Grid>
 
             <Grid ColumnSpacing="16">
                 <Grid.ColumnDefinitions>
@@ -82,20 +133,61 @@
                     <StackPanel Spacing="14">
                         <TextBlock
                             Style="{ThemeResource SectionHeaderTextBlockStyle}"
-                            Text="Revenue by Month" />
-                        <controls:SimpleBarChart ItemsSource="{Binding RevenueByMonth}" />
+                            Text="Profit by Week" />
+                        <controls:SimpleBarChart ItemsSource="{Binding ProfitByWeek}" />
                     </StackPanel>
                 </Border>
             </Grid>
 
-            <Border Style="{ThemeResource CardBorderStyle}">
-                <StackPanel Spacing="14">
-                    <TextBlock
-                        Style="{ThemeResource SectionHeaderTextBlockStyle}"
-                        Text="Revenue by Year" />
-                    <controls:SimpleBarChart ItemsSource="{Binding RevenueByYear}" />
-                </StackPanel>
-            </Border>
+            <Grid ColumnSpacing="16">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+
+                <Border Style="{ThemeResource CardBorderStyle}">
+                    <StackPanel Spacing="14">
+                        <TextBlock
+                            Style="{ThemeResource SectionHeaderTextBlockStyle}"
+                            Text="Revenue by Month" />
+                        <controls:SimpleBarChart ItemsSource="{Binding RevenueByMonth}" />
+                    </StackPanel>
+                </Border>
+
+                <Border Grid.Column="1" Style="{ThemeResource CardBorderStyle}">
+                    <StackPanel Spacing="14">
+                        <TextBlock
+                            Style="{ThemeResource SectionHeaderTextBlockStyle}"
+                            Text="Profit by Month" />
+                        <controls:SimpleBarChart ItemsSource="{Binding ProfitByMonth}" />
+                    </StackPanel>
+                </Border>
+            </Grid>
+
+            <Grid ColumnSpacing="16">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+
+                <Border Style="{ThemeResource CardBorderStyle}">
+                    <StackPanel Spacing="14">
+                        <TextBlock
+                            Style="{ThemeResource SectionHeaderTextBlockStyle}"
+                            Text="Revenue by Year" />
+                        <controls:SimpleBarChart ItemsSource="{Binding RevenueByYear}" />
+                    </StackPanel>
+                </Border>
+
+                <Border Grid.Column="1" Style="{ThemeResource CardBorderStyle}">
+                    <StackPanel Spacing="14">
+                        <TextBlock
+                            Style="{ThemeResource SectionHeaderTextBlockStyle}"
+                            Text="Profit by Year" />
+                        <controls:SimpleBarChart ItemsSource="{Binding ProfitByYear}" />
+                    </StackPanel>
+                </Border>
+            </Grid>
 
             <Grid ColumnSpacing="16">
                 <Grid.ColumnDefinitions>

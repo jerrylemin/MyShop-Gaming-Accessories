@@ -76,6 +76,7 @@ public class MyShopDbContext : DbContext
             entity.Property(x => x.ProductId).HasColumnName("product_id");
             entity.Property(x => x.Quantity).HasColumnName("quantity");
             entity.Property(x => x.UnitSalePrice).HasColumnName("unit_sale_price").HasColumnType("numeric(12,2)");
+            entity.Property(x => x.UnitCostPrice).HasColumnName("unit_cost_price").HasColumnType("numeric(12,2)");
             entity.Property(x => x.TotalPrice).HasColumnName("total_price").HasColumnType("numeric(12,2)");
             entity.HasOne(x => x.Order)
                 .WithMany(x => x.Items)

@@ -2,6 +2,7 @@ using Microsoft.EntityFrameworkCore;
 using ProjectTest.DataAccess;
 using ProjectTest.Helpers;
 using ProjectTest.Models;
+using System.Globalization;
 
 namespace ProjectTest.Services;
 
@@ -19,22 +20,34 @@ public class ReportingService
         options ??= new ReportQueryOptions();
 
         await using var dbContext = _dbContextFactory.CreateDbContext();
-        var today = DateTime.Today;
         var normalizedFromDate = options.FromDate.Date;
         var normalizedToDate = options.ToDate.Date < normalizedFromDate ? normalizedFromDate : options.ToDate.Date;
         var rangeEndExclusive = normalizedToDate.AddDays(1);
 
-        var paidOrdersInRange = await dbContext.Orders
-            .Where(x => x.Status == OrderStatus.Paid && x.CreatedTime >= normalizedFromDate && x.CreatedTime < rangeEndExclusive)
+        var paidItemsInRange = await dbContext.OrderItems
+            .Where(x => x.Order != null && x.Order.Status == OrderStatus.Paid && x.Order.CreatedTime >= normalizedFromDate && x.Order.CreatedTime < rangeEndExclusive)
+            .Select(x => new PaidOrderItemSnapshot
+            {
+                CreatedTime = x.Order!.CreatedTime,
+                Revenue = x.TotalPrice,
+                Cost = x.UnitCostPrice * x.Quantity,
+                Quantity = x.Quantity,
+                ProductName = x.Product!.Name,
+                Manufacturer = x.Product.Manufacturer
+            })
             .ToListAsync();
 
         var revenueByDay = new List<ChartPoint>();
+        var profitByDay = new List<ChartPoint>();
         foreach (var day in EachDate(normalizedFromDate, normalizedToDate))
         {
             var nextDay = day.AddDays(1);
-            var revenue = paidOrdersInRange
+            var revenue = paidItemsInRange
                 .Where(x => x.CreatedTime >= day && x.CreatedTime < nextDay)
-                .Sum(x => x.FinalPrice);
+                .Sum(x => x.Revenue);
+            var profit = paidItemsInRange
+                .Where(x => x.CreatedTime >= day && x.CreatedTime < nextDay)
+                .Sum(x => x.Profit);
 
             revenueByDay.Add(new ChartPoint
             {
@@ -42,80 +55,34 @@ public class ReportingService
                 Value = (double)revenue,
                 ValueLabel = CurrencyFormatter.ToCurrency(revenue)
             });
-        }
 
-        var revenueByWeek = Enumerable.Range(0, 8)
-            .Select(offset => StartOfWeek(today).AddDays(-(7 * (7 - offset))))
-            .Select(weekStart =>
+            profitByDay.Add(new ChartPoint
             {
-                var weekEnd = weekStart.AddDays(7);
-                var revenue = paidOrdersInRange
-                    .Where(x => x.CreatedTime >= weekStart && x.CreatedTime < weekEnd)
-                    .Sum(x => x.FinalPrice);
-
-                return new BarChartItem
-                {
-                    Label = $"W{System.Globalization.ISOWeek.GetWeekOfYear(weekStart)}",
-                    Subtitle = weekStart.ToString("dd MMM"),
-                    Value = (double)revenue,
-                    ValueLabel = CurrencyFormatter.ToCurrency(revenue)
-                };
-            })
-            .ToList();
-
-        var revenueByMonth = new List<BarChartItem>();
-        for (var offset = 11; offset >= 0; offset--)
-        {
-            var monthStart = new DateTime(today.Year, today.Month, 1).AddMonths(-offset);
-            var monthEnd = monthStart.AddMonths(1);
-            var revenue = await dbContext.Orders
-                .Where(x => x.Status == OrderStatus.Paid && x.CreatedTime >= monthStart && x.CreatedTime < monthEnd)
-                .SumAsync(x => (decimal?)x.FinalPrice) ?? 0m;
-
-            revenueByMonth.Add(new BarChartItem
-            {
-                Label = monthStart.ToString("MMM"),
-                Subtitle = monthStart.ToString("yyyy"),
-                Value = (double)revenue,
-                ValueLabel = CurrencyFormatter.ToCurrency(revenue)
+                Label = day.ToString("MM/dd"),
+                Value = (double)profit,
+                ValueLabel = CurrencyFormatter.ToCurrency(profit)
             });
         }
 
-        var revenueByYear = new List<BarChartItem>();
-        for (var offset = 4; offset >= 0; offset--)
-        {
-            var year = today.Year - offset;
-            var yearStart = new DateTime(year, 1, 1);
-            var yearEnd = yearStart.AddYears(1);
-            var revenue = await dbContext.Orders
-                .Where(x => x.Status == OrderStatus.Paid && x.CreatedTime >= yearStart && x.CreatedTime < yearEnd)
-                .SumAsync(x => (decimal?)x.FinalPrice) ?? 0m;
+        var revenueByWeek = BuildWeeklyBars(normalizedFromDate, normalizedToDate, paidItemsInRange, snapshot => snapshot.Revenue);
+        var profitByWeek = BuildWeeklyBars(normalizedFromDate, normalizedToDate, paidItemsInRange, snapshot => snapshot.Profit);
+        var revenueByMonth = BuildMonthlyBars(normalizedFromDate, normalizedToDate, paidItemsInRange, snapshot => snapshot.Revenue);
+        var profitByMonth = BuildMonthlyBars(normalizedFromDate, normalizedToDate, paidItemsInRange, snapshot => snapshot.Profit);
+        var revenueByYear = BuildYearlyBars(normalizedFromDate, normalizedToDate, paidItemsInRange, snapshot => snapshot.Revenue, "Revenue");
+        var profitByYear = BuildYearlyBars(normalizedFromDate, normalizedToDate, paidItemsInRange, snapshot => snapshot.Profit, "Profit");
 
-            revenueByYear.Add(new BarChartItem
-            {
-                Label = year.ToString(),
-                Subtitle = "Revenue",
-                Value = (double)revenue,
-                ValueLabel = CurrencyFormatter.ToCurrency(revenue)
-            });
-        }
-
-        var productSalesByRange = await dbContext.OrderItems
-            .Where(x => x.Order != null &&
-                        x.Order.Status == OrderStatus.Paid &&
-                        x.Order.CreatedTime >= normalizedFromDate &&
-                        x.Order.CreatedTime < rangeEndExclusive)
-            .GroupBy(x => new { x.ProductId, x.Product!.Name, x.Product.Manufacturer })
+        var productSalesByRange = paidItemsInRange
+            .GroupBy(x => new { x.ProductName, x.Manufacturer })
             .Select(group => new BarChartItem
             {
-                Label = group.Key.Name,
+                Label = group.Key.ProductName,
                 Subtitle = group.Key.Manufacturer,
                 Value = group.Sum(x => x.Quantity),
                 ValueLabel = group.Sum(x => x.Quantity).ToString()
             })
             .OrderByDescending(x => x.Value)
             .Take(8)
-            .ToListAsync();
+            .ToList();
 
         var productSalesShare = productSalesByRange
             .Take(6)
@@ -131,10 +98,16 @@ public class ReportingService
         return new ReportsSnapshot
         {
             RangeLabel = $"{normalizedFromDate:dd MMM yyyy} - {normalizedToDate:dd MMM yyyy}",
+            TotalRevenue = paidItemsInRange.Sum(x => x.Revenue),
+            TotalProfit = paidItemsInRange.Sum(x => x.Profit),
             RevenueByDay = revenueByDay,
+            ProfitByDay = profitByDay,
             RevenueByWeek = revenueByWeek,
+            ProfitByWeek = profitByWeek,
             RevenueByMonth = revenueByMonth,
+            ProfitByMonth = profitByMonth,
             RevenueByYear = revenueByYear,
+            ProfitByYear = profitByYear,
             ProductSalesByRange = productSalesByRange,
             ProductSalesShare = productSalesShare
         };
@@ -152,5 +125,110 @@ public class ReportingService
     {
         var offset = ((int)date.DayOfWeek + 6) % 7;
         return date.Date.AddDays(-offset);
+    }
+
+    private static List<BarChartItem> BuildWeeklyBars(
+        DateTime fromDate,
+        DateTime toDate,
+        IReadOnlyCollection<PaidOrderItemSnapshot> items,
+        Func<PaidOrderItemSnapshot, decimal> selector)
+    {
+        var weekStart = StartOfWeek(fromDate);
+        var finalWeekStart = StartOfWeek(toDate);
+        var bars = new List<BarChartItem>();
+
+        for (var current = weekStart; current <= finalWeekStart; current = current.AddDays(7))
+        {
+            var nextWeek = current.AddDays(7);
+            var value = items
+                .Where(x => x.CreatedTime >= current && x.CreatedTime < nextWeek)
+                .Sum(selector);
+
+            bars.Add(new BarChartItem
+            {
+                Label = $"W{ISOWeek.GetWeekOfYear(current)}",
+                Subtitle = $"{current:dd MMM}",
+                Value = (double)value,
+                ValueLabel = CurrencyFormatter.ToCurrency(value)
+            });
+        }
+
+        return bars;
+    }
+
+    private static List<BarChartItem> BuildMonthlyBars(
+        DateTime fromDate,
+        DateTime toDate,
+        IReadOnlyCollection<PaidOrderItemSnapshot> items,
+        Func<PaidOrderItemSnapshot, decimal> selector)
+    {
+        var monthStart = new DateTime(fromDate.Year, fromDate.Month, 1);
+        var lastMonthStart = new DateTime(toDate.Year, toDate.Month, 1);
+        var bars = new List<BarChartItem>();
+
+        for (var current = monthStart; current <= lastMonthStart; current = current.AddMonths(1))
+        {
+            var nextMonth = current.AddMonths(1);
+            var value = items
+                .Where(x => x.CreatedTime >= current && x.CreatedTime < nextMonth)
+                .Sum(selector);
+
+            bars.Add(new BarChartItem
+            {
+                Label = current.ToString("MMM"),
+                Subtitle = current.ToString("yyyy"),
+                Value = (double)value,
+                ValueLabel = CurrencyFormatter.ToCurrency(value)
+            });
+        }
+
+        return bars;
+    }
+
+    private static List<BarChartItem> BuildYearlyBars(
+        DateTime fromDate,
+        DateTime toDate,
+        IReadOnlyCollection<PaidOrderItemSnapshot> items,
+        Func<PaidOrderItemSnapshot, decimal> selector,
+        string subtitle)
+    {
+        var yearStart = new DateTime(fromDate.Year, 1, 1);
+        var finalYearStart = new DateTime(toDate.Year, 1, 1);
+        var bars = new List<BarChartItem>();
+
+        for (var current = yearStart; current <= finalYearStart; current = current.AddYears(1))
+        {
+            var nextYear = current.AddYears(1);
+            var value = items
+                .Where(x => x.CreatedTime >= current && x.CreatedTime < nextYear)
+                .Sum(selector);
+
+            bars.Add(new BarChartItem
+            {
+                Label = current.Year.ToString(),
+                Subtitle = subtitle,
+                Value = (double)value,
+                ValueLabel = CurrencyFormatter.ToCurrency(value)
+            });
+        }
+
+        return bars;
+    }
+
+    private sealed class PaidOrderItemSnapshot
+    {
+        public DateTime CreatedTime { get; set; }
+
+        public decimal Revenue { get; set; }
+
+        public decimal Cost { get; set; }
+
+        public decimal Profit => Revenue - Cost;
+
+        public int Quantity { get; set; }
+
+        public string ProductName { get; set; } = string.Empty;
+
+        public string Manufacturer { get; set; } = string.Empty;
     }
 }

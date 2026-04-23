@@ -12,10 +12,16 @@ public class ReportsViewModel : ViewModelBase
     private DateTimeOffset _fromDate = new(new DateTime(DateTime.Today.Year, DateTime.Today.Month, 1));
     private DateTimeOffset _toDate = new(DateTime.Today);
     private string _rangeLabel = string.Empty;
+    private decimal _totalRevenue;
+    private decimal _totalProfit;
     private ObservableCollection<ChartPoint> _revenueByDay = [];
+    private ObservableCollection<ChartPoint> _profitByDay = [];
     private ObservableCollection<BarChartItem> _revenueByWeek = [];
+    private ObservableCollection<BarChartItem> _profitByWeek = [];
     private ObservableCollection<BarChartItem> _revenueByMonth = [];
+    private ObservableCollection<BarChartItem> _profitByMonth = [];
     private ObservableCollection<BarChartItem> _revenueByYear = [];
+    private ObservableCollection<BarChartItem> _profitByYear = [];
     private ObservableCollection<BarChartItem> _productSalesByRange = [];
     private ObservableCollection<PieChartItem> _productSalesShare = [];
 
@@ -31,10 +37,22 @@ public class ReportsViewModel : ViewModelBase
         private set => SetProperty(ref _revenueByDay, value);
     }
 
+    public ObservableCollection<ChartPoint> ProfitByDay
+    {
+        get => _profitByDay;
+        private set => SetProperty(ref _profitByDay, value);
+    }
+
     public ObservableCollection<BarChartItem> RevenueByWeek
     {
         get => _revenueByWeek;
         private set => SetProperty(ref _revenueByWeek, value);
+    }
+
+    public ObservableCollection<BarChartItem> ProfitByWeek
+    {
+        get => _profitByWeek;
+        private set => SetProperty(ref _profitByWeek, value);
     }
 
     public ObservableCollection<BarChartItem> RevenueByMonth
@@ -43,10 +61,22 @@ public class ReportsViewModel : ViewModelBase
         private set => SetProperty(ref _revenueByMonth, value);
     }
 
+    public ObservableCollection<BarChartItem> ProfitByMonth
+    {
+        get => _profitByMonth;
+        private set => SetProperty(ref _profitByMonth, value);
+    }
+
     public ObservableCollection<BarChartItem> RevenueByYear
     {
         get => _revenueByYear;
         private set => SetProperty(ref _revenueByYear, value);
+    }
+
+    public ObservableCollection<BarChartItem> ProfitByYear
+    {
+        get => _profitByYear;
+        private set => SetProperty(ref _profitByYear, value);
     }
 
     public ObservableCollection<BarChartItem> ProductSalesByRange
@@ -81,6 +111,34 @@ public class ReportsViewModel : ViewModelBase
         set => SetProperty(ref _rangeLabel, value);
     }
 
+    public decimal TotalRevenue
+    {
+        get => _totalRevenue;
+        private set
+        {
+            if (SetProperty(ref _totalRevenue, value))
+            {
+                OnPropertyChanged(nameof(TotalRevenueText));
+            }
+        }
+    }
+
+    public decimal TotalProfit
+    {
+        get => _totalProfit;
+        private set
+        {
+            if (SetProperty(ref _totalProfit, value))
+            {
+                OnPropertyChanged(nameof(TotalProfitText));
+            }
+        }
+    }
+
+    public string TotalRevenueText => CurrencyFormatter.ToCurrency(TotalRevenue);
+
+    public string TotalProfitText => CurrencyFormatter.ToCurrency(TotalProfit);
+
     public bool IsLoading
     {
         get => _isLoading;
@@ -106,10 +164,16 @@ public class ReportsViewModel : ViewModelBase
             });
 
             RangeLabel = snapshot.RangeLabel;
+            TotalRevenue = snapshot.TotalRevenue;
+            TotalProfit = snapshot.TotalProfit;
             RevenueByDay = new ObservableCollection<ChartPoint>(snapshot.RevenueByDay);
+            ProfitByDay = new ObservableCollection<ChartPoint>(snapshot.ProfitByDay);
             RevenueByWeek = new ObservableCollection<BarChartItem>(snapshot.RevenueByWeek);
+            ProfitByWeek = new ObservableCollection<BarChartItem>(snapshot.ProfitByWeek);
             RevenueByMonth = new ObservableCollection<BarChartItem>(snapshot.RevenueByMonth);
+            ProfitByMonth = new ObservableCollection<BarChartItem>(snapshot.ProfitByMonth);
             RevenueByYear = new ObservableCollection<BarChartItem>(snapshot.RevenueByYear);
+            ProfitByYear = new ObservableCollection<BarChartItem>(snapshot.ProfitByYear);
             ProductSalesByRange = new ObservableCollection<BarChartItem>(snapshot.ProductSalesByRange);
             ProductSalesShare = new ObservableCollection<PieChartItem>(snapshot.ProductSalesShare);
         }
