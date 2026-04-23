@@ -119,4 +119,4 @@ Real Vietnamese-market gaming accessory products collected from Phong Vu and use
 
 - Retail pricing source: `https://phongvu.vn`
 - Price check date: 2026-04-23
-- Public image source used for packaged product galleries: Unsplash
+- Product image source used for packaged galleries: each product's own Phong Vu gallery page

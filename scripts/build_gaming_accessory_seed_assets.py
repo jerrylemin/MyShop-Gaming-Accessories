@@ -28,7 +28,7 @@ REPO_ROOT = Path(__file__).resolve().parents[1]
 DATASET_PATH = REPO_ROOT / "DataAccess" / "Seeding" / "gaming_accessories_seed_data.json"
 SAMPLE_DOC_PATH = REPO_ROOT / "docs" / "sample_products.md"
 ASSET_DIR = REPO_ROOT / "Assets" / "GamingProducts"
-SOURCE_IMAGE_DIR = REPO_ROOT / "Assets" / "_source_gaming_images"
+SOURCE_IMAGE_DIR = REPO_ROOT / "Assets" / "_source_product_images"
 
 
 @dataclass(frozen=True)
@@ -365,7 +365,7 @@ def fetch_product_record(config: CategoryConfig, summary: dict, running_index: i
         "sourceUrl": product_url,
         "sourceCheckedOn": date.today().isoformat(),
         "specs": specs,
-        "imageSet": config.source_key,
+        "imageUrls": extract_product_image_urls(product_root, document),
     }
 
 
@@ -437,7 +437,7 @@ def write_sample_doc(dataset: list[dict]) -> None:
             "- Retail pricing source: `https://phongvu.vn`",
             "- Price check date: "
             + ", ".join(sorted({item["sourceCheckedOn"] for item in dataset})),
-            "- Public image source used for packaged product galleries: Unsplash",
+            "- Product image source used for packaged galleries: each product's own Phong Vu gallery page",
         ]
     )
 
@@ -445,33 +445,36 @@ def write_sample_doc(dataset: list[dict]) -> None:
     SAMPLE_DOC_PATH.write_text("\n".join(lines) + "\n", encoding="utf-8")
 
 
-def ensure_base_images() -> None:
-    SOURCE_IMAGE_DIR.mkdir(parents=True, exist_ok=True)
-
-    for config in CATEGORY_CONFIGS:
-        for index, photo_id in enumerate(config.image_ids, start=1):
-            target_path = SOURCE_IMAGE_DIR / f"{config.source_key}_{index}.jpg"
-            if target_path.exists():
-                continue
-
-            image_url = f"https://unsplash.com/photos/{photo_id}/download?force=true&w=720&q=80"
-            payload = fetch_text(image_url, binary=True)
-            target_path.write_bytes(payload)
-
-
 def build_product_images(dataset: list[dict]) -> None:
-    ensure_base_images()
     ASSET_DIR.mkdir(parents=True, exist_ok=True)
+    SOURCE_IMAGE_DIR.mkdir(parents=True, exist_ok=True)
 
     for existing_file in ASSET_DIR.glob("*.jpg"):
         existing_file.unlink()
 
+    valid_source_dirs: set[str] = set()
     for product_id, item in enumerate(dataset, start=1):
-        image_set = item["imageSet"]
+        image_urls = item.get("imageUrls") or []
+        if len(image_urls) < 3:
+            raise RuntimeError(f"Product {item['sku']} does not have at least 3 source images.")
+
+        product_dir_name = slugify(item["sku"])
+        valid_source_dirs.add(product_dir_name)
+        product_dir = SOURCE_IMAGE_DIR / product_dir_name
+        if product_dir.exists():
+            shutil.rmtree(product_dir)
+        product_dir.mkdir(parents=True, exist_ok=True)
+
         for image_number in range(1, 4):
-            source_path = SOURCE_IMAGE_DIR / f"{image_set}_{image_number}.jpg"
+            image_url = image_urls[image_number - 1]
+            source_path = product_dir / f"{image_number}.jpg"
+            source_path.write_bytes(fetch_text(image_url, binary=True))
             target_path = ASSET_DIR / f"{product_id}_{image_number}.jpg"
             shutil.copyfile(source_path, target_path)
+
+    for existing_dir in SOURCE_IMAGE_DIR.iterdir():
+        if existing_dir.is_dir() and existing_dir.name not in valid_source_dirs:
+            shutil.rmtree(existing_dir)
 
 
 def parse_args() -> argparse.Namespace:
@@ -508,6 +511,65 @@ def main() -> int:
     print(f"Sample doc: {SAMPLE_DOC_PATH}")
     print(f"Images: {ASSET_DIR}")
     return 0
+
+
+def extract_product_image_urls(product_root: dict, document: str) -> list[str]:
+    urls: list[str] = []
+
+    def push(url: str | None) -> None:
+        if not url:
+            return
+        cleaned = url.strip()
+        if not cleaned or cleaned in urls:
+            return
+        urls.append(cleaned)
+
+    product_info = product_root.get("productInfo") or {}
+    product_detail = product_root.get("productDetail") or {}
+    push(product_info.get("imageUrl"))
+
+    for image in product_detail.get("images") or []:
+        push(image.get("url"))
+
+    product_group = product_detail.get("productGroup") or {}
+    for configuration in product_group.get("configurations") or []:
+        for option in configuration.get("options") or []:
+            push(option.get("thumbnailUrl"))
+            for image in option.get("images") or []:
+                push(image.get("url"))
+
+    product_options = product_root.get("productOptions") or {}
+    for row in product_options.get("rows") or []:
+        for option in row.get("options") or []:
+            push(option.get("imageUrl"))
+
+    if len(urls) < 3:
+        for html_url in extract_html_gallery_urls(document):
+            push(html_url)
+
+    if len(urls) < 3:
+        raise RuntimeError(f"Could not find at least 3 product images for {product_info.get('name', 'unknown product')}.")
+
+    return urls[:3]
+
+
+def slugify(value: str) -> str:
+    normalized = normalize_text(value)
+    return re.sub(r"[^a-z0-9]+", "-", normalized).strip("-")
+
+
+def extract_html_gallery_urls(document: str) -> list[str]:
+    matches = re.findall(r"https://lh3\.googleusercontent\.com/[^\"'\\]+", document)
+    preferred: list[str] = []
+
+    for match in matches:
+        if any(size in match for size in ("=w16", "=w32", "=w64", "=w180")):
+            continue
+        if match in preferred:
+            continue
+        preferred.append(match)
+
+    return preferred
 
 
 if __name__ == "__main__":

@@ -17,7 +17,11 @@
       "Màu sắc: Phantom White",
       "Kích thước: Layout 75"
     ],
-    "imageSet": "keyboard"
+    "imageUrls": [
+      "https://lh3.googleusercontent.com/dX_YIUqWfUufUCQvYoO_lGGSVDDFOsIeXLU9IdgivRgS5Cr5iwmR30sjHSEt_tDa4NHsWlYs876N2WI5z8vEMMI0sHUjoqQ",
+      "https://lh3.googleusercontent.com/v0S7WhxmEoLtb_0xGzMUSL6-Ok6hPbGHfkl7ry0tAdKP-0zJFfaUqFp8q_tcMAWyu-5dfQQzkA-BW_liEjjxmFb08Zi_H5gz",
+      "https://lh3.googleusercontent.com/yCJWMvjqMfa9TkVRcpCriyldv4FwJg3zVMuR2UyK1_uQ9SPjkfNNRtkIDYTiHlwNIM21SvjktAyl0t506cKdLlWdjzlqU6A7"
+    ]
   },
   {
     "sku": "GKB-002",
@@ -37,7 +41,11 @@
       "Màu sắc: Phantom Green",
       "Kích thước: Layout 75"
     ],
-    "imageSet": "keyboard"
+    "imageUrls": [
+      "https://lh3.googleusercontent.com/8CCkd9V0ipAeA5vS0ASlY2GbJvR7oaXX5lpEHzVMhFhLY947CLGNOlHYds4jlU4j190WXMzhTqIveSPVkjJb_5EwswJAxEfZ",
+      "https://lh3.googleusercontent.com/ROV9fQ0nts-vnQkUEq6t18_C5dPLpmO_8-ao6OwYxq7BHp46dyHBhcTtjMHO_onBVKG0z7V8HAfUzmlCg_Pnx6WZJJd8To0r",
+      "https://lh3.googleusercontent.com/BdDF3fmrpOCLmTMU1_DRPMDwp2LO4mGCd03Br7ZaIrMh5_Yn0Pw0fFNg5Bwmb9dPQVayRx3sQ7sEHgadm9mRv8Qul9fgmfe8"
+    ]
   },
   {
     "sku": "GKB-003",
@@ -57,7 +65,11 @@
       "Màu sắc: Trắng",
       "Kích thước: Layout 75"
     ],
-    "imageSet": "keyboard"
+    "imageUrls": [
+      "https://lh3.googleusercontent.com/AOg9yu3FPpn6Qtp3bOgb-CQ1fcl9K-XGIG1lCRgQ6mu1wD_8VmpwXEmE87HTCznWgHNpT07O8DcKDxidfw5dRcXG6srG-nsC",
+      "https://lh3.googleusercontent.com/S-MWXx1cdgJt-Y_kO4rZGkBCLfbsPOhvV6Pfwofzy_9YQMpFDdHyxHEYkKhpCThA1TuXJBdTlYddC6AfmBhTatSdD3OqY4sSaw",
+      "https://lh3.googleusercontent.com/mNyHP8KbJHFP0vHR8lGlqRcFcABUkwUifsUErLKyBHkxYreSovNph7CWJDmivusXKhi4KbB5ftikit4TwTuoU2dKQv46zMfL"
+    ]
   },
   {
     "sku": "GKB-004",
@@ -77,7 +89,11 @@
       "Màu sắc: Vàng",
       "Kích thước: Tenkeyless"
     ],
-    "imageSet": "keyboard"
+    "imageUrls": [
+      "https://lh3.googleusercontent.com/zMJewapmIAGnz490weqEklnd41-jKPAJNu8m0v30mdx0WzAEcjS3U6-pmNoYYaoDXrPjjJHnIcJJPngZPtQRCEN-S5PZaOCwyg",
+      "https://lh3.googleusercontent.com/SzXuEQYih6h19ySysZpup5XsWAqTKBisYryp684JgyerotEunrGJNCD4LTF5Xlx6LdDFUedjeP8FC4SCrBNJkgseBEsiIRE",
+      "https://lh3.googleusercontent.com/u2UK2IPK_4zeKDwDnllEe2vrYKb0do1sfiGiAvPxeA5L0J9ETlAQT5D38b29fj5_h_O6S12UcG5YQkgSpYWNat8sCJhbCkFv"
+    ]
   },
   {
     "sku": "GKB-005",
@@ -97,7 +113,11 @@
       "Màu sắc: Đen",
       "Kích thước: Tenkeyless"
     ],
-    "imageSet": "keyboard"
+    "imageUrls": [
+      "https://lh3.googleusercontent.com/X9pBtt9sRbCpkQ7etiJzgBu9PxtJfJy3w1ivpbNcp2ebSq0eycJZIzaexUhgi0NMMU-38WRByQLorVcakpP32-8ZcAy013EC",
+      "https://lh3.googleusercontent.com/mIYkVWQ-7d35Vp-HlOXsvtzx1KOi9Zefwsl6gCdQCbc3IprZoRbTuqtv5E5gJddJnxrcommZ3OI7DZgyEyrdJLa8-1p9kcSR",
+      "https://lh3.googleusercontent.com/jG3EmMGnhHwx0mp16m5aIOv0bpqLj3lve6r0FwCh6q-m512CWFaqg8xIKr13o--6rMmLobGCDZ0WRoGz5ICKcqGeTWtVMQKL"
+    ]
   },
   {
     "sku": "GKB-006",
@@ -117,7 +137,11 @@
       "Màu sắc: Đen",
       "Kích thước: Layout 87"
     ],
-    "imageSet": "keyboard"
+    "imageUrls": [
+      "https://lh3.googleusercontent.com/fTrR0KnHe9mbPfVTlxqxEgy80HVSkL8izZKHCKi4H4x03WOK1JXuAkuD8twfp4iXGJyRoioSdAHlmE2TuJ1eCEkX_VS7ntLxXQ",
+      "https://lh3.googleusercontent.com/idH18qOBd3fU-XB53LIwEW9QMCYrbFQBWuWfUqrW7Xa7q5ln7zngAE94hghppTHWvbJXHOuPr-rdteqJPGmhiScpfT8Tu-U",
+      "https://lh3.googleusercontent.com/h0mgsctXaXRxxi45wjx2kqIoxZhUFn7Thw3a8PlQ5CUEW8pl82gMilW7T7yCYxTktoo2TOkAJgpQgZIPX6aGpaj6BLPz_SfXHg"
+    ]
   },
   {
     "sku": "GKB-007",
@@ -137,7 +161,11 @@
       "Màu sắc: Đen",
       "Kích thước: Full size"
     ],
-    "imageSet": "keyboard"
+    "imageUrls": [
+      "https://lh3.googleusercontent.com/ZCADNIi58d83Dzp4y1kvg9k3YtUmekpcry2ziH1pdfKfsm5zke5ewsW2pw6vDAo_f3LX9RRdzLjREzWjM9UOZ7MnCbCeLGF2",
+      "https://lh3.googleusercontent.com/ozOh1TkQH1XEsPDODjoTgndRkMt-n4xphwI9dvSesFt-eyp07pJo6uKLL8GIDoYdqO_5Q3TSUebKMY7t2T_bjRuPZDuErgU",
+      "https://lh3.googleusercontent.com/lFZZtBMUqkbl9qKKUe3DSmHqpb62UjWrOkxqcJ6lN3yM83Wg2Irp-ZlvkUwGO6TMcsscLELMZa_lN9jo8tKteWsCzmUii7po=rw"
+    ]
   },
   {
     "sku": "GKB-008",
@@ -157,7 +185,11 @@
       "Màu sắc: Đen",
       "Kích thước: Layout 75"
     ],
-    "imageSet": "keyboard"
+    "imageUrls": [
+      "https://lh3.googleusercontent.com/lpHl_TTsYxlfD4CXxVBkfrzZa5nLn-pdw-tHTgaeRd9oInTUdWgF_VA63Y1vI-CXkX5Q-X3Vlu5CbkVzXouKdkhlb9iz56Q",
+      "https://lh3.googleusercontent.com/noRg3RBaHe7ImxninKHBypYijCq5LD9t3vpGTsn9-kN37Ve9sVn67j4tZ7Dukfwf1C-8HhFcdkp-wktKCJPJAXJOThecvHPk8g",
+      "https://lh3.googleusercontent.com/lFZZtBMUqkbl9qKKUe3DSmHqpb62UjWrOkxqcJ6lN3yM83Wg2Irp-ZlvkUwGO6TMcsscLELMZa_lN9jo8tKteWsCzmUii7po=rw"
+    ]
   },
   {
     "sku": "GKB-009",
@@ -177,7 +209,11 @@
       "Màu sắc: Trắng đen- Dual Tone",
       "Kích thước: Layout 96"
     ],
-    "imageSet": "keyboard"
+    "imageUrls": [
+      "https://lh3.googleusercontent.com/dSHoznWKLhDDZh8qn3u4Okz0CSbRCB94Z1tHFDVXSQODgpHyrlP-jEJLNGsiIY5aoRpX6PRfyC7g8PN0sysVU9VxU9L8aBGrRQ",
+      "https://lh3.googleusercontent.com/lFZZtBMUqkbl9qKKUe3DSmHqpb62UjWrOkxqcJ6lN3yM83Wg2Irp-ZlvkUwGO6TMcsscLELMZa_lN9jo8tKteWsCzmUii7po=rw",
+      "https://lh3.googleusercontent.com/E7coVNI7mvCGp5GASzte71-stIZAYet_sozvQ0A1D_GJfvW1IFJGzymplqvm4A5upZV6ONPQtjgloVYzpHSG09lmQBrEDLU=rw"
+    ]
   },
   {
     "sku": "GKB-010",
@@ -197,7 +233,11 @@
       "Màu sắc: Đen",
       "Kích thước: Layout 96"
     ],
-    "imageSet": "keyboard"
+    "imageUrls": [
+      "https://lh3.googleusercontent.com/yB9sXj980qar_C4hFpsdmOMC_cSCSIlQ-2jFGMfw9F2uHjvHR6gHEv3X8cra9XOp1MWVsGUNBglhDT_vNCe0OW04yZ6gCDzuMQ",
+      "https://lh3.googleusercontent.com/64fSfbzEPCszK3uj1Jt-H1IthsKy7q5y7cp5DnZK-xf2EJpcy6LoY2g6r05OJLlBm9SFjiteCYbAGSbBFsLlGPj-QXpDxn3L",
+      "https://lh3.googleusercontent.com/KxpLHho6alCAdVBqpJ2v7fkhaZcUVefhyb849FlPHNM7TIyWd4BEnTdv6cDiG7hr9CENFJf9KPjOt9zz4VLQqC1UZnSI8e3V"
+    ]
   },
   {
     "sku": "GKB-011",
@@ -217,7 +257,11 @@
       "Màu sắc: Đen",
       "Kích thước: Layout 96"
     ],
-    "imageSet": "keyboard"
+    "imageUrls": [
+      "https://lh3.googleusercontent.com/_Gw032yq0YbEYHWDfuvyAPnI_KZb0VgA4BqcaCLyVBQqJ9DPruHzWavmp9qVfQxuNbk16Xa2hNNeSk-gpYWuopo3HONkhVw",
+      "https://lh3.googleusercontent.com/lFZZtBMUqkbl9qKKUe3DSmHqpb62UjWrOkxqcJ6lN3yM83Wg2Irp-ZlvkUwGO6TMcsscLELMZa_lN9jo8tKteWsCzmUii7po=rw",
+      "https://lh3.googleusercontent.com/E7coVNI7mvCGp5GASzte71-stIZAYet_sozvQ0A1D_GJfvW1IFJGzymplqvm4A5upZV6ONPQtjgloVYzpHSG09lmQBrEDLU=rw"
+    ]
   },
   {
     "sku": "GKB-012",
@@ -237,7 +281,11 @@
       "Màu sắc: Xanh Dương+Trắng+Tím Đậm",
       "Kích thước: Layout 99"
     ],
-    "imageSet": "keyboard"
+    "imageUrls": [
+      "https://lh3.googleusercontent.com/mBscr8PtQgUTqsehFNoS-rUdsfqrQiY44O_TSEhOM8omOaOFdL_K32Mhb03zqTg6pyMSI9DKgQ0HJinSbVwnSmkPu5skRvty",
+      "https://lh3.googleusercontent.com/sB11Kj00pPOjcdbPbp-JS1emgKuwdBD26RbafIeVD6enUVfcQRSN4h-yiWtQMuVhzbtGuGr_6V965qys6dsKaL_SQnJtTim0",
+      "https://lh3.googleusercontent.com/jM1pXhS_V1Pf50lLKBkBPNzTL6OxQQpn92eedSsu1Z5TYt7KbVX-UwibCXhonmXlU5vnbGvg5SKGyHs4OTbrozdrf_v9IYkc"
+    ]
   },
   {
     "sku": "GKB-013",
@@ -257,7 +305,11 @@
       "Màu sắc: Xanh Dương + Trắng + Tím",
       "Kích thước: Layout 80"
     ],
-    "imageSet": "keyboard"
+    "imageUrls": [
+      "https://lh3.googleusercontent.com/GdNFdDct2J_w4mxa_kcEgtGaQLmNNY9fttF5Na_8jAYVLMH7mF6EPYmW0BZvXKgxMvP2h-zi5iKGXVWGvg3QRX1XmYjiwc7rgg",
+      "https://lh3.googleusercontent.com/DL8dHEILfBpl_qRlgayYshFAewjV__PpjeHmeHMAEORHbP10U9SXqEysL7ay11uQz00TkTRjoz5BF91ckrsV3BQ9cR2P7rg",
+      "https://lh3.googleusercontent.com/Im_mJEP47oXCUXHf0GBtk9lbrZVaLbQQJSa_lD-zRB9Pq7eDh-9Q2d_Btp97B0Cxa1BykzVzpU784cv17ZNNDUWN0t_5CLFA"
+    ]
   },
   {
     "sku": "GKB-014",
@@ -277,7 +329,11 @@
       "Màu sắc: Xám",
       "Kích thước: Layout 61"
     ],
-    "imageSet": "keyboard"
+    "imageUrls": [
+      "https://lh3.googleusercontent.com/5MjhbF2iYvv8KD_QD0e7b49C_JgQYZkitUUYeGsIm4BlkG3KDG3vTWaxiYe4udzMAUeJK57uMVHd_gKr_1H2NHzqB84gC1pG",
+      "https://lh3.googleusercontent.com/nWjxPjo6ds7IMjeUpg7B_1fFDGXKfgiZOHE_yKLtLYynlN4WinA98mJGfRlLTe2jnBx8K6rvWF1QyzYPoOMaJ7SmlYlVvJs",
+      "https://lh3.googleusercontent.com/xOoQFLTnwkW_kfaYLaZTEBev8BXce24xCrenvQm8GoX1szv3vlvOYIAEnD7cxUVv-ubsdD_FgfIa28bkwneHdU6y1d8t9KkaJQ"
+    ]
   },
   {
     "sku": "GKB-015",
@@ -297,7 +353,11 @@
       "Màu sắc: Đen",
       "Kích thước: Full size"
     ],
-    "imageSet": "keyboard"
+    "imageUrls": [
+      "https://lh3.googleusercontent.com/rSDuk9CkKsldh6UnJB3cXJIkP69fPjrzVaWLQy9aTSMcKQO5nuSMIsve903_eJfjlXaSYMM7WO63MMqL20Hz4mNFMIzTb1rX",
+      "https://lh3.googleusercontent.com/-Wzg4ONoVyD2odcD9RQKzkBqZdmo1l4omRQakZ3WOrtNbSATNFooORYVG_WS7DiK4EAIfAX7YauyIdzz6F3dm02y6uQkV1I",
+      "https://lh3.googleusercontent.com/TCSuhKNAqQ-RihtQUxSTLcpOMorJddk6D3DBrHJSZhfcymHSozJo1FjOe2yzxF8hBGdgAAV6snFEBmGi69Y-7mwLVabnoM8"
+    ]
   },
   {
     "sku": "GKB-016",
@@ -317,7 +377,11 @@
       "Màu sắc: Tím + trắng",
       "Cân nặng (g): 910"
     ],
-    "imageSet": "keyboard"
+    "imageUrls": [
+      "https://lh3.googleusercontent.com/jCjcyFk36C87xqvSyHTzcGSDZPEblzcivnNCUith3jwmdl30iB7BcuFcgJA_mQGCAyIY4GOk19b6i4UnguqqP_JCKlwQ_oxo",
+      "https://lh3.googleusercontent.com/PzrS_92Tcqpcxvc6aECtKp0R0_V2XOJBjt10hxdKpAbyef2Jz_qJcKX8SxuLA7PUf_Z3TFGqd1zzcKNz8OXBBuuBpAe1qnsFHg",
+      "https://lh3.googleusercontent.com/vCNBt20JDhwtmSvTxTAO2o11cT4BzW3oIJqd3sauzLEjM_ZGjfnDOoVew7SELrhUJaWGbm7gyDFChFXKduItzRFi1xX4zAn5PQ"
+    ]
   },
   {
     "sku": "GKB-017",
@@ -337,7 +401,11 @@
       "Cân nặng (g): 720",
       "Kết nối bàn phím: USB 2.0"
     ],
-    "imageSet": "keyboard"
+    "imageUrls": [
+      "https://lh3.googleusercontent.com/WccqTxNaM4EpHOGgnD4IyvmgSqW_DaKWGLAU77IfCgXsxuZJIRwjCc8Pc1umpPFRNtMz27rYoUeMX3YgMTeOjz4czwAIyKU",
+      "https://lh3.googleusercontent.com/gK59sPSyMZx3dYl5rxrqHjXnA65hsoGpK69aFHChWxaWbAlTIV0iB57szBhxVHrb5jeUcD2mpFgmIr6x4h0SWg1SfyCEJrcv",
+      "https://lh3.googleusercontent.com/wTGkV8jCmaLWhdenEQv2sz9RvH4zbOF-IIAQXcfhI84JVtJbese_d6whI3HWkcpCMNcD89ACsFPNUCsUOqpX_IlPGQwiG6A_"
+    ]
   },
   {
     "sku": "GKB-018",
@@ -357,7 +425,11 @@
       "Màu sắc: Đen",
       "Kích thước: Full size"
     ],
-    "imageSet": "keyboard"
+    "imageUrls": [
+      "https://lh3.googleusercontent.com/Ab_1i0D-QYcmxBmxDI24j9Gst3pLa1EU1gVqysZxVRxrXEZknqKi4cvqcdcvc0x8ekWozhfJ0usvhuGT4v6SUTLp-0Y-UglzYg",
+      "https://lh3.googleusercontent.com/Z3w6TF6F8nHQ1UvKiHPpXWvDRSlyV4n7mchDWHhDXc9mSNHUFC-0p2Q9HXDEDu4GbGYjNTp7ArutGCupCZcOYydZidpbsNmI",
+      "https://lh3.googleusercontent.com/6B8epU7UoNVj-C1wqq6w6_JxG8N1XW6B2EtykjsPlXsDal8Gf2XHZB4r3rXgDEgmfp96ioztOAEQhcfX3E05EfqpI515sjs8"
+    ]
   },
   {
     "sku": "GKB-019",
@@ -377,7 +449,11 @@
       "Màu sắc: Xám+Đen gradient",
       "Cân nặng (g): 1050"
     ],
-    "imageSet": "keyboard"
+    "imageUrls": [
+      "https://lh3.googleusercontent.com/G5TN4B8xI4_h2q_LjUDQdEbOIheiRKkxYqoZ_UO5pJUyr3odL6gHlAn0FmcXe2B8Js6F6syS9gwOCmB1ufJi7ZM-svXDcp3s",
+      "https://lh3.googleusercontent.com/XBJx9dTXUXS33b7NmYWNs0tz0Ur40VvkNbCjyvyVPVL-D70izArAzjQqUTNEo2JCoMCQ1NBoPd_IsOaOPyBH1C3drTFsZ75f",
+      "https://lh3.googleusercontent.com/8SKf0dB5QcFsXUlFfVpKcbXT4Ygf4jZlxDCM-TcgtcIaWcTdGYFTCfkDeqMJfiCV1M3o5Vt0AgFQtLlUQYKWhCR3gDhXl0jN6w"
+    ]
   },
   {
     "sku": "GKB-020",
@@ -397,7 +473,11 @@
       "Màu sắc: Orange Juice",
       "Kích thước: Layout 87"
     ],
-    "imageSet": "keyboard"
+    "imageUrls": [
+      "https://lh3.googleusercontent.com/F5A3TsOO79i9ygrzUiliiNxiNGVEMQrBHNn1P4Lg_mgp_TXPbW9sWDNj_r42Hp3BAfBaRpY5_v0G_3XG2G992XKoZJPh8Sc",
+      "https://lh3.googleusercontent.com/0obFYSqAlPEiPzFUWEbtFCkrSJuG0N8MVz9LxOeADqPc_SZaiPc-usiFIH0mx1bXaUaBTy4neTsta0fqSJLfOGnjI9Hn3QeVJQ",
+      "https://lh3.googleusercontent.com/jhQk7PqgWomHYJy7UhQk9ihvLnTPHKCyjwidPn6n-doYoJKGUs6kj1qmJlD8thsTo55-Xku-k3LpIrI5P_6-ZJUCayiIDqHo"
+    ]
   },
   {
     "sku": "GKB-021",
@@ -417,7 +497,11 @@
       "Màu sắc: Xám đậm + Trắng + Xanh dương",
       "Cân nặng (g): 1220"
     ],
-    "imageSet": "keyboard"
+    "imageUrls": [
+      "https://lh3.googleusercontent.com/RdLfM4mOirBPTousyXvO6BUkRZfBkWlBrnv-cPLozIF9Fn2JnKJ7_q3W_fJgDXpgcGZ03AP2IZ-Q9NQpAKFUn3L5p78S4GM",
+      "https://lh3.googleusercontent.com/uH67n-hsQc5-ZiEewojgAsz5-lGMRVXYC3TiXbo3xGgZYs7AgVTG1JwO7UBYasMo8LX1fYrcfqtwklaV0g3nlM9yNmgZTMGT",
+      "https://lh3.googleusercontent.com/fo--dh9H_OlQ2VNooUmZFcoigDoG4BmESdkM8AVPVkiecMNRLHnSAhDjLgCLa5iZ5gJWRT7rjenWSOVPIhtpsDA8T24Yafo2ew"
+    ]
   },
   {
     "sku": "GKB-022",
@@ -437,7 +521,11 @@
       "Màu sắc: Xám",
       "Cân nặng (g): 958.5"
     ],
-    "imageSet": "keyboard"
+    "imageUrls": [
+      "https://lh3.googleusercontent.com/dzqwN2m4sFRlotoMJEKMy4DRs5Rq-JAu6J7R5W_DSXU5W-IvtFaJVbToQf8sA5r7Ey_3w6tyQASVSF5xtWmqu7i9KtFDRP9zGA",
+      "https://lh3.googleusercontent.com/HkAhN60771-tsH5hkqBEdYZHmFom5D0DW64tb6BHovWRqUUWayJIgPt5HpWkzbqB2RCeJtXjF8A_AptqYXeHKyaZwWvs41qB8A",
+      "https://lh3.googleusercontent.com/t6fDs921tBJMMeY4_1XgmdtwDJNx1ix39Z04LCUKu_GttCR7KkOURmY69Q2q9XzXkiE8peOlNH86BeXIM7FojDDh5_2vK9U"
+    ]
   },
   {
     "sku": "GMS-023",
@@ -457,7 +545,11 @@
       "Cảm biến: Optical",
       "Số nút bấm: 5"
     ],
-    "imageSet": "mouse"
+    "imageUrls": [
+      "https://lh3.googleusercontent.com/YbVe9lu2Bek2au5lCKZ0yzAMWdItpliaImrHXjMSde077G2sFLSZHolUIABiDvrsUDUCSCsZoUzezGSiveo1aBKScCi5Oksa",
+      "https://lh3.googleusercontent.com/cjoBi6i123PKowdLr20IkMXIHiVoj5oG6JV-zm8BJ45NZ0j45XjZ3d9-woSUQopX8jvtN1hb7qZ0HFthXiVRdokN-wHGpN0",
+      "https://lh3.googleusercontent.com/npMVojXMKrmeaR3HsPHnfkvnvcQ6jw_ggBWQCichWtW9rAUTFxawPGptF5qFamEneZn6AJGBdvJcTfVTvvt4-Panq68En3XC"
+    ]
   },
   {
     "sku": "GMS-024",
@@ -477,7 +569,11 @@
       "Khối lượng: 51g",
       "Màu sắc: Trắng"
     ],
-    "imageSet": "mouse"
+    "imageUrls": [
+      "https://lh3.googleusercontent.com/ZwSkT9UIhkx_s7Ox53PW6nBg0fvUxUJ6ghcEHUUI3UxEwie82fnIDtIKx0YOX_se7HbdfO9afKXnEjjLoa1xdW0yGgxku0iq",
+      "https://lh3.googleusercontent.com/SLiuma1qFmklJzDOVPZiex8YrMPih3jagS6QVQ_659syo8mcEui65QkA2ojcdVtRIY7SJbOd_6qmOMAzGQzZXa2TtCd69y0",
+      "https://lh3.googleusercontent.com/jh_uZ4K6vDBnhwTU37eE3IOPB5bClCsbk82GKLw0Qk_Hxf0ys3Zb8NbE21f5I1FWdqyRAziN9IyBKULztus2-9bXvhGtqsc"
+    ]
   },
   {
     "sku": "GMS-025",
@@ -497,7 +593,11 @@
       "Số nút bấm: 6",
       "Khối lượng: 54g"
     ],
-    "imageSet": "mouse"
+    "imageUrls": [
+      "https://lh3.googleusercontent.com/8v7nqgTNfiLvAsDNmNOt1KkJH-ZyWg3DY-PkIbDjxbqCI1Y-p_bb-zKgcq_F1EkJ4QNLNBLHt6AhW_RxDMs4xJsPM48rPcLX",
+      "https://lh3.googleusercontent.com/oq0m_oXpAL29KstWXBS7zT7tpEMS1M2NIiqjH66iF1FJGE02tTU3GbQljSkvGrpxVGLDPkuCrvPvco5W2hJXZTHFGmOY3Ak",
+      "https://lh3.googleusercontent.com/yaJpvR_avBkbYRP36Evqw0S65jEqIwP2buNmRKgpjDifpZRzj432NyhykEHkQZMiSXNNXzoJ0XSVJ8i4eB2q-Da-s-2ITXyF"
+    ]
   },
   {
     "sku": "GMS-026",
@@ -517,7 +617,11 @@
       "Số nút bấm: 6",
       "Khối lượng: 54g"
     ],
-    "imageSet": "mouse"
+    "imageUrls": [
+      "https://lh3.googleusercontent.com/4rvVNUAkiKrYgmMDBn748ZG8pQk6TBaF38H86g8M2dyptIlhFYaa93heSf2CcZ8KNiZ6iyXDb5a5TqjlTGmJA0hLO6gSkBs",
+      "https://lh3.googleusercontent.com/NDEXSH4xoC5leGDJ2b7c-z9XbemY2ToXI6vJwIFm5f7sS_D8z2oL3S7IoBbquD5V7O-_hNrNQlmaGhhCJkNOx-nwxQT78Z4iBQ",
+      "https://lh3.googleusercontent.com/lFZZtBMUqkbl9qKKUe3DSmHqpb62UjWrOkxqcJ6lN3yM83Wg2Irp-ZlvkUwGO6TMcsscLELMZa_lN9jo8tKteWsCzmUii7po=rw"
+    ]
   },
   {
     "sku": "GMS-027",
@@ -537,7 +641,11 @@
       "Cảm biến: Optical",
       "Số nút bấm: 10"
     ],
-    "imageSet": "mouse"
+    "imageUrls": [
+      "https://lh3.googleusercontent.com/sqPnFKgWzHSBjnPhJs0wwmREI7E0PNrysIPXu__bFF5W3hKDg04wyHrsmEmda0StuETCgbYELjQa9IoIN4SvY2eNAClrfVKw9w",
+      "https://lh3.googleusercontent.com/lFZZtBMUqkbl9qKKUe3DSmHqpb62UjWrOkxqcJ6lN3yM83Wg2Irp-ZlvkUwGO6TMcsscLELMZa_lN9jo8tKteWsCzmUii7po=rw",
+      "https://lh3.googleusercontent.com/E7coVNI7mvCGp5GASzte71-stIZAYet_sozvQ0A1D_GJfvW1IFJGzymplqvm4A5upZV6ONPQtjgloVYzpHSG09lmQBrEDLU=rw"
+    ]
   },
   {
     "sku": "GMS-028",
@@ -557,7 +665,11 @@
       "Số nút bấm: 11",
       "Khối lượng: 112 g"
     ],
-    "imageSet": "mouse"
+    "imageUrls": [
+      "https://lh3.googleusercontent.com/poI7Q36A3oR_rbb5DETZDmu9xRwHXQRhlry435VUBU7-_bxdzqbger_Jcs01oUleIg9hC8U6cOJUwHNxvYpLeECjOL1sH0c",
+      "https://lh3.googleusercontent.com/Bf9OAQSLIGY27cI54VWLem8Jekx1dAgBgVGuJbe1oL6l-3e9L_RuenYyn-FwfD9YCEBiHUYadjQLUgSDuBliGdcl_5h8bis",
+      "https://lh3.googleusercontent.com/3wsFnRQp_JXJIxGuDvp96PQoMN40pv9Ci39bjO7zxf689O9vLfcOKDglkwF_GYlxmsymq6uTjRDKpblQlTQ-lzleGd_aa5QfgQ"
+    ]
   },
   {
     "sku": "GMS-029",
@@ -577,7 +689,11 @@
       "Cảm biến: Optical",
       "Số nút bấm: 6"
     ],
-    "imageSet": "mouse"
+    "imageUrls": [
+      "https://lh3.googleusercontent.com/kwRsFet5TdaqO_TYdD6Z-yCPz5ldBs7ezucmfLY8q3QcurYjY8ApQUuBYIJEtPX6RrcPNcNenu55Nt6DprIgjvmMzGn2ACW2",
+      "https://lh3.googleusercontent.com/kg5RmU3vhhyY5lr5EZ-Ut59_-NJUhe6sYVejYY2rVuRtWhDCFWu3f9rvU0wfM33yx3XpgFetj98ruAHtt0hFr7d6oVuNymah",
+      "https://lh3.googleusercontent.com/9FB6xz8D1nC6wTk0KTKMN6detHyaYkkabE-ivepheekMgZ4BD-t9rKiJtutW2tbkyedrm0c87n8ZAEb3ikmEyqO25CZy1QNW"
+    ]
   },
   {
     "sku": "GMS-030",
@@ -597,7 +713,11 @@
       "Cảm biến: Optical",
       "Số nút bấm: 5"
     ],
-    "imageSet": "mouse"
+    "imageUrls": [
+      "https://lh3.googleusercontent.com/bzJXIqRb1g1ic85HQDOlpGfafEoI8-1M7j3x_XplkVuaTwusnYWTOXmjp1CP339lAh56960FEmftfyQmTYPUn1mcpD32ILU",
+      "https://lh3.googleusercontent.com/_E7izs7fLi2YGHFaIFA1dnM1Cmr9FqRFTStmrqvCaSI7XvzH0pKssXkfDayXHc9TQMx0SdMdJ9mb-NaN6KdiDfhCEXUhKwOu",
+      "https://lh3.googleusercontent.com/LO0LyGaHHqzdyL2PruBbACGMULTXPob_UbvhRJy_L6P0726tIPAqbmARpsehU-hucl3414h2b8wWqnK3hRZ8FMUSflG_MHfT"
+    ]
   },
   {
     "sku": "GMS-031",
@@ -617,7 +737,11 @@
       "Khối lượng: 72g",
       "Màu sắc: Trắng"
     ],
-    "imageSet": "mouse"
+    "imageUrls": [
+      "https://lh3.googleusercontent.com/bnBkpuOOg0MfR6tEOAJ-sCsuI77vYoON2UrAp_8vklBOwRBtdalc-vHY_ZGqbu0wUb2SIDkqyAOYOkaWPU18FHwXEttjErc",
+      "https://lh3.googleusercontent.com/VJnNbqqictborbb08AGChjn7cZMA4L63ZKWbxMGfypwBZiTrkJo38sOlA0_T2dBtUjJT7N8xFH3J_W2-U80dFAuCntSgoPx4",
+      "https://lh3.googleusercontent.com/FCXLq3xyrksfyv9pzZyHYizyNWrLgHRVHedTKm3-c7lGdrsdJ0J-AYnsgcnvsucZgEumE44phhHFmy-pvtJnN9WOEUud3aK_oA"
+    ]
   },
   {
     "sku": "GMS-032",
@@ -637,7 +761,11 @@
       "Số nút bấm: 5",
       "Khối lượng: 63g"
     ],
-    "imageSet": "mouse"
+    "imageUrls": [
+      "https://lh3.googleusercontent.com/dwDFSbzVoxhlochPg9rY5ahiF-hlpnPKDDjaxp4IQSvJt5X3fmcEYAH0-_ia4BoVTtErN6yHgTDDY6br79Pz0JXBZKHKDh_e",
+      "https://lh3.googleusercontent.com/2pVXxI0K_SepIerA8cDCq2H3SOOTJpiPNVhUa5ZcTrN1bbyCcnKiilppMs5-GwobDITovSexhfVKsECpclPUPTukW2HWMfpK",
+      "https://lh3.googleusercontent.com/jNswYjuqfEcf-XhfvAqs-680JgI9Ga7PrM1zktzzEO-Ptj33LrtcL_2zi3KvPthd9UEIfX4uVHTNpkag-cUYuxewRJNzSLc"
+    ]
   },
   {
     "sku": "GMS-033",
@@ -657,7 +785,11 @@
       "Số nút bấm: 6",
       "Khối lượng: 68g"
     ],
-    "imageSet": "mouse"
+    "imageUrls": [
+      "https://lh3.googleusercontent.com/u1bjT0diAcs1I3HVlXWWwPXAC6KDFm72DOcpOteVBDvMy3N61hkskvqhud0ltAljQ55WDH4SQF9d5zcgt6S4mLvcyKXgsnHLlA",
+      "https://lh3.googleusercontent.com/U8W4_1zdml3NkPUyAKhgRSL2-GSpb4R8ce5C14sdY7aVRpwRkTM_ZC-sa9HBB37wUqvk48Fah-imkYKh8wxZtTJbDUd6Qw62",
+      "https://lh3.googleusercontent.com/Kfw6sv5UT13HghjdAnepwNbkq__c32siaIb1RqgP4NbS52fYgTzNmsZGwNxWeuvmA0294g8YOHdOS62Lj4k8glyGi0zurDH6"
+    ]
   },
   {
     "sku": "GMS-034",
@@ -677,7 +809,11 @@
       "Khối lượng: 130g",
       "Màu sắc: Đen"
     ],
-    "imageSet": "mouse"
+    "imageUrls": [
+      "https://lh3.googleusercontent.com/PYHGhWijlF0LHbJnBggeMW7zvsi7weOqGmOpX0o6zLvD3wW_1xBahUOZNOd6dEN3FnN_1yyHhtcViAe5oYuJ97xCx-pqC9Y",
+      "https://lh3.googleusercontent.com/i_VNq9zAZyN0nLLzw1YeoVd3hgYCIr57IQfdbFMNUh45W1CwkeR1mb4NNaWYaEqsYj__lGGaa4amm8OJaXLbeLID1eQNUw52Ug",
+      "https://lh3.googleusercontent.com/0S0vVsCcWjvlM99RGTO8foYpYzUgJJjDaPoxByojmRRNZCH94XkaDQx-osMON4SvoZDvGkRcNOMHhz9jY7K8OD7scSG-p4s"
+    ]
   },
   {
     "sku": "GMS-035",
@@ -697,7 +833,11 @@
       "Số nút bấm: 7",
       "Khối lượng: 68.2g"
     ],
-    "imageSet": "mouse"
+    "imageUrls": [
+      "https://lh3.googleusercontent.com/eu_vB3lBaqAZ4dYKsSlvqdjJcWNr-nhZuYPmPItoPk6tWSAbLYETmdxtpVTXqNje6F2Fwc3rAY-cP-_K8k7HaUt5DdKKg4w",
+      "https://lh3.googleusercontent.com/PY0KIxWTthBIigSBDVLqjWY4TpcYLNiXRYAjWgJFiYjxJMms8TvlCYYfCcqIaTVCZhV1v3qo9pL-z6fMBQhVi0eGOKe_Ij2C",
+      "https://lh3.googleusercontent.com/fWfXBLXIN5IUHJQUBzbrdKzu_NZQib0wIInKCbE6oUXCT0zg_RjWDcOLrjMkFY3R6d0QvxGCBFQ1Zp6br4NzTNWPOuYOH6DF"
+    ]
   },
   {
     "sku": "GMS-036",
@@ -717,7 +857,11 @@
       "Cảm biến: Optical",
       "Số nút bấm: 6"
     ],
-    "imageSet": "mouse"
+    "imageUrls": [
+      "https://lh3.googleusercontent.com/4AFG7_DOrCy_LTZRnRqFC3xtJSeBcR7h7ZClMYgUH8UuxYFNN4MbOjVbOkDqteaAwXfi43mqvS4r4yrSZoeTw14UeN3SKKGfBA",
+      "https://lh3.googleusercontent.com/lFZZtBMUqkbl9qKKUe3DSmHqpb62UjWrOkxqcJ6lN3yM83Wg2Irp-ZlvkUwGO6TMcsscLELMZa_lN9jo8tKteWsCzmUii7po=rw",
+      "https://lh3.googleusercontent.com/E7coVNI7mvCGp5GASzte71-stIZAYet_sozvQ0A1D_GJfvW1IFJGzymplqvm4A5upZV6ONPQtjgloVYzpHSG09lmQBrEDLU=rw"
+    ]
   },
   {
     "sku": "GMS-037",
@@ -737,7 +881,11 @@
       "Khối lượng: 53g",
       "Màu sắc: Đen"
     ],
-    "imageSet": "mouse"
+    "imageUrls": [
+      "https://lh3.googleusercontent.com/WwpymzboSefRD_ewYwtTcNxn614ZWqPczIBJ7aT_7s14vqlPHwzIMueKEnGpojN2yA5t49fl5czWLtfiDpgQURXKng9fqBs",
+      "https://lh3.googleusercontent.com/qHORLy5auas_u1OcDS6oiJiDMsa81Y8KHkotGWmnE-1TQv28hHJYZn-NmGQQYgxK8oZ_jr2HsViEUIBsDEbMsuspZR2HczMi-g",
+      "https://lh3.googleusercontent.com/tBd560L8zlnZAzWUCeasC9Oon5gTvwNo5oy_B5GrxzT1l-AaURNrZLTxiPuQALq-2Hz7S3bFrln8KaDHe6rjfEhoz4BusxOIdA"
+    ]
   },
   {
     "sku": "GMS-038",
@@ -757,7 +905,11 @@
       "Khối lượng: 53g",
       "Màu sắc: Đen"
     ],
-    "imageSet": "mouse"
+    "imageUrls": [
+      "https://lh3.googleusercontent.com/vWvF-5yvtLvF4V2paDCQ-ZD_DX_aDtFEnBcez3jRcVcNBVvupo74j4Rqf8bh8JCzt4JN2GOgJ8yErZNdmHrALKPck2fuacTr",
+      "https://lh3.googleusercontent.com/lFZZtBMUqkbl9qKKUe3DSmHqpb62UjWrOkxqcJ6lN3yM83Wg2Irp-ZlvkUwGO6TMcsscLELMZa_lN9jo8tKteWsCzmUii7po=rw",
+      "https://lh3.googleusercontent.com/E7coVNI7mvCGp5GASzte71-stIZAYet_sozvQ0A1D_GJfvW1IFJGzymplqvm4A5upZV6ONPQtjgloVYzpHSG09lmQBrEDLU=rw"
+    ]
   },
   {
     "sku": "GMS-039",
@@ -777,7 +929,11 @@
       "Màu sắc: Trắng",
       "Cân nặng (g): 75"
     ],
-    "imageSet": "mouse"
+    "imageUrls": [
+      "https://lh3.googleusercontent.com/v1tCKgFMvawJ-gardIA9y2e4HTtOB-Hu0ur3dgDhe4HwVH3YxT0miMRsKtaFeie_N43M3CIeOZVLfL6GzVNqeaoMo9nAji-2",
+      "https://lh3.googleusercontent.com/K1Md00GhVTrYH4IS4u-t6XCjzOE1ZOc5eoLYAJIW6IGBV8DonR3FZLPKQfwJfGg-A838JbNeO1zfMsgTuzX8YjKdrnujxJAl",
+      "https://lh3.googleusercontent.com/4g483n32y0ELGfe-rjR2YRxpmZAGdrDa-EEzKGzdLXyGigRp2oQU2_WN7Q03bYeAdeHRZEtm1WpRjjKZRFis9IZ64Zre6i0r"
+    ]
   },
   {
     "sku": "GMS-040",
@@ -797,7 +953,11 @@
       "Khối lượng: 53g",
       "Màu sắc: Đen"
     ],
-    "imageSet": "mouse"
+    "imageUrls": [
+      "https://lh3.googleusercontent.com/bijnakZVAAJePvKBRLts1bTi08EKuiBianX1H16IRpL03naw6IHRUx4CLhKI6hgau5bOoZu87RYMQ1x5LZtDcTt_8H-m4ttv",
+      "https://lh3.googleusercontent.com/lFZZtBMUqkbl9qKKUe3DSmHqpb62UjWrOkxqcJ6lN3yM83Wg2Irp-ZlvkUwGO6TMcsscLELMZa_lN9jo8tKteWsCzmUii7po=rw",
+      "https://lh3.googleusercontent.com/E7coVNI7mvCGp5GASzte71-stIZAYet_sozvQ0A1D_GJfvW1IFJGzymplqvm4A5upZV6ONPQtjgloVYzpHSG09lmQBrEDLU=rw"
+    ]
   },
   {
     "sku": "GMS-041",
@@ -817,7 +977,11 @@
       "Khối lượng: 50g",
       "Màu sắc: Đen"
     ],
-    "imageSet": "mouse"
+    "imageUrls": [
+      "https://lh3.googleusercontent.com/fRVJpmcTqj5cHV4srpF9mPonuSa55aTkHcR9TdF2XC6x7mWM5pC4IgUBQ4V0m4NrIhu8irSDlYDkMPMciOt6ShFss_xlsGBF",
+      "https://lh3.googleusercontent.com/gINlmjpmHyEGpLPeHKlCir348eecJxRKtM8uNScM_3trFbDtj80_aNF_nNgQHQ2wAqKhAkpkjeNEAunSv-JVzspXrbKJS7Yj",
+      "https://lh3.googleusercontent.com/lFZZtBMUqkbl9qKKUe3DSmHqpb62UjWrOkxqcJ6lN3yM83Wg2Irp-ZlvkUwGO6TMcsscLELMZa_lN9jo8tKteWsCzmUii7po=rw"
+    ]
   },
   {
     "sku": "GMS-042",
@@ -837,7 +1001,11 @@
       "Màu sắc: Trắng",
       "Cân nặng (g): 53"
     ],
-    "imageSet": "mouse"
+    "imageUrls": [
+      "https://lh3.googleusercontent.com/QVOeuckiT1y2LMIJWjZTljI62MV7su7Wn2KPcrsc1D3SX13KgIe6Aa6WSES4hlllxYPgoIKXpaE5zPZZplTn0zR-dvGeMHKm",
+      "https://lh3.googleusercontent.com/sw1N9DJ0GZtvt99sKnShkR20GW85HigRt9W1abmia9_ag1rUCVWkQrZc-fsBdN54fGfkmW92EFFlCRI0FYzwMl85UlSPSdaN",
+      "https://lh3.googleusercontent.com/lFZZtBMUqkbl9qKKUe3DSmHqpb62UjWrOkxqcJ6lN3yM83Wg2Irp-ZlvkUwGO6TMcsscLELMZa_lN9jo8tKteWsCzmUii7po=rw"
+    ]
   },
   {
     "sku": "GMS-043",
@@ -857,7 +1025,11 @@
       "Màu sắc: Trắng",
       "Cân nặng (g): 53"
     ],
-    "imageSet": "mouse"
+    "imageUrls": [
+      "https://lh3.googleusercontent.com/h7tOrlbbIUs94y-8_s9p1bFtjCSD2N339uYB9kwk32jM1yTqFZM7E4jqBM_qTDCS32TXIxIgd-gNFbqrydi2Bw-x4QM5nqhI",
+      "https://lh3.googleusercontent.com/cW_iFfikKmNLcmxBH-Zu3E7IZiQLzK0Rr5TZ79igZvefh7OWlQ2KdORO-h_cwuI25i40kziL-aanEZXsEYLqglWNesQhhyir",
+      "https://lh3.googleusercontent.com/lFZZtBMUqkbl9qKKUe3DSmHqpb62UjWrOkxqcJ6lN3yM83Wg2Irp-ZlvkUwGO6TMcsscLELMZa_lN9jo8tKteWsCzmUii7po=rw"
+    ]
   },
   {
     "sku": "GMS-044",
@@ -877,7 +1049,11 @@
       "Khối lượng: 49g",
       "Màu sắc: Trắng"
     ],
-    "imageSet": "mouse"
+    "imageUrls": [
+      "https://lh3.googleusercontent.com/PEXPT8S_ozanT1slRvc1PprAtRFcswRCq2lJKIeWLozPlaF2Kpvd_Fuwmda_Iuxau9AxnVNiYs1KWzgZL7HV9Thk-XuJ_kTV",
+      "https://lh3.googleusercontent.com/hT9RDTdOTqNOzHSdArZY9iWIVrMDgHQ4GhJLJMeZZQXOfxanXVnxKNJPcThnNNOMEpEOD5Ub6cxAC7kWN99Gryd1cQLR-vZI",
+      "https://lh3.googleusercontent.com/lFZZtBMUqkbl9qKKUe3DSmHqpb62UjWrOkxqcJ6lN3yM83Wg2Irp-ZlvkUwGO6TMcsscLELMZa_lN9jo8tKteWsCzmUii7po=rw"
+    ]
   },
   {
     "sku": "GHS-045",
@@ -897,7 +1073,11 @@
       "Microphone: Có",
       "Độ nhạy: 96 dBSPL / mW @ 1kHz của HATS"
     ],
-    "imageSet": "headset"
+    "imageUrls": [
+      "https://lh3.googleusercontent.com/NebSXK5_1kn_yvDVvHbWjhYKJHkb3m_GD4TTTHbjomW_EKwZ5L4YeURAl21z_X75lZfOaAYH1KBHSJCL9d7qsEIMkDbhyO1HCQ",
+      "https://lh3.googleusercontent.com/PPCvlvsbfKbTbJZTaNTyo5JqTmw0h3Dn3bgBXlZ8MtVkoojc6uZT7iKpCUCiinrte0IrFapRas2haLi0xofnXnbXKFhLcv1kRg",
+      "https://lh3.googleusercontent.com/hZARZ3kztort0L-Ll57FH0JaGKGQS1J0C39lMdbUf4PotRBzyf3GmZvzEVEUSkAbyJ7swLJZ3vGwuy7WsjRXB0eKJovQxGxY"
+    ]
   },
   {
     "sku": "GHS-046",
@@ -917,7 +1097,11 @@
       "Microphone: Có",
       "Độ nhạy: 96 dBSPL / mW @ 1kHz của HATS"
     ],
-    "imageSet": "headset"
+    "imageUrls": [
+      "https://lh3.googleusercontent.com/YUgLAN0xRo56lgM50Ce5x-cfUbOf3pmtIwAis5rjl-auDfWpq538Vlt-1kGZnHhMRGoILSKbxtWkw9huyAPvTB3yBSJo13g",
+      "https://lh3.googleusercontent.com/DIex7Jhytyvi4c4gqgKctT_dSa00bhEXN8kMLhlgOUL8OpWULn8yE8WR7qNk2i8WBLEoiu1yhkxAv7TWy7mLa63LrCh75gg",
+      "https://lh3.googleusercontent.com/dB99Wx_fX4DrxWYy9MKwVkYxmclLVcn0dmjlCz78nDYBeGSzxy6SUnnj6cHh9DAO7ri-MfKuTxEJdEMsunfNDuHn1IP7IJXSqQ"
+    ]
   },
   {
     "sku": "GHS-047",
@@ -937,7 +1121,11 @@
       "Microphone: Có",
       "Độ nhạy: KHT"
     ],
-    "imageSet": "headset"
+    "imageUrls": [
+      "https://lh3.googleusercontent.com/SCX1lLMzrA2XOKOQkcnzqU2bYx1_x6WeUoYxaMPM7EI_yMdgkw7ogBPwedoSKui191srMIw08IQONAITWA0d76_0TC_Fe3nVpQ",
+      "https://lh3.googleusercontent.com/hMmwBGlJT5-N4fc3BTPUAIhG-7Z-bRZ4vsFIYdja6IwCeVTuwrCuU8g0fOXBEU29mr7FBK6vLnkvq4jo65E9ndws025qRIv8",
+      "https://lh3.googleusercontent.com/DJKai_RA5I0-NPG1fImr1il3m2sO2XBk0I9f6DJ4iYMjL71q1beFlBlbsK1UDfracUpCDm8IjeBqrQDHByVNgwrYStsJG1Y"
+    ]
   },
   {
     "sku": "GHS-048",
@@ -957,7 +1145,11 @@
       "Microphone: Có",
       "Độ nhạy: 107.4 dB SPL/mW​"
     ],
-    "imageSet": "headset"
+    "imageUrls": [
+      "https://lh3.googleusercontent.com/z7Jg2vWe6J9TYAEmi_VYkkD4NrRBgWX7dNChCI1OtzeINfRA7pxHjQEegbGA38ygRVYzkbB9BlEaGKQFE2yOBWLVA38GplughQ",
+      "https://lh3.googleusercontent.com/cM0QNphY7I-ix27Ia_4_WAybtvFSn5XzJvexPC24wF4sEwBG9aew_65VX9LLpa_MkMSThtmJ5VOmscyydDf7mH2jhgXOfJs",
+      "https://lh3.googleusercontent.com/d-O_fR5fDy39npXBl_Yb2sE9YZqf_BGbrNCBrxXS2pLqciP_WPnIn4531Iqqu8IDDbpFga__gqbBz2JXLECc_k-dvlNHQ3Q"
+    ]
   },
   {
     "sku": "GHS-049",
@@ -977,7 +1169,11 @@
       "Microphone: Có",
       "Độ nhạy: 98 dBSPL / mW ở 1 kHz bởi HATS"
     ],
-    "imageSet": "headset"
+    "imageUrls": [
+      "https://lh3.googleusercontent.com/yN6WQiUU9pXlVj97EUAJPqHNWBdoot8d61T2NoIogPoZPQjly0rsQLgWnnd88KJczM4Rll_rHtSo7BeBp_yxODBpshpDzSmX",
+      "https://lh3.googleusercontent.com/raMWodvwXtgAFChONkyPICBne357fyTaOcj8gh-DTrztJJoiXDaQbA1tjjnAxmtmRUdilZxhjVxiK-q1j4SaFKZ6kGWQeEC_",
+      "https://lh3.googleusercontent.com/fgZOI9LsisfYzeFZcKHFO3MlyFSu-zDrIo45YDvragmJ9enTXN4NQMveTwyskJwRMq09bx9wNNL_o_Gd7ZxV_B3e_IMZkCk"
+    ]
   },
   {
     "sku": "GHS-050",
@@ -997,7 +1193,11 @@
       "Microphone: Có",
       "Độ nhạy: KHT"
     ],
-    "imageSet": "headset"
+    "imageUrls": [
+      "https://lh3.googleusercontent.com/KRh7pprZuju8MYDY7p3FM1GxkcZRSBLk1QqlErz4RAwSh1bIQ7jRzdIJ2lGCaSNIzGclDlj2-UvZmGYKhZtRAmyS6KPEKLck",
+      "https://lh3.googleusercontent.com/QoCbj8vI0v11lem11ns_5CFDo-JoSEz9VmRHV_WDaOgqbOVZCgY4hJT-Sk7ONGVfEqSuu5mhpJuVuRMMtYUH-61TJNekwrB3",
+      "https://lh3.googleusercontent.com/TQOZuij_Em3Ukbi2QVRsKPtwFL_92hSiAnEmptBOuAwTCKW7S7quJZW-3Wvp9neFDr3BWB5cgjbjQpqdzfteTlKoHXrwobK3"
+    ]
   },
   {
     "sku": "GHS-051",
@@ -1017,7 +1217,11 @@
       "Microphone: Có",
       "Độ nhạy: Độ nhạy micro: -24dB"
     ],
-    "imageSet": "headset"
+    "imageUrls": [
+      "https://lh3.googleusercontent.com/CSwAidQgpHZuM__h6Hl9SHaG80HCja7SlDCoSaZCml4Lpw5KuL7pSwOVWwXUGd3LTewhSXuynKeTAh9l2Vv_CM4kjG1kNx5N",
+      "https://lh3.googleusercontent.com/lgS9l8N9iaIOtKzuvPhiWmqas0C6MqCE3FQILF4m8N9w92HM8zeVcSZcva8srBoBCIIBe4AdBqNsC7z8XCHEwbNGHQzMAjI",
+      "https://lh3.googleusercontent.com/Q2lVqIOosSJrt3tVgPNieXQCp4u24kzp-LXo0EhPbo_SKJ6KH53V6vqvfXHINa6xSgDYMoeNG-Ol9c3oUfurAtZ65KkU2LTn"
+    ]
   },
   {
     "sku": "GHS-052",
@@ -1037,7 +1241,11 @@
       "Microphone: Có",
       "Độ nhạy: 114dB (+/-3dB)"
     ],
-    "imageSet": "headset"
+    "imageUrls": [
+      "https://lh3.googleusercontent.com/7RNRR5se5ZiZCI7gHJk1NhEL8eqMHmvQ-ONMz8oc9b0XCFCx9jROadkQspKo_gN-lFujzjaiOaV4MxJNkXSLYceeBNf78soF",
+      "https://lh3.googleusercontent.com/mBVcJo2J65Eg1UzqS4G9msTlIy-9UcnDUnt8nbYFwTHJR40c_sOXKRoWwLAcFvSmiSTNg4nrNvctljjOx4hVJ1LJ-Lf-xQSN",
+      "https://lh3.googleusercontent.com/V2R15Q72eHjvpjHjNNGXuV96JQpUcEiOYWxCpNUpt2gIGPWtQTtfjv-oSuRDFH5kbOQJMl-FhvMzK2vxd50KZeprrBi3WrIR"
+    ]
   },
   {
     "sku": "GHS-053",
@@ -1057,7 +1265,11 @@
       "Microphone: Có",
       "Độ nhạy: 92 dB/mW"
     ],
-    "imageSet": "headset"
+    "imageUrls": [
+      "https://lh3.googleusercontent.com/xzbNE4qU2q74W-rjMv1mUVxaPltc4-9uuKFk01_E_LlSfMHiq6-Er6XcK3b3Lp2gGDux3Ut-c8Elq-CoFw5-gLTZX70wK8Kp",
+      "https://lh3.googleusercontent.com/_DHnV8r3V55MMKGehLkWWMmqigmEMnjrg0iGbPnCYh2UGg9c7r_yImo2hdUSjscMV68co2o_0GC_UOvz3i-NwffECh4cW2eodQ",
+      "https://lh3.googleusercontent.com/1QhojfnFqgtuMT84RMeASs6MWsFlToe-C_KG5J4b7EUQ4nbj9c_MrBp90YgadGpyxX8VweQ-PXVZ5KMqBCjMadkjJHWVx6El"
+    ]
   },
   {
     "sku": "GHS-054",
@@ -1077,7 +1289,11 @@
       "Microphone: Có",
       "Độ nhạy: KHT"
     ],
-    "imageSet": "headset"
+    "imageUrls": [
+      "https://lh3.googleusercontent.com/mXPRl3x60RIumLhDeIlk5sKaDMCYV_bjAJkS_Tp6UBQd20PZcVQ2GSy9wH4ufjuzkySMC3yYvYQVWwjW3Yh8f839xO-cwqDPtg",
+      "https://lh3.googleusercontent.com/-KWTUyldcz3sitSWUxR_2WN08aTJezSuGBKvduN35q33zZw38Wh0RYayFXb2EsGeeO8d5vXxPtCjxXrw4R8IplR4ha2mdIE",
+      "https://lh3.googleusercontent.com/E-51j39Oyd8qxelAlXyCJmKxnVqBHc2U_XOm9_1OjP8uKKdeT_BScbKYzFPHKeLNPWde4yoF0yBUNpBY4MMfPLhsTfo2qNU44Q"
+    ]
   },
   {
     "sku": "GHS-055",
@@ -1097,7 +1313,11 @@
       "Microphone: Có",
       "Độ nhạy: 103 dB/mW"
     ],
-    "imageSet": "headset"
+    "imageUrls": [
+      "https://lh3.googleusercontent.com/5FL8LFCXuujoTLw7v1VWeGLW3II6FlbtQowPIAMCM9p4UC3LSN3ksEm4AB0MO-UH-kMmzXhfa5W9Tgda2Y4443terOL7Qu9n0A",
+      "https://lh3.googleusercontent.com/mFvn9VeOB0vdOEwicrx4lqUCEWEDcyFg50SzEWqwK3eLPRWcCc2AHU9dTG0LkapBzINusBt9nYM95ttrGE3WyiwaxwXaRhv2fw",
+      "https://lh3.googleusercontent.com/LUVLDuGi8cdDfPndVPYHTK1Fcm4-uiMS-N_c1kyG3PpyUMv2LEg4Sz2rJkOO5rX7Muwhsn6ZNpmqHNF3hzK-webJUYeUun_BpA"
+    ]
   },
   {
     "sku": "GHS-056",
@@ -1117,7 +1337,11 @@
       "Microphone: Có",
       "Độ nhạy: 103 dB/mW"
     ],
-    "imageSet": "headset"
+    "imageUrls": [
+      "https://lh3.googleusercontent.com/N1RCniQaKAMvuxVtUFJzUKYa324aZu5pcbJreNPCRD0VPxQu-QSfAH6ElXOgzsqGz9BA69MLu_2VME7u1xiOxpK4S9Ofy5E",
+      "https://lh3.googleusercontent.com/bACwjsORXTeWpm0Ej-fgx3of_tFmliZ6_4rR-7qG4p-FRotHTgY45qLCUzEPso65EPp0pAqgggnbshc2NUrBTvUNc2cxBz_jNg",
+      "https://lh3.googleusercontent.com/vDZm0MN6xvD3YN47ZrcJ9rTHnAugNINvqOhrWNku9W6fSOJ5qYUARgWqhma3Y8W9Nl2KJloiZGTmqr3BBmoJdlxLV7Lp-Cg"
+    ]
   },
   {
     "sku": "GHS-057",
@@ -1137,7 +1361,11 @@
       "Microphone: Có",
       "Độ nhạy: KHT"
     ],
-    "imageSet": "headset"
+    "imageUrls": [
+      "https://lh3.googleusercontent.com/7RRs11wL6oSHWM09Jut9V3j68TYNl3fpjY6Kj0a94Dh2QeHlQ7fxCeDURPFBK6y5Ur0niIkKG_oKIf0QEp4QPocLYui32Dzi",
+      "https://lh3.googleusercontent.com/qES9Nsu1FVn70hlb6-BUxirbQswCoIp8xmO9-Xh1EDGDUq6WihrIS6854LJ8tWopgUEt_ZzMs4EMZEz9_ttbitNb4LLbnqcw",
+      "https://lh3.googleusercontent.com/Xbu036bf0iFoZ8QyrpXSg9WwMNGGiUq4hiSy2Zz_CrWAmSrqsEZGlMDtcZ-c-1VTNswbjOjrLVMFi35PLpih6eBES84xZgJn"
+    ]
   },
   {
     "sku": "GHS-058",
@@ -1157,7 +1385,11 @@
       "Microphone: Có",
       "Độ nhạy: KHT"
     ],
-    "imageSet": "headset"
+    "imageUrls": [
+      "https://lh3.googleusercontent.com/byxIT_PPrJcX9R71vHvjKnAk1cGvk1GSGmjO0EFz5794OOoDoh4wMm1ohrT3ta0nnC_dvhdf32N5pTpxw8wvrGoUCP_2l64",
+      "https://lh3.googleusercontent.com/dKSL9EvVXbRt8Az_AKoRXkkMGzgBVQTP2TWNQp2uRmsNS04JTy76PwlAT4Pyx03gjPHwqfOj7JJyyMUl1_dtqtXYOakXcpE",
+      "https://lh3.googleusercontent.com/rhzKwiX1xEwb4y_N-CsCHWpTGJ4WPTJJulE2_LUpZU6ATCK3SL9MIGDlrV1VDalPk_2JSV5NWBrumaSdNj6Hj4NSld5eGMf6Yw"
+    ]
   },
   {
     "sku": "GHS-059",
@@ -1177,7 +1409,11 @@
       "Microphone: Có",
       "Độ nhạy: KHT"
     ],
-    "imageSet": "headset"
+    "imageUrls": [
+      "https://lh3.googleusercontent.com/cgCDsm6PGaFPn-6aoSFeYw8GqYpsjm-k1OkAnVsdFztFQyQuKzP0okIIYRrxv0lZ-jZ0wNzPE_bsxRkNuPCxo5YEcS-Sia5q",
+      "https://lh3.googleusercontent.com/IRdYmYq8StmUnTOOMHouwPn7MO3DncOu7KTHNGORYm82M0GNOB9ZOOFd7JKtu9LiPmMCsfvZCWv0zLYHQacFdoK5kHX0zDE",
+      "https://lh3.googleusercontent.com/yb0ZQQZMKrN48HzFFJgY1PNuuKEtRFItCkt9tMe5YBRnQd3OWTMrrCTWtKS7myx50oaz687O52ka5Up4JWeY9D0bP2Q1GJLY5w"
+    ]
   },
   {
     "sku": "GHS-060",
@@ -1197,7 +1433,11 @@
       "Microphone: Có",
       "Độ nhạy: KHT"
     ],
-    "imageSet": "headset"
+    "imageUrls": [
+      "https://lh3.googleusercontent.com/VYTlVedihlDXMUJ9XQRUMx4AY2gQt62qppHY519ogWU5YmZuFziLTJOaBSydxOBWmGVwynumDCpdPKF80KdOndGf8Q9sQHuk",
+      "https://lh3.googleusercontent.com/IDRbGkqc0ear-GTz3KJGt5g-21X2oCfiS8lGBtw6G-AN6FJvOpFP_-s4WwQ0C09KbKxeVSJZS9qYoXYynsDn0HRQINuWmgG4",
+      "https://lh3.googleusercontent.com/UjUm4Uzlce2KYKKlEzH45g2QK9buEkldp5JruXpAYTIeCkEzrryBUZAPIDSKka4SaVMpSrZ3VfjDxavu8fbXwyjWMe-k8twY"
+    ]
   },
   {
     "sku": "GHS-061",
@@ -1217,7 +1457,11 @@
       "Microphone: Có",
       "Độ nhạy: KHT"
     ],
-    "imageSet": "headset"
+    "imageUrls": [
+      "https://lh3.googleusercontent.com/1lMFpOxliSS_IF0NNsYY3WB6W8AxBpiqoah1y3AwgojjNkqxc6zf2TasDR8XLZYtDyyN26Erle5bwnSLPOdJ73SS5tMqoAM",
+      "https://lh3.googleusercontent.com/a9OtcYL4agM_qJAXCGRVICDn2MTtyq3h0BCfERoePa0aTrvTMhBHYoKfPzIPG29kl3uSVVrQhDbCycEKnawBCSZ7xYx0KSLQ4g",
+      "https://lh3.googleusercontent.com/oDZBQjhI7lvKrn6tFknueqy9hkir6aCSZs1LS80QbI-AwiHT2iyZCOJA4bnPJAcUDpnBWxr53EutnfKxesAp38q1DzO601e4-g"
+    ]
   },
   {
     "sku": "GHS-062",
@@ -1237,7 +1481,11 @@
       "Độ nhạy: KHT",
       "Tần số phản hồi: KHT"
     ],
-    "imageSet": "headset"
+    "imageUrls": [
+      "https://lh3.googleusercontent.com/F9STmWFpl5DVnIDG3xC8Tw-JMKhaaz1dRXSwvvOVf0cwQj6dHbCQdHCbEQQLHk1Fh0jiEP_YH9Ucez-hjjpM0lYFUA1fIO8",
+      "https://lh3.googleusercontent.com/9ExSeC5AWynTVbF6YIQm0u9RvREKwDt2Ykm9kKcM4C7Wk-JnDkiYt9lJQGk0AIBRofwnxgUwAjCrJDl5itvZQAamsgvBT3ZqAA",
+      "https://lh3.googleusercontent.com/4hasmH5kKLFe5SuImMF6dzRxMwvsFRzVY8I9sKIzS872qm1RlKttA8x0-75fUta5vyVzbyWJXqyYfw2AIr9QGyUoVUfI7u9t"
+    ]
   },
   {
     "sku": "GHS-063",
@@ -1257,7 +1505,11 @@
       "Microphone: Có",
       "Độ nhạy: KHT"
     ],
-    "imageSet": "headset"
+    "imageUrls": [
+      "https://lh3.googleusercontent.com/z1CTNsYcJY6AS2dAkLdxnLncJfrG-5j1I8sDAu1SVTkoHkgqxy7YlOUtgf4rXKpxRZ6_7C3vJnvWAR-V7v5aUrp-qWef7cA",
+      "https://lh3.googleusercontent.com/4W1HGHnnuWJT_UVgF98-YGuzsArdv7j5SGQg9r8VJlxtaJZoQx1aoz_sRwNl8JTT3gXu39nSFmdKSP77qFajXCIae0Yb6MM",
+      "https://lh3.googleusercontent.com/eUPqCrdtWBjXbtJQy46D6hQSenv6O0HFsKoNjmjPX4wvzdt5PiWMQEgLZ3dTKrNH6ZLPobDpTbaPShD8jfL12DsIXgcViugiBA"
+    ]
   },
   {
     "sku": "GHS-064",
@@ -1277,7 +1529,11 @@
       "Độ nhạy: KHT",
       "Tần số phản hồi: 20Hz - 20.000 Hz"
     ],
-    "imageSet": "headset"
+    "imageUrls": [
+      "https://lh3.googleusercontent.com/anD_4mz0VHwRILHdj2hmZOnWBbsmjMDSVyn_bj6zhtx-tL4UKvTxtnS9oqHdOa3rwJi-hieg8be3PXCFZuxDvk5OxpyxMbk",
+      "https://lh3.googleusercontent.com/oy9EF7IlmxCcKpJOeudW_NiNxNO9DX4z2Lptr1hJMhIpSTnEIdq9GwgTjyImaLjIgkxaipL1gpj2dN21sLlCdNNEkH4L_kEZ",
+      "https://lh3.googleusercontent.com/4oS3Ec9qkTjnwyHFfEPeljTSDfEfl_Nt4JUtjpSQKK9XybtaT2ut9oqSJ0PVa5VwSkb7dTIiYjEscbyMMp0-aNfSme9VtZ6x"
+    ]
   },
   {
     "sku": "GHS-065",
@@ -1297,7 +1553,11 @@
       "Microphone: Có",
       "Độ nhạy: KHT"
     ],
-    "imageSet": "headset"
+    "imageUrls": [
+      "https://lh3.googleusercontent.com/W6Zra9a3VNmGMZEeZL0YvixGBTKf6or0Wc9De6t0SjBSY7uND9t2MWMkxxipNlsvGgAxShtei1i5u3ycdcIrr48Mh3Q4E740",
+      "https://lh3.googleusercontent.com/frKUDAxlxVrHjgpVSCoS2JO6r7lQNzoUU2cJA9CrxwMQmqHuTpdrBVn3i033r3uzbujTV86ipu7FpuLciRIzBm5Wfmqkde8c",
+      "https://lh3.googleusercontent.com/SYzve5xthRfKfokfiUMQxweZ7pYGzY011gH1EtIQ6ExFkH9b2ZrrZRrKF2cRlkzVX1vYCsKOKVbD7gpSSordVjw-1dMzp-Iu"
+    ]
   },
   {
     "sku": "GHS-066",
@@ -1317,7 +1577,11 @@
       "Microphone: Có",
       "Độ nhạy: KHT"
     ],
-    "imageSet": "headset"
+    "imageUrls": [
+      "https://lh3.googleusercontent.com/Z094pXD02tZ9K1x7IbzbfTAI8h3Yu55XBURBloyZZqnnN8ULi6FqTO4UQKnHhI5uFQr6EWIs5h9wWerCycKJEQ3wNF8uJL0FwQ",
+      "https://lh3.googleusercontent.com/9czlOOAETXLY6xx2WdV4amTRak1pbkUsT_SQ9vr4wKmjBFnF60h-aiauLgP2fzfT40pzB4wvB5SHs9fvNF0xs4Qp6Lr57kI",
+      "https://lh3.googleusercontent.com/y8KbwQjNMh87QX3xs_aameL0ctHiEKR3IZKc0L_LPj9MwFkbdpj3nQJ19IhpPSrt9JEUB0KF-asNlF0NWSwioghcsvp8plCVRw"
+    ]
   },
   {
     "sku": "MPD-067",
@@ -1337,7 +1601,11 @@
       "Cân nặng (g): 336",
       "Kích thước chính xác: 450 x 400 x 3mm"
     ],
-    "imageSet": "mousepad"
+    "imageUrls": [
+      "https://lh3.googleusercontent.com/kmC5yfpUrUr6z4bWFEd2kToaKNgwpa_76_vtD_UEGhHiQetEIz21EKr5IZvnU07_gJjKxgtPcCZ0xVaBOZK0Cb0KQQiLBd8",
+      "https://lh3.googleusercontent.com/2g9LC17MkDA3zVYj29LMw3lJa2p0688yQH4gqGv9_sj786yPwYrrxxL8a-p4HorqN76lpz18soJYjSzIj7PpzEJIwe_kROme",
+      "https://lh3.googleusercontent.com/lFZZtBMUqkbl9qKKUe3DSmHqpb62UjWrOkxqcJ6lN3yM83Wg2Irp-ZlvkUwGO6TMcsscLELMZa_lN9jo8tKteWsCzmUii7po=rw"
+    ]
   },
   {
     "sku": "MPD-068",
@@ -1357,7 +1625,11 @@
       "Tính năng đặc biệt: - Độ chính xác đến từng pixel và khả năng phản hồi theo dõi tổng thể - Thiết kế chống trơn trượt phần đế lót chuột - Độ dày của tấm lót giúp đệm cổ tay nhẹ nhàng",
       "Cân nặng (g): 200"
     ],
-    "imageSet": "mousepad"
+    "imageUrls": [
+      "https://lh3.googleusercontent.com/D6mljCe6Sc693GmQe-0DOVTxktqGA-cuMNHzoR7ZkoKX9at-ZuP-dkPbM-O1AqMBsBw8vwNbvnb1CfiL0NSqYy5fPeLtI1w",
+      "https://lh3.googleusercontent.com/-pxIUEyIqjb7IIl89qcWZSal-L7yI_XNIxhgxOwVDk5FWFOkUrpXATACfJ-zcAvVvTbPQttZCVb3QFvp1tXk8gQdvzeIaZI",
+      "https://lh3.googleusercontent.com/whXRgnhWcDXEKcLlKpC8sSb86JWtpoUTVLLAbqAasSAUImYXd2HXFINjV-oklKRGZVS-7mbyPvEcZIrPVbzdqThO5cVpbaVq9g"
+    ]
   },
   {
     "sku": "MPD-069",
@@ -1377,7 +1649,11 @@
       "Tính năng đặc biệt: - Độ chính xác đến từng pixel và khả năng phản hồi theo dõi tổng thể - Thiết kế chống trơn trượt phần đế lót chuột - Độ dày của tấm lót giúp đệm cổ tay nhẹ nhàng",
       "Cân nặng (g): 200"
     ],
-    "imageSet": "mousepad"
+    "imageUrls": [
+      "https://lh3.googleusercontent.com/9UWB_W1Tol1fbOvR98rQ9xW8VIDP7luDEca8kjA-JqI9ovo1mi-CAYoovOe2y9Gq1WsWCQj_001WgEa8vCnSZt4Bqi80O_38",
+      "https://lh3.googleusercontent.com/REbJNZj1qwFVQAb-Ksfk8BA0_DQAKuwQPqjQEU4UIiN40f3K5c849FZxRA0UfOWrfGtFfKQEbejWZOvg-Ku_GrtoArpnZJySJg",
+      "https://lh3.googleusercontent.com/_oHIf298T9HY0mQoTOJU8xgjMZey5HP1XTEKV7zXIsEvkkTg52pzMHkFbisAKUw02eZ2xvxz65dw5p2nyLOacxwJkQ7EPs8M"
+    ]
   },
   {
     "sku": "MPD-070",
@@ -1397,7 +1673,11 @@
       "Cân nặng (g): 184",
       "Kích thước chính xác: 360 x 275 x 3mm"
     ],
-    "imageSet": "mousepad"
+    "imageUrls": [
+      "https://lh3.googleusercontent.com/SnM9Ke8BBmnQWmxgsHc6r6GdiZ6LB7kDiaxOzPBtgP-boZ7bAbUFz7IoGjh5LqkGheNOYbGIDHlmeBJSWt4ZvQ7x5td0OoEH",
+      "https://lh3.googleusercontent.com/kzz_4xH7cD0ZswOZXJU0FI6c0U6hzMiI5oORTjzLGoeMrMRLDHJj_iOIiykpd2nDoNtT10dBhJpVbvDkJodfFolaXBog-hWbJA",
+      "https://lh3.googleusercontent.com/aC9iTxtjTlVahttdX8KQTwP_Hcn50b_WrYP24kOcZ425KmDMrzPZ4H5Qwkd-nHMBBPb_v9ASink6Zrw9iONq7R8DxhNH_WG6"
+    ]
   },
   {
     "sku": "MPD-071",
@@ -1417,7 +1697,11 @@
       "Tính năng đặc biệt: KHT",
       "Cân nặng (g): 1579"
     ],
-    "imageSet": "mousepad"
+    "imageUrls": [
+      "https://lh3.googleusercontent.com/bAZc1GoK5KtNolsUDnCvC-_UzPYqbjBymMgr9gIPuLAhMW73BvBSLeVruPy0beZMGoUeV9MzRs8Ha8OwNpZpsVGStv1C1Gs",
+      "https://lh3.googleusercontent.com/WfYN74D7w3O44sh6CDbmv3_EGvNs7okNvSNDKI5eAlS2ne8kbyvBCyXsa0hEixLgwDv_AMUv9PuU6pS2LYbtTOR5LGRUo37U",
+      "https://lh3.googleusercontent.com/lFZZtBMUqkbl9qKKUe3DSmHqpb62UjWrOkxqcJ6lN3yM83Wg2Irp-ZlvkUwGO6TMcsscLELMZa_lN9jo8tKteWsCzmUii7po=rw"
+    ]
   },
   {
     "sku": "MPD-072",
@@ -1436,7 +1720,11 @@
       "Cân nặng (g): 32",
       "Tên của lót chuột: G640"
     ],
-    "imageSet": "mousepad"
+    "imageUrls": [
+      "https://lh3.googleusercontent.com/RnWkEJQnBw2xx1cV-Gl2yb1AGY5rYwrqgRvmyudGSL9i4XvZlo3hR7UdlHlq1ujjaFrWI2eaPG8JKBkaXKzoDYz7_pzkAyZD",
+      "https://lh3.googleusercontent.com/lFZZtBMUqkbl9qKKUe3DSmHqpb62UjWrOkxqcJ6lN3yM83Wg2Irp-ZlvkUwGO6TMcsscLELMZa_lN9jo8tKteWsCzmUii7po=rw",
+      "https://lh3.googleusercontent.com/E7coVNI7mvCGp5GASzte71-stIZAYet_sozvQ0A1D_GJfvW1IFJGzymplqvm4A5upZV6ONPQtjgloVYzpHSG09lmQBrEDLU=rw"
+    ]
   },
   {
     "sku": "MPD-073",
@@ -1456,7 +1744,11 @@
       "Cân nặng (g): 650",
       "Đèn LED: RGB"
     ],
-    "imageSet": "mousepad"
+    "imageUrls": [
+      "https://lh3.googleusercontent.com/sDB3EsN4-0w1GZraNbW_PixrgKoOmunmqUYTGbvmFEwZM_pfftuHLae577jU4pF-vbT0jXG0EfLnUtzdiIxkVh2lbvWttLY",
+      "https://lh3.googleusercontent.com/81afkR1PdmHVTZIDNYOEZKSeALlZ0lf081V6SqEvV7QcWMGAKXkmQ2QFVBedZ3xaRWwbNHpR4kEMhrXSdiS_OKlc82BXGUro",
+      "https://lh3.googleusercontent.com/Gxbt9j1Idne3kLBRPOmPVc7y8RQA_llD39i0VCCM4jXrhhsD4m0LvMvAz2sD8D2C7uyeMymMZPQHPSeeGThIVXYZi9Uo3aya1g"
+    ]
   },
   {
     "sku": "MPD-074",
@@ -1476,7 +1768,11 @@
       "Cân nặng (g): 650",
       "Kích thước chính xác: 27.8 x 36 cm"
     ],
-    "imageSet": "mousepad"
+    "imageUrls": [
+      "https://lh3.googleusercontent.com/n5He7gxxveI8mxCFY9sQ8cDzTjf-axQk0LvU4ohuwWVO6PA0ZeahJfeQGS57tu0u719L9n9FGVHx9SbCbnnYqx0LlfNU0dIN-g",
+      "https://lh3.googleusercontent.com/6JWT3c7XifZYJlQJrRt0Len9t7EcTKfoP8js0WwfewoAu15fn6iCC134azGpwNwTEji68rVTzz6XAthOgpDWx_H9Ji-DV9y7",
+      "https://lh3.googleusercontent.com/Og7FwlQR3U67pBQrUIb9gmwBVtVBB-nmhxFdKXqeeeQuvbdorpxeT3uXUGa6Aj27LE972TW1gYeAoWSafRr10q3dK9xKumPo"
+    ]
   },
   {
     "sku": "MPD-075",
@@ -1496,7 +1792,11 @@
       "Cân nặng (g): 210",
       "Kích thước chính xác: 36 x 27.5 x 0.3 cm"
     ],
-    "imageSet": "mousepad"
+    "imageUrls": [
+      "https://lh3.googleusercontent.com/mVpGNHEHIQD2kBdag7quvQ4AH1Y0-IzB7GHvyQhnIKGRmdtpNxcKIV1pJC0P1GFo_NEEkPAKHgZ9lnKK2-Ij-_yxrKofKwA",
+      "https://lh3.googleusercontent.com/lFZZtBMUqkbl9qKKUe3DSmHqpb62UjWrOkxqcJ6lN3yM83Wg2Irp-ZlvkUwGO6TMcsscLELMZa_lN9jo8tKteWsCzmUii7po=rw",
+      "https://lh3.googleusercontent.com/E7coVNI7mvCGp5GASzte71-stIZAYet_sozvQ0A1D_GJfvW1IFJGzymplqvm4A5upZV6ONPQtjgloVYzpHSG09lmQBrEDLU=rw"
+    ]
   },
   {
     "sku": "MPD-076",
@@ -1516,7 +1816,11 @@
       "Cân nặng (g): 950",
       "Kích thước chính xác: 94 x 41 x 0.3 cm"
     ],
-    "imageSet": "mousepad"
+    "imageUrls": [
+      "https://lh3.googleusercontent.com/nG5ItdZRK5SYzWS2L12c91Ntdj7zvGDRTwHnqiJ7KezbdBHKuGD9wUOCcgfrnNfgsMuiKdE2MWLsDjYjP7PANcygTWylqASw4Q",
+      "https://lh3.googleusercontent.com/lFZZtBMUqkbl9qKKUe3DSmHqpb62UjWrOkxqcJ6lN3yM83Wg2Irp-ZlvkUwGO6TMcsscLELMZa_lN9jo8tKteWsCzmUii7po=rw",
+      "https://lh3.googleusercontent.com/E7coVNI7mvCGp5GASzte71-stIZAYet_sozvQ0A1D_GJfvW1IFJGzymplqvm4A5upZV6ONPQtjgloVYzpHSG09lmQBrEDLU=rw"
+    ]
   },
   {
     "sku": "MPD-077",
@@ -1536,7 +1840,11 @@
       "Kích thước chính xác: 94 x 41 x 0.3 cm",
       "Tên của lót chuột: Strider"
     ],
-    "imageSet": "mousepad"
+    "imageUrls": [
+      "https://lh3.googleusercontent.com/s41479s01rwni68r2HaxIbZo4Cz7yVcfWKd4vioj8P5RFwZm3gH3JLpjo2OKgrrPRkkilvAj-wbfA6OTgMdzUlsIwD0jlXTm8g",
+      "https://lh3.googleusercontent.com/lFZZtBMUqkbl9qKKUe3DSmHqpb62UjWrOkxqcJ6lN3yM83Wg2Irp-ZlvkUwGO6TMcsscLELMZa_lN9jo8tKteWsCzmUii7po=rw",
+      "https://lh3.googleusercontent.com/E7coVNI7mvCGp5GASzte71-stIZAYet_sozvQ0A1D_GJfvW1IFJGzymplqvm4A5upZV6ONPQtjgloVYzpHSG09lmQBrEDLU=rw"
+    ]
   },
   {
     "sku": "MPD-078",
@@ -1556,7 +1864,11 @@
       "Tính năng đặc biệt: KHT",
       "Cân nặng (g): 360"
     ],
-    "imageSet": "mousepad"
+    "imageUrls": [
+      "https://lh3.googleusercontent.com/Io1QgOmq1Qmu0XC1Hw2_YH3m0CHwvz315Jy9ASYYvv7THgmMBQHInwVKH2FYLYBIuYVlZCfa92wWzO34EMN9yM_XWkaSjeU",
+      "https://lh3.googleusercontent.com/lFZZtBMUqkbl9qKKUe3DSmHqpb62UjWrOkxqcJ6lN3yM83Wg2Irp-ZlvkUwGO6TMcsscLELMZa_lN9jo8tKteWsCzmUii7po=rw",
+      "https://lh3.googleusercontent.com/E7coVNI7mvCGp5GASzte71-stIZAYet_sozvQ0A1D_GJfvW1IFJGzymplqvm4A5upZV6ONPQtjgloVYzpHSG09lmQBrEDLU=rw"
+    ]
   },
   {
     "sku": "MPD-079",
@@ -1576,7 +1888,11 @@
       "Cân nặng (g): 180",
       "Kích thước chính xác: 45 x 40 x 0.3 cm"
     ],
-    "imageSet": "mousepad"
+    "imageUrls": [
+      "https://lh3.googleusercontent.com/8wT7ZIR_kDHJEJN4Re5ms4TDS4YDoKoZJY1zvkrJ5njlhSXZIZ4E0aufNI4ZfEfcQ-ialGkBsuKQwpT8p9JkaPK1fmPQ33lfeA",
+      "https://lh3.googleusercontent.com/PbnX8L5XL7md3-oSFr1oArcJPCeIyepoO2mwXV2snKRuubUgNx49NJIf7z3qgj36_sNkWrVMSy3YOjmoDodWpfihjjfkmF1D",
+      "https://lh3.googleusercontent.com/a88O1qXdikPiRnA80oEhSOLKMpSlsgKxQfRoKDEDvjid1rSwdbHAqMLoFOq1vU9Zc3HtRgoLb-WHOHLJAp6UWyTn8iRQD6gaTg"
+    ]
   },
   {
     "sku": "MPD-080",
@@ -1596,7 +1912,11 @@
       "Cân nặng (g): 560",
       "Kích thước chính xác: 930mm x 300mm"
     ],
-    "imageSet": "mousepad"
+    "imageUrls": [
+      "https://lh3.googleusercontent.com/7MaM0hbSPRKwkqPA4nb_4n3uooNaKNCh2crkjayE6L48uxihghYClaNnBJvzH3B0C4KsLSe0ZTmNWaNCfAVPuqcw2UiaR1U",
+      "https://lh3.googleusercontent.com/csQUteS2a272jmpcoES3gOXsNRLkM9qCCX26wYbhnRlh_DxIklf6-nRcy4cDT8y5TG88OKCVVAuQ1KJ_nArf4MXUAZI4ZWuh",
+      "https://lh3.googleusercontent.com/Zz0RiFobKYpDtE-rJk6WhrEExTxJr7o_aupm6Y7XKOVgZ7OPcVNxDUY4jbXktREDWJ_op0Tg6-OihZO4Qi3HArdXT9a03mqC"
+    ]
   },
   {
     "sku": "MPD-081",
@@ -1616,7 +1936,11 @@
       "Tính năng đặc biệt: KHT",
       "Cân nặng (g): 200"
     ],
-    "imageSet": "mousepad"
+    "imageUrls": [
+      "https://lh3.googleusercontent.com/FQYmIg4J_xxiDrfogxIEMQCdOYqD__1-YDrm5Z10eHw7nsONL2lL2i5-DwbMBQAeMVjYdI8EvX5uV0rdCtB2",
+      "https://lh3.googleusercontent.com/Tu1-6ZOg81YkE-Ap8gebKHExX5eI-uCQ5bTzMseVvmy-L1i8K7U4fj7NjeeYG5I3qkytBdTG-WzcG6_cONjh",
+      "https://lh3.googleusercontent.com/lFZZtBMUqkbl9qKKUe3DSmHqpb62UjWrOkxqcJ6lN3yM83Wg2Irp-ZlvkUwGO6TMcsscLELMZa_lN9jo8tKteWsCzmUii7po=rw"
+    ]
   },
   {
     "sku": "MPD-082",
@@ -1636,7 +1960,11 @@
       "Tính năng đặc biệt: KHT",
       "Cân nặng (g): 500"
     ],
-    "imageSet": "mousepad"
+    "imageUrls": [
+      "https://lh3.googleusercontent.com/KFh1O-WvfJ3wuLMfxVQXMHTtyT34ES9v51-Qz7nD6T72budY8pmgVXVKN3XIgUXkV1e7S900Y08-0Tp-tR9YOAykPlEZbcg",
+      "https://lh3.googleusercontent.com/lFZZtBMUqkbl9qKKUe3DSmHqpb62UjWrOkxqcJ6lN3yM83Wg2Irp-ZlvkUwGO6TMcsscLELMZa_lN9jo8tKteWsCzmUii7po=rw",
+      "https://lh3.googleusercontent.com/E7coVNI7mvCGp5GASzte71-stIZAYet_sozvQ0A1D_GJfvW1IFJGzymplqvm4A5upZV6ONPQtjgloVYzpHSG09lmQBrEDLU=rw"
+    ]
   },
   {
     "sku": "MPD-083",
@@ -1656,7 +1984,11 @@
       "Tính năng đặc biệt: KHT",
       "Cân nặng (g): 100"
     ],
-    "imageSet": "mousepad"
+    "imageUrls": [
+      "https://lh3.googleusercontent.com/B7zLpy9aQyXjufab00jungd6VZq-KF3bgpZMMNvyJ1_qM9Qcmtd4By7Lpu_kdLocaHf0ghc129Ust4IJy0ho1DWn5ekmE5CZ",
+      "https://lh3.googleusercontent.com/8zO59IobiXWQq_aVGCZDxdUFH93VqAbglZYZKf8GsxhdcC9WRCMZ8GhxlsFRl3ulK7yraimYRchEp-I2URly5wHY-YEVe2o",
+      "https://lh3.googleusercontent.com/lFZZtBMUqkbl9qKKUe3DSmHqpb62UjWrOkxqcJ6lN3yM83Wg2Irp-ZlvkUwGO6TMcsscLELMZa_lN9jo8tKteWsCzmUii7po=rw"
+    ]
   },
   {
     "sku": "MPD-084",
@@ -1676,7 +2008,11 @@
       "Tính năng đặc biệt: KHT",
       "Cân nặng (g): 100"
     ],
-    "imageSet": "mousepad"
+    "imageUrls": [
+      "https://lh3.googleusercontent.com/SVS3LKxFQHbPjffHCXDNB9zijPq4sp0384DCn6MlxRJMGW4t_GTOin73DEQK1_Z8_r_xzPxeh-mjXb5d10I5h7hyB74hJZk",
+      "https://lh3.googleusercontent.com/jcuraEIynP-Os5J3eILKQAeiwVPbvsaDtY4-sSiO4QYM0mwvNPi-TWQmClEojpPkfhzK42iPaqAnrskAfHIk9rJqK74o09Y",
+      "https://lh3.googleusercontent.com/lFZZtBMUqkbl9qKKUe3DSmHqpb62UjWrOkxqcJ6lN3yM83Wg2Irp-ZlvkUwGO6TMcsscLELMZa_lN9jo8tKteWsCzmUii7po=rw"
+    ]
   },
   {
     "sku": "MPD-085",
@@ -1696,7 +2032,11 @@
       "Tính năng đặc biệt: KHT",
       "Cân nặng (g): 100"
     ],
-    "imageSet": "mousepad"
+    "imageUrls": [
+      "https://lh3.googleusercontent.com/lWGZIBuQCcTPKpPcRGexFHERX9hNTbLWSEOLZtYiXbxdXibS1HBxv_GdPGxCPWhzgdVFSpLIVZjILpJn3lbALHk6MwLR6Ro",
+      "https://lh3.googleusercontent.com/RwjPHsMvNgqRm9la5iqs0DgU1Of70I58AHkp0F5xMwqPy3VIV5xVGScNyq_Q24d6T_9Mm4oJMUljGCZ2iXUmSTAtxvbohG6W",
+      "https://lh3.googleusercontent.com/lFZZtBMUqkbl9qKKUe3DSmHqpb62UjWrOkxqcJ6lN3yM83Wg2Irp-ZlvkUwGO6TMcsscLELMZa_lN9jo8tKteWsCzmUii7po=rw"
+    ]
   },
   {
     "sku": "MPD-086",
@@ -1716,7 +2056,11 @@
       "Tính năng đặc biệt: KHT",
       "Cân nặng (g): 100"
     ],
-    "imageSet": "mousepad"
+    "imageUrls": [
+      "https://lh3.googleusercontent.com/RSUv_7mJHTjix-IFLW6oRG2chcisNAGM3zLKVKHcF6clZjP-BM2ZFG1G8Gpqe-wFzACs1cFBk0b8-FpGV0tTrJLaArocyfs",
+      "https://lh3.googleusercontent.com/lFZZtBMUqkbl9qKKUe3DSmHqpb62UjWrOkxqcJ6lN3yM83Wg2Irp-ZlvkUwGO6TMcsscLELMZa_lN9jo8tKteWsCzmUii7po=rw",
+      "https://lh3.googleusercontent.com/E7coVNI7mvCGp5GASzte71-stIZAYet_sozvQ0A1D_GJfvW1IFJGzymplqvm4A5upZV6ONPQtjgloVYzpHSG09lmQBrEDLU=rw"
+    ]
   },
   {
     "sku": "MPD-087",
@@ -1736,7 +2080,11 @@
       "Cân nặng (g): 1000",
       "Tên của lót chuột: AKKO Joy of Life"
     ],
-    "imageSet": "mousepad"
+    "imageUrls": [
+      "https://lh3.googleusercontent.com/GRMANDf3foVdU8NI2UX8fXHgrm6afTAKlGBolBr3bBeRS3UL3friyXpQwH1SHzHv83EU7zK5MS9BL-vAqHuN1i23Yi1u6wqF",
+      "https://lh3.googleusercontent.com/RK7l6IsgPEnHQLeLxnlRL6yqZnye388_S28ZXehNzpsJvFu5PK2v22KAf7fpLAYhbaEQs3iRivTzQlNxilgeGg87fqiK-jctDg",
+      "https://lh3.googleusercontent.com/lFZZtBMUqkbl9qKKUe3DSmHqpb62UjWrOkxqcJ6lN3yM83Wg2Irp-ZlvkUwGO6TMcsscLELMZa_lN9jo8tKteWsCzmUii7po=rw"
+    ]
   },
   {
     "sku": "MPD-088",
@@ -1756,7 +2104,11 @@
       "Cân nặng (g): 32",
       "Tên của lót chuột: 99G Air XSoft"
     ],
-    "imageSet": "mousepad"
+    "imageUrls": [
+      "https://lh3.googleusercontent.com/qcseTt9u2VHwn5sdMAbPfpKF-th6BgQpLUIxElIZ2443pMVN2qr3RahRmYcDlZPl2AnQQlGHteMZfpsvWJ-uWIDHIP3RDgGMQw",
+      "https://lh3.googleusercontent.com/1sVnY8RdimekVRLcrOz31R7E9ngVfVCDItL8idObPqZGJLr23UAJTNOMrzuojz3qxuA_2TWkBdIZhWrHsUjhyYcyup40xLvO",
+      "https://lh3.googleusercontent.com/lFZZtBMUqkbl9qKKUe3DSmHqpb62UjWrOkxqcJ6lN3yM83Wg2Irp-ZlvkUwGO6TMcsscLELMZa_lN9jo8tKteWsCzmUii7po=rw"
+    ]
   },
   {
     "sku": "STG-089",
@@ -1776,7 +2128,11 @@
       "Tính năng: Hoạt động với OBS (Phần mềm Truyền phát Mở) - XSplit Broadcaster",
       "Cân nặng (g): 162"
     ],
-    "imageSet": "webcam"
+    "imageUrls": [
+      "https://lh3.googleusercontent.com/vu0jsbP6ucS94r9WKDoiCbPjE_AOUOeyuHFny4BeijPsrepZcJsJIf3si_oWXLewIARypmGEjB0zMtQyp1hwTN4r1lGCUge0Hw",
+      "https://lh3.googleusercontent.com/h-rYPuj_X_WZ2LAYrzfYrxZxCmD35LJSjTmKqjx1aE1cdsRWVrvNT79OlgecEqbSVSm9VRV-MumwTkIz4Gw_HVsDZIB8VtB9",
+      "https://lh3.googleusercontent.com/GCI_vc-Vp5L0fGiv_ZM-MtJXDQOvcow1B1vZzeN9tK24LbaTykMb9oiht4IW9Z-fGzFDk1ObUtFQPAtotKCJ9EQGorP0xK_M"
+    ]
   },
   {
     "sku": "STG-090",
@@ -1796,7 +2152,11 @@
       "Tính năng: Tự động điều chỉnh ánh sáng RightLight 3 - Khả năng thu phóng: Lên tới 5x",
       "Cân nặng (g): 63"
     ],
-    "imageSet": "webcam"
+    "imageUrls": [
+      "https://lh3.googleusercontent.com/jUrW9h1UQYYg2V5sFz25-DwNC-TuNS_6mFTcYL38xzvY79cEsKP-c2V_20o-55bh1qdcFAq9_B7h2X9UxcUlFKZP_hwuVLg4",
+      "https://lh3.googleusercontent.com/FJcx7GL1mK1onV1Ydo7x3NgL-Hpe5XM9-ZjO4n1ucOqoRROb1J5JqFu2YH5VzCgN2GVRXsz7t-1tF_77oh9i6-uSU2bCL-Ut6w",
+      "https://lh3.googleusercontent.com/0XGT8ilnvfYZzFT-Btvm2dOd_n_PYD_BFY8K_VyfGqYqjCJVGKzo6MAI_jvMwv89_f2F400nUFNY12bKzswX4e7tATxf2qGDKQ"
+    ]
   },
   {
     "sku": "STG-091",
@@ -1816,7 +2176,11 @@
       "Tính năng: - Công nghệ RightLight 2 - Tích hợp màn trập riêng tư - Tự động cân bằng ánh sáng - Thấu kính 4 thành phần nhựa tùy chỉnh với lớp phủ chống phản xạ - Được chứng nhận Google Meet, hoạt động với Chromebook được chứng nhận",
       "Cân nặng (g): 130"
     ],
-    "imageSet": "webcam"
+    "imageUrls": [
+      "https://lh3.googleusercontent.com/sjyKzbeGsXTQgfsi7pbBBsAZWY4qC7hLv7EPUP7J7zr98qaPg5OrcVJSANC650wREhvqvjhkya98EvdiBWW-vaYellWuuFLX",
+      "https://lh3.googleusercontent.com/DB4A24gZOhVyP3a5JUPXFtayLzZs9F-QO73FI3-9vMS4ddHV-tJLiiR63GCxkYCLfPCXZfOlJqK9zmOAab80cH-4sJF98vzR",
+      "https://lh3.googleusercontent.com/6kOVyPhIuPvPYddc_5qUrIxZJqMiwjOV-oFeKl_p-U0HqT6VAvNtuqCBVJ6Wvp4oVGW8xpE3mX4go0vZU-ZI5NDmuwtxktR8"
+    ]
   },
   {
     "sku": "STG-092",
@@ -1836,7 +2200,11 @@
       "Tính năng: - Với tính năng RightLight 2 tự động điều chỉnh ánh sáng để bù đắp cho môi trường ánh sáng kém - Dễ dàng tham gia vào cuộc họp bằng ứng dụng hội họp video - Điều chỉnh dễ dàng qua ứng dụng logi tune",
       "Cân nặng (g): 74.6"
     ],
-    "imageSet": "webcam"
+    "imageUrls": [
+      "https://lh3.googleusercontent.com/l3CvG0RTanrsHElPgh5RI-cEpX_S725wn6qOm0HL42AT8otBC3PYAonG4K1i3DseiYk2EQl5D24NWUJzefCKPhUmctb9iez2NA",
+      "https://lh3.googleusercontent.com/fU9NsAcBNMSCasG_d_2g8OIBb3ZHCUrKASebCbUQrP62979Et0LRaZ6Yg-XcFyrEIoKozCpEkybshxf20kxWKZnO3zsgL7Ei",
+      "https://lh3.googleusercontent.com/D7T8HS2Fz6f-aLCAsHyS-1mtu1Wd0MZBLoDwwAPw8i0Rg76gAD9lre5sjb82TcSycRDpApwnCX3_RQME9oav2ZqkXqSYIPWH"
+    ]
   },
   {
     "sku": "STG-093",
@@ -1856,7 +2224,11 @@
       "Tính năng: - RightLight 2 tự động cân bằng độ sáng, điều chỉnh độ tương phản - Được hỗ trợ trong Logi Tune",
       "Cân nặng (g): 75"
     ],
-    "imageSet": "webcam"
+    "imageUrls": [
+      "https://lh3.googleusercontent.com/mipif-nl666XejkE9IcNCHaSXbTdUxfdSTyKL4vAXmXUtEnG4Eatgzqj-Y2FemDb4097A1iidqu6vlvR0NfwtbTsmLMjN0HYLw",
+      "https://lh3.googleusercontent.com/fCgmapzqqyWusfxln90_YYVYRRk4PG6DMVBarszLGeys_BoUmlIJ6aIMM49Z7Yzvg4T1E3hZXpdMh4zdKs56CSXfTuIDPqAH",
+      "https://lh3.googleusercontent.com/J6nTCMXBAxcoJ7bCf4AmngfVa3ZETmtc9s-j6rR2yo4BARywuyD6qWOlVBc0B-r9ImbGXA4sdprwvcgtukHX4vUQdtCtmC06"
+    ]
   },
   {
     "sku": "STG-094",
@@ -1876,7 +2248,11 @@
       "Tính năng: - Công nghệ RightLight 3 và khả năng mở rộng dải tương phản - Khả năng giảm thiểu tiếng ồn tốt - Cảm biến hồng ngoại",
       "Cân nặng (g): 63"
     ],
-    "imageSet": "webcam"
+    "imageUrls": [
+      "https://lh3.googleusercontent.com/43TUqLSqUj_plQyVJXAbk3b2AhxRCrvpH0N0phcLdwQo8Q42U57H1xswgoxEMDc4jQBvMsjqQP9LtVUBqf60TqxKfDa9b2dA",
+      "https://lh3.googleusercontent.com/w1gYRnXxYrtUi7QQhksoeJG1vgwtOVD27EPtNcWIDmo7DNIg8lmKbjpWL56aeEcHd9h1wNJoJc6vmQmcs1mVuRcNh7l8T0H2Uw",
+      "https://lh3.googleusercontent.com/6lz05T98YAM3YQoHVrwgd1mmD9iY-97JON46ZNv7VuzINj8VYlOk7SbQ8yqU08iPw9Vw8Mvc0Tb2yutxbMi0agygWn5m6DYi"
+    ]
   },
   {
     "sku": "STG-095",
@@ -1896,7 +2272,11 @@
       "Tính năng: - Rightlight 4 với HDR, đem lại hình ảnh rõ nét ở nhiều môi trường ánh sáng khác nhau - Thu phóng kỹ thuật số 4x - Hỗ trợ trong Logi Tune",
       "Cân nặng (g): 121"
     ],
-    "imageSet": "webcam"
+    "imageUrls": [
+      "https://lh3.googleusercontent.com/I9NzGfcks99JsgrktVqLbnOa4MSGIhVO37BILomm1K-ct-GebIJG_6Hijt5aymKGYvJeBIpblyasMBduAPmSv_PjXiMXHMSf",
+      "https://lh3.googleusercontent.com/0IcL0s_wg6aFMl4xW4p75pksiTfxUGQa4DU51SsmYrJ-SYxu8K1qLtzdXzl-QFlortRX-k3jmaacX15XQMhCZaF0ual0exd7",
+      "https://lh3.googleusercontent.com/jgwcYvAES3ZNDQQvjyBv4czawNTx94bnprEJT2Zdx5aV0rLhM30q85nVyHjzYL1q_M1S5Qfw_6SrYLLKY48JdnuDapzoWfaR"
+    ]
   },
   {
     "sku": "STG-096",
@@ -1916,7 +2296,11 @@
       "Tính năng: Tự động điều chỉnh ánh sáng: RightLight 2 - Mic tích hợp - Màn che bảo mật",
       "Cân nặng (g): 130"
     ],
-    "imageSet": "webcam"
+    "imageUrls": [
+      "https://lh3.googleusercontent.com/iGGuH3D73Tm0UVUlzjnCOgkLubLLikUJLqQveYBUw8_vYk4xwUunaSUC5e5VtGbHiYC4Mvn61VfjIxH6JTAU3ED910uFKcXy",
+      "https://lh3.googleusercontent.com/6GDKjTf0a7eMekMxz_NIy8i3mwEPfsHvS8DCunJg_2KcJm5GsIyPflILle17ZzInmMNqwo9G_ncL6sNyXIKVssCpWNz0mHJt",
+      "https://lh3.googleusercontent.com/i9plz3dgLDL_5Bu32WiZetI6dcqoqYzm6yskWTabvvjSavsWpBFgp3GAldC1-Il4tU_XG4DhHp1Jj5llPzdtId2LvuS7tb1G"
+    ]
   },
   {
     "sku": "STG-097",
@@ -1936,7 +2320,11 @@
       "Tính năng: - Với tính năng tăng cường hình ảnh AI và cảm biến webcam - Tự động lấy nét, HDR, cân bằng trắng, phơi sáng, cho hình ảnh rõ ràng trong nhiều môi trường ánh sáng khác nhau từ ánh sáng yếu tới ánh nắng trực tiếp",
       "Cân nặng (g): 176"
     ],
-    "imageSet": "webcam"
+    "imageUrls": [
+      "https://lh3.googleusercontent.com/SUcdJfKk_aivHzbEXdjs1nctF8PJQmDdN7_lM5yWdTNxounwZZcY2c_PSEELq-R8SJvsbBefGWY_XMCugVOFJbFvZbZ8gYvecw",
+      "https://lh3.googleusercontent.com/Mlov5ag69YUaFKvEvIpn5pLTm6L51gOnekgVeeBQW4YKf-rRbxnP5ImdkxOtBC_xMgxltGc7gIopceoLu46vU8CGmczPvW6U6g",
+      "https://lh3.googleusercontent.com/OZq2iQcqF2PKihmuoyJ8Q0dplBOqrP6H2x5jSoz5T8jsMZJy2Mxam5ClrlqD-WZB3zNFFaIIbL5SNXxmUnN4SZW8j2KvvQ-p"
+    ]
   },
   {
     "sku": "STG-098",
@@ -1956,7 +2344,11 @@
       "Tính năng: Micrô tích hợp, tạo chùm kép với phạm vi lên tới 1,2 m - Kẹp gắn phổ dụng phù hợp với máy tính xách tay, màn hiển thị LCD hoặc các màn hình - Tính năng tự động điều chỉnh ánh sáng RightLight 5 với HDR - Cảm biến Sony STARVIS 8,5MP",
       "Cân nặng (g): 176"
     ],
-    "imageSet": "webcam"
+    "imageUrls": [
+      "https://lh3.googleusercontent.com/dDD07XZloaUECpsdlpb_AEFF7_3hx1t8s359ffMYJfz30eTFFkA_JhjJOdWp8UyyXpBti_uixByAXeChtDUNTzHI7QFI3yf-sw",
+      "https://lh3.googleusercontent.com/ySMLmWXs4MNy-WTQmJvJ1PO_CVsZJCBL9ghGmNgzVRV0sgiUGuMdlafKI12ioEIj6e_IV8ahXXpGFlwvZSW_FpLxCWvr96my",
+      "https://lh3.googleusercontent.com/HV_qqF-Pn1R1-ZfAzxACnsMfpU-AD0UWzxvpb1T7MHz2v7hHGbRzgAJWEmLl6OL8V1YoPnZ3wg0-de15KqFhJWAubht1Kfo_gg"
+    ]
   },
   {
     "sku": "STG-099",
@@ -1972,7 +2364,11 @@
     "specs": [
       "Cân nặng (g): 90"
     ],
-    "imageSet": "webcam"
+    "imageUrls": [
+      "https://lh3.googleusercontent.com/IJSYmrlWdLDMMDVU4312KU_MxyBiqRNKISCuKOGCaMgJ58_jjxz4x0nH_c73N6QMRGrwtNd_f2X-E3j3EDknhcH8bdlv-rQE",
+      "https://lh3.googleusercontent.com/lFZZtBMUqkbl9qKKUe3DSmHqpb62UjWrOkxqcJ6lN3yM83Wg2Irp-ZlvkUwGO6TMcsscLELMZa_lN9jo8tKteWsCzmUii7po=rw",
+      "https://lh3.googleusercontent.com/E7coVNI7mvCGp5GASzte71-stIZAYet_sozvQ0A1D_GJfvW1IFJGzymplqvm4A5upZV6ONPQtjgloVYzpHSG09lmQBrEDLU=rw"
+    ]
   },
   {
     "sku": "STM-100",
@@ -1992,7 +2388,11 @@
       "Tính năng: - Đèn led RGB nhiều chế độ hiển thị - Tích hợp gọng chống rung mic - 4 tùy chọn: Stereo, Omnidirectional, cardioid, bidirectional",
       "Màu sắc: Trắng"
     ],
-    "imageSet": "microphone"
+    "imageUrls": [
+      "https://lh3.googleusercontent.com/yRc3XHjFnM7ZWHSETEF1iOuc9kPGHIRstHNcIBJU-HbTjmrQmCJ4Lx577Nr0mu1pTg8rzeV3qWjbUXfq2WAakJU61_ntZfc",
+      "https://lh3.googleusercontent.com/20OJ1WzR5P7-gP9gmnmO-oGW5hRX-OeyiPk55Npgve1skb8rA6Fh5xI46on5jvDACdYY3EPzQu1rCXtCxc58qyswjAl0kJlQIQ",
+      "https://lh3.googleusercontent.com/iEW55wd4JPDy0ljfUus-7Mw39xKWswh0m9ZVAzm9RfWFxn3l3RVK_16TmM14kdFsZ8HTiUcellXjDRM-ktlHFSk46IQorEI1"
+    ]
   },
   {
     "sku": "STM-101",
@@ -2012,7 +2412,11 @@
       "Tính năng: - Ghi âm chất lượng phòng thu độ phân giải cao - Cảm biến chạm để tắt tiếng - Điều khiển trực quan trên bo mạch - Đèn LED chỉ báo trạng thái micrô",
       "Màu sắc: Đen"
     ],
-    "imageSet": "microphone"
+    "imageUrls": [
+      "https://lh3.googleusercontent.com/hVv9dp81PbuLbVVwApNB04daaS5lJvSe_I2AxfQy2cLfqnaf4pR3HoV8tBPJ_-b0AImfVH4oDdgqrmLPRdgmuW65lmPrDvLn",
+      "https://lh3.googleusercontent.com/K5UxONhGZgBN8p6qQg6p8wl6hE28zsIbJdPpatBjelqmXnRgSSAh95GnZmM4RI2Itrg3D1gvDL-kyx_Q5HYiLNWQ3jpWAPg",
+      "https://lh3.googleusercontent.com/XNzGSGdQeFiyD8ji1ZXjoHyZkP0pN7OnsaQvkhzS7tMiLyeVuRCmvGPKz7v4389CmIZ7Og_IS4VN2fRVG4agFRC-vyixAnpq"
+    ]
   },
   {
     "sku": "STM-102",
@@ -2032,7 +2436,11 @@
       "Tính năng: - Cảm biến chạm để tắt tiếng - Cardioid, Đa hướng, Hai hướng, Âm thanh nổi - Có thể tùy chỉnh trong phần mềm HyperX NGENUITY",
       "Màu sắc: Đen"
     ],
-    "imageSet": "microphone"
+    "imageUrls": [
+      "https://lh3.googleusercontent.com/9ce1mwe4hFxq0sJui5CN9dhETyl9lS10vjd4WaSFsT3W-Yt1kEOpMqfxLemOs-Zq03yLd6oJ_cHr6oFGx9_oUvjlcjRqdMzi",
+      "https://lh3.googleusercontent.com/FtaORx1TmSVwOocy7bJNNfbP9X0pmd3HH_6P3Cm67orIVHI-UoynHpK4To3Qhc-BUDD-K-bTqhWHi3j0vnLQ9E4Jz5vcQSo",
+      "https://lh3.googleusercontent.com/NznHQLZmgPeagAd0GtxZh2U5IeCNAhc9Udk1tcX_s_FCMOEhBr0pONwgwxAzkRVq3nLgiSUzaccGWdG8VpzV6trTMYxojlLY"
+    ]
   },
   {
     "sku": "STM-103",
@@ -2052,7 +2460,11 @@
       "Tính năng: - Khả năng loại bỏ tiếng ồn mạnh mẽ và dễ dàng tuỳ chỉnh - Thu giọng nói rõ ràng từ bất kỳ hướng nào - Tương thích với ứng dụng Irl Steaming",
       "Màu sắc: Đen"
     ],
-    "imageSet": "microphone"
+    "imageUrls": [
+      "https://lh3.googleusercontent.com/V6CmqPlL0Xj1M2-YNymbQGAzXVYH2YsarLKG9oL2HrZwF-ZwxEssVk0HbaDnH0LdD1uO1tXq_lVAcDmdSt25Jz7jd6cDj6k",
+      "https://lh3.googleusercontent.com/UHTh-peag2IP-ynW2f-EwUB9TP-9CGn13zV4Gy7OOgb8hy6a6NH-3rsaRkkMa4HNS_PFMYn88UceJJi3tpMV8SYchxc31nuipA",
+      "https://lh3.googleusercontent.com/GyRF_YYpKfc2eRcbauIoPUdZsbWhMSMHAe-STjOSRRFQjg3Zdiur4aQeydI6i3vwEHfiaWAuOiEQNHooCL1JQHgJaWKBlN1J8w"
+    ]
   },
   {
     "sku": "STM-104",
@@ -2072,7 +2484,11 @@
       "Tính năng: KHT",
       "Màu sắc: Đen"
     ],
-    "imageSet": "microphone"
+    "imageUrls": [
+      "https://lh3.googleusercontent.com/LMBDKHkn83n5aj_e77LDAND_57SWKwyC1TS93PFtqyKZZXlDrHsSzNjPRqnQ3lhPMQFVR0zA2jUs9a5Y0rlfHg_8sBaSRYqUhA",
+      "https://lh3.googleusercontent.com/dbUJm2c0o5qRXb47FuiRPRKpmuqLO4_dTlnJPYOmSwXqyCXDCroHzkdw0TjhLZSRtGQ2f4fGwHvG3r7xQBM1VtyVbKzWSTKv",
+      "https://lh3.googleusercontent.com/Yfw1F64gXJBUCelhm1FcdN3oCcFsfai6iSPSuvKHpHSM_f3wr9wInl3aksjT-ruLfdR6LSk12SY-lht7UQUcpwaxAo3XX2h7"
+    ]
   },
   {
     "sku": "STM-105",
@@ -2092,7 +2508,11 @@
       "Tính năng: - Được tích hợp tất cả các công nghệ cần thiết để làm cho giọng nói thực sự trở nên sống động - Độ nhạy ấn tưởng có khả năng thu giọng nói độ chính xác cao - Mẫu thu âm Supercardioid",
       "Màu sắc: Đen"
     ],
-    "imageSet": "microphone"
+    "imageUrls": [
+      "https://lh3.googleusercontent.com/IZQPSO5h74HfnhGHAWOC70g2VyBFf_QHIG2RUaGXqKKST6ME6gMY51ac54cPz3g1xxiqIU04DXDSv2JNTQKb-n7GjIQ9bIc2",
+      "https://lh3.googleusercontent.com/okOaguVsvQ-JHcayZrJMZx09OnLbnGbU0GjctUiPgBEXYInQctjFBWcupDV9JTzdJmG03NvRZdg16cRmCudlVmBbU7uOAAc",
+      "https://lh3.googleusercontent.com/lFZZtBMUqkbl9qKKUe3DSmHqpb62UjWrOkxqcJ6lN3yM83Wg2Irp-ZlvkUwGO6TMcsscLELMZa_lN9jo8tKteWsCzmUii7po=rw"
+    ]
   },
   {
     "sku": "STM-106",
@@ -2112,7 +2532,11 @@
       "Tính năng: - Ánh sáng phản ứng với luồng và trò chơi - Cảm biến chạm để tắt tiếng đa chức năng - Micrô tụ điện siêu cardioid",
       "Màu sắc: Đen"
     ],
-    "imageSet": "microphone"
+    "imageUrls": [
+      "https://lh3.googleusercontent.com/D2YYNc-xz1oEgIGZuRxKm7WshoE70_FciDjACRA9v30xnGw7I2AiCsatTYavkN2kl6H_qeYRt7uuP9q41QHEfKM6ZV9x-n0",
+      "https://lh3.googleusercontent.com/Zfuwu1Itb8NWuMu9O1mmPQe-MSHhbGaVrEZ_ZjoQPePyzaZx8AaPM4JZX9XhHbnrZWTY7c1FlCmbTqCQLOrt_w_sH1h5G6wK",
+      "https://lh3.googleusercontent.com/gFzFC9-4IjXOeCZ8SqxpICdXkcZJ06vCIFnVG4uUuty0dJLTG2ZSWn7c0bX5fFTbTL4yGSgkNrttpCAS73bzv8PFoBkoI4lm"
+    ]
   },
   {
     "sku": "STM-107",
@@ -2132,7 +2556,11 @@
       "Màu sắc: Đen",
       "Cân nặng (g): 330"
     ],
-    "imageSet": "microphone"
+    "imageUrls": [
+      "https://lh3.googleusercontent.com/025_zwkPlSfZzsKPjMCF7W9AkpVCWbkYXpIyuAMyXriXJvUMh5o6m8kpIiCyTa6g9-15YBCY_cSbacIap4kpeljkxOglBIgU",
+      "https://lh3.googleusercontent.com/Q-7Nz43IB6SHgsKtyBTR-RSOh4unfYE3v9ed-g3Lk965eSbb_BUel38_5Lsk7tqR39IbJeV4MsEIUVJ2FBInIyXfr7j7m8fg",
+      "https://lh3.googleusercontent.com/fMSeWA00aBy-MSMaaNHipCYYTpzk48dks0mz7j_OaA6QFXs2X9L-76GDPkJFZCbxGsC7JR9x9QvN3N2H3tyIZLANS04ySAE"
+    ]
   },
   {
     "sku": "STM-108",
@@ -2152,7 +2580,11 @@
       "Tính năng: - Ghép nối nhanh chóng, thao tác dễ dàng, Plug and Play - Mic tích hợp đa hướng để thu âm 360° - Pin 90mAh, hoạt động đến 10 giờ, Cổng sạc USB-C (DC 5V) - Khử tiếng ồn thông minh",
       "Màu sắc: Đen"
     ],
-    "imageSet": "microphone"
+    "imageUrls": [
+      "https://lh3.googleusercontent.com/o8yLG92F1YS7bqhRuyJCTj5PXxqENTRCysf0lRaBanwJJG9w7snSx8c181GD58OqpbjJs4mKr0aFwqyCvL-OKl55QucTrX_qdw",
+      "https://lh3.googleusercontent.com/0y81L44cXtA-DNc51u8Y20-_oeDuogsQJPeIV1DENKiMDG1uCalukk2I5DWWujcmf3iH1nwbIiLj6LTS_5OuW9127wFh4E1T-A",
+      "https://lh3.googleusercontent.com/UHtSSZjSCxTFoVZdiM7Al13adDliCgEBoqfLmqS5Ga9CH2HnTEbbX0kds8Zdk3Rbu7nLJqcC5J7kIT5-TXkvhJ4fT2LklDYS"
+    ]
   },
   {
     "sku": "STM-109",
@@ -2172,7 +2604,11 @@
       "Tính năng: - Thời lượng pin lâu hơn, lên tới 10 giờ sau mỗi lần sạc đầy - Trang bị màn hình OLED độ tương phản cao - Có sẵn Cổng USB-C trên hộp sạc giúp dễ dàng kết nối.",
       "Màu sắc: Đen"
     ],
-    "imageSet": "microphone"
+    "imageUrls": [
+      "https://lh3.googleusercontent.com/nzN4uSbjq7kixF5ifUm5uHDCz9CS69HdPeNry4k90Wf6PrSb9nfLgbcy1KGH7PPWQusvVNW8cTcW8kSe_VA-6NoPQfzOaCBb",
+      "https://lh3.googleusercontent.com/1Kbb0jTsowxQYtyON1X3bkC9_NTMV6b6lCCr0KXF41Fi4g7G6KWPIujAlvDCrjwGD1FfwOUKNfspp7JubIIbeImsXJHIuKF4",
+      "https://lh3.googleusercontent.com/kXMBS_aboSt9zvvEeI9iCace64s1Gp6Lmrg8RxKYe-wmcwCl7bOYUMl6DiDO_o2E2NsiHvjZaxZ8uV5hcgezgmHSjVczotfk"
+    ]
   },
   {
     "sku": "STM-110",
@@ -2192,6 +2628,10 @@
       "Tính năng: - 6 mức điều chỉnh âm lượng - Tương thích với iPhone và iPad - Phạm vi hoạt động lên đến 100m",
       "Màu sắc: Đen"
     ],
-    "imageSet": "microphone"
+    "imageUrls": [
+      "https://lh3.googleusercontent.com/32iPkYubC4ThS2_dxUDlne-iAWq3B-mGctrGU7CMVvcbFPogf5-kg_JBwrXi0Dytq2sFOxHRIjY6vxWizZ-1Dhxuv2K9FKnu",
+      "https://lh3.googleusercontent.com/lFZZtBMUqkbl9qKKUe3DSmHqpb62UjWrOkxqcJ6lN3yM83Wg2Irp-ZlvkUwGO6TMcsscLELMZa_lN9jo8tKteWsCzmUii7po=rw",
+      "https://lh3.googleusercontent.com/E7coVNI7mvCGp5GASzte71-stIZAYet_sozvQ0A1D_GJfvW1IFJGzymplqvm4A5upZV6ONPQtjgloVYzpHSG09lmQBrEDLU=rw"
+    ]
   }
 ]
