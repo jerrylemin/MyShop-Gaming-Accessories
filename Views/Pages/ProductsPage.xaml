@@ -5,6 +5,7 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:models="using:ProjectTest.Models"
     mc:Ignorable="d"
     RequestedTheme="Light"
     Background="{ThemeResource AppCanvasBrush}">
@@ -281,6 +282,89 @@
                             </StackPanel>
                         </Border>
                     </Grid>
+                </StackPanel>
+            </Border>
+
+            <Border Style="{ThemeResource CardBorderStyle}">
+                <StackPanel Spacing="14">
+                    <Grid ColumnSpacing="16">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="Auto" />
+                        </Grid.ColumnDefinitions>
+
+                        <StackPanel Spacing="6">
+                            <TextBlock
+                                Style="{ThemeResource SectionHeaderTextBlockStyle}"
+                                Text="Category Management" />
+                            <TextBlock
+                                Style="{ThemeResource PageIntroTextBlockStyle}"
+                                Text="Thêm, sửa, xóa loại sản phẩm an toàn. Không thể xóa category đang còn sản phẩm sử dụng." />
+                        </StackPanel>
+
+                        <StackPanel
+                            Grid.Column="1"
+                            Orientation="Horizontal"
+                            VerticalAlignment="Center"
+                            Spacing="10">
+                            <Button
+                                Style="{ThemeResource AccentButtonStyle}"
+                                Command="{Binding AddCategoryCommand}"
+                                Content="Add Category" />
+                            <Button
+                                Style="{ThemeResource SubtleButtonStyle}"
+                                Command="{Binding EditCategoryCommand}"
+                                Content="Edit Category" />
+                            <Button
+                                Style="{ThemeResource SubtleButtonStyle}"
+                                Command="{Binding DeleteCategoryCommand}"
+                                Content="Delete Category" />
+                        </StackPanel>
+                    </Grid>
+
+                    <ListView
+                        ItemsSource="{Binding ManagedCategories}"
+                        SelectedItem="{Binding SelectedCategoryItem, Mode=TwoWay}">
+                        <ListView.ItemTemplate>
+                            <DataTemplate x:DataType="models:CategoryListItem">
+                                <Border
+                                    Margin="0,4"
+                                    Padding="14"
+                                    Background="{ThemeResource PageSurfaceBrush}"
+                                    BorderBrush="{ThemeResource CardStrokeBrush}"
+                                    BorderThickness="1"
+                                    CornerRadius="18">
+                                    <Grid ColumnSpacing="16">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*" />
+                                            <ColumnDefinition Width="Auto" />
+                                        </Grid.ColumnDefinitions>
+
+                                        <StackPanel Spacing="4">
+                                            <TextBlock
+                                                FontWeight="SemiBold"
+                                                Text="{x:Bind Name}" />
+                                            <TextBlock
+                                                Style="{ThemeResource CaptionTextBlockStyle}"
+                                                Text="{x:Bind Description}" />
+                                        </StackPanel>
+
+                                        <StackPanel
+                                            Grid.Column="1"
+                                            HorizontalAlignment="Right"
+                                            Spacing="4">
+                                            <TextBlock
+                                                FontWeight="SemiBold"
+                                                Text="{x:Bind ProductCount}" />
+                                            <TextBlock
+                                                Style="{ThemeResource CaptionTextBlockStyle}"
+                                                Text="{x:Bind ProductCountText}" />
+                                        </StackPanel>
+                                    </Grid>
+                                </Border>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
                 </StackPanel>
             </Border>
         </StackPanel>

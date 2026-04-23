@@ -19,6 +19,7 @@ public sealed partial class ProductsPage : Page
         DataContext = ViewModel;
         Loaded += ProductsPage_Loaded;
         ViewModel.EditRequested += ViewModel_EditRequested;
+        ViewModel.CategoryEditRequested += ViewModel_CategoryEditRequested;
     }
 
     public ProductsViewModel ViewModel { get; }
@@ -69,5 +70,43 @@ public sealed partial class ProductsPage : Page
         }
 
         await ViewModel.ImportFromExcelAsync(file.Path);
+    }
+
+    private async void ViewModel_CategoryEditRequested(object? sender, Models.CategoryListItem? category)
+    {
+        var nameBox = new TextBox
+        {
+            PlaceholderText = "Category name",
+            Text = category?.Name ?? string.Empty
+        };
+        var descriptionBox = new TextBox
+        {
+            AcceptsReturn = true,
+            Height = 120,
+            PlaceholderText = "Category description",
+            Text = category?.Description ?? string.Empty,
+            TextWrapping = TextWrapping.Wrap
+        };
+
+        var panel = new StackPanel { Spacing = 12 };
+        panel.Children.Add(new TextBlock { Text = "Name" });
+        panel.Children.Add(nameBox);
+        panel.Children.Add(new TextBlock { Text = "Description" });
+        panel.Children.Add(descriptionBox);
+
+        var dialog = new ContentDialog
+        {
+            Title = category is null ? "Add category" : "Edit category",
+            Content = panel,
+            PrimaryButtonText = "Save",
+            CloseButtonText = "Cancel",
+            DefaultButton = ContentDialogButton.Primary,
+            XamlRoot = XamlRoot
+        };
+
+        if (await dialog.ShowAsync() == ContentDialogResult.Primary)
+        {
+            await ViewModel.SaveCategoryAsync(category?.Id ?? 0, nameBox.Text, descriptionBox.Text);
+        }
     }
 }
