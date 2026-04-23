@@ -1,0 +1,229 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Window
+    x:Class="ProjectTest.Views.LoginWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Title="MyShop Gaming Accessories POS Login">
+
+    <Grid
+        x:Name="RootGrid"
+        Background="{ThemeResource AppCanvasBrush}">
+        <Grid
+            MaxWidth="1240"
+            Margin="32"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Center">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1.05*" />
+                <ColumnDefinition Width="0.95*" />
+            </Grid.ColumnDefinitions>
+
+            <Border
+                MinHeight="700"
+                Padding="42"
+                Background="{StaticResource LoginHeroBrush}"
+                CornerRadius="34,0,0,34">
+                <Grid>
+                    <Ellipse
+                        Width="420"
+                        Height="420"
+                        Margin="-110,-100,0,0"
+                        HorizontalAlignment="Left"
+                        VerticalAlignment="Top"
+                        Fill="#22FFFFFF" />
+                    <Ellipse
+                        Width="360"
+                        Height="360"
+                        Margin="0,0,-120,-120"
+                        HorizontalAlignment="Right"
+                        VerticalAlignment="Bottom"
+                        Fill="#1EFFFFFF" />
+                    <Ellipse
+                        Width="280"
+                        Height="280"
+                        Margin="0,80,-70,0"
+                        HorizontalAlignment="Right"
+                        VerticalAlignment="Top"
+                        Fill="#16FFFFFF" />
+
+                    <Grid RowSpacing="18">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+
+                        <Border
+                            HorizontalAlignment="Left"
+                            Padding="14,7"
+                            Background="#26FFFFFF"
+                            CornerRadius="999">
+                            <TextBlock
+                                FontSize="12"
+                                FontWeight="SemiBold"
+                                Foreground="White"
+                                Text="MyShop Gaming POS" />
+                        </Border>
+
+                        <StackPanel
+                            Grid.Row="1"
+                            VerticalAlignment="Center"
+                            Spacing="16">
+                            <TextBlock
+                                FontFamily="Segoe UI Variable Display Semib"
+                                FontSize="58"
+                                FontWeight="SemiBold"
+                                Foreground="White"
+                                Text="Bán hàng gọn, nhìn số liệu nhanh." />
+                            <TextBlock
+                                MaxWidth="470"
+                                FontSize="17"
+                                Foreground="#F3FFFFFF"
+                                Text="Một không gian làm việc sáng sủa cho chủ cửa hàng: đăng nhập, quản lý hàng hóa, lên đơn và theo dõi doanh thu trong cùng một ứng dụng."
+                                TextWrapping="WrapWholeWords" />
+                        </StackPanel>
+
+                        <Grid
+                            Grid.Row="2"
+                            ColumnSpacing="14">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+
+                            <Border
+                                Padding="18"
+                                Background="#22FFFFFF"
+                                CornerRadius="24">
+                                <StackPanel Spacing="6">
+                                    <TextBlock
+                                        FontSize="13"
+                                        Foreground="#E8FFFFFF"
+                                        Text="Smart Catalog" />
+                                    <TextBlock
+                                        FontFamily="Segoe UI Variable Display Semib"
+                                        FontSize="28"
+                                        FontWeight="SemiBold"
+                                        Foreground="White"
+                                        Text="50+" />
+                                    <TextBlock
+                                        FontSize="12"
+                                        Foreground="#D9FFFFFF"
+                                        Text="Sản phẩm mẫu với thư viện ảnh đi kèm." />
+                                </StackPanel>
+                            </Border>
+
+                            <Border
+                                Grid.Column="1"
+                                Padding="18"
+                                Background="#22FFFFFF"
+                                CornerRadius="24">
+                                <StackPanel Spacing="6">
+                                    <TextBlock
+                                        FontSize="13"
+                                        Foreground="#E8FFFFFF"
+                                        Text="Daily Insight" />
+                                    <TextBlock
+                                        FontFamily="Segoe UI Variable Display Semib"
+                                        FontSize="28"
+                                        FontWeight="SemiBold"
+                                        Foreground="White"
+                                        Text="Real-time" />
+                                    <TextBlock
+                                        FontSize="12"
+                                        Foreground="#D9FFFFFF"
+                                        Text="Xem nhanh đơn gần nhất, tồn kho thấp và doanh thu ngày." />
+                                </StackPanel>
+                            </Border>
+                        </Grid>
+                    </Grid>
+                </Grid>
+            </Border>
+
+            <Border
+                Grid.Column="1"
+                MinHeight="700"
+                Padding="48"
+                Background="{ThemeResource PageSurfaceBrush}"
+                BorderBrush="{ThemeResource CardStrokeBrush}"
+                BorderThickness="1"
+                CornerRadius="0,34,34,0">
+                <Grid>
+                    <StackPanel
+                        MaxWidth="420"
+                        VerticalAlignment="Center"
+                        Spacing="18">
+                        <StackPanel Spacing="10">
+                            <Border Style="{ThemeResource BadgeBorderStyle}">
+                                <TextBlock
+                                    Style="{ThemeResource BadgeTextBlockStyle}"
+                                    Text="{Binding VersionText}" />
+                            </Border>
+                            <TextBlock
+                                Style="{ThemeResource PageTitleTextBlockStyle}"
+                                Text="Login" />
+                            <TextBlock
+                                Style="{ThemeResource PageIntroTextBlockStyle}"
+                                Text="Đăng nhập để vào không gian quản lý cửa hàng. Thông tin đăng nhập được lưu cục bộ và mã hóa để hỗ trợ tự đăng nhập lần sau." />
+                        </StackPanel>
+
+                        <StackPanel Spacing="8">
+                            <TextBlock
+                                Style="{ThemeResource FieldLabelTextBlockStyle}"
+                                Text="Username" />
+                            <TextBox
+                                Height="46"
+                                PlaceholderText="Nhập tên đăng nhập"
+                                Text="{Binding Username, Mode=TwoWay}" />
+                        </StackPanel>
+
+                        <StackPanel Spacing="8">
+                            <TextBlock
+                                Style="{ThemeResource FieldLabelTextBlockStyle}"
+                                Text="Password" />
+                            <PasswordBox
+                                Height="46"
+                                PasswordChanged="PasswordBox_PasswordChanged" />
+                        </StackPanel>
+
+                        <Border
+                            Padding="14"
+                            Background="{ThemeResource AccentSoftBrush}"
+                            CornerRadius="18">
+                            <StackPanel Spacing="4">
+                                <TextBlock
+                                    FontSize="12"
+                                    FontWeight="SemiBold"
+                                    Foreground="{ThemeResource AccentBrush}"
+                                    Text="Tài khoản mặc định" />
+                                <TextBlock
+                                    Foreground="{ThemeResource AccentBrush}"
+                                    Text="{Binding DefaultCredentialsHint}"
+                                    TextWrapping="WrapWholeWords" />
+                            </StackPanel>
+                        </Border>
+
+                        <TextBlock
+                            Foreground="{ThemeResource DangerBrush}"
+                            Text="{Binding ErrorMessage}"
+                            TextWrapping="WrapWholeWords" />
+
+                        <StackPanel Spacing="12">
+                            <Button
+                                Style="{ThemeResource AccentButtonStyle}"
+                                Command="{Binding LoginCommand}"
+                                Content="Đăng nhập" />
+                            <Button
+                                Style="{ThemeResource SubtleButtonStyle}"
+                                Click="ServerConfigButton_Click"
+                                Content="Cấu hình server" />
+                        </StackPanel>
+                    </StackPanel>
+                </Grid>
+            </Border>
+        </Grid>
+    </Grid>
+</Window>

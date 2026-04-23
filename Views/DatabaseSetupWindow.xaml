@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Window
+    x:Class="ProjectTest.Views.DatabaseSetupWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Title="Database Setup">
+
+    <Grid
+        x:Name="RootGrid"
+        Background="{ThemeResource AppCanvasBrush}">
+        <Grid
+            MaxWidth="1180"
+            Margin="32"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Center">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="0.92*" />
+                <ColumnDefinition Width="1.08*" />
+            </Grid.ColumnDefinitions>
+
+            <Border
+                MinHeight="650"
+                Padding="40"
+                Background="{ThemeResource SidebarBrush}"
+                CornerRadius="34,0,0,34">
+                <Grid>
+                    <Ellipse
+                        Width="340"
+                        Height="340"
+                        Margin="-120,-120,0,0"
+                        HorizontalAlignment="Left"
+                        VerticalAlignment="Top"
+                        Fill="#14FFFFFF" />
+                    <Ellipse
+                        Width="280"
+                        Height="280"
+                        Margin="0,0,-80,-60"
+                        HorizontalAlignment="Right"
+                        VerticalAlignment="Bottom"
+                        Fill="#16FFFFFF" />
+
+                    <StackPanel
+                        MaxWidth="360"
+                        VerticalAlignment="Center"
+                        Spacing="16">
+                        <Border
+                            HorizontalAlignment="Left"
+                            Padding="14,7"
+                            Background="#20FFFFFF"
+                            CornerRadius="999">
+                            <TextBlock
+                                FontSize="12"
+                                FontWeight="SemiBold"
+                                Foreground="White"
+                                Text="PostgreSQL Setup" />
+                        </Border>
+                        <TextBlock
+                            FontFamily="Segoe UI Variable Display Semib"
+                            FontSize="44"
+                            FontWeight="SemiBold"
+                            Foreground="White"
+                            Text="Cấu hình kết nối trước khi vào ứng dụng." />
+                        <TextBlock
+                            FontSize="16"
+                            Foreground="#D9FFFFFF"
+                            Text="App sẽ kiểm tra lại kết nối, áp dụng migration và mở đúng màn hình làm việc sau khi chuỗi kết nối hợp lệ."
+                            TextWrapping="WrapWholeWords" />
+
+                        <Border
+                            Padding="18"
+                            Background="#14FFFFFF"
+                            CornerRadius="22">
+                            <StackPanel Spacing="6">
+                                <TextBlock
+                                    FontSize="13"
+                                    Foreground="#E7FFFFFF"
+                                    Text="Lưu ý" />
+                                <TextBlock
+                                    FontSize="12"
+                                    Foreground="#D4FFFFFF"
+                                    Text="Biến môi trường `MYSHOP_CONNECTION_STRING` vẫn sẽ được ưu tiên nếu tồn tại."
+                                    TextWrapping="WrapWholeWords" />
+                            </StackPanel>
+                        </Border>
+                    </StackPanel>
+                </Grid>
+            </Border>
+
+            <Border
+                Grid.Column="1"
+                MinHeight="650"
+                Padding="40"
+                Background="{ThemeResource PageSurfaceBrush}"
+                BorderBrush="{ThemeResource CardStrokeBrush}"
+                BorderThickness="1"
+                CornerRadius="0,34,34,0">
+                <StackPanel
+                    VerticalAlignment="Center"
+                    Spacing="18">
+                    <StackPanel Spacing="10">
+                        <TextBlock
+                            Style="{ThemeResource PageTitleTextBlockStyle}"
+                            Text="Database Connection Required" />
+                        <TextBlock
+                            Style="{ThemeResource PageIntroTextBlockStyle}"
+                            Text="MyShop Gaming Accessories POS chưa thể kết nối PostgreSQL trong lúc khởi động. Bạn có thể sửa chuỗi kết nối rồi thử lại ngay tại đây." />
+                    </StackPanel>
+
+                    <Border
+                        Padding="16"
+                        Background="#FFFCEDEE"
+                        CornerRadius="18">
+                        <TextBlock
+                            Foreground="{ThemeResource DangerBrush}"
+                            Text="{Binding ErrorMessage}"
+                            TextWrapping="WrapWholeWords" />
+                    </Border>
+
+                    <StackPanel Spacing="8">
+                        <TextBlock
+                            Style="{ThemeResource FieldLabelTextBlockStyle}"
+                            Text="Connection string" />
+                        <TextBox
+                            AcceptsReturn="True"
+                            Height="130"
+                            Text="{Binding ConnectionString, Mode=TwoWay}"
+                            TextWrapping="Wrap" />
+                    </StackPanel>
+
+                    <StackPanel Spacing="8">
+                        <TextBlock
+                            Style="{ThemeResource FieldLabelTextBlockStyle}"
+                            Text="Template" />
+                        <TextBox
+                            IsReadOnly="True"
+                            Text="{Binding TemplateConnectionString}"
+                            TextWrapping="Wrap" />
+                    </StackPanel>
+
+                    <TextBlock
+                        Foreground="{ThemeResource AccentBrush}"
+                        Text="{Binding StatusMessage}"
+                        TextWrapping="WrapWholeWords" />
+
+                    <Button
+                        Style="{ThemeResource AccentButtonStyle}"
+                        Command="{Binding SaveCommand}"
+                        Content="Lưu và kết nối lại" />
+                </StackPanel>
+            </Border>
+        </Grid>
+    </Grid>
+</Window>

@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Page
+    x:Class="ProjectTest.Views.Pages.SettingsPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    RequestedTheme="Light"
+    Background="{ThemeResource AppCanvasBrush}">
+
+    <ScrollViewer>
+        <StackPanel Margin="28" Spacing="18">
+            <Border Style="{ThemeResource HeroCardBorderStyle}">
+                <StackPanel Spacing="10">
+                    <Border Style="{ThemeResource BadgeBorderStyle}">
+                        <TextBlock
+                            Style="{ThemeResource BadgeTextBlockStyle}"
+                            Text="Preferences" />
+                    </Border>
+                    <TextBlock
+                        FontFamily="Segoe UI Variable Display Semib"
+                        FontSize="32"
+                        FontWeight="SemiBold"
+                        Text="Cấu hình ứng dụng gọn và đúng nhu cầu làm việc." />
+                    <TextBlock
+                        Style="{ThemeResource PageIntroTextBlockStyle}"
+                        Text="Điều chỉnh số lượng dữ liệu trên mỗi trang và kiểm soát trạng thái đăng nhập tự động của ứng dụng." />
+                </StackPanel>
+            </Border>
+
+            <Border Style="{ThemeResource CardBorderStyle}">
+                <StackPanel Spacing="14">
+                    <TextBlock
+                        Style="{ThemeResource SectionHeaderTextBlockStyle}"
+                        Text="General" />
+                    <StackPanel Spacing="6">
+                        <TextBlock Text="Items per page" />
+                        <ComboBox
+                            ItemsSource="{Binding PageSizeOptions}"
+                            SelectedItem="{Binding SelectedItemsPerPage, Mode=TwoWay}" />
+                    </StackPanel>
+                    <StackPanel Spacing="6">
+                        <TextBlock Text="Last opened screen" />
+                        <TextBox
+                            IsReadOnly="True"
+                            Text="{Binding LastOpenedScreen}" />
+                    </StackPanel>
+                </StackPanel>
+            </Border>
+
+            <Border Style="{ThemeResource CardBorderStyle}">
+                <StackPanel Spacing="14">
+                    <TextBlock
+                        Style="{ThemeResource SectionHeaderTextBlockStyle}"
+                        Text="Credentials" />
+                    <TextBlock
+                        Text="{Binding CredentialStatus}"
+                        TextWrapping="WrapWholeWords" />
+                    <Button
+                        Command="{Binding ClearCredentialsCommand}"
+                        Style="{ThemeResource SubtleButtonStyle}"
+                        Content="Clear Saved Login" />
+                </StackPanel>
+            </Border>
+
+            <TextBlock
+                Foreground="{ThemeResource AccentBrush}"
+                Text="{Binding StatusMessage}"
+                TextWrapping="WrapWholeWords" />
+
+            <Button
+                Width="180"
+                Style="{ThemeResource AccentButtonStyle}"
+                Command="{Binding SaveCommand}"
+                Content="Save Settings" />
+        </StackPanel>
+    </ScrollViewer>
+</Page>
