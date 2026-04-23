@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Application
+    x:Class="ProjectTest.App"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:helpers="using:ProjectTest.Helpers"
+    xmlns:local="using:ProjectTest"
+    RequestedTheme="Light">
+    <Application.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <XamlControlsResources xmlns="using:Microsoft.UI.Xaml.Controls" />
+            </ResourceDictionary.MergedDictionaries>
+            <SolidColorBrush x:Key="AppCanvasBrush" Color="#FFF4F7FC" />
+            <SolidColorBrush x:Key="AppCanvasAltBrush" Color="#FFE9EFFB" />
+            <SolidColorBrush x:Key="PageSurfaceBrush" Color="#FFFCFDFF" />
+            <SolidColorBrush x:Key="CardBrush" Color="#FFFDFEFF" />
+            <SolidColorBrush x:Key="CardStrokeBrush" Color="#1A17324D" />
+            <SolidColorBrush x:Key="AccentBrush" Color="#FF2B63F1" />
+            <SolidColorBrush x:Key="AccentSoftBrush" Color="#FFEAF1FF" />
+            <SolidColorBrush x:Key="SecondaryAccentBrush" Color="#FF1FA5A1" />
+            <SolidColorBrush x:Key="SecondaryAccentSoftBrush" Color="#FFE7FAF8" />
+            <SolidColorBrush x:Key="HighlightBrush" Color="#FFFF9858" />
+            <SolidColorBrush x:Key="SuccessBrush" Color="#FF16976D" />
+            <SolidColorBrush x:Key="DangerBrush" Color="#FFDC5D5D" />
+            <SolidColorBrush x:Key="PrimaryTextBrush" Color="#FF172033" />
+            <SolidColorBrush x:Key="SecondaryTextBrush" Color="#FF667085" />
+            <SolidColorBrush x:Key="MutedTextBrush" Color="#FF98A2B3" />
+            <SolidColorBrush x:Key="SidebarTextBrush" Color="#FFF8FBFF" />
+            <SolidColorBrush x:Key="SidebarMutedTextBrush" Color="#FF99A7C7" />
+            <SolidColorBrush x:Key="SidebarSelectedBrush" Color="#FF1D3E7B" />
+            <SolidColorBrush x:Key="SidebarHoverBrush" Color="#142F619F" />
+            <SolidColorBrush x:Key="SidebarBorderBrush" Color="#33FFFFFF" />
+            <SolidColorBrush x:Key="SidebarBrush" Color="#FF0E1B34" />
+            <SolidColorBrush x:Key="SidebarBrushAlt" Color="#FF15274B" />
+            <LinearGradientBrush x:Key="LoginHeroBrush" StartPoint="0,0" EndPoint="1,1">
+                <GradientStop Color="#FF1E58F5" Offset="0" />
+                <GradientStop Color="#FF27A7BE" Offset="0.56" />
+                <GradientStop Color="#FFFFA45C" Offset="1" />
+            </LinearGradientBrush>
+            <LinearGradientBrush x:Key="ShellHeroBrush" StartPoint="0,0" EndPoint="1,1">
+                <GradientStop Color="#FFF2F7FF" Offset="0" />
+                <GradientStop Color="#FFE8F1FF" Offset="0.52" />
+                <GradientStop Color="#FFFFF2E7" Offset="1" />
+            </LinearGradientBrush>
+            <helpers:ImagePathConverter x:Key="ImagePathConverter" />
+            <helpers:CurrencyConverter x:Key="CurrencyConverter" />
+
+            <Style TargetType="TextBlock">
+                <Setter Property="Foreground" Value="{ThemeResource PrimaryTextBrush}" />
+                <Setter Property="FontFamily" Value="Segoe UI Variable Text" />
+            </Style>
+
+            <Style x:Key="PageTitleTextBlockStyle" TargetType="TextBlock">
+                <Setter Property="FontFamily" Value="Segoe UI Variable Display Semib" />
+                <Setter Property="FontSize" Value="34" />
+                <Setter Property="FontWeight" Value="SemiBold" />
+                <Setter Property="Foreground" Value="{ThemeResource PrimaryTextBrush}" />
+            </Style>
+
+            <Style x:Key="SectionHeaderTextBlockStyle" TargetType="TextBlock">
+                <Setter Property="FontFamily" Value="Segoe UI Variable Display Semib" />
+                <Setter Property="FontSize" Value="20" />
+                <Setter Property="FontWeight" Value="SemiBold" />
+                <Setter Property="Foreground" Value="{ThemeResource PrimaryTextBrush}" />
+            </Style>
+
+            <Style x:Key="CaptionTextBlockStyle" TargetType="TextBlock">
+                <Setter Property="FontSize" Value="12" />
+                <Setter Property="Foreground" Value="{ThemeResource SecondaryTextBrush}" />
+            </Style>
+
+            <Style x:Key="PageIntroTextBlockStyle" TargetType="TextBlock">
+                <Setter Property="FontSize" Value="14" />
+                <Setter Property="Foreground" Value="{ThemeResource SecondaryTextBrush}" />
+                <Setter Property="TextWrapping" Value="WrapWholeWords" />
+            </Style>
+
+            <Style x:Key="FieldLabelTextBlockStyle" TargetType="TextBlock">
+                <Setter Property="FontSize" Value="13" />
+                <Setter Property="FontWeight" Value="SemiBold" />
+                <Setter Property="Foreground" Value="{ThemeResource SecondaryTextBrush}" />
+            </Style>
+
+            <Style x:Key="CardBorderStyle" TargetType="Border">
+                <Setter Property="Background" Value="{ThemeResource CardBrush}" />
+                <Setter Property="BorderBrush" Value="{ThemeResource CardStrokeBrush}" />
+                <Setter Property="BorderThickness" Value="1" />
+                <Setter Property="CornerRadius" Value="26" />
+                <Setter Property="Padding" Value="22" />
+            </Style>
+
+            <Style x:Key="HeroCardBorderStyle" TargetType="Border" BasedOn="{StaticResource CardBorderStyle}">
+                <Setter Property="Background" Value="{ThemeResource ShellHeroBrush}" />
+                <Setter Property="CornerRadius" Value="30" />
+                <Setter Property="Padding" Value="26" />
+            </Style>
+
+            <Style x:Key="AccentButtonStyle" TargetType="Button">
+                <Setter Property="Height" Value="44" />
+                <Setter Property="MinWidth" Value="120" />
+                <Setter Property="Padding" Value="18,0" />
+                <Setter Property="CornerRadius" Value="16" />
+                <Setter Property="Background" Value="{ThemeResource AccentBrush}" />
+                <Setter Property="Foreground" Value="White" />
+                <Setter Property="BorderBrush" Value="{ThemeResource AccentBrush}" />
+                <Setter Property="FontWeight" Value="SemiBold" />
+            </Style>
+
+            <Style x:Key="SubtleButtonStyle" TargetType="Button">
+                <Setter Property="Height" Value="44" />
+                <Setter Property="MinWidth" Value="120" />
+                <Setter Property="Padding" Value="18,0" />
+                <Setter Property="CornerRadius" Value="16" />
+                <Setter Property="Background" Value="{ThemeResource AccentSoftBrush}" />
+                <Setter Property="Foreground" Value="{ThemeResource AccentBrush}" />
+                <Setter Property="BorderBrush" Value="Transparent" />
+                <Setter Property="FontWeight" Value="SemiBold" />
+            </Style>
+
+            <Style x:Key="SidebarNavButtonStyle" TargetType="Button">
+                <Setter Property="HorizontalAlignment" Value="Stretch" />
+                <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+                <Setter Property="Height" Value="48" />
+                <Setter Property="Padding" Value="16,0" />
+                <Setter Property="CornerRadius" Value="16" />
+                <Setter Property="Background" Value="Transparent" />
+                <Setter Property="Foreground" Value="{ThemeResource SidebarTextBrush}" />
+                <Setter Property="BorderBrush" Value="Transparent" />
+                <Setter Property="FontWeight" Value="SemiBold" />
+            </Style>
+
+            <Style x:Key="BadgeBorderStyle" TargetType="Border">
+                <Setter Property="Background" Value="{ThemeResource AccentSoftBrush}" />
+                <Setter Property="CornerRadius" Value="999" />
+                <Setter Property="Padding" Value="10,4" />
+            </Style>
+
+            <Style x:Key="BadgeTextBlockStyle" TargetType="TextBlock">
+                <Setter Property="Foreground" Value="{ThemeResource AccentBrush}" />
+                <Setter Property="FontSize" Value="12" />
+                <Setter Property="FontWeight" Value="SemiBold" />
+            </Style>
+        </ResourceDictionary>
+    </Application.Resources>
+</Application>

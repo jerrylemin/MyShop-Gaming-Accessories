@@ -1,0 +1,15 @@
+.vs/
+bin/
+obj/
+AppPackages/
+BundleArtifacts/
+TestResults/
+*.user
+*.suo
+*.cache
+*.pdb
+*.aps
+*.tmp
+*.log
+*.orig
+tmp/

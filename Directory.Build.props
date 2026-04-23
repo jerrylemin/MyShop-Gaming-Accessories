@@ -1,0 +1,6 @@
+<Project>
+  <PropertyGroup>
+    <BaseOutputPath>$(LocalAppData)\ProjectTest\artifacts\bin\</BaseOutputPath>
+    <BaseIntermediateOutputPath>$(LocalAppData)\ProjectTest\artifacts\obj\</BaseIntermediateOutputPath>
+  </PropertyGroup>
+</Project>
