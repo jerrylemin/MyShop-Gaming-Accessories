@@ -8,7 +8,10 @@ public sealed partial class OrdersPage : Page
 {
     public OrdersPage()
     {
-        ViewModel = new OrdersViewModel(App.Current.Services.OrderRepository, App.Current.Services.ProductRepository);
+        ViewModel = new OrdersViewModel(
+            App.Current.Services.OrderRepository,
+            App.Current.Services.ProductRepository,
+            App.Current.Services.SettingsService);
         InitializeComponent();
         DataContext = ViewModel;
         Loaded += OrdersPage_Loaded;
@@ -19,7 +22,7 @@ public sealed partial class OrdersPage : Page
     private async void OrdersPage_Loaded(object sender, RoutedEventArgs e)
     {
         Loaded -= OrdersPage_Loaded;
-        await ViewModel.LoadAsync();
+        await ViewModel.LoadAsync(1);
     }
 
     private async void OrdersListView_SelectionChanged(object sender, SelectionChangedEventArgs e)

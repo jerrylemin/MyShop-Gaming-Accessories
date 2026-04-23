@@ -20,9 +20,16 @@ public class OrderRepository
 
     public async Task<List<OrderSummary>> GetAllAsync(OrderQueryOptions options)
     {
+        var paged = await GetPagedAsync(options);
+        return paged.Items.ToList();
+    }
+
+    public async Task<PagedResult<OrderSummary>> GetPagedAsync(OrderQueryOptions options)
+    {
         await using var dbContext = _dbContextFactory.CreateDbContext();
         var query = dbContext.Orders
             .Include(x => x.Items)
+            .ThenInclude(x => x.Product)
             .AsQueryable();
 
         if (options.FromDate.HasValue)
@@ -37,8 +44,40 @@ public class OrderRepository
             query = query.Where(x => x.CreatedTime < toDateExclusive);
         }
 
-        return await query
-            .OrderByDescending(x => x.CreatedTime)
+        if (options.Status.HasValue)
+        {
+            query = query.Where(x => x.Status == options.Status.Value);
+        }
+
+        if (!string.IsNullOrWhiteSpace(options.Keyword))
+        {
+            var keyword = options.Keyword.Trim().ToLower();
+            var parsedOrderId = int.TryParse(keyword, out var orderId);
+            query = query.Where(x =>
+                (parsedOrderId && x.Id == orderId) ||
+                x.Status.ToString().ToLower().Contains(keyword) ||
+                x.Items.Any(item =>
+                    item.Product != null &&
+                    (item.Product.Name.ToLower().Contains(keyword) ||
+                     item.Product.Manufacturer.ToLower().Contains(keyword) ||
+                     item.Product.SKU.ToLower().Contains(keyword))));
+        }
+
+        query = options.SortOption switch
+        {
+            OrderSortOption.OldestFirst => query.OrderBy(x => x.CreatedTime).ThenBy(x => x.Id),
+            OrderSortOption.HighestValue => query.OrderByDescending(x => x.FinalPrice).ThenByDescending(x => x.CreatedTime),
+            OrderSortOption.LowestValue => query.OrderBy(x => x.FinalPrice).ThenByDescending(x => x.CreatedTime),
+            _ => query.OrderByDescending(x => x.CreatedTime).ThenByDescending(x => x.Id)
+        };
+
+        var totalCount = await query.CountAsync();
+        var totalPages = totalCount == 0 ? 1 : (int)Math.Ceiling(totalCount / (double)Math.Max(1, options.PageSize));
+        var pageNumber = Math.Min(Math.Max(1, options.PageNumber), totalPages);
+
+        var items = await query
+            .Skip((pageNumber - 1) * options.PageSize)
+            .Take(options.PageSize)
             .Select(x => new OrderSummary
             {
                 Id = x.Id,
@@ -48,6 +87,14 @@ public class OrderRepository
                 ItemCount = x.Items.Count
             })
             .ToListAsync();
+
+        return new PagedResult<OrderSummary>
+        {
+            Items = items,
+            PageNumber = pageNumber,
+            PageSize = options.PageSize,
+            TotalCount = totalCount
+        };
     }
 
     public async Task<OrderDraft?> GetDraftByIdAsync(int orderId)
