@@ -4,8 +4,6 @@
     <TargetFramework>net8.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
-    <BaseOutputPath>bin\</BaseOutputPath>
-    <BaseIntermediateOutputPath>obj\</BaseIntermediateOutputPath>
   </PropertyGroup>
 
   <ItemGroup>
@@ -17,6 +15,7 @@
     <Compile Include="..\..\Helpers\CurrencyFormatter.cs" Link="Helpers\CurrencyFormatter.cs" />
     <Compile Include="..\..\Models\BarChartItem.cs" Link="Models\BarChartItem.cs" />
     <Compile Include="..\..\Models\Category.cs" Link="Models\Category.cs" />
+    <Compile Include="..\..\Models\CategoryListItem.cs" Link="Models\CategoryListItem.cs" />
     <Compile Include="..\..\Models\ChartPoint.cs" Link="Models\ChartPoint.cs" />
     <Compile Include="..\..\Models\DashboardSnapshot.cs" Link="Models\DashboardSnapshot.cs" />
     <Compile Include="..\..\Models\OperationResult.cs" Link="Models\OperationResult.cs" />
@@ -26,6 +25,8 @@
     <Compile Include="..\..\Models\OrderDraftItem.cs" Link="Models\OrderDraftItem.cs" />
     <Compile Include="..\..\Models\OrderItem.cs" Link="Models\OrderItem.cs" />
     <Compile Include="..\..\Models\OrderQueryOptions.cs" Link="Models\OrderQueryOptions.cs" />
+    <Compile Include="..\..\Models\OrderSortOption.cs" Link="Models\OrderSortOption.cs" />
+    <Compile Include="..\..\Models\OrderStatusFilterOption.cs" Link="Models\OrderStatusFilterOption.cs" />
     <Compile Include="..\..\Models\OrderStatus.cs" Link="Models\OrderStatus.cs" />
     <Compile Include="..\..\Models\OrderSummary.cs" Link="Models\OrderSummary.cs" />
     <Compile Include="..\..\Models\PagedResult.cs" Link="Models\PagedResult.cs" />

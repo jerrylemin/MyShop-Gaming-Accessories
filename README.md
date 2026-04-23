@@ -11,15 +11,15 @@ This repository is a coursework-style Windows programming project built around a
 - Login with locally saved encrypted credentials and a bootstrap default account.
 - Database setup window for saving a PostgreSQL connection string when startup cannot connect.
 - Dashboard with total products, low-stock count, today order count, today revenue, monthly revenue trend, latest orders, and top-selling products.
-- Product management with add, edit, delete, detail view, packaged image gallery, and category support.
+- Product management with add, edit, delete, detail view, packaged image gallery, live category data, and full category CRUD.
 - Product search, category filter, price filter, sort options, and paging.
 - Excel import for upserting products and creating missing categories.
-- Order management with date-range filtering, inline order editing, item lines, status changes, and deletion.
+- Order management with date-range filtering, keyword search, sort options, full paging controls, inline order editing, item lines, status changes, and deletion.
 - Stock synchronization when orders are created, updated, cancelled, or deleted.
-- Reports for revenue by day, week, month, and year.
+- Reports for revenue and profit by day, week, month, and year.
 - Product sales analytics for top-selling items and sales share.
 - Settings for items-per-page and saved login cleanup.
-- Seed data for 5 categories, 50 products, and 180 seeded orders.
+- Seed data for 5 categories, 110 products, and 440 seeded orders.
 - Packaged gaming accessory images stored inside the app assets.
 
 ## Technology Stack
@@ -168,25 +168,25 @@ Seed sources:
 Current seeded content:
 
 - 5 categories
-- 50 products
-- 180 orders
+- 110 products
+- 440 orders
 
 Category distribution:
 
-- 10 Gaming Keyboard products
-- 10 Gaming Mouse products
-- 10 Gaming Headset products
-- 10 Mousepad products
-- 10 Streaming Gear products
+- 22 Gaming Keyboard products
+- 22 Gaming Mouse products
+- 22 Gaming Headset products
+- 22 Mousepad products
+- 22 Streaming Gear products
 
 Image assets:
 
 - Packaged product gallery: `Assets/GamingProducts`
-- Source image cache: `Assets/_source_gaming_images`
-- Current packaged image count: 150 images
-- Current source-image cache count: 18 images
+- Source image cache: `Assets/_source_product_images`
+- Current packaged image count: 330 images
+- Current source-image cache count: 330 images
 
-The seed dataset stores Vietnamese-market retail pricing gathered from Phong Vu, while packaged images are copied from reusable image sets into app asset paths like:
+The seed dataset stores Vietnamese-market retail pricing gathered from Phong Vu, and each product now keeps three product-specific images sourced from its own gallery before being copied into app asset paths like:
 
 ```text
 ms-appx:///Assets/GamingProducts/{productId}_{imageNumber}.jpg
