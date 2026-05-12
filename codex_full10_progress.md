@@ -28,9 +28,13 @@ Updated: 2026-05-12
 
 - Implemented GraphQL.NET schema/executor and Settings demo UI.
 
+## Completed
+
+- Implemented Microsoft.ML revenue forecast/restock insights and real LLM HTTP integration.
+
 ## In Progress
 
-- Implement Microsoft.ML pipeline and real LLM HTTP integration.
+- Improve roles, loyalty UI, and remaining UI polish.
 
 ## Remaining
 

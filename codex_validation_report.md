@@ -28,6 +28,14 @@ dotnet test ProjectTest.slnx
   - `saveOrder(inputJson: String!)`.
 - Demo: open Settings, click `Load Sample`, click `Execute GraphQL`, verify JSON result appears in the read-only result textbox.
 
+## ML.Net And LLM Demo
+
+- ML.Net service: `Services/MlInsightService.cs`.
+- LLM service: `Services/LlmAssistantService.cs`.
+- Demo ML.Net: open Reports, choose a date range, click `Apply Range`, inspect `ML.Net Forecast and Restock Insights`.
+- Demo LLM not configured: leave Settings LLM key empty and verify Reports assistant says not configured.
+- Demo LLM configured: set `MYSHOP_LLM_API_KEY` or Settings `API key`, optionally set an OpenAI-compatible chat-completions endpoint, then refresh Reports and verify the assistant summary comes from the endpoint.
+
 ## Optional PostgreSQL Runtime Validation
 
 Run only when PostgreSQL is available locally:
@@ -47,8 +55,6 @@ dotnet run --project .\tools\VerificationRunner\VerificationRunner.csproj
 
 ## Known Issues Before Fixes
 
-- ML insight does not use Microsoft.ML.
-- LLM does not call HTTP endpoint.
 - Test project target is net10 instead of net8.
 - Obfuscator and sample plugin project are missing.
 

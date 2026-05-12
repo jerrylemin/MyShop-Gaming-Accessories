@@ -200,7 +200,7 @@
 
             <Border Style="{ThemeResource CardBorderStyle}">
                 <StackPanel Spacing="14">
-                    <TextBlock Style="{ThemeResource SectionHeaderTextBlockStyle}" Text="ML Restock Insights" />
+                    <TextBlock Style="{ThemeResource SectionHeaderTextBlockStyle}" Text="ML.Net Forecast and Restock Insights" />
                     <ListView ItemsSource="{Binding MlInsights}" SelectionMode="None">
                         <ListView.ItemTemplate>
                             <DataTemplate>
