@@ -13,7 +13,6 @@
     <RuntimeIdentifiers>win-x86;win-x64;win-arm64</RuntimeIdentifiers>
     <PublishProfile>win-$(Platform).pubxml</PublishProfile>
     <UseWinUI>true</UseWinUI>
-    <WinUISDKReferences>false</WinUISDKReferences>
     <EnableMsixTooling>true</EnableMsixTooling>
     <WindowsAppSdkDeploymentManagerInitialize>false</WindowsAppSdkDeploymentManagerInitialize>
     <DisableXamlGeneratedMain>true</DisableXamlGeneratedMain>
@@ -120,4 +119,12 @@
     <PublishTrimmed Condition="'$(Configuration)' != 'Debug'">True</PublishTrimmed>
     <AppxBundle Condition="'$(Configuration)' == 'Debug'">Never</AppxBundle>
   </PropertyGroup>
+
+  <Target Name="SyncWinUIDepsJsonForLooseMsixDebug"
+          AfterTargets="_CreateTestLayout;_GenerateAppxPackage;GenerateMsixPackage"
+          Condition="'$(Configuration)' == 'Debug' and '$(EnableMsixTooling)' == 'true' and Exists('$(LayoutDir)') and Exists('$(IntermediateOutputPath)$(AssemblyName).deps.json')">
+    <Copy SourceFiles="$(IntermediateOutputPath)$(AssemblyName).deps.json"
+          DestinationFiles="$(LayoutDir)\$(AssemblyName).deps.json"
+          SkipUnchangedFiles="false" />
+  </Target>
 </Project>

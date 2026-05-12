@@ -17,6 +17,8 @@ Updated: 2026-05-13
   - excludes `docs`, `scripts`, `tools`, `installer`, `ProjectTest.Tests`, `plugins`, package output folders, and `Assets/_source_product_images` from app item scanning/package inputs
   - keeps runtime logos and `Assets/GamingProducts`
   - keeps Debug package bundle disabled with `AppxBundle=Never`
+  - removes the manual `WinUISDKReferences=false` override
+  - syncs the generated build `.deps.json` into the Debug loose `AppX` layout so Visual Studio `ProjectTest (Package)` can resolve `Microsoft.WinUI.dll`
 - Updated `Properties/launchSettings.json`:
   - kept `ProjectTest (Package)`
   - added `ProjectTest (Unpackaged Fast)` for fast development debugging
@@ -66,4 +68,4 @@ dotnet publish ProjectTest.csproj -c Debug -p:Platform=x64 -p:GenerateAppxPackag
 
 - Stable .NET 8 CLI does not support `dotnet test ProjectTest.slnx`; run `dotnet test ProjectTest.Tests\ProjectTest.Tests.csproj -p:Platform=x64` for CLI validation.
 - Visual Studio can still open/use `ProjectTest.slnx`; the packaged profile remains available for MSIX checks.
-- If Visual Studio reports `System.IO.FileNotFoundException` for `Microsoft.WinUI, Version=3.0.0.0`, clean the project once and rebuild after this change. The previous Debug-only `WindowsAppSDKSelfContained=false` override has been removed because it can interfere with Windows App SDK dependency layout/probing in VS launch profiles.
+- If Visual Studio reports `System.IO.FileNotFoundException` for `Microsoft.WinUI, Version=3.0.0.0`, clean the project once and rebuild after this change. The Debug loose `AppX` layout now receives the generated `.deps.json` that includes the WinUI runtime entry.

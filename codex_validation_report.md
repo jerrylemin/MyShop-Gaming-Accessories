@@ -40,12 +40,16 @@ Results:
 Microsoft.WinUI runtime check on 2026-05-13:
 
 - Removed the Debug-only `WindowsAppSDKSelfContained=false` override from `Directory.Build.props`; forcing it can make Visual Studio packaged/unpackaged launch depend on an incorrect Windows App SDK dependency layout and surface `System.IO.FileNotFoundException` for `Microsoft.WinUI, Version=3.0.0.0`.
+- Removed the manual `WinUISDKReferences=false` override from `ProjectTest.csproj`.
+- Added a Debug-only MSIX target that copies the generated build `ProjectTest.deps.json` into the loose `AppX` layout used by Visual Studio `ProjectTest (Package)`. The previous loose AppX deps file was stale and missing the `Microsoft.WinUI.dll` runtime entry even though the `.msix` package deps file was correct.
 - `dotnet build-server shutdown`: passed.
 - `dotnet clean ProjectTest.csproj -c Debug -p:Platform=x64`: passed.
 - `dotnet restore ProjectTest.csproj`: passed.
 - `dotnet build ProjectTest.csproj -c Debug -p:Platform=x64`: passed, 0 warnings.
 - Verified `Microsoft.WinUI.dll` exists in the Debug x64 output folder.
 - `dotnet publish ProjectTest.csproj -c Debug -p:Platform=x64 -p:GenerateAppxPackageOnBuild=true -p:AppxPackageDir=AppPackages\ -p:AppxBundle=Never`: passed and produced the Debug MSIX package. The only warning was the existing `mspdbcmf.exe` symbols-package warning.
+- `dotnet build ProjectTest.csproj -c Debug -p:Platform=x64 -p:GenerateAppxPackageOnBuild=true -p:AppxBundle=Never`: passed; the loose `AppX\ProjectTest.deps.json` now contains `lib/net6.0-windows10.0.17763.0/Microsoft.WinUI.dll`.
+- Registered and launched the loose AppX package with `shell:AppsFolder`; the app opened from `AppX\ProjectTest.exe` with title `MyShop Gaming Accessories POS`.
 
 Visual Studio manual checklist:
 

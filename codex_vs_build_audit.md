@@ -18,6 +18,7 @@ Updated: 2026-05-13
 - Package Play uses MSIX deploy targets by design; it is slower than an unpackaged project launch.
 - Broad default item scanning could include non-runtime folders unless excluded early.
 - Test project builds should not trigger package/deploy work when running logic tests.
+- Visual Studio `ProjectTest (Package)` can launch from the loose `AppX` layout. That layout had a stale `ProjectTest.deps.json` missing the `Microsoft.WinUI.dll` runtime entry, which caused `System.IO.FileNotFoundException` before the app UI started.
 
 ## Files Audited
 
