@@ -3,6 +3,8 @@ using ProjectTest.Models;
 using ProjectTest.Repositories;
 using ProjectTest.Services;
 using System.Collections.ObjectModel;
+using Windows.Storage.Pickers;
+using WinRT.Interop;
 
 namespace ProjectTest.ViewModels;
 
@@ -612,11 +614,27 @@ public class OrdersViewModel : ViewModelBase
             return;
         }
 
-        var invoicePath = Path.Combine(
-            Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments),
-            $"MyShop-Invoice-{CurrentOrderId}.txt");
-        var result = await _invoiceExportService.ExportInvoiceAsync(CurrentOrderId, invoicePath);
-        StatusMessage = result.Success ? $"Invoice exported to {result.Value}" : result.Message;
+        var picker = new FileSavePicker
+        {
+            SuggestedStartLocation = PickerLocationId.DocumentsLibrary,
+            SuggestedFileName = $"MyShop-Invoice-{CurrentOrderId}"
+        };
+        picker.FileTypeChoices.Add("PDF invoice", [".pdf"]);
+
+        if (App.Current.ActiveWindow is not null)
+        {
+            InitializeWithWindow.Initialize(picker, WindowNative.GetWindowHandle(App.Current.ActiveWindow));
+        }
+
+        var file = await picker.PickSaveFileAsync();
+        if (file is null)
+        {
+            StatusMessage = "Invoice export cancelled.";
+            return;
+        }
+
+        var result = await _invoiceExportService.ExportInvoiceAsync(CurrentOrderId, file.Path);
+        StatusMessage = result.Success ? $"Invoice exported: {result.Value}" : result.Message;
     }
 
     private void RefreshEditorState()

@@ -132,6 +132,7 @@ public class OrderRepository
             .ThenInclude(x => x.Product)
             .Include(x => x.Customer)
             .Include(x => x.Promotion)
+            .Include(x => x.CreatedByUser)
             .FirstOrDefaultAsync(x => x.Id == orderId);
 
         if (order is null)
@@ -145,8 +146,10 @@ public class OrderRepository
             CreatedTime = order.CreatedTime,
             Status = order.Status,
             CustomerId = order.CustomerId,
+            CustomerName = order.Customer?.Name ?? string.Empty,
             PromotionId = order.PromotionId,
             CreatedByUserId = order.CreatedByUserId,
+            SalespersonName = order.CreatedByUser?.DisplayName ?? string.Empty,
             DiscountAmount = order.DiscountAmount,
             Items = order.Items.Select(x => new OrderDraftItem
             {

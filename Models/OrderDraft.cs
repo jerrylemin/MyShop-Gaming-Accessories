@@ -12,7 +12,11 @@ public class OrderDraft
 
     public int? CustomerId { get; set; }
 
+    public string CustomerName { get; set; } = string.Empty;
+
     public int? CreatedByUserId { get; set; }
+
+    public string SalespersonName { get; set; } = string.Empty;
 
     public decimal DiscountAmount { get; set; }
 
