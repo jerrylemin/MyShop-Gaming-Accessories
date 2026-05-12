@@ -6,7 +6,7 @@ Updated: 2026-05-13
 
 - Added `global.json` to pin stable .NET 8 SDK. This machine initially had only SDK `10.0.300-preview`; SDK `8.0.420` was installed with `winget` and is now selected by the repo pin.
 - Added `ProjectTest (Unpackaged Fast)` for fast Visual Studio debugging while keeping `ProjectTest (Package)` for MSIX verification.
-- Debug builds now disable analyzers, documentation output, trimming, ReadyToRun, self-contained output, and Windows App SDK self-contained output.
+- Debug builds now disable analyzers, documentation output, trimming, ReadyToRun, and app self-contained publish output. `WindowsAppSDKSelfContained` is intentionally left to the Windows App SDK targets so Visual Studio package/debug launch keeps the correct WinUI dependency layout.
 - App build inputs now exclude `Assets/_source_product_images`, docs, scripts, tools, installer, tests, plugins, and package output folders from app item scanning/package inputs.
 - `ProjectTest.Tests` remains on `net8.0-windows10.0.19041.0`; its app reference disables package generation for logic test runs.
 
@@ -36,6 +36,16 @@ Results:
 - `dotnet test ProjectTest.slnx`: blocked by stable .NET 8 CLI with `MSB4068` because `.slnx` is not supported by this SDK.
 - `dotnet test ProjectTest.Tests\ProjectTest.Tests.csproj -p:Platform=x64`: passed, 15 tests.
 - Debug unpackaged launch validation passed: the app opened `MyShop Gaming Accessories POS`, and Dashboard, Products, Orders, Reports, and Settings navigation responded.
+
+Microsoft.WinUI runtime check on 2026-05-13:
+
+- Removed the Debug-only `WindowsAppSDKSelfContained=false` override from `Directory.Build.props`; forcing it can make Visual Studio packaged/unpackaged launch depend on an incorrect Windows App SDK dependency layout and surface `System.IO.FileNotFoundException` for `Microsoft.WinUI, Version=3.0.0.0`.
+- `dotnet build-server shutdown`: passed.
+- `dotnet clean ProjectTest.csproj -c Debug -p:Platform=x64`: passed.
+- `dotnet restore ProjectTest.csproj`: passed.
+- `dotnet build ProjectTest.csproj -c Debug -p:Platform=x64`: passed, 0 warnings.
+- Verified `Microsoft.WinUI.dll` exists in the Debug x64 output folder.
+- `dotnet publish ProjectTest.csproj -c Debug -p:Platform=x64 -p:GenerateAppxPackageOnBuild=true -p:AppxPackageDir=AppPackages\ -p:AppxBundle=Never`: passed and produced the Debug MSIX package. The only warning was the existing `mspdbcmf.exe` symbols-package warning.
 
 Visual Studio manual checklist:
 

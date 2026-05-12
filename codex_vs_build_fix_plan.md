@@ -10,7 +10,8 @@ Updated: 2026-05-13
   - analyzers disabled during build/live analysis
   - documentation generation disabled
   - portable debug symbols
-  - trimming, ReadyToRun, self-contained, and Windows App SDK self-contained disabled for Debug
+  - trimming, ReadyToRun, and app self-contained publish disabled for Debug
+  - `WindowsAppSDKSelfContained` is intentionally not forced in Debug so Visual Studio/MSIX targets can choose the correct WinUI dependency probing behavior
 - Updated `ProjectTest.csproj`:
   - maps empty/AnyCPU platform to x64
   - excludes `docs`, `scripts`, `tools`, `installer`, `ProjectTest.Tests`, `plugins`, package output folders, and `Assets/_source_product_images` from app item scanning/package inputs
@@ -65,3 +66,4 @@ dotnet publish ProjectTest.csproj -c Debug -p:Platform=x64 -p:GenerateAppxPackag
 
 - Stable .NET 8 CLI does not support `dotnet test ProjectTest.slnx`; run `dotnet test ProjectTest.Tests\ProjectTest.Tests.csproj -p:Platform=x64` for CLI validation.
 - Visual Studio can still open/use `ProjectTest.slnx`; the packaged profile remains available for MSIX checks.
+- If Visual Studio reports `System.IO.FileNotFoundException` for `Microsoft.WinUI, Version=3.0.0.0`, clean the project once and rebuild after this change. The previous Debug-only `WindowsAppSDKSelfContained=false` override has been removed because it can interfere with Windows App SDK dependency layout/probing in VS launch profiles.
