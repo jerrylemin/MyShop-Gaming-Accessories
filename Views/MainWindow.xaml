@@ -34,232 +34,91 @@
                         <ColumnDefinition Width="Auto" />
                         <ColumnDefinition Width="*" />
                     </Grid.ColumnDefinitions>
-                    <Border
-                        Width="52"
-                        Height="52"
-                        Background="#16FFFFFF"
-                        CornerRadius="18">
-                        <TextBlock
-                            HorizontalAlignment="Center"
-                            VerticalAlignment="Center"
-                            FontFamily="Segoe UI Variable Display Semib"
-                            FontSize="22"
-                            FontWeight="SemiBold"
-                            Foreground="White"
-                            Text="M" />
+                    <Border Width="52" Height="52" Background="#16FFFFFF" CornerRadius="18">
+                        <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="Segoe UI Variable Display Semib" FontSize="22" FontWeight="SemiBold" Foreground="White" Text="M" />
                     </Border>
-                    <StackPanel
-                        Grid.Column="1"
-                        VerticalAlignment="Center"
-                        Spacing="3">
-                        <TextBlock
-                            FontFamily="Segoe UI Variable Display Semib"
-                            FontSize="22"
-                            FontWeight="SemiBold"
-                            Foreground="White"
-                            Text="MyShop" />
-                        <TextBlock
-                            Foreground="{ThemeResource SidebarMutedTextBrush}"
-                            Text="Gaming accessories POS"
-                            TextWrapping="WrapWholeWords" />
+                    <StackPanel Grid.Column="1" VerticalAlignment="Center" Spacing="3">
+                        <TextBlock FontFamily="Segoe UI Variable Display Semib" FontSize="22" FontWeight="SemiBold" Foreground="White" Text="MyShop" />
+                        <TextBlock Foreground="{ThemeResource SidebarMutedTextBrush}" Text="Gaming accessories POS" TextWrapping="WrapWholeWords" />
                     </StackPanel>
                 </Grid>
 
-                <StackPanel
-                    Grid.Row="1"
-                    Spacing="10">
-                    <TextBlock
-                        Margin="10,4,0,4"
-                        FontSize="12"
-                        FontWeight="SemiBold"
-                        Foreground="{ThemeResource SidebarMutedTextBrush}"
-                        Text="MAIN MENU" />
+                <StackPanel Grid.Row="1" Spacing="10">
+                    <TextBlock Margin="10,4,0,4" FontSize="12" FontWeight="SemiBold" Foreground="{ThemeResource SidebarMutedTextBrush}" Text="MAIN MENU" />
 
-                    <Button
-                        x:Name="DashboardButton"
-                        Style="{ThemeResource SidebarNavButtonStyle}"
-                        Click="NavigationButton_Click"
-                        Tag="Dashboard">
+                    <Button x:Name="DashboardButton" Style="{ThemeResource SidebarNavButtonStyle}" Click="NavigationButton_Click" Tag="Dashboard">
                         <Grid ColumnSpacing="12">
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="Auto" />
-                                <ColumnDefinition Width="*" />
-                            </Grid.ColumnDefinitions>
+                            <Grid.ColumnDefinitions><ColumnDefinition Width="Auto" /><ColumnDefinition Width="*" /></Grid.ColumnDefinitions>
                             <FontIcon Style="{ThemeResource SidebarNavIconStyle}" FontFamily="Segoe Fluent Icons" Glyph="&#xE80F;" />
-                            <TextBlock
-                                Grid.Column="1"
-                                Style="{ThemeResource SidebarNavTextBlockStyle}"
-                                VerticalAlignment="Center"
-                                Text="Dashboard" />
+                            <TextBlock Grid.Column="1" Style="{ThemeResource SidebarNavTextBlockStyle}" VerticalAlignment="Center" Text="Dashboard" />
                         </Grid>
                     </Button>
 
-                    <Button
-                        x:Name="ProductsButton"
-                        Style="{ThemeResource SidebarNavButtonStyle}"
-                        Click="NavigationButton_Click"
-                        Tag="Products">
+                    <Button x:Name="ProductsButton" Style="{ThemeResource SidebarNavButtonStyle}" Click="NavigationButton_Click" Tag="Products">
                         <Grid ColumnSpacing="12">
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="Auto" />
-                                <ColumnDefinition Width="*" />
-                            </Grid.ColumnDefinitions>
+                            <Grid.ColumnDefinitions><ColumnDefinition Width="Auto" /><ColumnDefinition Width="*" /></Grid.ColumnDefinitions>
                             <FontIcon Style="{ThemeResource SidebarNavIconStyle}" FontFamily="Segoe Fluent Icons" Glyph="&#xF1D5;" />
-                            <TextBlock
-                                Grid.Column="1"
-                                Style="{ThemeResource SidebarNavTextBlockStyle}"
-                                VerticalAlignment="Center"
-                                Text="Products" />
+                            <TextBlock Grid.Column="1" Style="{ThemeResource SidebarNavTextBlockStyle}" VerticalAlignment="Center" Text="Products" />
                         </Grid>
                     </Button>
 
-                    <Button
-                        x:Name="OrdersButton"
-                        Style="{ThemeResource SidebarNavButtonStyle}"
-                        Click="NavigationButton_Click"
-                        Tag="Orders">
+                    <Button x:Name="OrdersButton" Style="{ThemeResource SidebarNavButtonStyle}" Click="NavigationButton_Click" Tag="Orders">
                         <Grid ColumnSpacing="12">
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="Auto" />
-                                <ColumnDefinition Width="*" />
-                            </Grid.ColumnDefinitions>
+                            <Grid.ColumnDefinitions><ColumnDefinition Width="Auto" /><ColumnDefinition Width="*" /></Grid.ColumnDefinitions>
                             <FontIcon Style="{ThemeResource SidebarNavIconStyle}" FontFamily="Segoe Fluent Icons" Glyph="&#xE8C7;" />
-                            <TextBlock
-                                Grid.Column="1"
-                                Style="{ThemeResource SidebarNavTextBlockStyle}"
-                                VerticalAlignment="Center"
-                                Text="Orders" />
+                            <TextBlock Grid.Column="1" Style="{ThemeResource SidebarNavTextBlockStyle}" VerticalAlignment="Center" Text="Orders" />
                         </Grid>
                     </Button>
 
-                    <Button
-                        x:Name="ReportsButton"
-                        Style="{ThemeResource SidebarNavButtonStyle}"
-                        Click="NavigationButton_Click"
-                        Tag="Reports">
+                    <Button x:Name="CustomersButton" Style="{ThemeResource SidebarNavButtonStyle}" Click="NavigationButton_Click" Tag="Customers">
                         <Grid ColumnSpacing="12">
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="Auto" />
-                                <ColumnDefinition Width="*" />
-                            </Grid.ColumnDefinitions>
+                            <Grid.ColumnDefinitions><ColumnDefinition Width="Auto" /><ColumnDefinition Width="*" /></Grid.ColumnDefinitions>
+                            <FontIcon Style="{ThemeResource SidebarNavIconStyle}" FontFamily="Segoe Fluent Icons" Glyph="&#xE77B;" />
+                            <TextBlock Grid.Column="1" Style="{ThemeResource SidebarNavTextBlockStyle}" VerticalAlignment="Center" Text="Customers" />
+                        </Grid>
+                    </Button>
+
+                    <Button x:Name="ReportsButton" Style="{ThemeResource SidebarNavButtonStyle}" Click="NavigationButton_Click" Tag="Reports">
+                        <Grid ColumnSpacing="12">
+                            <Grid.ColumnDefinitions><ColumnDefinition Width="Auto" /><ColumnDefinition Width="*" /></Grid.ColumnDefinitions>
                             <FontIcon Style="{ThemeResource SidebarNavIconStyle}" FontFamily="Segoe Fluent Icons" Glyph="&#xE9D2;" />
-                            <TextBlock
-                                Grid.Column="1"
-                                Style="{ThemeResource SidebarNavTextBlockStyle}"
-                                VerticalAlignment="Center"
-                                Text="Reports" />
+                            <TextBlock Grid.Column="1" Style="{ThemeResource SidebarNavTextBlockStyle}" VerticalAlignment="Center" Text="Reports" />
                         </Grid>
                     </Button>
 
-                    <Button
-                        x:Name="SettingsButton"
-                        Style="{ThemeResource SidebarNavButtonStyle}"
-                        Click="NavigationButton_Click"
-                        Tag="Settings">
+                    <Button x:Name="SettingsButton" Style="{ThemeResource SidebarNavButtonStyle}" Click="NavigationButton_Click" Tag="Settings">
                         <Grid ColumnSpacing="12">
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="Auto" />
-                                <ColumnDefinition Width="*" />
-                            </Grid.ColumnDefinitions>
+                            <Grid.ColumnDefinitions><ColumnDefinition Width="Auto" /><ColumnDefinition Width="*" /></Grid.ColumnDefinitions>
                             <FontIcon Style="{ThemeResource SidebarNavIconStyle}" FontFamily="Segoe Fluent Icons" Glyph="&#xE713;" />
-                            <TextBlock
-                                Grid.Column="1"
-                                Style="{ThemeResource SidebarNavTextBlockStyle}"
-                                VerticalAlignment="Center"
-                                Text="Settings" />
+                            <TextBlock Grid.Column="1" Style="{ThemeResource SidebarNavTextBlockStyle}" VerticalAlignment="Center" Text="Settings" />
                         </Grid>
                     </Button>
                 </StackPanel>
 
-                <Button
-                    x:Name="LogoutButton"
-                    Grid.Row="2"
-                    Style="{ThemeResource SidebarNavButtonStyle}"
-                    Click="LogoutButton_Click"
-                    Tag="Logout">
+                <Button x:Name="LogoutButton" Grid.Row="2" Style="{ThemeResource SidebarNavButtonStyle}" Click="LogoutButton_Click" Tag="Logout">
                     <Grid ColumnSpacing="12">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="Auto" />
-                            <ColumnDefinition Width="*" />
-                        </Grid.ColumnDefinitions>
+                        <Grid.ColumnDefinitions><ColumnDefinition Width="Auto" /><ColumnDefinition Width="*" /></Grid.ColumnDefinitions>
                         <FontIcon Style="{ThemeResource SidebarNavIconStyle}" FontFamily="Segoe Fluent Icons" Glyph="&#xE8AC;" />
-                        <TextBlock
-                            Grid.Column="1"
-                            Style="{ThemeResource SidebarNavTextBlockStyle}"
-                            VerticalAlignment="Center"
-                            Text="Log out" />
+                        <TextBlock Grid.Column="1" Style="{ThemeResource SidebarNavTextBlockStyle}" VerticalAlignment="Center" Text="Log out" />
                     </Grid>
                 </Button>
             </Grid>
         </Border>
 
-        <Grid
-            Grid.Column="1"
-            Margin="0,16,16,16"
-            RowSpacing="18">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="Auto" />
-                <RowDefinition Height="*" />
-            </Grid.RowDefinitions>
-
-            <Border
-                Padding="24"
-                Background="{ThemeResource ShellHeroBrush}"
-                BorderBrush="{ThemeResource CardStrokeBrush}"
-                BorderThickness="1"
-                CornerRadius="30">
+        <Grid Grid.Column="1" Margin="0,16,16,16" RowSpacing="18">
+            <Grid.RowDefinitions><RowDefinition Height="Auto" /><RowDefinition Height="*" /></Grid.RowDefinitions>
+            <Border Padding="24" Background="{ThemeResource ShellHeroBrush}" BorderBrush="{ThemeResource CardStrokeBrush}" BorderThickness="1" CornerRadius="30">
                 <Grid ColumnSpacing="18">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="Auto" />
-                        <ColumnDefinition Width="*" />
-                        <ColumnDefinition Width="Auto" />
-                    </Grid.ColumnDefinitions>
-
-                    <Button
-                        x:Name="BackButton"
-                        Width="48"
-                        MinHeight="48"
-                        MinWidth="48"
-                        Padding="0"
-                        Background="{ThemeResource AccentSoftBrush}"
-                        BorderBrush="Transparent"
-                        CornerRadius="16"
-                        Foreground="{ThemeResource AccentBrush}"
-                        Click="BackButton_Click"
-                        Content="&#xE72B;"
-                        FontFamily="Segoe Fluent Icons"
-                        FontSize="15"
-                        FontWeight="SemiBold" />
-
-                    <StackPanel
-                        Grid.Column="1"
-                        VerticalAlignment="Center"
-                        Spacing="6">
-                        <TextBlock
-                            x:Name="PageTitleTextBlock"
-                            Style="{ThemeResource PageTitleTextBlockStyle}"
-                            Text="Dashboard" />
-                        <TextBlock
-                            x:Name="PageSubtitleTextBlock"
-                            Style="{ThemeResource PageIntroTextBlockStyle}"
-                            Text="Quickly review store status, inventory, and revenue for the day." />
+                    <Grid.ColumnDefinitions><ColumnDefinition Width="Auto" /><ColumnDefinition Width="*" /><ColumnDefinition Width="Auto" /></Grid.ColumnDefinitions>
+                    <Button x:Name="BackButton" Width="48" MinHeight="48" MinWidth="48" Padding="0" Background="{ThemeResource AccentSoftBrush}" BorderBrush="Transparent" CornerRadius="16" Foreground="{ThemeResource AccentBrush}" Click="BackButton_Click" Content="&#xE72B;" FontFamily="Segoe Fluent Icons" FontSize="15" FontWeight="SemiBold" />
+                    <StackPanel Grid.Column="1" VerticalAlignment="Center" Spacing="6">
+                        <TextBlock x:Name="PageTitleTextBlock" Style="{ThemeResource PageTitleTextBlockStyle}" Text="Dashboard" />
+                        <TextBlock x:Name="PageSubtitleTextBlock" Style="{ThemeResource PageIntroTextBlockStyle}" Text="Store overview." />
                     </StackPanel>
-
-                    <TextBlock
-                        x:Name="HeaderDateTextBlock"
-                        Grid.Column="2"
-                        VerticalAlignment="Top"
-                        FontWeight="SemiBold"
-                        Text="Today" />
+                    <TextBlock x:Name="HeaderDateTextBlock" Grid.Column="2" VerticalAlignment="Top" FontWeight="SemiBold" Text="Today" />
                 </Grid>
             </Border>
-
-            <Border
-                Grid.Row="1"
-                Background="{ThemeResource PageSurfaceBrush}"
-                BorderBrush="{ThemeResource CardStrokeBrush}"
-                BorderThickness="1"
-                CornerRadius="30">
+            <Border Grid.Row="1" Background="{ThemeResource PageSurfaceBrush}" BorderBrush="{ThemeResource CardStrokeBrush}" BorderThickness="1" CornerRadius="30">
                 <Frame x:Name="ContentFrame" />
             </Border>
         </Grid>
