@@ -54,9 +54,28 @@
                 </StackPanel>
             </Border>
 
-            <TextBlock
-                Style="{ThemeResource CaptionTextBlockStyle}"
-                Text="{Binding RangeLabel}" />
+            <Border Style="{ThemeResource CardBorderStyle}">
+                <Grid ColumnSpacing="12">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <ProgressRing
+                        Width="24"
+                        Height="24"
+                        IsActive="{Binding IsLoading}"
+                        VerticalAlignment="Center" />
+                    <StackPanel Grid.Column="1" Spacing="4">
+                        <TextBlock
+                            Style="{ThemeResource CaptionTextBlockStyle}"
+                            Text="{Binding RangeLabel}" />
+                        <TextBlock
+                            Style="{ThemeResource CaptionTextBlockStyle}"
+                            Text="{Binding StatusMessage}"
+                            TextWrapping="WrapWholeWords" />
+                    </StackPanel>
+                </Grid>
+            </Border>
 
             <Border Style="{ThemeResource CardBorderStyle}">
                 <StackPanel Spacing="8">
