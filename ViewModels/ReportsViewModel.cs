@@ -9,9 +9,13 @@ public class ReportsViewModel : ViewModelBase
 {
     private readonly ReportingService _reportingService;
     private bool _isLoading;
+    private bool _hasLoadedSnapshot;
+    private DateTime? _loadedFromDate;
+    private DateTime? _loadedToDate;
     private DateTimeOffset _fromDate = new(new DateTime(DateTime.Today.Year, DateTime.Today.Month, 1));
     private DateTimeOffset _toDate = new(DateTime.Today);
-    private string _rangeLabel = string.Empty;
+    private string _rangeLabel = "Reports are ready.";
+    private string _statusMessage = "Reports will load after the page appears.";
     private decimal _totalRevenue;
     private decimal _totalProfit;
     private ObservableCollection<ChartPoint> _revenueByDay = [];
@@ -26,7 +30,7 @@ public class ReportsViewModel : ViewModelBase
     private ObservableCollection<PieChartItem> _productSalesShare = [];
     private ObservableCollection<SalesCommissionSnapshot> _salesCommissions = [];
     private ObservableCollection<MlInsight> _mlInsights = [];
-    private string _assistantSummary = string.Empty;
+    private string _assistantSummary = "Assistant summary will appear after reports finish loading.";
 
     public ReportsViewModel(ReportingService reportingService)
     {
@@ -132,6 +136,12 @@ public class ReportsViewModel : ViewModelBase
         set => SetProperty(ref _rangeLabel, value);
     }
 
+    public string StatusMessage
+    {
+        get => _statusMessage;
+        private set => SetProperty(ref _statusMessage, value);
+    }
+
     public decimal TotalRevenue
     {
         get => _totalRevenue;
@@ -172,16 +182,43 @@ public class ReportsViewModel : ViewModelBase
         }
     }
 
+    public bool HasLoadedSnapshot
+    {
+        get => _hasLoadedSnapshot;
+        private set => SetProperty(ref _hasLoadedSnapshot, value);
+    }
+
+    public async Task InitializeAsync()
+    {
+        if (IsLoading)
+        {
+            return;
+        }
+
+        var fromDate = FromDate.Date;
+        var toDate = ToDate.Date;
+        if (HasLoadedSnapshot && _loadedFromDate == fromDate && _loadedToDate == toDate)
+        {
+            StatusMessage = "Showing cached report. Press Apply Range to refresh.";
+            return;
+        }
+
+        await LoadAsync();
+    }
+
     public async Task LoadAsync()
     {
         IsLoading = true;
+        StatusMessage = "Loading reports...";
 
         try
         {
+            var fromDate = FromDate.Date;
+            var toDate = ToDate.Date;
             var snapshot = await _reportingService.GetSnapshotAsync(new ReportQueryOptions
             {
-                FromDate = FromDate.Date,
-                ToDate = ToDate.Date
+                FromDate = fromDate,
+                ToDate = toDate
             });
 
             RangeLabel = snapshot.RangeLabel;
@@ -200,6 +237,14 @@ public class ReportsViewModel : ViewModelBase
             SalesCommissions = new ObservableCollection<SalesCommissionSnapshot>(snapshot.SalesCommissions);
             MlInsights = new ObservableCollection<MlInsight>(snapshot.MlInsights);
             AssistantSummary = snapshot.AssistantResult.Summary;
+            _loadedFromDate = fromDate;
+            _loadedToDate = toDate;
+            HasLoadedSnapshot = true;
+            StatusMessage = $"Reports updated at {DateTime.Now:HH:mm:ss}.";
+        }
+        catch (Exception ex)
+        {
+            StatusMessage = $"Reports could not be loaded: {ex.Message}";
         }
         finally
         {
