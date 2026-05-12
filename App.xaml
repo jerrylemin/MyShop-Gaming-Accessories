@@ -27,9 +27,11 @@
             <SolidColorBrush x:Key="SecondaryTextBrush" Color="#FF667085" />
             <SolidColorBrush x:Key="MutedTextBrush" Color="#FF98A2B3" />
             <SolidColorBrush x:Key="SidebarTextBrush" Color="#FFF8FBFF" />
-            <SolidColorBrush x:Key="SidebarMutedTextBrush" Color="#FF99A7C7" />
-            <SolidColorBrush x:Key="SidebarSelectedBrush" Color="#FF1D3E7B" />
-            <SolidColorBrush x:Key="SidebarHoverBrush" Color="#142F619F" />
+            <SolidColorBrush x:Key="SidebarMutedTextBrush" Color="#FFD4DEF5" />
+            <SolidColorBrush x:Key="SidebarSecondaryTextBrush" Color="#FFB8C7E7" />
+            <SolidColorBrush x:Key="SidebarDisabledTextBrush" Color="#FF6F7D99" />
+            <SolidColorBrush x:Key="SidebarSelectedBrush" Color="#FF2B5DB3" />
+            <SolidColorBrush x:Key="SidebarHoverBrush" Color="#FF1B345F" />
             <SolidColorBrush x:Key="SidebarBorderBrush" Color="#33FFFFFF" />
             <SolidColorBrush x:Key="SidebarBrush" Color="#FF0E1B34" />
             <SolidColorBrush x:Key="SidebarBrushAlt" Color="#FF15274B" />
@@ -127,6 +129,18 @@
                 <Setter Property="VerticalContentAlignment" Value="Center" />
             </Style>
 
+            <Style x:Key="SidebarNavTextBlockStyle" TargetType="TextBlock">
+                <Setter Property="Foreground" Value="{ThemeResource SidebarTextBrush}" />
+                <Setter Property="FontSize" Value="14" />
+                <Setter Property="FontWeight" Value="SemiBold" />
+                <Setter Property="TextWrapping" Value="WrapWholeWords" />
+            </Style>
+
+            <Style x:Key="SidebarNavIconStyle" TargetType="FontIcon">
+                <Setter Property="Foreground" Value="{ThemeResource SidebarTextBrush}" />
+                <Setter Property="FontSize" Value="20" />
+            </Style>
+
             <Style x:Key="SidebarNavButtonStyle" TargetType="Button">
                 <Setter Property="HorizontalAlignment" Value="Stretch" />
                 <Setter Property="HorizontalContentAlignment" Value="Stretch" />
@@ -138,6 +152,7 @@
                 <Setter Property="BorderBrush" Value="Transparent" />
                 <Setter Property="FontWeight" Value="SemiBold" />
                 <Setter Property="VerticalContentAlignment" Value="Center" />
+                <Setter Property="UseSystemFocusVisuals" Value="True" />
             </Style>
 
             <Style TargetType="TextBox">

@@ -28,67 +28,41 @@
                     <RowDefinition Height="Auto" />
                 </Grid.RowDefinitions>
 
-                <StackPanel Spacing="18">
-                    <Grid ColumnSpacing="14">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="Auto" />
-                            <ColumnDefinition Width="*" />
-                        </Grid.ColumnDefinitions>
-                        <Border
-                            Width="52"
-                            Height="52"
-                            Background="#16FFFFFF"
-                            CornerRadius="18">
-                            <TextBlock
-                                HorizontalAlignment="Center"
-                                VerticalAlignment="Center"
-                                FontFamily="Segoe UI Variable Display Semib"
-                                FontSize="22"
-                                FontWeight="SemiBold"
-                                Foreground="White"
-                                Text="M" />
-                        </Border>
-                        <StackPanel
-                            Grid.Column="1"
-                            VerticalAlignment="Center"
-                            Spacing="3">
-                            <TextBlock
-                                FontFamily="Segoe UI Variable Display Semib"
-                                FontSize="22"
-                                FontWeight="SemiBold"
-                                Foreground="White"
-                                Text="MyShop" />
-                            <TextBlock
-                                Foreground="{ThemeResource SidebarMutedTextBrush}"
-                                Text="Gaming accessories POS"
-                                TextWrapping="WrapWholeWords" />
-                        </StackPanel>
-                    </Grid>
-
+                <Grid ColumnSpacing="14">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
                     <Border
-                        Padding="16"
-                        Background="#10FFFFFF"
-                        CornerRadius="22">
-                        <StackPanel Spacing="8">
-                            <TextBlock
-                                FontSize="12"
-                                Foreground="{ThemeResource SidebarMutedTextBrush}"
-                                Text="Workspace" />
-                            <TextBlock
-                                FontFamily="Segoe UI Variable Display Semib"
-                                FontSize="18"
-                                FontWeight="SemiBold"
-                                Foreground="White"
-                                Text="Single-owner storefront"
-                                TextWrapping="WrapWholeWords" />
-                            <TextBlock
-                                FontSize="12"
-                                Foreground="{ThemeResource SidebarMutedTextBrush}"
-                                Text="Track inventory, revenue, and daily store operations."
-                                TextWrapping="WrapWholeWords" />
-                        </StackPanel>
+                        Width="52"
+                        Height="52"
+                        Background="#16FFFFFF"
+                        CornerRadius="18">
+                        <TextBlock
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Center"
+                            FontFamily="Segoe UI Variable Display Semib"
+                            FontSize="22"
+                            FontWeight="SemiBold"
+                            Foreground="White"
+                            Text="M" />
                     </Border>
-                </StackPanel>
+                    <StackPanel
+                        Grid.Column="1"
+                        VerticalAlignment="Center"
+                        Spacing="3">
+                        <TextBlock
+                            FontFamily="Segoe UI Variable Display Semib"
+                            FontSize="22"
+                            FontWeight="SemiBold"
+                            Foreground="White"
+                            Text="MyShop" />
+                        <TextBlock
+                            Foreground="{ThemeResource SidebarMutedTextBrush}"
+                            Text="Gaming accessories POS"
+                            TextWrapping="WrapWholeWords" />
+                    </StackPanel>
+                </Grid>
 
                 <StackPanel
                     Grid.Row="1"
@@ -110,12 +84,12 @@
                                 <ColumnDefinition Width="Auto" />
                                 <ColumnDefinition Width="*" />
                             </Grid.ColumnDefinitions>
-                            <FontIcon FontFamily="Segoe Fluent Icons" Glyph="&#xE80F;" />
+                            <FontIcon Style="{ThemeResource SidebarNavIconStyle}" FontFamily="Segoe Fluent Icons" Glyph="&#xE80F;" />
                             <TextBlock
                                 Grid.Column="1"
+                                Style="{ThemeResource SidebarNavTextBlockStyle}"
                                 VerticalAlignment="Center"
-                                Text="Dashboard"
-                                TextWrapping="WrapWholeWords" />
+                                Text="Dashboard" />
                         </Grid>
                     </Button>
 
@@ -129,12 +103,12 @@
                                 <ColumnDefinition Width="Auto" />
                                 <ColumnDefinition Width="*" />
                             </Grid.ColumnDefinitions>
-                            <FontIcon FontFamily="Segoe Fluent Icons" Glyph="&#xF1D5;" />
+                            <FontIcon Style="{ThemeResource SidebarNavIconStyle}" FontFamily="Segoe Fluent Icons" Glyph="&#xF1D5;" />
                             <TextBlock
                                 Grid.Column="1"
+                                Style="{ThemeResource SidebarNavTextBlockStyle}"
                                 VerticalAlignment="Center"
-                                Text="Products"
-                                TextWrapping="WrapWholeWords" />
+                                Text="Products" />
                         </Grid>
                     </Button>
 
@@ -148,12 +122,12 @@
                                 <ColumnDefinition Width="Auto" />
                                 <ColumnDefinition Width="*" />
                             </Grid.ColumnDefinitions>
-                            <FontIcon FontFamily="Segoe Fluent Icons" Glyph="&#xE8C7;" />
+                            <FontIcon Style="{ThemeResource SidebarNavIconStyle}" FontFamily="Segoe Fluent Icons" Glyph="&#xE8C7;" />
                             <TextBlock
                                 Grid.Column="1"
+                                Style="{ThemeResource SidebarNavTextBlockStyle}"
                                 VerticalAlignment="Center"
-                                Text="Orders"
-                                TextWrapping="WrapWholeWords" />
+                                Text="Orders" />
                         </Grid>
                     </Button>
 
@@ -167,12 +141,12 @@
                                 <ColumnDefinition Width="Auto" />
                                 <ColumnDefinition Width="*" />
                             </Grid.ColumnDefinitions>
-                            <FontIcon FontFamily="Segoe Fluent Icons" Glyph="&#xE9D2;" />
+                            <FontIcon Style="{ThemeResource SidebarNavIconStyle}" FontFamily="Segoe Fluent Icons" Glyph="&#xE9D2;" />
                             <TextBlock
                                 Grid.Column="1"
+                                Style="{ThemeResource SidebarNavTextBlockStyle}"
                                 VerticalAlignment="Center"
-                                Text="Reports"
-                                TextWrapping="WrapWholeWords" />
+                                Text="Reports" />
                         </Grid>
                     </Button>
 
@@ -186,55 +160,35 @@
                                 <ColumnDefinition Width="Auto" />
                                 <ColumnDefinition Width="*" />
                             </Grid.ColumnDefinitions>
-                            <FontIcon FontFamily="Segoe Fluent Icons" Glyph="&#xE713;" />
+                            <FontIcon Style="{ThemeResource SidebarNavIconStyle}" FontFamily="Segoe Fluent Icons" Glyph="&#xE713;" />
                             <TextBlock
                                 Grid.Column="1"
+                                Style="{ThemeResource SidebarNavTextBlockStyle}"
                                 VerticalAlignment="Center"
-                                Text="Settings"
-                                TextWrapping="WrapWholeWords" />
+                                Text="Settings" />
                         </Grid>
                     </Button>
                 </StackPanel>
 
-                <StackPanel
+                <Button
+                    x:Name="LogoutButton"
                     Grid.Row="2"
-                    Spacing="12">
-                    <Border
-                        Padding="16"
-                        Background="#10FFFFFF"
-                        CornerRadius="22">
-                        <StackPanel Spacing="4">
-                            <TextBlock
-                                FontSize="12"
-                                Foreground="{ThemeResource SidebarMutedTextBrush}"
-                                Text="SESSION" />
-                            <TextBlock
-                                FontWeight="SemiBold"
-                                Foreground="White"
-                                Text="Encrypted local sign-in enabled"
-                                TextWrapping="WrapWholeWords" />
-                        </StackPanel>
-                    </Border>
-
-                    <Button
-                        x:Name="LogoutButton"
-                        Style="{ThemeResource SidebarNavButtonStyle}"
-                        Click="LogoutButton_Click"
-                        Tag="Logout">
-                        <Grid ColumnSpacing="12">
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="Auto" />
-                                <ColumnDefinition Width="*" />
-                            </Grid.ColumnDefinitions>
-                            <FontIcon FontFamily="Segoe Fluent Icons" Glyph="&#xE8AC;" />
-                            <TextBlock
-                                Grid.Column="1"
-                                VerticalAlignment="Center"
-                                Text="Log out"
-                                TextWrapping="WrapWholeWords" />
-                        </Grid>
-                    </Button>
-                </StackPanel>
+                    Style="{ThemeResource SidebarNavButtonStyle}"
+                    Click="LogoutButton_Click"
+                    Tag="Logout">
+                    <Grid ColumnSpacing="12">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <FontIcon Style="{ThemeResource SidebarNavIconStyle}" FontFamily="Segoe Fluent Icons" Glyph="&#xE8AC;" />
+                        <TextBlock
+                            Grid.Column="1"
+                            Style="{ThemeResource SidebarNavTextBlockStyle}"
+                            VerticalAlignment="Center"
+                            Text="Log out" />
+                    </Grid>
+                </Button>
             </Grid>
         </Border>
 
@@ -253,15 +207,12 @@
                 BorderBrush="{ThemeResource CardStrokeBrush}"
                 BorderThickness="1"
                 CornerRadius="30">
-                <Grid ColumnSpacing="18" RowSpacing="14">
+                <Grid ColumnSpacing="18">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="Auto" />
                         <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="Auto" />
                     </Grid.ColumnDefinitions>
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="Auto" />
-                        <RowDefinition Height="Auto" />
-                    </Grid.RowDefinitions>
 
                     <Button
                         x:Name="BackButton"
@@ -293,35 +244,12 @@
                             Text="Quickly review store status, inventory, and revenue for the day." />
                     </StackPanel>
 
-                    <StackPanel
-                        Grid.Row="1"
-                        Grid.ColumnSpan="2"
-                        HorizontalAlignment="Left"
-                        Spacing="10">
-                        <TextBlock
-                            x:Name="HeaderDateTextBlock"
-                            FontWeight="SemiBold"
-                            Text="Today" />
-                        <StackPanel
-                            Orientation="Horizontal"
-                            Spacing="8">
-                            <Border Style="{ThemeResource BadgeBorderStyle}">
-                                <TextBlock
-                                    Style="{ThemeResource BadgeTextBlockStyle}"
-                                    Text="PostgreSQL" />
-                            </Border>
-                            <Border
-                                Background="{ThemeResource SecondaryAccentSoftBrush}"
-                                CornerRadius="999"
-                                Padding="10,4">
-                                <TextBlock
-                                    FontSize="12"
-                                    FontWeight="SemiBold"
-                                    Foreground="{ThemeResource SecondaryAccentBrush}"
-                                    Text="MVVM" />
-                            </Border>
-                        </StackPanel>
-                    </StackPanel>
+                    <TextBlock
+                        x:Name="HeaderDateTextBlock"
+                        Grid.Column="2"
+                        VerticalAlignment="Top"
+                        FontWeight="SemiBold"
+                        Text="Today" />
                 </Grid>
             </Border>
 

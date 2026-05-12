@@ -1,5 +1,6 @@
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
+using Microsoft.UI.Xaml.Input;
 using Microsoft.UI.Xaml.Media;
 using Microsoft.UI.Xaml.Navigation;
 using ProjectTest.Services;
@@ -15,6 +16,7 @@ public sealed partial class MainWindow : Window, INotifyPropertyChanged
     private readonly NavigationService _navigationService;
     private readonly Dictionary<string, Button> _navigationButtons;
     private string _currentPageTitle = "Dashboard";
+    private string _currentNavigationSelection = "Dashboard";
     private bool _isNavigationReady;
 
     public MainWindow()
@@ -43,6 +45,7 @@ public sealed partial class MainWindow : Window, INotifyPropertyChanged
         PageTitleTextBlock.Text = CurrentPageTitle;
         PageSubtitleTextBlock.Text = GetPageSubtitle(CurrentPageTitle);
 
+        RegisterNavigationHoverStates();
         ContentFrame.Navigated += ContentFrame_Navigated;
         Activated += MainWindow_Activated;
 
@@ -136,6 +139,8 @@ public sealed partial class MainWindow : Window, INotifyPropertyChanged
 
     private void SelectNavigationItem(string key)
     {
+        _currentNavigationSelection = key;
+
         foreach (var pair in _navigationButtons)
         {
             var isSelected = string.Equals(pair.Key, key, StringComparison.OrdinalIgnoreCase);
@@ -152,12 +157,76 @@ public sealed partial class MainWindow : Window, INotifyPropertyChanged
             : new SolidColorBrush(Microsoft.UI.Colors.Transparent);
 
         button.BorderBrush = isSelected
-            ? new SolidColorBrush(Microsoft.UI.Colors.Transparent)
+            ? GetBrush("SidebarBorderBrush")
             : new SolidColorBrush(Microsoft.UI.Colors.Transparent);
 
-        button.Foreground = isDanger && !isSelected
+        var foreground = isDanger && !isSelected
             ? GetBrush("HighlightBrush")
             : GetBrush("SidebarTextBrush");
+
+        button.Foreground = foreground;
+        button.Opacity = button.IsEnabled ? 1 : 0.65;
+        UpdateNavigationContentForeground(button.Content as DependencyObject, foreground);
+    }
+
+    private void RegisterNavigationHoverStates()
+    {
+        foreach (var button in _navigationButtons.Values.Append(LogoutButton))
+        {
+            button.PointerEntered += NavigationButton_PointerEntered;
+            button.PointerExited += NavigationButton_PointerExited;
+        }
+    }
+
+    private void NavigationButton_PointerEntered(object sender, PointerRoutedEventArgs e)
+    {
+        if (sender is not Button button || IsSelectedNavigationButton(button))
+        {
+            return;
+        }
+
+        button.Background = GetBrush("SidebarHoverBrush");
+        button.BorderBrush = GetBrush("SidebarBorderBrush");
+    }
+
+    private void NavigationButton_PointerExited(object sender, PointerRoutedEventArgs e)
+    {
+        if (sender is not Button button)
+        {
+            return;
+        }
+
+        var isDanger = ReferenceEquals(button, LogoutButton);
+        ApplyNavigationButtonState(button, IsSelectedNavigationButton(button), isDanger);
+    }
+
+    private bool IsSelectedNavigationButton(Button button)
+    {
+        return button.Tag is string key &&
+               string.Equals(key, _currentNavigationSelection, StringComparison.OrdinalIgnoreCase);
+    }
+
+    private static void UpdateNavigationContentForeground(DependencyObject? element, Brush foreground)
+    {
+        if (element is null)
+        {
+            return;
+        }
+
+        if (element is TextBlock textBlock)
+        {
+            textBlock.Foreground = foreground;
+        }
+        else if (element is FontIcon fontIcon)
+        {
+            fontIcon.Foreground = foreground;
+        }
+
+        var childCount = VisualTreeHelper.GetChildrenCount(element);
+        for (var index = 0; index < childCount; index++)
+        {
+            UpdateNavigationContentForeground(VisualTreeHelper.GetChild(element, index), foreground);
+        }
     }
 
     private static Brush GetBrush(string key)
