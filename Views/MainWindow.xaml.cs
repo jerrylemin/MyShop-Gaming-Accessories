@@ -101,7 +101,7 @@ public sealed partial class MainWindow : Window, INotifyPropertyChanged
         _navigationService.Register("Settings", typeof(SettingsPage));
         _isNavigationReady = true;
 
-        var targetScreen = App.Current.Services.SettingsService.CurrentSettings.LastOpenedScreen;
+        var targetScreen = NormalizeStartupScreen(App.Current.Services.SettingsService.CurrentSettings.LastOpenedScreen);
         if (!_navigationService.Navigate(targetScreen))
         {
             _navigationService.Navigate("Dashboard");
@@ -411,6 +411,18 @@ public sealed partial class MainWindow : Window, INotifyPropertyChanged
         return "Dashboard";
     }
 
+    private static string NormalizeStartupScreen(string? screen)
+    {
+        return screen?.Trim() switch
+        {
+            "Products" => "Products",
+            "Orders" => "Orders",
+            "Settings" => "Settings",
+            "Dashboard" => "Dashboard",
+            _ => "Dashboard"
+        };
+    }
+
     private static string GetPageSubtitle(string pageKey)
     {
         return pageKey switch
@@ -434,10 +446,7 @@ public sealed partial class MainWindow : Window, INotifyPropertyChanged
         {
             content.InvalidateMeasure();
             content.InvalidateArrange();
-            content.UpdateLayout();
         }
-
-        ContentFrame.UpdateLayout();
     }
 
     private void OnPropertyChanged([CallerMemberName] string? propertyName = null)

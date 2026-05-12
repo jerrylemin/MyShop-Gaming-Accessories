@@ -8,6 +8,7 @@ namespace ProjectTest.Views.Pages;
 public sealed partial class ReportsPage : Page
 {
     private bool _initialLoadQueued;
+    private CancellationTokenSource? _navigationLoadCts;
 
     public ReportsPage()
     {
@@ -22,16 +23,27 @@ public sealed partial class ReportsPage : Page
     {
         base.OnNavigatedTo(e);
 
+        _navigationLoadCts?.Cancel();
+        _navigationLoadCts = new CancellationTokenSource();
+        var token = _navigationLoadCts.Token;
+
         if (_initialLoadQueued)
         {
-            _ = ViewModel.InitializeAsync();
+            _ = ViewModel.InitializeAsync(token);
             return;
         }
 
         _initialLoadQueued = true;
         DispatcherQueue.TryEnqueue(DispatcherQueuePriority.Low, async () =>
         {
-            await ViewModel.InitializeAsync();
+            await ViewModel.InitializeAsync(token);
         });
+    }
+
+    protected override void OnNavigatedFrom(NavigationEventArgs e)
+    {
+        _navigationLoadCts?.Cancel();
+        ViewModel.CancelLoading();
+        base.OnNavigatedFrom(e);
     }
 }

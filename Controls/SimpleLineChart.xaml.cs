@@ -10,6 +10,9 @@ namespace ProjectTest.Controls;
 
 public sealed partial class SimpleLineChart : UserControl
 {
+    private const int MaxRenderedPoints = 90;
+    private const int MaxLabels = 10;
+
     public static readonly DependencyProperty ItemsSourceProperty =
         DependencyProperty.Register(nameof(ItemsSource), typeof(IEnumerable<ChartPoint>), typeof(SimpleLineChart), new PropertyMetadata(null, OnItemsSourceChanged));
 
@@ -46,7 +49,7 @@ public sealed partial class SimpleLineChart : UserControl
         LabelsGrid.Children.Clear();
         LabelsGrid.ColumnDefinitions.Clear();
 
-        var points = ItemsSource?.ToList() ?? [];
+        var points = Downsample(ItemsSource?.ToList() ?? [], MaxRenderedPoints);
         if (points.Count == 0)
         {
             return;
@@ -90,21 +93,25 @@ public sealed partial class SimpleLineChart : UserControl
             var chartPoint = new Point(x, y);
             polyline.Points.Add(chartPoint);
 
-            var marker = new Ellipse
+            var markerStep = points.Count <= 60 ? 1 : Math.Max(1, (int)Math.Ceiling(points.Count / 30d));
+            if (index == 0 || index == points.Count - 1 || index % markerStep == 0)
             {
-                Width = 10,
-                Height = 10,
-                Fill = markerBrush
-            };
+                var marker = new Ellipse
+                {
+                    Width = 10,
+                    Height = 10,
+                    Fill = markerBrush
+                };
 
-            Canvas.SetLeft(marker, x - 5);
-            Canvas.SetTop(marker, y - 5);
-            ChartCanvas.Children.Add(marker);
+                Canvas.SetLeft(marker, x - 5);
+                Canvas.SetTop(marker, y - 5);
+                ChartCanvas.Children.Add(marker);
+            }
         }
 
         ChartCanvas.Children.Add(polyline);
 
-        var labelStep = points.Count <= 12 ? 1 : Math.Max(1, (int)Math.Ceiling(points.Count / 8d));
+        var labelStep = points.Count <= MaxLabels ? 1 : Math.Max(1, (int)Math.Ceiling(points.Count / (double)MaxLabels));
         for (var index = 0; index < points.Count; index++)
         {
             LabelsGrid.ColumnDefinitions.Add(new ColumnDefinition());
@@ -125,5 +132,22 @@ public sealed partial class SimpleLineChart : UserControl
             Grid.SetColumn(label, index);
             LabelsGrid.Children.Add(label);
         }
+    }
+
+    private static List<ChartPoint> Downsample(IReadOnlyList<ChartPoint> points, int maxPoints)
+    {
+        if (points.Count <= maxPoints)
+        {
+            return points.ToList();
+        }
+
+        var result = new List<ChartPoint>(maxPoints);
+        var step = (points.Count - 1d) / (maxPoints - 1d);
+        for (var index = 0; index < maxPoints; index++)
+        {
+            result.Add(points[(int)Math.Round(index * step)]);
+        }
+
+        return result;
     }
 }

@@ -8,6 +8,8 @@ namespace ProjectTest.Controls;
 
 public sealed partial class SimpleBarChart : UserControl
 {
+    private const int MaxRenderedItems = 12;
+
     public static readonly DependencyProperty ItemsSourceProperty =
         DependencyProperty.Register(nameof(ItemsSource), typeof(IEnumerable<BarChartItem>), typeof(SimpleBarChart), new PropertyMetadata(null, OnItemsSourceChanged));
 
@@ -33,7 +35,7 @@ public sealed partial class SimpleBarChart : UserControl
     {
         BarsPanel.Children.Clear();
 
-        var items = ItemsSource?.ToList() ?? [];
+        var items = ItemsSource?.Take(MaxRenderedItems).ToList() ?? [];
         if (items.Count == 0)
         {
             return;

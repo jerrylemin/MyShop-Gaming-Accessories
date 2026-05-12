@@ -17,15 +17,15 @@ public class MlInsightService
         _dbContextFactory = dbContextFactory;
     }
 
-    public async Task<List<MlInsight>> GetInsightsAsync()
+    public async Task<List<MlInsight>> GetInsightsAsync(CancellationToken cancellationToken = default)
     {
         await using var dbContext = _dbContextFactory.CreateDbContext();
         var insights = new List<MlInsight>();
 
-        var revenueTrainingRows = await BuildRevenueTrainingRowsAsync(dbContext);
+        var revenueTrainingRows = await BuildRevenueTrainingRowsAsync(dbContext, cancellationToken).ConfigureAwait(false);
         if (revenueTrainingRows.Count >= MinimumTrainingDays)
         {
-            insights.Add(BuildRevenueForecastInsight(revenueTrainingRows));
+            insights.Add(await Task.Run(() => BuildRevenueForecastInsight(revenueTrainingRows), cancellationToken).ConfigureAwait(false));
             insights.Add(new MlInsight
             {
                 Title = "ML.Net data confidence",
@@ -43,14 +43,15 @@ public class MlInsightService
             });
         }
 
-        insights.AddRange(await BuildRestockVelocityInsightsAsync(dbContext));
+        insights.AddRange(await BuildRestockVelocityInsightsAsync(dbContext, cancellationToken).ConfigureAwait(false));
         return insights;
     }
 
-    private async Task<List<RevenueTrainingRow>> BuildRevenueTrainingRowsAsync(MyShopDbContext dbContext)
+    private async Task<List<RevenueTrainingRow>> BuildRevenueTrainingRowsAsync(MyShopDbContext dbContext, CancellationToken cancellationToken)
     {
         var since = DateTime.Today.AddDays(-120);
         var dailyRevenue = await dbContext.Orders
+            .AsNoTracking()
             .Where(x => x.Status == OrderStatus.Paid && x.CreatedTime >= since)
             .GroupBy(x => x.CreatedTime.Date)
             .Select(group => new
@@ -59,7 +60,8 @@ public class MlInsightService
                 Revenue = group.Sum(x => x.FinalPrice)
             })
             .OrderBy(x => x.Date)
-            .ToListAsync();
+            .ToListAsync(cancellationToken)
+            .ConfigureAwait(false);
 
         if (dailyRevenue.Count == 0)
         {
@@ -104,10 +106,11 @@ public class MlInsightService
         };
     }
 
-    private static async Task<List<MlInsight>> BuildRestockVelocityInsightsAsync(MyShopDbContext dbContext)
+    private static async Task<List<MlInsight>> BuildRestockVelocityInsightsAsync(MyShopDbContext dbContext, CancellationToken cancellationToken)
     {
         var since = DateTime.Today.AddDays(-30);
         var velocity = await dbContext.OrderItems
+            .AsNoTracking()
             .Where(x => x.Order != null && x.Order.Status == OrderStatus.Paid && x.Order.CreatedTime >= since)
             .GroupBy(x => new
             {
@@ -127,7 +130,8 @@ public class MlInsightService
             })
             .OrderByDescending(x => x.Sold)
             .Take(5)
-            .ToListAsync();
+            .ToListAsync(cancellationToken)
+            .ConfigureAwait(false);
 
         if (velocity.Count == 0)
         {

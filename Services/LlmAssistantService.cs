@@ -22,7 +22,7 @@ public class LlmAssistantService
         _httpClient = httpClient ?? new HttpClient { Timeout = TimeSpan.FromSeconds(20) };
     }
 
-    public async Task<AssistantResult> AnalyzeReportsAsync(ReportsSnapshot snapshot)
+    public async Task<AssistantResult> AnalyzeReportsAsync(ReportsSnapshot snapshot, CancellationToken cancellationToken = default)
     {
         var apiKey = ResolveApiKey();
         if (string.IsNullOrWhiteSpace(apiKey))
@@ -37,8 +37,8 @@ public class LlmAssistantService
         try
         {
             using var request = BuildRequest(apiKey, snapshot);
-            using var response = await _httpClient.SendAsync(request);
-            var responseBody = await response.Content.ReadAsStringAsync();
+            using var response = await _httpClient.SendAsync(request, cancellationToken).ConfigureAwait(false);
+            var responseBody = await response.Content.ReadAsStringAsync(cancellationToken).ConfigureAwait(false);
             if (!response.IsSuccessStatusCode)
             {
                 return new AssistantResult
@@ -53,6 +53,10 @@ public class LlmAssistantService
                 IsConfigured = true,
                 Summary = ExtractSummary(responseBody)
             };
+        }
+        catch (OperationCanceledException) when (cancellationToken.IsCancellationRequested)
+        {
+            throw;
         }
         catch (TaskCanceledException)
         {

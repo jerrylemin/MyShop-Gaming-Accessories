@@ -8,6 +8,11 @@ namespace ProjectTest.Services;
 
 public class ReportingService
 {
+    private const int MaxLinePoints = 90;
+    private const int MaxBarItems = 12;
+    private const int MaxTopProducts = 8;
+    private const int MaxPieItems = 6;
+
     private readonly MyShopDbContextFactory _dbContextFactory;
     private readonly MlInsightService? _mlInsightService;
     private readonly LlmAssistantService? _llmAssistantService;
@@ -19,9 +24,19 @@ public class ReportingService
         _llmAssistantService = llmAssistantService;
     }
 
-    public async Task<ReportsSnapshot> GetSnapshotAsync(ReportQueryOptions? options = null)
+    public async Task<ReportsSnapshot> GetSnapshotAsync(ReportQueryOptions? options = null, CancellationToken cancellationToken = default)
+    {
+        var snapshot = await GetCoreSnapshotAsync(options, cancellationToken).ConfigureAwait(false);
+        var insights = await GetReportInsightsAsync(snapshot, cancellationToken).ConfigureAwait(false);
+        snapshot.MlInsights = insights.MlInsights;
+        snapshot.AssistantResult = insights.AssistantResult;
+        return snapshot;
+    }
+
+    public async Task<ReportsSnapshot> GetCoreSnapshotAsync(ReportQueryOptions? options = null, CancellationToken cancellationToken = default)
     {
         options ??= new ReportQueryOptions();
+        cancellationToken.ThrowIfCancellationRequested();
 
         await using var dbContext = _dbContextFactory.CreateDbContext();
         var normalizedFromDate = options.FromDate.Date;
@@ -29,6 +44,7 @@ public class ReportingService
         var rangeEndExclusive = normalizedToDate.AddDays(1);
 
         var paidItemsInRange = await dbContext.OrderItems
+            .AsNoTracking()
             .Where(x => x.Order != null && x.Order.Status == OrderStatus.Paid && x.Order.CreatedTime >= normalizedFromDate && x.Order.CreatedTime < rangeEndExclusive)
             .Select(x => new PaidOrderItemSnapshot
             {
@@ -39,57 +55,39 @@ public class ReportingService
                 ProductName = x.Product!.Name,
                 Manufacturer = x.Product.Manufacturer
             })
-            .ToListAsync();
+            .ToListAsync(cancellationToken)
+            .ConfigureAwait(false);
 
-        var revenueByDay = new List<ChartPoint>();
-        var profitByDay = new List<ChartPoint>();
-        foreach (var day in EachDate(normalizedFromDate, normalizedToDate))
-        {
-            var nextDay = day.AddDays(1);
-            var revenue = paidItemsInRange
-                .Where(x => x.CreatedTime >= day && x.CreatedTime < nextDay)
-                .Sum(x => x.Revenue);
-            var profit = paidItemsInRange
-                .Where(x => x.CreatedTime >= day && x.CreatedTime < nextDay)
-                .Sum(x => x.Profit);
+        cancellationToken.ThrowIfCancellationRequested();
 
-            revenueByDay.Add(new ChartPoint
-            {
-                Label = day.ToString("MM/dd"),
-                Value = (double)revenue,
-                ValueLabel = CurrencyFormatter.ToCurrency(revenue)
-            });
-
-            profitByDay.Add(new ChartPoint
-            {
-                Label = day.ToString("MM/dd"),
-                Value = (double)profit,
-                ValueLabel = CurrencyFormatter.ToCurrency(profit)
-            });
-        }
-
-        var revenueByWeek = BuildWeeklyBars(normalizedFromDate, normalizedToDate, paidItemsInRange, snapshot => snapshot.Revenue);
-        var profitByWeek = BuildWeeklyBars(normalizedFromDate, normalizedToDate, paidItemsInRange, snapshot => snapshot.Profit);
-        var revenueByMonth = BuildMonthlyBars(normalizedFromDate, normalizedToDate, paidItemsInRange, snapshot => snapshot.Revenue);
-        var profitByMonth = BuildMonthlyBars(normalizedFromDate, normalizedToDate, paidItemsInRange, snapshot => snapshot.Profit);
-        var revenueByYear = BuildYearlyBars(normalizedFromDate, normalizedToDate, paidItemsInRange, snapshot => snapshot.Revenue, "Revenue");
-        var profitByYear = BuildYearlyBars(normalizedFromDate, normalizedToDate, paidItemsInRange, snapshot => snapshot.Profit, "Profit");
+        var revenueByDay = BuildLinePoints(normalizedFromDate, normalizedToDate, paidItemsInRange, snapshot => snapshot.Revenue, cancellationToken);
+        var profitByDay = BuildLinePoints(normalizedFromDate, normalizedToDate, paidItemsInRange, snapshot => snapshot.Profit, cancellationToken);
+        var revenueByWeek = LimitBars(BuildWeeklyBars(normalizedFromDate, normalizedToDate, paidItemsInRange, snapshot => snapshot.Revenue, cancellationToken));
+        var profitByWeek = LimitBars(BuildWeeklyBars(normalizedFromDate, normalizedToDate, paidItemsInRange, snapshot => snapshot.Profit, cancellationToken));
+        var revenueByMonth = LimitBars(BuildMonthlyBars(normalizedFromDate, normalizedToDate, paidItemsInRange, snapshot => snapshot.Revenue, cancellationToken));
+        var profitByMonth = LimitBars(BuildMonthlyBars(normalizedFromDate, normalizedToDate, paidItemsInRange, snapshot => snapshot.Profit, cancellationToken));
+        var revenueByYear = LimitBars(BuildYearlyBars(normalizedFromDate, normalizedToDate, paidItemsInRange, snapshot => snapshot.Revenue, "Revenue", cancellationToken));
+        var profitByYear = LimitBars(BuildYearlyBars(normalizedFromDate, normalizedToDate, paidItemsInRange, snapshot => snapshot.Profit, "Profit", cancellationToken));
 
         var productSalesByRange = paidItemsInRange
             .GroupBy(x => new { x.ProductName, x.Manufacturer })
-            .Select(group => new BarChartItem
+            .Select(group =>
             {
-                Label = group.Key.ProductName,
-                Subtitle = group.Key.Manufacturer,
-                Value = group.Sum(x => x.Quantity),
-                ValueLabel = group.Sum(x => x.Quantity).ToString()
+                var quantity = group.Sum(x => x.Quantity);
+                return new BarChartItem
+                {
+                    Label = group.Key.ProductName,
+                    Subtitle = group.Key.Manufacturer,
+                    Value = quantity,
+                    ValueLabel = quantity.ToString(CultureInfo.CurrentCulture)
+                };
             })
             .OrderByDescending(x => x.Value)
-            .Take(8)
+            .Take(MaxTopProducts)
             .ToList();
 
         var productSalesShare = productSalesByRange
-            .Take(6)
+            .Take(MaxPieItems)
             .Select(x => new PieChartItem
             {
                 Label = x.Label,
@@ -100,6 +98,7 @@ public class ReportingService
             .ToList();
 
         var commissions = await dbContext.Orders
+            .AsNoTracking()
             .Where(x => x.Status == OrderStatus.Paid && x.CreatedTime >= normalizedFromDate && x.CreatedTime < rangeEndExclusive)
             .GroupBy(x => new
             {
@@ -117,9 +116,11 @@ public class ReportingService
                 Commission = group.Sum(x => x.FinalPrice) * 0.03m
             })
             .OrderByDescending(x => x.Revenue)
-            .ToListAsync();
+            .Take(MaxBarItems)
+            .ToListAsync(cancellationToken)
+            .ConfigureAwait(false);
 
-        var snapshot = new ReportsSnapshot
+        return new ReportsSnapshot
         {
             RangeLabel = $"{normalizedFromDate:dd MMM yyyy} - {normalizedToDate:dd MMM yyyy}",
             TotalRevenue = paidItemsInRange.Sum(x => x.Revenue),
@@ -135,14 +136,131 @@ public class ReportingService
             ProductSalesByRange = productSalesByRange,
             ProductSalesShare = productSalesShare,
             SalesCommissions = commissions,
-            MlInsights = _mlInsightService is null ? [] : await _mlInsightService.GetInsightsAsync()
+            AssistantResult = new AssistantResult { Summary = "Assistant summary is loading after the core report." }
         };
+    }
 
-        snapshot.AssistantResult = _llmAssistantService is null
+    public async Task<(List<MlInsight> MlInsights, AssistantResult AssistantResult)> GetReportInsightsAsync(
+        ReportsSnapshot snapshot,
+        CancellationToken cancellationToken = default)
+    {
+        cancellationToken.ThrowIfCancellationRequested();
+
+        List<MlInsight> mlInsights = _mlInsightService is null
+            ? []
+            : await _mlInsightService.GetInsightsAsync(cancellationToken).ConfigureAwait(false);
+
+        cancellationToken.ThrowIfCancellationRequested();
+        snapshot.MlInsights = mlInsights;
+
+        var assistantResult = _llmAssistantService is null
             ? new AssistantResult { Summary = "LLM assistant is not configured." }
-            : await _llmAssistantService.AnalyzeReportsAsync(snapshot);
+            : await _llmAssistantService.AnalyzeReportsAsync(snapshot, cancellationToken).ConfigureAwait(false);
 
-        return snapshot;
+        return (mlInsights, assistantResult);
+    }
+
+    private static List<ChartPoint> BuildLinePoints(
+        DateTime fromDate,
+        DateTime toDate,
+        IReadOnlyCollection<PaidOrderItemSnapshot> items,
+        Func<PaidOrderItemSnapshot, decimal> selector,
+        CancellationToken cancellationToken)
+    {
+        var dayCount = (toDate.Date - fromDate.Date).Days + 1;
+        if (dayCount <= MaxLinePoints)
+        {
+            return BuildDailyLinePoints(fromDate, toDate, items, selector, cancellationToken);
+        }
+
+        if (dayCount <= 366)
+        {
+            return BuildWeeklyLinePoints(fromDate, toDate, items, selector, cancellationToken);
+        }
+
+        return BuildMonthlyLinePoints(fromDate, toDate, items, selector, cancellationToken)
+            .TakeLast(MaxLinePoints)
+            .ToList();
+    }
+
+    private static List<ChartPoint> BuildDailyLinePoints(
+        DateTime fromDate,
+        DateTime toDate,
+        IReadOnlyCollection<PaidOrderItemSnapshot> items,
+        Func<PaidOrderItemSnapshot, decimal> selector,
+        CancellationToken cancellationToken)
+    {
+        var valuesByDay = items
+            .GroupBy(x => x.CreatedTime.Date)
+            .ToDictionary(group => group.Key, group => group.Sum(selector));
+
+        var points = new List<ChartPoint>();
+        foreach (var day in EachDate(fromDate, toDate))
+        {
+            cancellationToken.ThrowIfCancellationRequested();
+            valuesByDay.TryGetValue(day.Date, out var value);
+            points.Add(ToChartPoint(day.ToString("MM/dd"), value));
+        }
+
+        return points;
+    }
+
+    private static List<ChartPoint> BuildWeeklyLinePoints(
+        DateTime fromDate,
+        DateTime toDate,
+        IReadOnlyCollection<PaidOrderItemSnapshot> items,
+        Func<PaidOrderItemSnapshot, decimal> selector,
+        CancellationToken cancellationToken)
+    {
+        var points = new List<ChartPoint>();
+        var weekStart = StartOfWeek(fromDate);
+        var finalWeekStart = StartOfWeek(toDate);
+
+        for (var current = weekStart; current <= finalWeekStart; current = current.AddDays(7))
+        {
+            cancellationToken.ThrowIfCancellationRequested();
+            var nextWeek = current.AddDays(7);
+            var value = items
+                .Where(x => x.CreatedTime >= current && x.CreatedTime < nextWeek)
+                .Sum(selector);
+            points.Add(ToChartPoint($"W{ISOWeek.GetWeekOfYear(current)}", value));
+        }
+
+        return points;
+    }
+
+    private static List<ChartPoint> BuildMonthlyLinePoints(
+        DateTime fromDate,
+        DateTime toDate,
+        IReadOnlyCollection<PaidOrderItemSnapshot> items,
+        Func<PaidOrderItemSnapshot, decimal> selector,
+        CancellationToken cancellationToken)
+    {
+        var points = new List<ChartPoint>();
+        var monthStart = new DateTime(fromDate.Year, fromDate.Month, 1);
+        var lastMonthStart = new DateTime(toDate.Year, toDate.Month, 1);
+
+        for (var current = monthStart; current <= lastMonthStart; current = current.AddMonths(1))
+        {
+            cancellationToken.ThrowIfCancellationRequested();
+            var nextMonth = current.AddMonths(1);
+            var value = items
+                .Where(x => x.CreatedTime >= current && x.CreatedTime < nextMonth)
+                .Sum(selector);
+            points.Add(ToChartPoint($"{current:MMM yyyy}", value));
+        }
+
+        return points;
+    }
+
+    private static ChartPoint ToChartPoint(string label, decimal value)
+    {
+        return new ChartPoint
+        {
+            Label = label,
+            Value = (double)value,
+            ValueLabel = CurrencyFormatter.ToCurrency(value)
+        };
     }
 
     private static IEnumerable<DateTime> EachDate(DateTime startDate, DateTime endDate)
@@ -159,11 +277,19 @@ public class ReportingService
         return date.Date.AddDays(-offset);
     }
 
+    private static List<BarChartItem> LimitBars(List<BarChartItem> bars)
+    {
+        return bars.Count <= MaxBarItems
+            ? bars
+            : bars.TakeLast(MaxBarItems).ToList();
+    }
+
     private static List<BarChartItem> BuildWeeklyBars(
         DateTime fromDate,
         DateTime toDate,
         IReadOnlyCollection<PaidOrderItemSnapshot> items,
-        Func<PaidOrderItemSnapshot, decimal> selector)
+        Func<PaidOrderItemSnapshot, decimal> selector,
+        CancellationToken cancellationToken)
     {
         var weekStart = StartOfWeek(fromDate);
         var finalWeekStart = StartOfWeek(toDate);
@@ -171,6 +297,7 @@ public class ReportingService
 
         for (var current = weekStart; current <= finalWeekStart; current = current.AddDays(7))
         {
+            cancellationToken.ThrowIfCancellationRequested();
             var nextWeek = current.AddDays(7);
             var value = items
                 .Where(x => x.CreatedTime >= current && x.CreatedTime < nextWeek)
@@ -192,7 +319,8 @@ public class ReportingService
         DateTime fromDate,
         DateTime toDate,
         IReadOnlyCollection<PaidOrderItemSnapshot> items,
-        Func<PaidOrderItemSnapshot, decimal> selector)
+        Func<PaidOrderItemSnapshot, decimal> selector,
+        CancellationToken cancellationToken)
     {
         var monthStart = new DateTime(fromDate.Year, fromDate.Month, 1);
         var lastMonthStart = new DateTime(toDate.Year, toDate.Month, 1);
@@ -200,6 +328,7 @@ public class ReportingService
 
         for (var current = monthStart; current <= lastMonthStart; current = current.AddMonths(1))
         {
+            cancellationToken.ThrowIfCancellationRequested();
             var nextMonth = current.AddMonths(1);
             var value = items
                 .Where(x => x.CreatedTime >= current && x.CreatedTime < nextMonth)
@@ -222,7 +351,8 @@ public class ReportingService
         DateTime toDate,
         IReadOnlyCollection<PaidOrderItemSnapshot> items,
         Func<PaidOrderItemSnapshot, decimal> selector,
-        string subtitle)
+        string subtitle,
+        CancellationToken cancellationToken)
     {
         var yearStart = new DateTime(fromDate.Year, 1, 1);
         var finalYearStart = new DateTime(toDate.Year, 1, 1);
@@ -230,6 +360,7 @@ public class ReportingService
 
         for (var current = yearStart; current <= finalYearStart; current = current.AddYears(1))
         {
+            cancellationToken.ThrowIfCancellationRequested();
             var nextYear = current.AddYears(1);
             var value = items
                 .Where(x => x.CreatedTime >= current && x.CreatedTime < nextYear)
@@ -237,7 +368,7 @@ public class ReportingService
 
             bars.Add(new BarChartItem
             {
-                Label = current.Year.ToString(),
+                Label = current.Year.ToString(CultureInfo.CurrentCulture),
                 Subtitle = subtitle,
                 Value = (double)value,
                 ValueLabel = CurrencyFormatter.ToCurrency(value)

@@ -1,5 +1,6 @@
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Media.Animation;
+using ProjectTest.Models;
 
 namespace ProjectTest.Services;
 
@@ -40,13 +41,33 @@ public class NavigationService
         }
 
         CurrentKey = key;
-        if (persist)
+        if (persist && ShouldPersistStartupScreen(key))
         {
             var settings = _settingsService.CurrentSettings;
             settings.LastOpenedScreen = key;
-            _settingsService.SaveAsync(settings).GetAwaiter().GetResult();
+            _ = SaveSettingsSafelyAsync(settings);
         }
 
         return true;
+    }
+
+    private async Task SaveSettingsSafelyAsync(AppSettings settings)
+    {
+        try
+        {
+            await _settingsService.SaveAsync(settings);
+        }
+        catch
+        {
+            // Navigation must stay responsive even if settings persistence fails.
+        }
+    }
+
+    private static bool ShouldPersistStartupScreen(string key)
+    {
+        return key.Equals("Dashboard", StringComparison.OrdinalIgnoreCase) ||
+               key.Equals("Products", StringComparison.OrdinalIgnoreCase) ||
+               key.Equals("Orders", StringComparison.OrdinalIgnoreCase) ||
+               key.Equals("Settings", StringComparison.OrdinalIgnoreCase);
     }
 }

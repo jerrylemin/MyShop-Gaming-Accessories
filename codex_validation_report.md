@@ -1,6 +1,41 @@
 # MyShop Full-10 Validation Report
 
-Updated: 2026-05-12
+Updated: 2026-05-13
+
+## Startup Freeze Fix Validation
+
+- Actual bug: startup could restore `Reports`, triggering heavy report load while the main window appeared visible but navigation was laggy or blocked.
+- Fixed startup fallback: `Reports` and `ProductEdit` are coerced to `Dashboard`; only `Dashboard`, `Products`, `Orders`, and `Settings` can be restored.
+- Fixed navigation blocking: `NavigationService` no longer uses `SaveAsync(...).GetAwaiter().GetResult()` on the UI path.
+- Fixed Reports loading: report load is deferred, cancellable, guarded against stale updates, and split into core snapshot first, then ML/assistant insights.
+- Fixed report rendering pressure: EF queries are no-tracking with cancellation; chart controls cap rendered points/items.
+
+Commands run on 2026-05-13:
+
+```powershell
+dotnet restore ProjectTest.csproj
+dotnet build ProjectTest.csproj -c Debug -p:Platform=x64
+```
+
+Results:
+
+- `dotnet restore ProjectTest.csproj`: passed.
+- `dotnet build ProjectTest.csproj -c Debug -p:Platform=x64`: passed, 0 warnings.
+- Automated UI validation set local `LastOpenedScreen=Reports`, launched the Debug x64 app, verified startup landed on `Dashboard`, then invoked Dashboard, Products, Orders, Settings, Reports, Products, Reports, and Settings without navigation blocking.
+- `scripts/ui-smoke.ps1` was also attempted, but its older window lookup/focus path failed at username focus before reaching the app navigation flow; the separate UI Automation validation above was used for the startup freeze scenario.
+
+Manual test checklist for future sessions:
+
+1. Open app and login with `admin / MyShop123!`.
+2. Set or leave previous screen as Reports, close app, reopen app.
+3. Verify startup opens Dashboard and menu is immediately clickable.
+4. Click Dashboard, Products, Orders, Settings repeatedly.
+5. Click Reports; verify Reports appears and loading does not block the left menu.
+6. While Reports is loading, click Products; verify navigation happens immediately and report load is canceled.
+7. Return to Reports; cached unchanged range should display quickly.
+8. Click Apply Range; loading should not block app navigation.
+9. Close app while on Reports and reopen; startup should not freeze.
+10. Check output/logs for unexpected exceptions.
 
 ## Validation Status
 

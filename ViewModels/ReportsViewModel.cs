@@ -8,6 +8,8 @@ namespace ProjectTest.ViewModels;
 public class ReportsViewModel : ViewModelBase
 {
     private readonly ReportingService _reportingService;
+    private CancellationTokenSource? _activeLoadCts;
+    private int _loadVersion;
     private bool _isLoading;
     private bool _hasLoadedSnapshot;
     private DateTime? _loadedFromDate;
@@ -188,7 +190,7 @@ public class ReportsViewModel : ViewModelBase
         private set => SetProperty(ref _hasLoadedSnapshot, value);
     }
 
-    public async Task InitializeAsync()
+    public async Task InitializeAsync(CancellationToken cancellationToken = default)
     {
         if (IsLoading)
         {
@@ -203,11 +205,33 @@ public class ReportsViewModel : ViewModelBase
             return;
         }
 
-        await LoadAsync();
+        await StartLoadAsync(force: false, cancellationToken);
     }
 
-    public async Task LoadAsync()
+    public async Task LoadAsync(CancellationToken cancellationToken = default)
     {
+        await StartLoadAsync(force: true, cancellationToken);
+    }
+
+    public void CancelLoading()
+    {
+        _activeLoadCts?.Cancel();
+    }
+
+    private async Task StartLoadAsync(bool force, CancellationToken cancellationToken)
+    {
+        if (IsLoading && !force)
+        {
+            return;
+        }
+
+        _activeLoadCts?.Cancel();
+        _activeLoadCts = CancellationTokenSource.CreateLinkedTokenSource(cancellationToken);
+        var loadCts = _activeLoadCts;
+        var token = loadCts.Token;
+        var loadVersion = ++_loadVersion;
+        var insightsStarted = false;
+
         IsLoading = true;
         StatusMessage = "Loading reports...";
 
@@ -215,50 +239,128 @@ public class ReportsViewModel : ViewModelBase
         {
             var fromDate = FromDate.Date;
             var toDate = ToDate.Date;
-            var snapshot = await _reportingService.GetSnapshotAsync(new ReportQueryOptions
+            var snapshot = await _reportingService.GetCoreSnapshotAsync(new ReportQueryOptions
             {
                 FromDate = fromDate,
                 ToDate = toDate
-            });
+            }, token);
 
-            RangeLabel = snapshot.RangeLabel;
-            TotalRevenue = snapshot.TotalRevenue;
-            TotalProfit = snapshot.TotalProfit;
-            RevenueByDay = new ObservableCollection<ChartPoint>(snapshot.RevenueByDay);
-            ProfitByDay = new ObservableCollection<ChartPoint>(snapshot.ProfitByDay);
-            RevenueByWeek = new ObservableCollection<BarChartItem>(snapshot.RevenueByWeek);
-            ProfitByWeek = new ObservableCollection<BarChartItem>(snapshot.ProfitByWeek);
-            RevenueByMonth = new ObservableCollection<BarChartItem>(snapshot.RevenueByMonth);
-            ProfitByMonth = new ObservableCollection<BarChartItem>(snapshot.ProfitByMonth);
-            RevenueByYear = new ObservableCollection<BarChartItem>(snapshot.RevenueByYear);
-            ProfitByYear = new ObservableCollection<BarChartItem>(snapshot.ProfitByYear);
-            ProductSalesByRange = new ObservableCollection<BarChartItem>(snapshot.ProductSalesByRange);
-            ProductSalesShare = new ObservableCollection<PieChartItem>(snapshot.ProductSalesShare);
-            SalesCommissions = new ObservableCollection<SalesCommissionSnapshot>(snapshot.SalesCommissions);
-            MlInsights = new ObservableCollection<MlInsight>(snapshot.MlInsights);
-            AssistantSummary = snapshot.AssistantResult.Summary;
+            token.ThrowIfCancellationRequested();
+            if (!IsCurrentLoad(loadVersion, loadCts))
+            {
+                return;
+            }
+
+            ApplyCoreSnapshot(snapshot);
             _loadedFromDate = fromDate;
             _loadedToDate = toDate;
             HasLoadedSnapshot = true;
-            StatusMessage = $"Reports updated at {DateTime.Now:HH:mm:ss}.";
+            StatusMessage = $"Core reports updated at {DateTime.Now:HH:mm:ss}. Loading insights...";
+            insightsStarted = true;
+            _ = LoadInsightsAsync(snapshot, loadVersion, loadCts);
+        }
+        catch (OperationCanceledException)
+        {
+            if (IsCurrentLoad(loadVersion, loadCts))
+            {
+                StatusMessage = "Reports loading was canceled.";
+            }
         }
         catch (Exception ex)
         {
-            StatusMessage = $"Reports could not be loaded: {ex.Message}";
+            if (IsCurrentLoad(loadVersion, loadCts))
+            {
+                StatusMessage = $"Reports could not be loaded: {ex.Message}";
+            }
         }
         finally
         {
-            IsLoading = false;
+            if (IsCurrentLoad(loadVersion, loadCts))
+            {
+                IsLoading = false;
+            }
+
+            if (!insightsStarted)
+            {
+                if (IsCurrentLoad(loadVersion, loadCts))
+                {
+                    _activeLoadCts = null;
+                }
+
+                loadCts.Dispose();
+            }
         }
     }
 
     public async Task RefreshAsync()
     {
-        if (IsLoading)
-        {
-            return;
-        }
+        await StartLoadAsync(force: true, CancellationToken.None);
+    }
 
-        await LoadAsync();
+    private async Task LoadInsightsAsync(ReportsSnapshot snapshot, int loadVersion, CancellationTokenSource loadCts)
+    {
+        try
+        {
+            var token = loadCts.Token;
+            var insights = await _reportingService.GetReportInsightsAsync(snapshot, token);
+
+            token.ThrowIfCancellationRequested();
+            if (!IsCurrentLoad(loadVersion, loadCts))
+            {
+                return;
+            }
+
+            MlInsights = new ObservableCollection<MlInsight>(insights.MlInsights);
+            AssistantSummary = insights.AssistantResult.Summary;
+            StatusMessage = $"Reports and insights updated at {DateTime.Now:HH:mm:ss}.";
+        }
+        catch (OperationCanceledException)
+        {
+            if (IsCurrentLoad(loadVersion, loadCts))
+            {
+                StatusMessage = "Report insights loading was canceled.";
+            }
+        }
+        catch (Exception ex)
+        {
+            if (IsCurrentLoad(loadVersion, loadCts))
+            {
+                StatusMessage = $"Core reports loaded. Insights could not be loaded: {ex.Message}";
+            }
+        }
+        finally
+        {
+            if (IsCurrentLoad(loadVersion, loadCts))
+            {
+                _activeLoadCts = null;
+            }
+
+            loadCts.Dispose();
+        }
+    }
+
+    private void ApplyCoreSnapshot(ReportsSnapshot snapshot)
+    {
+        RangeLabel = snapshot.RangeLabel;
+        TotalRevenue = snapshot.TotalRevenue;
+        TotalProfit = snapshot.TotalProfit;
+        RevenueByDay = new ObservableCollection<ChartPoint>(snapshot.RevenueByDay);
+        ProfitByDay = new ObservableCollection<ChartPoint>(snapshot.ProfitByDay);
+        RevenueByWeek = new ObservableCollection<BarChartItem>(snapshot.RevenueByWeek);
+        ProfitByWeek = new ObservableCollection<BarChartItem>(snapshot.ProfitByWeek);
+        RevenueByMonth = new ObservableCollection<BarChartItem>(snapshot.RevenueByMonth);
+        ProfitByMonth = new ObservableCollection<BarChartItem>(snapshot.ProfitByMonth);
+        RevenueByYear = new ObservableCollection<BarChartItem>(snapshot.RevenueByYear);
+        ProfitByYear = new ObservableCollection<BarChartItem>(snapshot.ProfitByYear);
+        ProductSalesByRange = new ObservableCollection<BarChartItem>(snapshot.ProductSalesByRange);
+        ProductSalesShare = new ObservableCollection<PieChartItem>(snapshot.ProductSalesShare);
+        SalesCommissions = new ObservableCollection<SalesCommissionSnapshot>(snapshot.SalesCommissions);
+        MlInsights = [];
+        AssistantSummary = "Assistant summary is loading after the core report.";
+    }
+
+    private bool IsCurrentLoad(int loadVersion, CancellationTokenSource loadCts)
+    {
+        return loadVersion == _loadVersion && ReferenceEquals(loadCts, _activeLoadCts);
     }
 }

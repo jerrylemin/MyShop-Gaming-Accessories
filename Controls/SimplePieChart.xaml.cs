@@ -11,6 +11,8 @@ namespace ProjectTest.Controls;
 
 public sealed partial class SimplePieChart : UserControl
 {
+    private const int MaxRenderedItems = 6;
+
     private static readonly Color[] Palette =
     [
         Color.FromArgb(255, 28, 107, 93),
@@ -46,7 +48,7 @@ public sealed partial class SimplePieChart : UserControl
         PieCanvas.Children.Clear();
         LegendPanel.Children.Clear();
 
-        var items = ItemsSource?.Where(x => x.Value > 0).ToList() ?? [];
+        var items = ItemsSource?.Where(x => x.Value > 0).Take(MaxRenderedItems).ToList() ?? [];
         if (items.Count == 0)
         {
             LegendPanel.Children.Add(new TextBlock

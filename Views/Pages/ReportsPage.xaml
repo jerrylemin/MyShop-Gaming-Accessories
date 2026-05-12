@@ -64,6 +64,7 @@
                         Width="24"
                         Height="24"
                         IsActive="{Binding IsLoading}"
+                        IsHitTestVisible="False"
                         VerticalAlignment="Center" />
                     <StackPanel Grid.Column="1" Spacing="4">
                         <TextBlock
