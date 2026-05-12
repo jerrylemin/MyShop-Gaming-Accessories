@@ -8,6 +8,32 @@ dotnet tool restore
 dotnet build ProjectTest.csproj -c Debug -p:Platform=x64
 ```
 
+## Submission Setup
+
+Run the one-file setup from the repository root:
+
+```powershell
+powershell -ExecutionPolicy Bypass -File .\setup.ps1
+```
+
+What it does:
+
+- checks .NET 8 SDK, Windows App Runtime 1.8, and PostgreSQL
+- configures the PostgreSQL role and database
+- sets the user-level `MYSHOP_CONNECTION_STRING`
+- runs migrations and seed data through `tools/DatabaseRebuilder`
+- builds the WinUI app
+- publishes a runnable copy under `submission/ProjectTest-win-x64`
+- creates `Run-ProjectTest.cmd` in the published folder
+
+Useful options:
+
+```powershell
+powershell -ExecutionPolicy Bypass -File .\setup.ps1 -InstallPrerequisites
+powershell -ExecutionPolicy Bypass -File .\setup.ps1 -ResetDatabase
+powershell -ExecutionPolicy Bypass -File .\setup.ps1 -RunAfterSetup
+```
+
 ## Run Context
 
 - Project type: WinUI 3 desktop app with MSIX tooling enabled

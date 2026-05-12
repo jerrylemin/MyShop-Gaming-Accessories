@@ -26,8 +26,31 @@ var productCount = await dbContext.Products.CountAsync();
 var orderCount = await dbContext.Orders.CountAsync();
 var orderItemCount = await dbContext.OrderItems.CountAsync();
 
-Console.WriteLine($"ConnectionString={connectionString}");
+Console.WriteLine($"ConnectionString={MaskPassword(connectionString)}");
 Console.WriteLine($"Categories={categoryCount}");
 Console.WriteLine($"Products={productCount}");
 Console.WriteLine($"Orders={orderCount}");
 Console.WriteLine($"OrderItems={orderItemCount}");
+
+static string MaskPassword(string connectionString)
+{
+    var parts = connectionString.Split(';', StringSplitOptions.RemoveEmptyEntries | StringSplitOptions.TrimEntries);
+
+    for (var index = 0; index < parts.Length; index++)
+    {
+        var separatorIndex = parts[index].IndexOf('=');
+        if (separatorIndex <= 0)
+        {
+            continue;
+        }
+
+        var key = parts[index][..separatorIndex];
+        if (key.Equals("Password", StringComparison.OrdinalIgnoreCase) ||
+            key.Equals("Pwd", StringComparison.OrdinalIgnoreCase))
+        {
+            parts[index] = $"{key}=***";
+        }
+    }
+
+    return string.Join(';', parts);
+}

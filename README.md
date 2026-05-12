@@ -117,6 +117,18 @@ Automatic path:
 - EF Core migrations run automatically.
 - Seed data is inserted automatically if the database has no categories.
 
+Submission setup path:
+
+```powershell
+powershell -ExecutionPolicy Bypass -File .\setup.ps1
+```
+
+The setup file checks the required local tooling, configures PostgreSQL role/database access,
+runs migrations and seed data, builds the app, publishes a runnable copy under `submission`,
+and creates `Run-ProjectTest.cmd` inside the published folder. Use `-InstallPrerequisites`
+if .NET 8 SDK, Windows App Runtime 1.8, or PostgreSQL need to be installed with `winget`.
+Use `-ResetDatabase` only when a clean recreated database is required.
+
 Clean rebuild path:
 
 ```powershell
@@ -198,6 +210,9 @@ ms-appx:///Assets/GamingProducts/{productId}_{imageNumber}.jpg
 
 - `scripts/rebuild-dev-db.ps1`
   Recreates the PostgreSQL development database, runs migrations and seeding, and verifies row counts.
+- `setup.ps1`
+  One-file submission setup for checking prerequisites, preparing PostgreSQL, seeding the database,
+  building/publishing the app, and generating a launcher in `submission`.
 - `scripts/build_gaming_accessory_seed_assets.py`
   Refreshes the seed dataset, sample markdown document, and packaged images.
 - `download_gaming_accessory_images.ps1`
