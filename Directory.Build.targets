@@ -1,0 +1,6 @@
+<Project>
+  <PropertyGroup Condition="'$(MSBuildProjectName)' == 'ProjectTest' and '$(Configuration)' == 'Debug'">
+    <RuntimeIdentifier Condition="'$(RuntimeIdentifier)' == ''">win-$(Platform)</RuntimeIdentifier>
+    <RuntimeIdentifiers></RuntimeIdentifiers>
+  </PropertyGroup>
+</Project>
