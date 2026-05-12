@@ -175,7 +175,8 @@ The current repository was rechecked with this command and builds successfully.
 
 Typical developer options:
 
-- Run from Visual Studio using either the packaged or unpackaged profile in `Properties/launchSettings.json`.
+- Run from Visual Studio using `ProjectTest (Unpackaged Fast)` for normal code/debug loops.
+- Use `ProjectTest (Package)` when you need to verify MSIX/package deploy behavior.
 - Or build from CLI and launch through your normal WinUI 3 workflow on a machine with the required runtime/tooling installed.
 
 The Debug x64 build produces a runnable executable under:
@@ -183,6 +184,41 @@ The Debug x64 build produces a runnable executable under:
 ```text
 %LOCALAPPDATA%\ProjectTest\artifacts\bin\x64\Debug\net8.0-windows10.0.19041.0\win-x64\ProjectTest.exe
 ```
+
+### Fast Visual Studio debug
+
+The repo is pinned to stable .NET 8 through `global.json`. If the CLI reports that SDK `8.0.404` or a compatible 8.0 feature band is missing, install the .NET 8 SDK. On this machine, `8.0.420` is used through `rollForward: latestFeature`.
+
+Recommended Visual Studio loop:
+
+1. Select `x64` and `Debug`.
+2. Select `ProjectTest (Unpackaged Fast)`.
+3. Press Play for normal code/debug work.
+4. Switch to `ProjectTest (Package)` only when checking MSIX packaging or submission behavior.
+
+Fast CLI build:
+
+```powershell
+dotnet build ProjectTest.csproj -c Debug -p:Platform=x64
+```
+
+Warm incremental CLI build:
+
+```powershell
+dotnet build ProjectTest.csproj -c Debug -p:Platform=x64 --no-restore
+```
+
+Release package/publish:
+
+```powershell
+dotnet publish ProjectTest.csproj -c Release -p:Platform=x64 -p:PublishProfile=win-x64.pubxml
+```
+
+Known notes:
+
+- `Assets/GamingProducts` is packaged because product images use `ms-appx:///Assets/GamingProducts/...`.
+- `Assets/_source_product_images`, docs, scripts, tools, installer files, tests, plugins, and package output folders are excluded from app build/package inputs.
+- Stable .NET 8 CLI does not support `dotnet test ProjectTest.slnx`; use `dotnet test ProjectTest.Tests\ProjectTest.Tests.csproj -p:Platform=x64` for CLI tests.
 
 ### Run tests
 

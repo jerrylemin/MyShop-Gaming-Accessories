@@ -3,6 +3,7 @@
   <PropertyGroup>
     <TargetFramework>net8.0-windows10.0.19041.0</TargetFramework>
     <EnableWindowsTargeting>true</EnableWindowsTargeting>
+    <Platform Condition="'$(Platform)' == '' or '$(Platform)' == 'AnyCPU'">x64</Platform>
     <PlatformTarget>x64</PlatformTarget>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
@@ -20,7 +21,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\ProjectTest.csproj" />
+    <ProjectReference
+      Include="..\ProjectTest.csproj"
+      AdditionalProperties="WindowsPackageType=None;AppxPackage=false;GenerateAppxPackageOnBuild=false;PublishAppxPackage=false" />
   </ItemGroup>
 
   <ItemGroup>

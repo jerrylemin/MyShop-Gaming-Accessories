@@ -2,6 +2,50 @@
 
 Updated: 2026-05-13
 
+## Visual Studio Debug Build Optimization
+
+- Added `global.json` to pin stable .NET 8 SDK. This machine initially had only SDK `10.0.300-preview`; SDK `8.0.420` was installed with `winget` and is now selected by the repo pin.
+- Added `ProjectTest (Unpackaged Fast)` for fast Visual Studio debugging while keeping `ProjectTest (Package)` for MSIX verification.
+- Debug builds now disable analyzers, documentation output, trimming, ReadyToRun, self-contained output, and Windows App SDK self-contained output.
+- App build inputs now exclude `Assets/_source_product_images`, docs, scripts, tools, installer, tests, plugins, and package output folders from app item scanning/package inputs.
+- `ProjectTest.Tests` remains on `net8.0-windows10.0.19041.0`; its app reference disables package generation for logic test runs.
+
+Validation on 2026-05-13:
+
+```powershell
+dotnet --version
+dotnet --list-sdks
+dotnet restore ProjectTest.csproj
+dotnet build ProjectTest.csproj -c Debug -p:Platform=x64
+dotnet build ProjectTest.csproj -c Debug -p:Platform=x64 --no-restore
+dotnet build ProjectTest.csproj -c Release -p:Platform=x64
+dotnet publish ProjectTest.csproj -c Debug -p:Platform=x64 -p:GenerateAppxPackageOnBuild=true -p:AppxPackageDir=AppPackages\ -p:AppxBundle=Never
+dotnet test ProjectTest.slnx
+dotnet test ProjectTest.Tests\ProjectTest.Tests.csproj -p:Platform=x64
+```
+
+Results:
+
+- `dotnet --version`: `8.0.420`.
+- `dotnet --list-sdks`: `8.0.420` and `10.0.300-preview.0.26177.108` installed; repo selects `8.0.420`.
+- `dotnet restore ProjectTest.csproj`: passed.
+- `dotnet build ProjectTest.csproj -c Debug -p:Platform=x64`: passed, 0 warnings.
+- Warm `dotnet build ProjectTest.csproj -c Debug -p:Platform=x64 --no-restore`: passed, about 11 seconds in this workspace.
+- `dotnet build ProjectTest.csproj -c Release -p:Platform=x64`: passed. Release still emits trim-analysis warnings because Release keeps the existing trimmed configuration.
+- Debug MSIX publish with `GenerateAppxPackageOnBuild=true` and `AppxBundle=Never`: passed and produced `AppPackages\ProjectTest_1.0.0.0_x64_Debug_Test\ProjectTest_1.0.0.0_x64_Debug.msix`. It emitted a symbols-package warning because `mspdbcmf.exe` is not on this machine path.
+- `dotnet test ProjectTest.slnx`: blocked by stable .NET 8 CLI with `MSB4068` because `.slnx` is not supported by this SDK.
+- `dotnet test ProjectTest.Tests\ProjectTest.Tests.csproj -p:Platform=x64`: passed, 15 tests.
+- Debug unpackaged launch validation passed: the app opened `MyShop Gaming Accessories POS`, and Dashboard, Products, Orders, Reports, and Settings navigation responded.
+
+Visual Studio manual checklist:
+
+1. Clean solution once.
+2. Select `x64` and `Debug`.
+3. Select `ProjectTest (Package)` and press Play for MSIX verification.
+4. Stop the app, press Play again without changing code, and expect the second run to be faster due to incremental build.
+5. Use `ProjectTest (Unpackaged Fast)` for normal code/debug loops.
+6. Use `ProjectTest (Package)` only when validating package/deploy behavior.
+
 ## Startup Freeze Fix Validation
 
 - Actual bug: startup could restore `Reports`, triggering heavy report load while the main window appeared visible but navigation was laggy or blocked.
