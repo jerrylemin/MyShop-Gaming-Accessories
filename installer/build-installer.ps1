@@ -24,14 +24,21 @@ function Invoke-RepoCommand {
         [string[]]$Arguments
     )
 
-    $process = Start-Process -FilePath $FilePath -ArgumentList $Arguments -WorkingDirectory $repoRoot -NoNewWindow -Wait -PassThru
-    if ($process.ExitCode -ne 0) {
-        throw "$FilePath failed with exit code $($process.ExitCode)"
+    Push-Location $repoRoot
+    try {
+        & $FilePath @Arguments
+        if ($LASTEXITCODE -ne 0) {
+            throw "$FilePath failed with exit code $LASTEXITCODE"
+        }
+    }
+    finally {
+        Pop-Location
     }
 }
 
 function Get-InnoCompiler {
     $candidates = @(
+        (Join-Path $env:LOCALAPPDATA 'Programs\Inno Setup 6\ISCC.exe'),
         (Join-Path ${env:ProgramFiles(x86)} 'Inno Setup 6\ISCC.exe'),
         (Join-Path $env:ProgramFiles 'Inno Setup 6\ISCC.exe')
     )
@@ -67,6 +74,13 @@ function Get-InnoCompiler {
                 return $candidate
             }
         }
+
+        $localInstall = Get-ChildItem (Join-Path $env:LOCALAPPDATA 'Programs') -Recurse -Filter ISCC.exe -ErrorAction SilentlyContinue |
+            Where-Object { $_.FullName -like '*Inno Setup*' } |
+            Select-Object -First 1
+        if ($localInstall) {
+            return $localInstall.FullName
+        }
     }
 
     throw 'Inno Setup 6 was not found. Install Inno Setup 6 or make ISCC.exe available on PATH.'
@@ -93,37 +107,42 @@ function New-IcoFromPng {
         [string]$IcoPath
     )
 
-    Add-Type -AssemblyName System.Drawing
-    $bitmap = [System.Drawing.Bitmap]::new($PngPath)
     try {
-        $resized = [System.Drawing.Bitmap]::new($bitmap, [System.Drawing.Size]::new(256, 256))
+        Add-Type -AssemblyName System.Drawing
+        $bitmap = [System.Drawing.Bitmap]::new($PngPath)
         try {
-            $iconHandle = $resized.GetHicon()
+            $resized = [System.Drawing.Bitmap]::new($bitmap, [System.Drawing.Size]::new(256, 256))
             try {
-                $icon = [System.Drawing.Icon]::FromHandle($iconHandle)
+                $iconHandle = $resized.GetHicon()
                 try {
-                    $stream = [System.IO.File]::Create($IcoPath)
+                    $icon = [System.Drawing.Icon]::FromHandle($iconHandle)
                     try {
-                        $icon.Save($stream)
+                        $stream = [System.IO.File]::Create($IcoPath)
+                        try {
+                            $icon.Save($stream)
+                        }
+                        finally {
+                            $stream.Dispose()
+                        }
                     }
                     finally {
-                        $stream.Dispose()
+                        $icon.Dispose()
                     }
                 }
                 finally {
-                    $icon.Dispose()
+                    [NativeMethods]::DestroyIcon($iconHandle) | Out-Null
                 }
             }
             finally {
-                [NativeMethods]::DestroyIcon($iconHandle) | Out-Null
+                $resized.Dispose()
             }
         }
         finally {
-            $resized.Dispose()
+            $bitmap.Dispose()
         }
     }
-    finally {
-        $bitmap.Dispose()
+    catch {
+        Write-Warning "Could not create shortcut icon from $PngPath. Shortcuts will use the app executable icon. $($_.Exception.Message)"
     }
 }
 
@@ -156,7 +175,7 @@ Invoke-RepoCommand -FilePath 'dotnet' -Arguments @(
 )
 
 Write-Step 'Preparing shortcut icon.'
-New-IcoFromPng -PngPath (Join-Path $appStaging 'Assets\StoreLogo.png') -IcoPath (Join-Path $appStaging 'MyShop.ico')
+New-IcoFromPng -PngPath (Join-Path $appStaging 'Assets\Square150x150Logo.scale-200.png') -IcoPath (Join-Path $appStaging 'MyShop.ico')
 
 Write-Step 'Publishing database bootstrapper.'
 if (Test-Path -LiteralPath $databaseStaging) {
@@ -187,9 +206,15 @@ if (-not $SkipPrerequisiteDownload) {
 Write-Step 'Compiling setup.exe with Inno Setup.'
 $iscc = Get-InnoCompiler
 $setupScript = Join-Path $installerRoot 'setup.iss'
-$process = Start-Process -FilePath $iscc -ArgumentList @($setupScript) -WorkingDirectory $installerRoot -NoNewWindow -Wait -PassThru
-if ($process.ExitCode -ne 0) {
-    throw "Inno Setup failed with exit code $($process.ExitCode)"
+Push-Location $installerRoot
+try {
+    & $iscc $setupScript
+    if ($LASTEXITCODE -ne 0) {
+        throw "Inno Setup failed with exit code $LASTEXITCODE"
+    }
+}
+finally {
+    Pop-Location
 }
 
 $setupExe = Join-Path $outputRoot 'setup.exe'
