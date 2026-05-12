@@ -29,6 +29,7 @@ public class NavigationService
 
     public bool Navigate(string key, object? parameter = null, bool persist = true)
     {
+        EnsurePage(key);
         if (_frame is null || !_pageMap.TryGetValue(key, out var pageType))
         {
             return false;
@@ -51,6 +52,15 @@ public class NavigationService
         return true;
     }
 
+    private void EnsurePage(string key)
+    {
+        if (_pageMap.ContainsKey(key)) return;
+        if (key.Equals("Customers", StringComparison.OrdinalIgnoreCase))
+        {
+            _pageMap[key] = Type.GetType("ProjectTest.Views.Pages.CustomersPage")!;
+        }
+    }
+
     private async Task SaveSettingsSafelyAsync(AppSettings settings)
     {
         try
@@ -59,7 +69,6 @@ public class NavigationService
         }
         catch
         {
-            // Navigation must stay responsive even if settings persistence fails.
         }
     }
 
@@ -68,6 +77,7 @@ public class NavigationService
         return key.Equals("Dashboard", StringComparison.OrdinalIgnoreCase) ||
                key.Equals("Products", StringComparison.OrdinalIgnoreCase) ||
                key.Equals("Orders", StringComparison.OrdinalIgnoreCase) ||
+               key.Equals("Customers", StringComparison.OrdinalIgnoreCase) ||
                key.Equals("Settings", StringComparison.OrdinalIgnoreCase);
     }
 }
