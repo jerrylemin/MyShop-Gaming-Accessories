@@ -1,0 +1,5 @@
+staging/
+output/
+prerequisites/*.exe
+prerequisites/*.msi
+logs/
