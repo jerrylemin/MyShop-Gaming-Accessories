@@ -4,8 +4,12 @@ Updated: 2026-05-12
 
 ## Validation Status
 
-- Initial audit complete.
-- Implementation and validation are in progress.
+- Full implementation pass complete.
+- Installer/setup files were not rebuilt, deleted, renamed, or replaced.
+- Debug x64 build passed.
+- Logic tests passed.
+- PostgreSQL rebuild and VerificationRunner passed in this environment.
+- App launch verification passed with a responsive `MyShop Gaming Accessories POS` window.
 
 ## Required Commands
 
@@ -14,6 +18,13 @@ dotnet restore ProjectTest.csproj
 dotnet build ProjectTest.csproj -c Debug -p:Platform=x64
 dotnet test ProjectTest.slnx
 ```
+
+Results from 2026-05-12:
+
+- `dotnet restore ProjectTest.csproj`: passed.
+- `dotnet build ProjectTest.csproj -c Debug -p:Platform=x64`: passed, 0 warnings.
+- `dotnet test ProjectTest.slnx`: passed, 15 tests.
+- Test note: MSBuild reports an EF Core relational transitive version warning in the test project because Npgsql references EF relational 8.0.11 while the app references EF Core 8.0.22. It does not fail tests.
 
 ## GraphQL Demo
 
@@ -86,6 +97,12 @@ Run only when PostgreSQL is available locally:
 powershell -ExecutionPolicy Bypass -File .\scripts\rebuild-dev-db.ps1
 dotnet run --project .\tools\VerificationRunner\VerificationRunner.csproj
 ```
+
+Results from 2026-05-12:
+
+- PostgreSQL service `postgresql-x64-18` was running.
+- Rebuild script passed and verified `5|110|440|866`.
+- VerificationRunner passed and created order `442`; stock decreased from 18 to 17 and dashboard/report values returned.
 
 ## Demo Instructions Draft
 

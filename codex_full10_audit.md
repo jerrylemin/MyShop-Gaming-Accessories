@@ -24,22 +24,23 @@ Updated: 2026-05-12
 - Plugin loader exists and scans `Plugins` for manifests and DLLs.
 - Reports page already shows KPI, charts, sales commissions, assistant summary, and restock insight area.
 
-### Missing Or Weak Against Checklist
+### Fixed In This Pass
 
-- Invoice export writes plain `.txt` to Documents from `OrdersViewModel.PrintAsync`; no FileSavePicker and no real PDF/XPS output.
-- `GraphQlPosService` uses string switch operations, not a real GraphQL schema/executor.
-- Settings has no GraphQL demo query textbox, execute button, sample query, or JSON result area.
-- `MlInsightService` calculates manual sales velocity only; no Microsoft.ML pipeline/package.
-- `LlmAssistantService` returns a local string summary and does not call a configured endpoint.
-- No Release obfuscator config/script.
-- UI smoke tests are static file assertions only; no separate local WinAppDriver/Appium/UI Automation demo script.
-- Functional tests need target framework alignment and more explicit coverage.
-- Sample plugin is a generated manifest only; no sample plugin project/DLL build path.
-- Authentication is local/bootstrap based; database users exist in seed but login does not query DB users.
-- Logout immediately returns to login but does not clear saved credentials or stop auto-login by choice.
-- Customer loyalty UI is present only through customer selection in Orders; no clear customer loyalty list.
-- Settings page contains mojibake Vietnamese text.
-- Product import price visibility is available in view model but Product page still shows import price unconditionally.
+- Invoice export now writes real PDF through a FileSavePicker from Orders.
+- `GraphQlPosService` now uses GraphQL.NET schema/executor with typed query and mutation fields.
+- Settings now has GraphQL query, sample, execute button, and JSON result area.
+- `MlInsightService` now uses a Microsoft.ML regression pipeline for 7-day revenue forecast when enough data exists, with stock velocity fallback.
+- `LlmAssistantService` now calls an OpenAI-compatible HTTP endpoint using Settings or `MYSHOP_LLM_API_KEY`, with timeout and safe error handling.
+- Release obfuscation config/script added through Obfuscar.
+- Local UI automation smoke script added separately from headless tests.
+- Functional test project aligned to `net8.0-windows10.0.19041.0`; 15 tests pass.
+- Sample plugin project and build/copy script added.
+- Database users are ensured, login checks DB users when available, and saved auto-login restores role.
+- Logout offers a clear-saved-login path.
+- Sale users do not see import price, and order queries scope sale users to their own orders.
+- Settings now shows customer loyalty points and lifetime spend.
+- Settings mojibake text was replaced.
+- Verification tools were updated for advanced POS models.
 
 ## Files Expected To Change
 

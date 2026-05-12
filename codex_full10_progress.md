@@ -40,22 +40,13 @@ Updated: 2026-05-12
 
 - Added obfuscation config/script, sample plugin project, UI automation smoke script, and functional test coverage.
 
-## In Progress
+## Completed
 
 - Final README/docs polish and full validation run.
 
 ## Remaining
 
-- GraphQL schema/executor and Settings demo.
-- Microsoft.ML pipeline and Reports display improvements.
-- Real LLM HTTP integration.
-- Obfuscator config/script.
-- UI automation demo script.
-- Test target alignment and additional logic tests.
-- Sample plugin project.
-- Role/login/logout hardening.
-- Customer loyalty UI.
-- UI polish and final validation.
+- None known for the requested checklist in this repo state.
 
 ## Commands To Run
 
@@ -64,6 +55,15 @@ dotnet restore ProjectTest.csproj
 dotnet build ProjectTest.csproj -c Debug -p:Platform=x64
 dotnet test ProjectTest.slnx
 ```
+
+Latest validation:
+
+- `dotnet restore ProjectTest.csproj`: passed.
+- `dotnet build ProjectTest.csproj -c Debug -p:Platform=x64`: passed with 0 warnings.
+- `dotnet test ProjectTest.slnx`: passed, 15/15 tests; MSBuild printed a transitive EF Core relational version warning.
+- `powershell -ExecutionPolicy Bypass -File .\scripts\rebuild-dev-db.ps1`: passed; 5 categories, 110 products, 440 orders, 866 order items.
+- `dotnet run --project .\tools\VerificationRunner\VerificationRunner.csproj`: passed; created order, stock decreased, dashboard/report snapshots returned.
+- Launch verification: `ProjectTest.exe` opened a responsive top-level window titled `MyShop Gaming Accessories POS`.
 
 Optional if local PostgreSQL is available:
 

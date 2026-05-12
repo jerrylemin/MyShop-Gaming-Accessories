@@ -8,7 +8,7 @@ This repository is a coursework-style Windows programming project built around a
 
 ## Main Features
 
-- Login with locally saved encrypted credentials and a bootstrap default account.
+- Login with locally saved encrypted credentials, database-backed demo users, role restore on auto-login, and logout choice for clearing saved credentials.
 - Database setup window for saving a PostgreSQL connection string when startup cannot connect.
 - Dashboard with total products, low-stock count, today order count, today revenue, monthly revenue trend, latest orders, and top-selling products.
 - Product management with add, edit, delete, detail view, packaged image gallery, live category data, and full category CRUD.
@@ -16,9 +16,15 @@ This repository is a coursework-style Windows programming project built around a
 - Excel import for upserting products and creating missing categories.
 - Order management with date-range filtering, keyword search, sort options, full paging controls, inline order editing, item lines, status changes, and deletion.
 - Stock synchronization when orders are created, updated, cancelled, or deleted.
+- Customer selection on orders and customer loyalty points/lifetime spend after paid orders.
+- PDF invoice export through a FileSavePicker from Orders.
 - Reports for revenue and profit by day, week, month, and year.
 - Product sales analytics for top-selling items and sales share.
-- Settings for items-per-page and saved login cleanup.
+- ML.Net revenue forecast and restock insights on Reports.
+- LLM assistant integration through an OpenAI-compatible endpoint configured in Settings or `MYSHOP_LLM_API_KEY`.
+- GraphQL.NET schema executor and Settings demo query console for products, orders, reports, `saveProduct`, and `saveOrder`.
+- Settings for items-per-page, saved login cleanup, GraphQL demo, plugins, LLM config, backup/restore, license, and customer loyalty.
+- Sample plugin project and local UI automation smoke script.
 - Seed data for 5 categories, 110 products, and 440 seeded orders.
 - Packaged gaming accessory images stored inside the app assets.
 
@@ -30,6 +36,8 @@ This repository is a coursework-style Windows programming project built around a
 - Windows App SDK 1.8
 - Entity Framework Core 8
 - PostgreSQL via Npgsql
+- GraphQL.NET
+- Microsoft.ML
 - MVVM
 - Repository + service layers
 - PowerShell automation
@@ -153,7 +161,7 @@ Username: admin
 Password: MyShop123!
 ```
 
-After a successful login, the credentials are encrypted and stored in local app settings for future launches.
+The database initializer also ensures `admin`, `moderator`, and `sale` users exist. For the coursework demo all three use `MyShop123!`. Saved credentials are encrypted, and auto-login restores the saved user's role.
 
 ### Build the application
 
@@ -169,6 +177,24 @@ Typical developer options:
 
 - Run from Visual Studio using either the packaged or unpackaged profile in `Properties/launchSettings.json`.
 - Or build from CLI and launch through your normal WinUI 3 workflow on a machine with the required runtime/tooling installed.
+
+The Debug x64 build produces a runnable executable under:
+
+```text
+%LOCALAPPDATA%\ProjectTest\artifacts\bin\x64\Debug\net8.0-windows10.0.19041.0\win-x64\ProjectTest.exe
+```
+
+### Run tests
+
+```powershell
+dotnet test ProjectTest.slnx
+```
+
+UI automation is a separate local desktop smoke script because it needs a visible Windows session:
+
+```powershell
+powershell -ExecutionPolicy Bypass -File .\scripts\ui-smoke.ps1 -AppPath "%LOCALAPPDATA%\ProjectTest\artifacts\bin\x64\Debug\net8.0-windows10.0.19041.0\win-x64\ProjectTest.exe"
+```
 
 ## Seed Data and Assets
 
@@ -217,6 +243,12 @@ ms-appx:///Assets/GamingProducts/{productId}_{imageNumber}.jpg
   Refreshes the seed dataset, sample markdown document, and packaged images.
 - `download_gaming_accessory_images.ps1`
   PowerShell wrapper around the Python seed asset builder.
+- `scripts/obfuscate-release.ps1`
+  Builds Release x64 and runs Obfuscar using `obfuscar.xml`. If Windows blocks `dotnet-tools.json` on a network path, run from a local clone or unblock the file before `dotnet tool restore`.
+- `scripts/build-sample-plugin.ps1`
+  Builds `plugins/SampleMyShopPlugin`, copies the DLL and manifest to `Plugins/SampleMyShopPlugin`, then the app can show it as `Loaded` in Settings after restart.
+- `scripts/ui-smoke.ps1`
+  Local Windows UI Automation smoke script for login and navigation through Products, Orders, Reports, and Settings.
 
 Useful options:
 
@@ -265,13 +297,33 @@ Example file-system publish profile usage:
 dotnet publish ProjectTest.csproj -c Release -p:Platform=x64 -p:PublishProfile=win-x64.pubxml
 ```
 
+Release obfuscation:
+
+```powershell
+powershell -ExecutionPolicy Bypass -File .\scripts\obfuscate-release.ps1 -Platform x64
+```
+
+The Obfuscar config preserves WinUI, XAML-facing types, EF Core entities/migrations, controls, view models, models, and helpers to avoid breaking binding, reflection, and migrations.
+
+## Demo Checklist
+
+- Login as `admin`, `moderator`, and `sale` with `MyShop123!`; verify sale cannot see import price and only sees own orders.
+- Products: filter/search/page through gaming accessories and inspect accessory specs/image gallery.
+- Orders: create an order, choose a customer, apply `WELCOME10`, mark Paid, save, then export a PDF invoice with `Print / Export invoice`.
+- Reports: refresh a date range and verify charts, commissions, ML.Net forecast/restock insights, and assistant status.
+- Settings: run the GraphQL sample query, inspect customer loyalty, verify plugin list, and configure LLM endpoint/key if available.
+- Plugin: run `scripts/build-sample-plugin.ps1`, restart app, then verify `Sample MyShop Plugin` is `Loaded`.
+- DB verification: run `scripts/rebuild-dev-db.ps1` and `dotnet run --project .\tools\VerificationRunner\VerificationRunner.csproj`.
+
 ## Known Issues or Notes
 
 - The application requires a reachable PostgreSQL instance; otherwise startup falls back to the Database Setup window.
 - The development defaults in scripts assume a local PostgreSQL server and the `postgres` user password `jelly`.
-- The login system is local-only and does not implement roles, permissions, or external identity providers.
+- The login system is local/demo database based; it implements admin, moderator, and sale roles but not external identity providers.
 - Product spec fields are mapped onto legacy schema columns (`CPU`, `RAM`, `Storage`, `GPU`, `Screen`) for compatibility.
 - Paid and cancelled orders are intentionally read-only in the editor.
 - The shell is built programmatically in `Views/MainWindow.xaml.cs`; `Views/MainWindow.xaml` is only a minimal host.
 - The app currently forces a light theme and does not expose a theme switcher.
+- `dotnet test ProjectTest.slnx` passes; it may show an EF Core relational version warning from transitive Npgsql dependencies.
+- `dotnet tool restore` can be blocked by Windows on UNC/network workspaces. Build/test are not blocked; run tool restore from a local clone if Obfuscar restore is blocked.
 - If you need signed MSIX distribution, add your own signing configuration outside the current repository state.
