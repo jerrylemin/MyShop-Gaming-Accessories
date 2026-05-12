@@ -104,9 +104,16 @@ public sealed partial class SimpleLineChart : UserControl
 
         ChartCanvas.Children.Add(polyline);
 
+        var labelStep = points.Count <= 12 ? 1 : Math.Max(1, (int)Math.Ceiling(points.Count / 8d));
         for (var index = 0; index < points.Count; index++)
         {
             LabelsGrid.ColumnDefinitions.Add(new ColumnDefinition());
+
+            if (index != 0 && index != points.Count - 1 && index % labelStep != 0)
+            {
+                continue;
+            }
+
             var label = new TextBlock
             {
                 Text = points[index].Label,
