@@ -101,11 +101,16 @@ public class ReportingService
 
         var commissions = await dbContext.Orders
             .Where(x => x.Status == OrderStatus.Paid && x.CreatedTime >= normalizedFromDate && x.CreatedTime < rangeEndExclusive)
-            .GroupBy(x => new { x.CreatedByUserId, x.CreatedByUser!.DisplayName, x.CreatedByUser.Role })
+            .GroupBy(x => new
+            {
+                x.CreatedByUserId,
+                DisplayName = x.CreatedByUser == null ? "Unassigned" : x.CreatedByUser.DisplayName,
+                Role = x.CreatedByUser == null ? UserRole.Sale : x.CreatedByUser.Role
+            })
             .Select(group => new SalesCommissionSnapshot
             {
                 UserId = group.Key.CreatedByUserId ?? 0,
-                Salesperson = group.Key.DisplayName ?? "Unassigned",
+                Salesperson = group.Key.DisplayName,
                 Role = group.Key.Role,
                 Revenue = group.Sum(x => x.FinalPrice),
                 PaidOrders = group.Count(),
