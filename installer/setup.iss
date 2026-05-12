@@ -20,6 +20,9 @@ ArchitecturesAllowed=x64
 ArchitecturesInstallIn64BitMode=x64
 PrivilegesRequired=admin
 UninstallDisplayIcon={app}\{#AppExeName}
+UninstallDisplayName={#AppName}
+CloseApplications=yes
+RestartApplications=no
 SetupLogging=yes
 
 [Languages]
@@ -37,11 +40,13 @@ Source: "{#InstallerRoot}\prerequisites\postgresql-16-windows-x64.exe"; DestDir:
 Filename: "{sys}\WindowsPowerShell\v1.0\powershell.exe"; Parameters: "-NoProfile -ExecutionPolicy Bypass -File ""{app}\installer\install-bootstrap.ps1"" -AppDir ""{app}"" -PrereqDir ""{app}\installer\prerequisites"" -DatabaseTool ""{app}\installer\database\MyShop.DatabaseBootstrapper.exe"""; StatusMsg: "Installing prerequisites and preparing local database..."; Flags: waituntilterminated runhidden
 
 [Icons]
-Name: "{group}\MyShop POS"; Filename: "{app}\{#AppExeName}"; WorkingDir: "{app}"; IconFilename: "{app}\Assets\StoreLogo.png"
-Name: "{autodesktop}\MyShop POS"; Filename: "{app}\{#AppExeName}"; WorkingDir: "{app}"; IconFilename: "{app}\Assets\StoreLogo.png"; Tasks: desktopicon
+Name: "{group}\MyShop POS"; Filename: "{app}\{#AppExeName}"; WorkingDir: "{app}"; IconFilename: "{app}\MyShop.ico"
+Name: "{group}\Uninstall MyShop POS"; Filename: "{uninstallexe}"; IconFilename: "{uninstallexe}"
+Name: "{autodesktop}\MyShop POS"; Filename: "{app}\{#AppExeName}"; WorkingDir: "{app}"; IconFilename: "{app}\MyShop.ico"; Tasks: desktopicon
 
 [Tasks]
 Name: "desktopicon"; Description: "Create a desktop shortcut"; GroupDescription: "Shortcuts:"; Flags: checkedonce
 
 [UninstallDelete]
 Type: filesandordirs; Name: "{app}\installer"
+Type: files; Name: "{app}\myshop.database.json"

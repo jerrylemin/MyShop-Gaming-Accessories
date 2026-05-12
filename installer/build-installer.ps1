@@ -87,6 +87,57 @@ function Save-Download {
     Invoke-WebRequest -Uri $Url -OutFile $OutputPath
 }
 
+function New-IcoFromPng {
+    param(
+        [string]$PngPath,
+        [string]$IcoPath
+    )
+
+    Add-Type -AssemblyName System.Drawing
+    $bitmap = [System.Drawing.Bitmap]::new($PngPath)
+    try {
+        $resized = [System.Drawing.Bitmap]::new($bitmap, [System.Drawing.Size]::new(256, 256))
+        try {
+            $iconHandle = $resized.GetHicon()
+            try {
+                $icon = [System.Drawing.Icon]::FromHandle($iconHandle)
+                try {
+                    $stream = [System.IO.File]::Create($IcoPath)
+                    try {
+                        $icon.Save($stream)
+                    }
+                    finally {
+                        $stream.Dispose()
+                    }
+                }
+                finally {
+                    $icon.Dispose()
+                }
+            }
+            finally {
+                [NativeMethods]::DestroyIcon($iconHandle) | Out-Null
+            }
+        }
+        finally {
+            $resized.Dispose()
+        }
+    }
+    finally {
+        $bitmap.Dispose()
+    }
+}
+
+Add-Type @'
+using System;
+using System.Runtime.InteropServices;
+
+public static class NativeMethods
+{
+    [DllImport("user32.dll", SetLastError = true)]
+    public static extern bool DestroyIcon(IntPtr hIcon);
+}
+'@
+
 New-Item -ItemType Directory -Force -Path $stagingRoot, $appStaging, $databaseStaging, $prereqRoot, $outputRoot, $logRoot | Out-Null
 
 Write-Step 'Restoring project dependencies.'
@@ -103,6 +154,9 @@ Invoke-RepoCommand -FilePath 'dotnet' -Arguments @(
     '-p:Platform=x64',
     '-p:PublishTrimmed=false'
 )
+
+Write-Step 'Preparing shortcut icon.'
+New-IcoFromPng -PngPath (Join-Path $appStaging 'Assets\StoreLogo.png') -IcoPath (Join-Path $appStaging 'MyShop.ico')
 
 Write-Step 'Publishing database bootstrapper.'
 if (Test-Path -LiteralPath $databaseStaging) {
