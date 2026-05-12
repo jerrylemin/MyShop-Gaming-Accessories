@@ -34,31 +34,41 @@ public class GraphQlPosService
     {
         if (string.IsNullOrWhiteSpace(query))
         {
-            return JsonSerializer.Serialize(new
-            {
-                errors = new[] { new { message = "GraphQL query is required." } }
-            }, JsonOptions);
+            return JsonSerializer.Serialize(new { errors = new[] { new { message = "GraphQL query is required." } } }, JsonOptions);
         }
 
-        var inputs = variables is null
-            ? null
-            : JsonSerializer.Deserialize<Inputs>(JsonSerializer.Serialize(variables, JsonOptions));
-
-        var result = await new DocumentExecuter().ExecuteAsync(options =>
+        try
         {
-            options.Schema = _schema;
-            options.Query = query;
-            options.Variables = inputs;
-        });
+            var inputs = variables is null
+                ? null
+                : JsonSerializer.Deserialize<Inputs>(JsonSerializer.Serialize(variables, JsonOptions));
 
-        return _serializer.Serialize(result);
+            using var timeout = new CancellationTokenSource(TimeSpan.FromSeconds(12));
+            var result = await new DocumentExecuter().ExecuteAsync(options =>
+            {
+                options.Schema = _schema;
+                options.Query = query;
+                options.Variables = inputs;
+                options.CancellationToken = timeout.Token;
+            });
+
+            return _serializer.Serialize(result);
+        }
+        catch (OperationCanceledException)
+        {
+            return JsonSerializer.Serialize(new { errors = new[] { new { message = "GraphQL execution timed out. Try a smaller query." } } }, JsonOptions);
+        }
+        catch (Exception ex)
+        {
+            return JsonSerializer.Serialize(new { errors = new[] { new { message = ex.Message } } }, JsonOptions);
+        }
     }
 
     public string GetSampleQuery()
     {
         return """
             query Demo {
-              products(pageNumber: 1, pageSize: 5, keyword: "Logitech") {
+              products(pageNumber: 1, pageSize: 5, keyword: "") {
                 pageNumber
                 totalCount
                 items {
@@ -68,16 +78,6 @@ public class GraphQlPosService
                   brand
                   salePrice
                   stock
-                }
-              }
-              reports {
-                rangeLabel
-                totalRevenue
-                totalProfit
-                mlInsights {
-                  title
-                  detail
-                  score
                 }
               }
             }
@@ -101,7 +101,7 @@ public class GraphQlPosService
             async context => await _productRepository.GetPagedAsync(new ProductQueryOptions
             {
                 PageNumber = context.GetArgument("pageNumber", 1),
-                PageSize = context.GetArgument("pageSize", 10),
+                PageSize = Math.Clamp(context.GetArgument("pageSize", 10), 1, 20),
                 Keyword = context.GetArgument("keyword", string.Empty),
                 CategoryId = context.GetArgument<int?>("categoryId"),
                 MinPrice = context.GetArgument<decimal?>("minPrice"),
@@ -123,7 +123,7 @@ public class GraphQlPosService
             async context => await _orderRepository.GetPagedAsync(new OrderQueryOptions
             {
                 PageNumber = context.GetArgument("pageNumber", 1),
-                PageSize = context.GetArgument("pageSize", 10),
+                PageSize = Math.Clamp(context.GetArgument("pageSize", 10), 1, 20),
                 Keyword = context.GetArgument("keyword", string.Empty),
                 FromDate = context.GetArgument<DateTime?>("fromDate"),
                 ToDate = context.GetArgument<DateTime?>("toDate"),
@@ -139,7 +139,7 @@ public class GraphQlPosService
                 new QueryArgument<DateTimeGraphType> { Name = "toDate" }),
             async context => await _reportingService.GetSnapshotAsync(new ReportQueryOptions
             {
-                FromDate = context.GetArgument("fromDate", DateTime.Today.AddDays(-30)),
+                FromDate = context.GetArgument("fromDate", DateTime.Today.AddDays(-7)),
                 ToDate = context.GetArgument("toDate", DateTime.Today)
             }));
 
@@ -150,8 +150,7 @@ public class GraphQlPosService
             new QueryArguments(new QueryArgument<NonNullGraphType<StringGraphType>> { Name = "inputJson" }),
             async context =>
             {
-                var product = JsonSerializer.Deserialize<Product>(context.GetArgument<string>("inputJson"), JsonOptions)
-                    ?? new Product();
+                var product = JsonSerializer.Deserialize<Product>(context.GetArgument<string>("inputJson"), JsonOptions) ?? new Product();
                 return await _productRepository.SaveAsync(product);
             });
 
@@ -161,26 +160,16 @@ public class GraphQlPosService
             new QueryArguments(new QueryArgument<NonNullGraphType<StringGraphType>> { Name = "inputJson" }),
             async context =>
             {
-                var draft = JsonSerializer.Deserialize<OrderDraft>(context.GetArgument<string>("inputJson"), JsonOptions)
-                    ?? new OrderDraft();
+                var draft = JsonSerializer.Deserialize<OrderDraft>(context.GetArgument<string>("inputJson"), JsonOptions) ?? new OrderDraft();
                 return await _orderRepository.SaveAsync(draft);
             });
 
-        return new Schema
-        {
-            Query = query,
-            Mutation = mutation
-        };
+        return new Schema { Query = query, Mutation = mutation };
     }
 }
 
-public sealed class ProductSortOptionGraphType : EnumerationGraphType<ProductSortOption>
-{
-}
-
-public sealed class OrderStatusGraphType : EnumerationGraphType<OrderStatus>
-{
-}
+public sealed class ProductSortOptionGraphType : EnumerationGraphType<ProductSortOption> { }
+public sealed class OrderStatusGraphType : EnumerationGraphType<OrderStatus> { }
 
 public sealed class ProductGraphType : ObjectGraphType<Product>
 {
