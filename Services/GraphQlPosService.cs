@@ -1,4 +1,5 @@
 using GraphQL;
+using GraphQL.SystemTextJson;
 using GraphQL.Types;
 using ProjectTest.Models;
 using ProjectTest.Repositories;
@@ -18,6 +19,7 @@ public class GraphQlPosService
     private readonly ProductRepository _productRepository;
     private readonly OrderRepository _orderRepository;
     private readonly ReportingService _reportingService;
+    private readonly GraphQLSerializer _serializer = new(indent: true);
     private readonly ISchema _schema;
 
     public GraphQlPosService(ProductRepository productRepository, OrderRepository orderRepository, ReportingService reportingService)
@@ -49,15 +51,7 @@ public class GraphQlPosService
             options.Variables = inputs;
         });
 
-        object payload = result.Errors?.Count > 0
-            ? new
-            {
-                data = result.Data,
-                errors = result.Errors.Select(error => new { message = error.Message })
-            }
-            : new { data = result.Data };
-
-        return JsonSerializer.Serialize(payload, JsonOptions);
+        return _serializer.Serialize(result);
     }
 
     public string GetSampleQuery()
