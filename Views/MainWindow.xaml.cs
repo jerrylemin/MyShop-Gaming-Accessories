@@ -47,6 +47,8 @@ public sealed partial class MainWindow : Window, INotifyPropertyChanged
 
         RegisterNavigationHoverStates();
         ContentFrame.Navigated += ContentFrame_Navigated;
+        ContentFrame.NavigationFailed += ContentFrame_NavigationFailed;
+        ContentFrame.Loaded += ContentFrame_Loaded;
         Activated += MainWindow_Activated;
         SizeChanged += MainWindow_SizeChanged;
 
@@ -74,6 +76,21 @@ public sealed partial class MainWindow : Window, INotifyPropertyChanged
     private void MainWindow_Activated(object sender, WindowActivatedEventArgs args)
     {
         Activated -= MainWindow_Activated;
+        InitializeNavigationOnce();
+    }
+
+    private void ContentFrame_Loaded(object sender, RoutedEventArgs e)
+    {
+        ContentFrame.Loaded -= ContentFrame_Loaded;
+        InitializeNavigationOnce();
+    }
+
+    private void InitializeNavigationOnce()
+    {
+        if (_isNavigationReady)
+        {
+            return;
+        }
 
         _navigationService.Initialize(ContentFrame);
         _navigationService.Register("Dashboard", typeof(DashboardPage));
@@ -92,6 +109,43 @@ public sealed partial class MainWindow : Window, INotifyPropertyChanged
 
         _ = ShowLicenseGateIfNeededAsync();
         _ = ShowOnboardingIfNeededAsync();
+    }
+
+    private void ContentFrame_NavigationFailed(object sender, NavigationFailedEventArgs e)
+    {
+        WriteInitializeComponentExceptionLog(e.Exception);
+        e.Handled = true;
+
+        CurrentPageTitle = "Startup Error";
+        ContentFrame.Content = new Border
+        {
+            Margin = new Thickness(28),
+            Padding = new Thickness(24),
+            Background = GetBrush("PageSurfaceBrush"),
+            BorderBrush = GetBrush("CardStrokeBrush"),
+            BorderThickness = new Thickness(1),
+            CornerRadius = new CornerRadius(24),
+            Child = new StackPanel
+            {
+                Spacing = 10,
+                Children =
+                {
+                    new TextBlock
+                    {
+                        Text = "This page could not be loaded.",
+                        FontSize = 24,
+                        FontWeight = Microsoft.UI.Text.FontWeights.SemiBold,
+                        TextWrapping = TextWrapping.WrapWholeWords
+                    },
+                    new TextBlock
+                    {
+                        Text = e.Exception.GetBaseException().Message,
+                        Foreground = GetBrush("DangerBrush"),
+                        TextWrapping = TextWrapping.WrapWholeWords
+                    }
+                }
+            }
+        };
     }
 
     private async Task ShowLicenseGateIfNeededAsync()

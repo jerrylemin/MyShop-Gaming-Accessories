@@ -16,6 +16,7 @@ public partial class App : Application
         WriteStartupMarker("App.ctor");
         InitializeComponent();
         RequestedTheme = ApplicationTheme.Light;
+        UnhandledException += App_UnhandledException;
     }
 
     public static new App Current => (App)Application.Current;
@@ -26,6 +27,7 @@ public partial class App : Application
 
     protected override async void OnLaunched(LaunchActivatedEventArgs args)
     {
+        SwitchWindow(new StartupWindow());
         await InitializeAsync();
     }
 
@@ -93,8 +95,19 @@ public partial class App : Application
         }
         catch (Exception ex) when (IsDatabaseStartupException(ex))
         {
+            WriteStartupExceptionLog("Database startup", ex);
             ShowDatabaseSetupWindow(BuildDatabaseErrorMessage(ex));
         }
+        catch (Exception ex)
+        {
+            WriteStartupExceptionLog("Application startup", ex);
+            ShowDatabaseSetupWindow($"Startup failed: {ex.GetBaseException().Message}");
+        }
+    }
+
+    private static void App_UnhandledException(object sender, Microsoft.UI.Xaml.UnhandledExceptionEventArgs e)
+    {
+        WriteStartupExceptionLog("Unhandled exception", e.Exception);
     }
 
     private static bool IsDatabaseStartupException(Exception ex)
