@@ -6,6 +6,9 @@
     <RootNamespace>ProjectTest</RootNamespace>
     <ApplicationManifest>app.manifest</ApplicationManifest>
     <Platforms>x86;x64;ARM64</Platforms>
+    <Platform Condition="'$(Platform)' == ''">x64</Platform>
+    <PlatformTarget Condition="'$(PlatformTarget)' == '' or '$(PlatformTarget)' == 'AnyCPU'">x64</PlatformTarget>
+    <EnableMLUnsupportedPlatformTargetCheck>false</EnableMLUnsupportedPlatformTargetCheck>
     <RuntimeIdentifiers>win-x86;win-x64;win-arm64</RuntimeIdentifiers>
     <PublishProfile>win-$(Platform).pubxml</PublishProfile>
     <UseWinUI>true</UseWinUI>
@@ -43,16 +46,20 @@
     <Compile Remove="tools\**\*.cs" />
     <Compile Remove="installer\**\*.cs" />
     <Compile Remove="ProjectTest.Tests\**\*.cs" />
+    <Compile Remove="plugins\**\*.cs" />
     <None Remove="DataAccess\Seeding\gaming_accessories_seed_data.json" />
     <EmbeddedResource Remove="tools\**\*" />
     <EmbeddedResource Remove="installer\**\*" />
     <EmbeddedResource Remove="ProjectTest.Tests\**\*" />
+    <EmbeddedResource Remove="plugins\**\*" />
     <None Remove="tools\**\*" />
     <None Remove="installer\**\*" />
     <None Remove="ProjectTest.Tests\**\*" />
+    <None Remove="plugins\**\*" />
     <Content Remove="tools\**\*" />
     <Content Remove="installer\**\*" />
     <Content Remove="ProjectTest.Tests\**\*" />
+    <Content Remove="plugins\**\*" />
   </ItemGroup>
 
   <ItemGroup>
