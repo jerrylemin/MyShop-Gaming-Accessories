@@ -35,10 +35,14 @@
 
   <ItemGroup>
     <Compile Remove="tools\**\*.cs" />
+    <Compile Remove="installer\**\*.cs" />
     <None Remove="DataAccess\Seeding\gaming_accessories_seed_data.json" />
     <EmbeddedResource Remove="tools\**\*" />
+    <EmbeddedResource Remove="installer\**\*" />
     <None Remove="tools\**\*" />
+    <None Remove="installer\**\*" />
     <Content Remove="tools\**\*" />
+    <Content Remove="installer\**\*" />
   </ItemGroup>
 
   <ItemGroup>
