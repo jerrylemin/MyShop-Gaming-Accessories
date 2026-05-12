@@ -93,6 +93,45 @@
 
             <Border Style="{ThemeResource CardBorderStyle}">
                 <StackPanel Spacing="14">
+                    <TextBlock Style="{ThemeResource SectionHeaderTextBlockStyle}" Text="GraphQL Demo" />
+                    <TextBlock
+                        Style="{ThemeResource CaptionTextBlockStyle}"
+                        Text="Run schema-backed POS queries and mutations for products, orders, reports, saveProduct, and saveOrder."
+                        TextWrapping="WrapWholeWords" />
+                    <TextBox
+                        AcceptsReturn="True"
+                        FontFamily="Consolas"
+                        MinHeight="220"
+                        Text="{Binding GraphQlQuery, Mode=TwoWay}"
+                        TextWrapping="Wrap" />
+                    <Grid ColumnSpacing="12">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="Auto" />
+                        </Grid.ColumnDefinitions>
+                        <Button
+                            Grid.Column="0"
+                            Style="{ThemeResource AccentButtonStyle}"
+                            Command="{Binding ExecuteGraphQlCommand}"
+                            Content="Execute GraphQL" />
+                        <Button
+                            Grid.Column="1"
+                            Style="{ThemeResource SubtleButtonStyle}"
+                            Command="{Binding LoadSampleGraphQlCommand}"
+                            Content="Load Sample" />
+                    </Grid>
+                    <TextBox
+                        AcceptsReturn="True"
+                        FontFamily="Consolas"
+                        IsReadOnly="True"
+                        MinHeight="220"
+                        Text="{Binding GraphQlResult}"
+                        TextWrapping="Wrap" />
+                </StackPanel>
+            </Border>
+
+            <Border Style="{ThemeResource CardBorderStyle}">
+                <StackPanel Spacing="14">
                     <TextBlock Style="{ThemeResource SectionHeaderTextBlockStyle}" Text="Plugins" />
                     <ListView ItemsSource="{Binding Plugins}" SelectionMode="None">
                         <ListView.ItemTemplate>

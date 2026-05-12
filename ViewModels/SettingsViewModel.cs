@@ -12,6 +12,7 @@ public class SettingsViewModel : ViewModelBase
     private readonly LicenseService _licenseService;
     private readonly BackupRestoreService _backupRestoreService;
     private readonly PluginService _pluginService;
+    private readonly GraphQlPosService _graphQlPosService;
     private int _selectedItemsPerPage;
     private string _lastOpenedScreen = string.Empty;
     private string _statusMessage = string.Empty;
@@ -22,24 +23,30 @@ public class SettingsViewModel : ViewModelBase
     private string _restorePath = string.Empty;
     private string _llmApiKey = string.Empty;
     private string _llmEndpoint = string.Empty;
+    private string _graphQlQuery = string.Empty;
+    private string _graphQlResult = string.Empty;
 
     public SettingsViewModel(
         SettingsService settingsService,
         AuthenticationService authenticationService,
         LicenseService? licenseService = null,
         BackupRestoreService? backupRestoreService = null,
-        PluginService? pluginService = null)
+        PluginService? pluginService = null,
+        GraphQlPosService? graphQlPosService = null)
     {
         _settingsService = settingsService;
         _authenticationService = authenticationService;
         _licenseService = licenseService ?? App.Current.Services.LicenseService;
         _backupRestoreService = backupRestoreService ?? App.Current.Services.BackupRestoreService;
         _pluginService = pluginService ?? App.Current.Services.PluginService;
+        _graphQlPosService = graphQlPosService ?? App.Current.Services.GraphQlPosService;
         SaveCommand = new AsyncRelayCommand(SaveAsync);
         ClearCredentialsCommand = new AsyncRelayCommand(ClearCredentialsAsync);
         ActivateCommand = new AsyncRelayCommand(ActivateAsync);
         BackupCommand = new AsyncRelayCommand(BackupAsync);
         RestoreCommand = new AsyncRelayCommand(RestoreAsync);
+        ExecuteGraphQlCommand = new AsyncRelayCommand(ExecuteGraphQlAsync);
+        LoadSampleGraphQlCommand = new RelayCommand(LoadSampleGraphQl);
 
         PageSizeOptions = new ObservableCollection<int>([5, 10, 15, 20]);
         Plugins = new ObservableCollection<PluginInfo>();
@@ -58,6 +65,10 @@ public class SettingsViewModel : ViewModelBase
     public AsyncRelayCommand BackupCommand { get; }
 
     public AsyncRelayCommand RestoreCommand { get; }
+
+    public AsyncRelayCommand ExecuteGraphQlCommand { get; }
+
+    public RelayCommand LoadSampleGraphQlCommand { get; }
 
     public int SelectedItemsPerPage
     {
@@ -119,6 +130,18 @@ public class SettingsViewModel : ViewModelBase
         set => SetProperty(ref _llmEndpoint, value);
     }
 
+    public string GraphQlQuery
+    {
+        get => _graphQlQuery;
+        set => SetProperty(ref _graphQlQuery, value);
+    }
+
+    public string GraphQlResult
+    {
+        get => _graphQlResult;
+        set => SetProperty(ref _graphQlResult, value);
+    }
+
     public async Task LoadAsync()
     {
         var settings = _settingsService.CurrentSettings;
@@ -126,6 +149,11 @@ public class SettingsViewModel : ViewModelBase
         LastOpenedScreen = settings.LastOpenedScreen;
         LlmApiKey = settings.LlmApiKey;
         LlmEndpoint = settings.LlmEndpoint;
+        if (string.IsNullOrWhiteSpace(GraphQlQuery))
+        {
+            LoadSampleGraphQl();
+        }
+
         BackupPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), $"myshop-backup-{DateTime.Today:yyyyMMdd}.dump");
         CredentialStatus = await _authenticationService.HasSavedCredentialsAsync()
             ? "Saved credentials are present for auto login."
@@ -183,5 +211,17 @@ public class SettingsViewModel : ViewModelBase
     {
         var result = await _backupRestoreService.RestoreAsync(RestorePath);
         StatusMessage = result.Message;
+    }
+
+    private void LoadSampleGraphQl()
+    {
+        GraphQlQuery = _graphQlPosService.GetSampleQuery();
+        GraphQlResult = "Sample query loaded. Click Execute GraphQL to run it.";
+    }
+
+    private async Task ExecuteGraphQlAsync()
+    {
+        GraphQlResult = await _graphQlPosService.ExecuteAsync(GraphQlQuery);
+        StatusMessage = "GraphQL query executed.";
     }
 }

@@ -24,9 +24,13 @@ Updated: 2026-05-12
 
 - Implemented invoice PDF export and FileSavePicker flow.
 
+## Completed
+
+- Implemented GraphQL.NET schema/executor and Settings demo UI.
+
 ## In Progress
 
-- Implement GraphQL schema/executor and Settings demo UI.
+- Implement Microsoft.ML pipeline and real LLM HTTP integration.
 
 ## Remaining
 

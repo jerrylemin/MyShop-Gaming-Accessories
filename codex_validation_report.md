@@ -15,6 +15,19 @@ dotnet build ProjectTest.csproj -c Debug -p:Platform=x64
 dotnet test ProjectTest.slnx
 ```
 
+## GraphQL Demo
+
+- Service: `Services/GraphQlPosService.cs`.
+- UI: Settings -> GraphQL Demo.
+- Queries:
+  - `products(pageNumber, pageSize, keyword, categoryId, minPrice, maxPrice, sort)`.
+  - `orders(pageNumber, pageSize, keyword, fromDate, toDate, status, customerId)`.
+  - `reports(fromDate, toDate)`.
+- Mutations:
+  - `saveProduct(inputJson: String!)`.
+  - `saveOrder(inputJson: String!)`.
+- Demo: open Settings, click `Load Sample`, click `Execute GraphQL`, verify JSON result appears in the read-only result textbox.
+
 ## Optional PostgreSQL Runtime Validation
 
 Run only when PostgreSQL is available locally:
@@ -34,7 +47,6 @@ dotnet run --project .\tools\VerificationRunner\VerificationRunner.csproj
 
 ## Known Issues Before Fixes
 
-- GraphQL is string-switch fake implementation.
 - ML insight does not use Microsoft.ML.
 - LLM does not call HTTP endpoint.
 - Test project target is net10 instead of net8.
