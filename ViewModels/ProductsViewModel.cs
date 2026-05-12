@@ -2,6 +2,7 @@ using ProjectTest.Helpers;
 using ProjectTest.Models;
 using ProjectTest.Repositories;
 using ProjectTest.Services;
+using Microsoft.UI.Xaml;
 using System.Collections.ObjectModel;
 
 namespace ProjectTest.ViewModels;
@@ -76,6 +77,8 @@ public class ProductsViewModel : ViewModelBase
     public ObservableCollection<Product> Products { get; }
 
     public bool CanViewImportPrice => _currentUserService.CanViewImportPrice;
+
+    public Visibility ImportPriceVisibility => CanViewImportPrice ? Visibility.Visible : Visibility.Collapsed;
 
     public ObservableCollection<ProductSortOption> SortOptions { get; }
 

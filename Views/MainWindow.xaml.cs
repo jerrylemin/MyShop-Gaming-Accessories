@@ -165,8 +165,32 @@ public sealed partial class MainWindow : Window, INotifyPropertyChanged
         _navigationService.Navigate(key);
     }
 
-    private void LogoutButton_Click(object sender, RoutedEventArgs e)
+    private async void LogoutButton_Click(object sender, RoutedEventArgs e)
     {
+        if (ContentFrame.XamlRoot is not null)
+        {
+            var dialog = new ContentDialog
+            {
+                Title = "Log out",
+                Content = "Sign out of the current session. Choose Clear saved login if this PC should not auto-login next time.",
+                PrimaryButtonText = "Log out",
+                SecondaryButtonText = "Clear saved login",
+                CloseButtonText = "Cancel",
+                XamlRoot = ContentFrame.XamlRoot
+            };
+
+            var result = await dialog.ShowAsync();
+            if (result == ContentDialogResult.None)
+            {
+                return;
+            }
+
+            if (result == ContentDialogResult.Secondary)
+            {
+                await App.Current.Services.AuthenticationService.ClearCredentialsAsync();
+            }
+        }
+
         App.Current.ShowLoginWindow();
     }
 

@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Page
     x:Class="ProjectTest.Views.Pages.SettingsPage"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
@@ -22,10 +22,10 @@
                         FontFamily="Segoe UI Variable Display Semib"
                         FontSize="32"
                         FontWeight="SemiBold"
-                        Text="Cấu hình ứng dụng gọn và đúng nhu cầu làm việc." />
+                        Text="Configure the POS tools used in daily store operations." />
                     <TextBlock
                         Style="{ThemeResource PageIntroTextBlockStyle}"
-                        Text="Điều chỉnh số lượng dữ liệu trên mỗi trang và kiểm soát trạng thái đăng nhập tự động của ứng dụng." />
+                        Text="Adjust paging, saved login behavior, LLM settings, GraphQL demo queries, plugins, and customer loyalty data." />
                 </StackPanel>
             </Border>
 
@@ -140,6 +140,35 @@
                                     <TextBlock FontWeight="SemiBold" Text="{Binding Name}" />
                                     <TextBlock Style="{ThemeResource CaptionTextBlockStyle}" Text="{Binding Status}" />
                                 </StackPanel>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+                </StackPanel>
+            </Border>
+
+            <Border Style="{ThemeResource CardBorderStyle}">
+                <StackPanel Spacing="14">
+                    <TextBlock Style="{ThemeResource SectionHeaderTextBlockStyle}" Text="Customer Loyalty" />
+                    <TextBlock
+                        Style="{ThemeResource CaptionTextBlockStyle}"
+                        Text="Paid orders increase loyalty points for the selected customer in Orders."
+                        TextWrapping="WrapWholeWords" />
+                    <ListView ItemsSource="{Binding Customers}" SelectionMode="None">
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <Grid Margin="0,6" ColumnSpacing="12">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*" />
+                                        <ColumnDefinition Width="Auto" />
+                                        <ColumnDefinition Width="Auto" />
+                                    </Grid.ColumnDefinitions>
+                                    <StackPanel Spacing="2">
+                                        <TextBlock FontWeight="SemiBold" Text="{Binding Name}" TextWrapping="WrapWholeWords" />
+                                        <TextBlock Style="{ThemeResource CaptionTextBlockStyle}" Text="{Binding Phone}" />
+                                    </StackPanel>
+                                    <TextBlock Grid.Column="1" Text="{Binding LoyaltySummary}" />
+                                    <TextBlock Grid.Column="2" Text="{Binding LifetimeSpendText}" />
+                                </Grid>
                             </DataTemplate>
                         </ListView.ItemTemplate>
                     </ListView>

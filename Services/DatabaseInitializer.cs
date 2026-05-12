@@ -20,6 +20,8 @@ public class DatabaseInitializer
         await using var dbContext = _dbContextFactory.CreateDbContext();
         await EnsureSchemaAsync(dbContext);
 
+        await EnsureReferenceDataAsync(dbContext);
+
         if (await dbContext.Categories.AnyAsync())
         {
             return;
@@ -27,23 +29,7 @@ public class DatabaseInitializer
 
         var categories = GamingAccessorySeedGenerator.BuildCategories();
         dbContext.Categories.AddRange(categories);
-        dbContext.Users.AddRange(
-            new AppUser { Username = "admin", DisplayName = "Administrator", Role = UserRole.Admin },
-            new AppUser { Username = "moderator", DisplayName = "Moderator", Role = UserRole.Moderator },
-            new AppUser { Username = "sale", DisplayName = "Sale", Role = UserRole.Sale });
-        dbContext.Customers.Add(new Customer { Name = "Walk-in customer", Phone = "", Email = "" });
-        dbContext.Promotions.Add(new Promotion
-        {
-            Code = "WELCOME10",
-            Name = "Welcome 10%",
-            DiscountType = DiscountType.Percentage,
-            DiscountValue = 10m,
-            StartDate = DateTime.Today.AddYears(-1),
-            EndDate = DateTime.Today.AddYears(1),
-            IsActive = true,
-            MinimumOrderTotal = 0m
-        });
-        await dbContext.SaveChangesAsync();
+        await EnsureReferenceDataAsync(dbContext);
 
         var persistedCategories = await dbContext.Categories.OrderBy(x => x.Id).ToListAsync();
         var products = GamingAccessorySeedGenerator.BuildProducts(persistedCategories);
@@ -62,6 +48,58 @@ public class DatabaseInitializer
         var orders = GamingAccessorySeedGenerator.BuildOrders(products);
         dbContext.Orders.AddRange(orders);
         await dbContext.SaveChangesAsync();
+    }
+
+    private static async Task EnsureReferenceDataAsync(MyShopDbContext dbContext)
+    {
+        await EnsureUserAsync(dbContext, "admin", "Administrator", UserRole.Admin);
+        await EnsureUserAsync(dbContext, "moderator", "Moderator", UserRole.Moderator);
+        await EnsureUserAsync(dbContext, "sale", "Sale", UserRole.Sale);
+
+        if (!await dbContext.Customers.AnyAsync())
+        {
+            dbContext.Customers.AddRange(
+                new Customer { Name = "Walk-in customer", Phone = "", Email = "" },
+                new Customer { Name = "Nguyen Van An", Phone = "0901000001", Email = "an@example.com", LoyaltyPoints = 24, LifetimeSpend = 2400000m },
+                new Customer { Name = "Tran Minh Chau", Phone = "0901000002", Email = "chau@example.com", LoyaltyPoints = 16, LifetimeSpend = 1600000m });
+        }
+
+        if (!await dbContext.Promotions.AnyAsync(x => x.Code == "WELCOME10"))
+        {
+            dbContext.Promotions.Add(new Promotion
+            {
+                Code = "WELCOME10",
+                Name = "Welcome 10%",
+                DiscountType = DiscountType.Percentage,
+                DiscountValue = 10m,
+                StartDate = DateTime.Today.AddYears(-1),
+                EndDate = DateTime.Today.AddYears(1),
+                IsActive = true,
+                MinimumOrderTotal = 0m
+            });
+        }
+
+        await dbContext.SaveChangesAsync();
+    }
+
+    private static async Task EnsureUserAsync(MyShopDbContext dbContext, string username, string displayName, UserRole role)
+    {
+        var user = await dbContext.Users.FirstOrDefaultAsync(x => x.Username == username);
+        if (user is null)
+        {
+            dbContext.Users.Add(new AppUser
+            {
+                Username = username,
+                DisplayName = displayName,
+                Role = role,
+                IsActive = true
+            });
+            return;
+        }
+
+        user.DisplayName = displayName;
+        user.Role = role;
+        user.IsActive = true;
     }
 
     private static async Task EnsureSchemaAsync(MyShopDbContext dbContext)

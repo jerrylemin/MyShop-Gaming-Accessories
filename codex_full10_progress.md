@@ -32,9 +32,13 @@ Updated: 2026-05-12
 
 - Implemented Microsoft.ML revenue forecast/restock insights and real LLM HTTP integration.
 
+## Completed
+
+- Improved role restore/login/logout behavior, sale import-price visibility, Settings text, and customer loyalty UI.
+
 ## In Progress
 
-- Improve roles, loyalty UI, and remaining UI polish.
+- Add obfuscation config, sample plugin project, UI automation demo, and functional tests.
 
 ## Remaining
 

@@ -13,7 +13,8 @@ public sealed partial class SettingsPage : Page
             App.Current.Services.LicenseService,
             App.Current.Services.BackupRestoreService,
             App.Current.Services.PluginService,
-            App.Current.Services.GraphQlPosService);
+            App.Current.Services.GraphQlPosService,
+            App.Current.Services.CustomerRepository);
         InitializeComponent();
         DataContext = ViewModel;
         Loaded += SettingsPage_Loaded;

@@ -36,6 +36,16 @@ dotnet test ProjectTest.slnx
 - Demo LLM not configured: leave Settings LLM key empty and verify Reports assistant says not configured.
 - Demo LLM configured: set `MYSHOP_LLM_API_KEY` or Settings `API key`, optionally set an OpenAI-compatible chat-completions endpoint, then refresh Reports and verify the assistant summary comes from the endpoint.
 
+## Roles And Loyalty Demo
+
+- Seed/reference users: `admin`, `moderator`, and `sale` are ensured in the database.
+- All three demo users use `MyShop123!` for this coursework build.
+- Auto-login restores the saved username role instead of defaulting to admin.
+- Sale users only see their own orders through `OrderQueryOptions.CurrentUserRole`.
+- Sale users do not see product import price in Products detail.
+- Logout shows a choice to keep or clear saved credentials.
+- Customer loyalty: open Settings -> Customer Loyalty to view points/lifetime spend; in Orders choose a customer, mark the order Paid, save, then refresh Settings to see points increase.
+
 ## Optional PostgreSQL Runtime Validation
 
 Run only when PostgreSQL is available locally:

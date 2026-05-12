@@ -1,4 +1,6 @@
 using ProjectTest.Models;
+using ProjectTest.DataAccess;
+using Microsoft.EntityFrameworkCore;
 using System.Text.Json;
 using Windows.Security.Cryptography;
 using Windows.Security.Cryptography.DataProtection;
@@ -11,10 +13,12 @@ public class AuthenticationService
     private const string BootstrapUsername = "admin";
     private const string BootstrapPassword = "MyShop123!";
     private readonly CurrentUserService _currentUserService;
+    private readonly MyShopDbContextFactory? _dbContextFactory;
 
-    public AuthenticationService(CurrentUserService? currentUserService = null)
+    public AuthenticationService(CurrentUserService? currentUserService = null, MyShopDbContextFactory? dbContextFactory = null)
     {
         _currentUserService = currentUserService ?? new CurrentUserService();
+        _dbContextFactory = dbContextFactory;
     }
 
     public string DefaultUsername => BootstrapUsername;
@@ -28,33 +32,34 @@ public class AuthenticationService
 
     public async Task<bool> ValidateAsync(string username, string password)
     {
-        if (await HasSavedCredentialsAsync())
+        var user = await ResolveUserAsync(username, password);
+        if (user is not null)
         {
-            var saved = await GetSavedCredentialsAsync();
-            if (saved is null)
-            {
-                return false;
-            }
+            _currentUserService.SetCurrentUser(user);
+            return true;
+        }
 
+        return false;
+    }
+
+    public async Task<bool> TryRestoreSavedCredentialsAsync()
+    {
+        var saved = await GetSavedCredentialsAsync();
+        if (saved is null)
+        {
+            return false;
+        }
+
+        try
+        {
             var storedUsername = await UnprotectAsync(saved.ProtectedUsername);
             var storedPassword = await UnprotectAsync(saved.ProtectedPassword);
-            var savedValid = string.Equals(username, storedUsername, StringComparison.Ordinal) &&
-                             string.Equals(password, storedPassword, StringComparison.Ordinal);
-            if (savedValid)
-            {
-                _currentUserService.SetCurrentUser(BuildUser(username));
-            }
-
-            return savedValid;
+            return await ValidateAsync(storedUsername, storedPassword);
         }
-
-        var isValid = IsBootstrapCredential(username, password);
-        if (isValid)
+        catch
         {
-            _currentUserService.SetCurrentUser(BuildUser(username));
+            return false;
         }
-
-        return isValid;
     }
 
     public async Task SaveCredentialsAsync(string username, string password)
@@ -127,5 +132,41 @@ public class AuthenticationService
             DisplayName = role.ToString(),
             Role = role
         };
+    }
+
+    private async Task<AppUser?> ResolveUserAsync(string username, string password)
+    {
+        if (!string.Equals(password, BootstrapPassword, StringComparison.Ordinal))
+        {
+            return null;
+        }
+
+        var dbUser = await TryFindDatabaseUserAsync(username);
+        if (dbUser is not null)
+        {
+            return dbUser;
+        }
+
+        return IsBootstrapCredential(username, password) ? BuildUser(username) : null;
+    }
+
+    private async Task<AppUser?> TryFindDatabaseUserAsync(string username)
+    {
+        if (_dbContextFactory is null)
+        {
+            return null;
+        }
+
+        try
+        {
+            await using var dbContext = _dbContextFactory.CreateDbContext();
+            return await dbContext.Users
+                .AsNoTracking()
+                .FirstOrDefaultAsync(x => x.IsActive && x.Username.ToLower() == username.Trim().ToLower());
+        }
+        catch
+        {
+            return null;
+        }
     }
 }

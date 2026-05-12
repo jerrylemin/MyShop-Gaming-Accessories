@@ -11,9 +11,9 @@ public static class AppBootstrapper
         var settingsService = new SettingsService();
         await settingsService.InitializeAsync();
 
-        var currentUserService = new CurrentUserService();
-        var authenticationService = new AuthenticationService(currentUserService);
         var dbContextFactory = new MyShopDbContextFactory(databaseOptions.ConnectionString);
+        var currentUserService = new CurrentUserService();
+        var authenticationService = new AuthenticationService(currentUserService, dbContextFactory);
         var databaseInitializer = new DatabaseInitializer(dbContextFactory);
         var excelProductImportService = new ExcelProductImportService(dbContextFactory);
         var licenseService = new LicenseService();

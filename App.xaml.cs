@@ -82,7 +82,7 @@ public partial class App : Application
             Services = await AppBootstrapper.BuildAsync();
             await Services.DatabaseInitializer.InitializeAsync();
 
-            if (await Services.AuthenticationService.HasSavedCredentialsAsync())
+            if (await Services.AuthenticationService.TryRestoreSavedCredentialsAsync())
             {
                 ShowMainWindow();
             }

@@ -311,7 +311,7 @@
                                     <RowDefinition Height="Auto" />
                                     <RowDefinition Height="Auto" />
                                 </Grid.RowDefinitions>
-                                <StackPanel Spacing="4">
+                                <StackPanel Spacing="4" Visibility="{Binding ImportPriceVisibility}">
                                     <TextBlock FontWeight="SemiBold" Text="Import price" />
                                     <TextBlock Text="{Binding SelectedProduct.ImportPrice, Converter={StaticResource CurrencyConverter}}" TextWrapping="WrapWholeWords" />
                                 </StackPanel>

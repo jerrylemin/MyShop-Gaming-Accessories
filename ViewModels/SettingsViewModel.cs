@@ -1,5 +1,6 @@
 using ProjectTest.Helpers;
 using ProjectTest.Models;
+using ProjectTest.Repositories;
 using ProjectTest.Services;
 using System.Collections.ObjectModel;
 
@@ -13,6 +14,7 @@ public class SettingsViewModel : ViewModelBase
     private readonly BackupRestoreService _backupRestoreService;
     private readonly PluginService _pluginService;
     private readonly GraphQlPosService _graphQlPosService;
+    private readonly CustomerRepository _customerRepository;
     private int _selectedItemsPerPage;
     private string _lastOpenedScreen = string.Empty;
     private string _statusMessage = string.Empty;
@@ -32,7 +34,8 @@ public class SettingsViewModel : ViewModelBase
         LicenseService? licenseService = null,
         BackupRestoreService? backupRestoreService = null,
         PluginService? pluginService = null,
-        GraphQlPosService? graphQlPosService = null)
+        GraphQlPosService? graphQlPosService = null,
+        CustomerRepository? customerRepository = null)
     {
         _settingsService = settingsService;
         _authenticationService = authenticationService;
@@ -40,6 +43,7 @@ public class SettingsViewModel : ViewModelBase
         _backupRestoreService = backupRestoreService ?? App.Current.Services.BackupRestoreService;
         _pluginService = pluginService ?? App.Current.Services.PluginService;
         _graphQlPosService = graphQlPosService ?? App.Current.Services.GraphQlPosService;
+        _customerRepository = customerRepository ?? App.Current.Services.CustomerRepository;
         SaveCommand = new AsyncRelayCommand(SaveAsync);
         ClearCredentialsCommand = new AsyncRelayCommand(ClearCredentialsAsync);
         ActivateCommand = new AsyncRelayCommand(ActivateAsync);
@@ -50,11 +54,14 @@ public class SettingsViewModel : ViewModelBase
 
         PageSizeOptions = new ObservableCollection<int>([5, 10, 15, 20]);
         Plugins = new ObservableCollection<PluginInfo>();
+        Customers = new ObservableCollection<Customer>();
     }
 
     public ObservableCollection<int> PageSizeOptions { get; }
 
     public ObservableCollection<PluginInfo> Plugins { get; }
+
+    public ObservableCollection<Customer> Customers { get; }
 
     public AsyncRelayCommand SaveCommand { get; }
 
@@ -166,6 +173,12 @@ public class SettingsViewModel : ViewModelBase
         foreach (var plugin in _pluginService.Plugins)
         {
             Plugins.Add(plugin);
+        }
+
+        Customers.Clear();
+        foreach (var customer in await _customerRepository.GetAllAsync())
+        {
+            Customers.Add(customer);
         }
     }
 

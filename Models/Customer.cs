@@ -14,5 +14,9 @@ public class Customer
 
     public decimal LifetimeSpend { get; set; }
 
+    public string LoyaltySummary => $"{LoyaltyPoints} points";
+
+    public string LifetimeSpendText => Helpers.CurrencyFormatter.ToCurrency(LifetimeSpend);
+
     public ICollection<Order> Orders { get; set; } = new List<Order>();
 }
