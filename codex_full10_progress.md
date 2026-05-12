@@ -36,9 +36,13 @@ Updated: 2026-05-12
 
 - Improved role restore/login/logout behavior, sale import-price visibility, Settings text, and customer loyalty UI.
 
+## Completed
+
+- Added obfuscation config/script, sample plugin project, UI automation smoke script, and functional test coverage.
+
 ## In Progress
 
-- Add obfuscation config, sample plugin project, UI automation demo, and functional tests.
+- Final README/docs polish and full validation run.
 
 ## Remaining
 

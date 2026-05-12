@@ -46,6 +46,38 @@ dotnet test ProjectTest.slnx
 - Logout shows a choice to keep or clear saved credentials.
 - Customer loyalty: open Settings -> Customer Loyalty to view points/lifetime spend; in Orders choose a customer, mark the order Paid, save, then refresh Settings to see points increase.
 
+## Obfuscation
+
+- Config: `obfuscar.xml`.
+- Script: `scripts/obfuscate-release.ps1`.
+- Run locally:
+
+```powershell
+powershell -ExecutionPolicy Bypass -File .\scripts\obfuscate-release.ps1 -Platform x64
+```
+
+- On this UNC workspace, `dotnet tool restore` may report that `dotnet-tools.json` is blocked by Windows. If so, run from a local clone or unblock the file before restoring tools. The app installer/setup files were not changed.
+
+## Plugin Demo
+
+- Sample project: `plugins/SampleMyShopPlugin`.
+- Build/copy script:
+
+```powershell
+powershell -ExecutionPolicy Bypass -File .\scripts\build-sample-plugin.ps1
+```
+
+- Restart the app and open Settings -> Plugins. The DLL plugin should show `Sample MyShop Plugin` with status `Loaded`; malformed plugin DLLs are caught by `PluginService` and shown as error rows instead of crashing the app.
+
+## UI Automation Demo
+
+- Local script: `scripts/ui-smoke.ps1`.
+- It is intentionally separate from `dotnet test` because it needs a visible Windows desktop session.
+
+```powershell
+powershell -ExecutionPolicy Bypass -File .\scripts\ui-smoke.ps1 -AppPath "path\to\ProjectTest.exe"
+```
+
 ## Optional PostgreSQL Runtime Validation
 
 Run only when PostgreSQL is available locally:
@@ -65,7 +97,6 @@ dotnet run --project .\tools\VerificationRunner\VerificationRunner.csproj
 
 ## Known Issues Before Fixes
 
-- Test project target is net10 instead of net8.
 - Obfuscator and sample plugin project are missing.
 
 ## Invoice Export Validation
