@@ -13,8 +13,8 @@
 
     <ScrollViewer
         x:Name="OrdersPageScrollViewer"
-        HorizontalScrollBarVisibility="Auto"
-        HorizontalScrollMode="Auto"
+        HorizontalScrollBarVisibility="Disabled"
+        HorizontalScrollMode="Disabled"
         VerticalScrollBarVisibility="Auto"
         VerticalScrollMode="Enabled">
         <StackPanel Margin="28" Spacing="18">
@@ -93,12 +93,15 @@
                     Foreground="{ThemeResource AccentBrush}"
                     Text="{Binding StatusMessage}"
                     TextWrapping="WrapWholeWords" />
+                <TextBlock
+                    Grid.Row="1"
+                    Grid.Column="1"
+                    HorizontalAlignment="Right"
+                    Text="{Binding AutoSaveStatus}" />
             </Grid>
         </Border>
 
-        <Grid
-            MinWidth="1040"
-            ColumnSpacing="18">
+        <Grid x:Name="OrdersWorkspaceGrid" ColumnSpacing="18">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="1.05*" />
                 <ColumnDefinition Width="1.15*" />
@@ -256,6 +259,7 @@
                         <RowDefinition Height="Auto" />
                         <RowDefinition Height="Auto" />
                         <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
                     </Grid.RowDefinitions>
 
                     <Grid ColumnSpacing="12">
@@ -287,6 +291,10 @@
                             <ColumnDefinition Width="*" />
                             <ColumnDefinition Width="*" />
                         </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
                         <StackPanel Spacing="6">
                             <TextBlock Text="Created date" />
                             <DatePicker
@@ -299,6 +307,22 @@
                                 IsEnabled="{Binding CanEditCurrentOrder}"
                                 ItemsSource="{Binding StatusOptions}"
                                 SelectedItem="{Binding SelectedStatus, Mode=TwoWay}" />
+                        </StackPanel>
+                        <StackPanel Grid.Row="1" Spacing="6">
+                            <TextBlock Text="Customer" />
+                            <ComboBox
+                                DisplayMemberPath="Name"
+                                IsEnabled="{Binding CanEditCurrentOrder}"
+                                ItemsSource="{Binding Customers}"
+                                SelectedItem="{Binding SelectedCustomer, Mode=TwoWay}" />
+                        </StackPanel>
+                        <StackPanel Grid.Row="1" Grid.Column="1" Spacing="6">
+                            <TextBlock Text="Promotion" />
+                            <ComboBox
+                                DisplayMemberPath="Code"
+                                IsEnabled="{Binding CanEditCurrentOrder}"
+                                ItemsSource="{Binding Promotions}"
+                                SelectedItem="{Binding SelectedPromotion, Mode=TwoWay}" />
                         </StackPanel>
                     </Grid>
 
@@ -405,13 +429,17 @@
                                     Style="{ThemeResource CaptionTextBlockStyle}"
                                     Text="Use the action button on the right to create or update the order." />
                             </StackPanel>
-                            <TextBlock
-                                Grid.Column="1"
-                                VerticalAlignment="Center"
-                                FontFamily="Bahnschrift"
-                                FontSize="22"
-                                Text="{Binding DraftTotalText}"
-                                TextWrapping="WrapWholeWords" />
+                            <StackPanel Grid.Column="1" VerticalAlignment="Center">
+                                <TextBlock
+                                    HorizontalAlignment="Right"
+                                    Style="{ThemeResource CaptionTextBlockStyle}"
+                                    Text="{Binding DiscountAmountText}" />
+                                <TextBlock
+                                    FontFamily="Bahnschrift"
+                                    FontSize="22"
+                                    Text="{Binding DraftTotalText}"
+                                    TextWrapping="WrapWholeWords" />
+                            </StackPanel>
                             <Button
                                 Grid.Column="2"
                                 VerticalAlignment="Center"
@@ -420,6 +448,12 @@
                                 Content="{Binding EditorActionText}" />
                         </Grid>
                     </Border>
+                    <Button
+                        Grid.Row="5"
+                        HorizontalAlignment="Left"
+                        Margin="0,4,0,0"
+                        Command="{Binding PrintCommand}"
+                        Content="Print / Export invoice" />
                 </Grid>
             </Border>
         </Grid>

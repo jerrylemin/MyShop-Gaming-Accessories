@@ -1,6 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using ProjectTest.DataAccess;
-using ProjectTest.DataAccess.Seeding;
+using ProjectTest.Helpers;
 using ProjectTest.Models;
 
 namespace ProjectTest.Repositories;
@@ -49,12 +49,28 @@ public class ProductRepository
             query = query.Where(x => x.CategoryId == options.CategoryId.Value);
         }
 
+        if (!string.IsNullOrWhiteSpace(options.Manufacturer))
+        {
+            var manufacturer = options.Manufacturer.Trim().ToLowerInvariant();
+            query = query.Where(x => x.Manufacturer.ToLower().Contains(manufacturer));
+        }
+
+        if (options.MinStock.HasValue)
+        {
+            query = query.Where(x => x.Stock >= options.MinStock.Value);
+        }
+
+        if (options.MaxStock.HasValue)
+        {
+            query = query.Where(x => x.Stock <= options.MaxStock.Value);
+        }
+
         query = options.SortOption switch
         {
-            ProductSortOption.PriceLowToHigh => query.OrderBy(x => x.SalePrice).ThenBy(x => x.Name),
-            ProductSortOption.PriceHighToLow => query.OrderByDescending(x => x.SalePrice).ThenBy(x => x.Name),
-            ProductSortOption.StockHighToLow => query.OrderByDescending(x => x.Stock).ThenBy(x => x.Name),
-            _ => query.OrderBy(x => x.Name).ThenBy(x => x.Manufacturer)
+            ProductSortOption.PriceLowToHigh => options.SortDescending ? query.OrderByDescending(x => x.SalePrice).ThenBy(x => x.Name) : query.OrderBy(x => x.SalePrice).ThenBy(x => x.Name),
+            ProductSortOption.PriceHighToLow => options.SortDescending ? query.OrderBy(x => x.SalePrice).ThenBy(x => x.Name) : query.OrderByDescending(x => x.SalePrice).ThenBy(x => x.Name),
+            ProductSortOption.StockHighToLow => options.SortDescending ? query.OrderBy(x => x.Stock).ThenBy(x => x.Name) : query.OrderByDescending(x => x.Stock).ThenBy(x => x.Name),
+            _ => options.SortDescending ? query.OrderByDescending(x => x.Name).ThenBy(x => x.Manufacturer) : query.OrderBy(x => x.Name).ThenBy(x => x.Manufacturer)
         };
 
         var totalCount = await query.CountAsync();
@@ -104,9 +120,9 @@ public class ProductRepository
             dbContext.Products.Add(product);
             await dbContext.SaveChangesAsync();
 
-            product.Image1 = string.IsNullOrWhiteSpace(product.Image1) ? GamingAccessorySeedGenerator.BuildImagePath(product.Id, 1) : product.Image1;
-            product.Image2 = string.IsNullOrWhiteSpace(product.Image2) ? GamingAccessorySeedGenerator.BuildImagePath(product.Id, 2) : product.Image2;
-            product.Image3 = string.IsNullOrWhiteSpace(product.Image3) ? GamingAccessorySeedGenerator.BuildImagePath(product.Id, 3) : product.Image3;
+            product.Image1 = string.IsNullOrWhiteSpace(product.Image1) ? ImageSourceHelper.DefaultProductImagePath : product.Image1;
+            product.Image2 = string.IsNullOrWhiteSpace(product.Image2) ? ImageSourceHelper.DefaultProductImagePath : product.Image2;
+            product.Image3 = string.IsNullOrWhiteSpace(product.Image3) ? ImageSourceHelper.DefaultProductImagePath : product.Image3;
             await dbContext.SaveChangesAsync();
 
             return OperationResult<int>.Ok(product.Id, "Product created.");
@@ -131,9 +147,9 @@ public class ProductRepository
         existing.Stock = product.Stock;
         existing.CategoryId = product.CategoryId;
         existing.Description = product.Description;
-        existing.Image1 = string.IsNullOrWhiteSpace(product.Image1) ? GamingAccessorySeedGenerator.BuildImagePath(existing.Id, 1) : product.Image1;
-        existing.Image2 = string.IsNullOrWhiteSpace(product.Image2) ? GamingAccessorySeedGenerator.BuildImagePath(existing.Id, 2) : product.Image2;
-        existing.Image3 = string.IsNullOrWhiteSpace(product.Image3) ? GamingAccessorySeedGenerator.BuildImagePath(existing.Id, 3) : product.Image3;
+        existing.Image1 = string.IsNullOrWhiteSpace(product.Image1) ? ImageSourceHelper.DefaultProductImagePath : product.Image1;
+        existing.Image2 = string.IsNullOrWhiteSpace(product.Image2) ? ImageSourceHelper.DefaultProductImagePath : product.Image2;
+        existing.Image3 = string.IsNullOrWhiteSpace(product.Image3) ? ImageSourceHelper.DefaultProductImagePath : product.Image3;
 
         await dbContext.SaveChangesAsync();
         return OperationResult<int>.Ok(existing.Id, "Product updated.");

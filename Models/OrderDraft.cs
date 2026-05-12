@@ -8,5 +8,13 @@ public class OrderDraft
 
     public OrderStatus Status { get; set; } = OrderStatus.Created;
 
+    public int? PromotionId { get; set; }
+
+    public int? CustomerId { get; set; }
+
+    public int? CreatedByUserId { get; set; }
+
+    public decimal DiscountAmount { get; set; }
+
     public List<OrderDraftItem> Items { get; set; } = new();
 }

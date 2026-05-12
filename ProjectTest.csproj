@@ -30,19 +30,29 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Content Update="Assets\**\*">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
     <Manifest Include="$(ApplicationManifest)" />
   </ItemGroup>
 
   <ItemGroup>
     <Compile Remove="tools\**\*.cs" />
     <Compile Remove="installer\**\*.cs" />
+    <Compile Remove="ProjectTest.Tests\**\*.cs" />
     <None Remove="DataAccess\Seeding\gaming_accessories_seed_data.json" />
     <EmbeddedResource Remove="tools\**\*" />
     <EmbeddedResource Remove="installer\**\*" />
+    <EmbeddedResource Remove="ProjectTest.Tests\**\*" />
     <None Remove="tools\**\*" />
     <None Remove="installer\**\*" />
+    <None Remove="ProjectTest.Tests\**\*" />
     <Content Remove="tools\**\*" />
     <Content Remove="installer\**\*" />
+    <Content Remove="ProjectTest.Tests\**\*" />
   </ItemGroup>
 
   <ItemGroup>

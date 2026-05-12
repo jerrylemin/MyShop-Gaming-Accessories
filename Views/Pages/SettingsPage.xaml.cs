@@ -7,7 +7,12 @@ public sealed partial class SettingsPage : Page
 {
     public SettingsPage()
     {
-        ViewModel = new SettingsViewModel(App.Current.Services.SettingsService, App.Current.Services.AuthenticationService);
+        ViewModel = new SettingsViewModel(
+            App.Current.Services.SettingsService,
+            App.Current.Services.AuthenticationService,
+            App.Current.Services.LicenseService,
+            App.Current.Services.BackupRestoreService,
+            App.Current.Services.PluginService);
         InitializeComponent();
         DataContext = ViewModel;
         Loaded += SettingsPage_Loaded;

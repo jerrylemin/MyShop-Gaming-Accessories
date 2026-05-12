@@ -7,10 +7,12 @@ namespace ProjectTest.Repositories;
 public class OrderRepository
 {
     private readonly MyShopDbContextFactory _dbContextFactory;
+    private readonly Services.DiscountService _discountService;
 
-    public OrderRepository(MyShopDbContextFactory dbContextFactory)
+    public OrderRepository(MyShopDbContextFactory dbContextFactory, Services.DiscountService? discountService = null)
     {
         _dbContextFactory = dbContextFactory;
+        _discountService = discountService ?? new Services.DiscountService();
     }
 
     public async Task<List<OrderSummary>> GetAllAsync()
@@ -30,6 +32,8 @@ public class OrderRepository
         var query = dbContext.Orders
             .Include(x => x.Items)
             .ThenInclude(x => x.Product)
+            .Include(x => x.Customer)
+            .Include(x => x.CreatedByUser)
             .AsQueryable();
 
         if (options.FromDate.HasValue)
@@ -47,6 +51,26 @@ public class OrderRepository
         if (options.Status.HasValue)
         {
             query = query.Where(x => x.Status == options.Status.Value);
+        }
+
+        if (options.CustomerId.HasValue)
+        {
+            query = query.Where(x => x.CustomerId == options.CustomerId.Value);
+        }
+
+        if (options.MinTotal.HasValue)
+        {
+            query = query.Where(x => x.FinalPrice >= options.MinTotal.Value);
+        }
+
+        if (options.MaxTotal.HasValue)
+        {
+            query = query.Where(x => x.FinalPrice <= options.MaxTotal.Value);
+        }
+
+        if (options.CurrentUserRole == UserRole.Sale && options.CurrentUserId.HasValue)
+        {
+            query = query.Where(x => x.CreatedByUserId == options.CurrentUserId.Value);
         }
 
         if (!string.IsNullOrWhiteSpace(options.Keyword))
@@ -84,7 +108,10 @@ public class OrderRepository
                 CreatedTime = x.CreatedTime,
                 FinalPrice = x.FinalPrice,
                 Status = x.Status,
-                ItemCount = x.Items.Count
+                ItemCount = x.Items.Count,
+                CustomerName = x.Customer == null ? string.Empty : x.Customer.Name,
+                Salesperson = x.CreatedByUser == null ? string.Empty : x.CreatedByUser.DisplayName,
+                DiscountAmount = x.DiscountAmount
             })
             .ToListAsync();
 
@@ -103,6 +130,8 @@ public class OrderRepository
         var order = await dbContext.Orders
             .Include(x => x.Items)
             .ThenInclude(x => x.Product)
+            .Include(x => x.Customer)
+            .Include(x => x.Promotion)
             .FirstOrDefaultAsync(x => x.Id == orderId);
 
         if (order is null)
@@ -115,6 +144,10 @@ public class OrderRepository
             Id = order.Id,
             CreatedTime = order.CreatedTime,
             Status = order.Status,
+            CustomerId = order.CustomerId,
+            PromotionId = order.PromotionId,
+            CreatedByUserId = order.CreatedByUserId,
+            DiscountAmount = order.DiscountAmount,
             Items = order.Items.Select(x => new OrderDraftItem
             {
                 ProductId = x.ProductId,
@@ -178,7 +211,15 @@ public class OrderRepository
 
             order.CreatedTime = draft.CreatedTime;
             order.Status = draft.Status;
-            order.FinalPrice = draft.Items.Sum(x => x.TotalPrice);
+            order.CustomerId = draft.CustomerId;
+            order.PromotionId = draft.PromotionId;
+            order.CreatedByUserId = draft.CreatedByUserId;
+            order.Subtotal = draft.Items.Sum(x => x.TotalPrice);
+            var promotion = draft.PromotionId.HasValue
+                ? await dbContext.Promotions.FirstOrDefaultAsync(x => x.Id == draft.PromotionId.Value)
+                : null;
+            order.DiscountAmount = draft.DiscountAmount > 0 ? Math.Min(draft.DiscountAmount, order.Subtotal) : _discountService.CalculateDiscount(order.Subtotal, promotion);
+            order.FinalPrice = Math.Max(0m, order.Subtotal - order.DiscountAmount);
 
             foreach (var item in draft.Items)
             {
@@ -204,6 +245,7 @@ public class OrderRepository
             }
 
             await dbContext.SaveChangesAsync();
+            await ApplyLoyaltyAsync(dbContext, order);
             await transaction.CommitAsync();
             return OperationResult<int>.Ok(order.Id, draft.Id == 0 ? "Order created." : "Order updated.");
         }
@@ -212,6 +254,43 @@ public class OrderRepository
             await transaction.RollbackAsync();
             return OperationResult<int>.Fail(ex.Message);
         }
+    }
+
+    private static async Task ApplyLoyaltyAsync(MyShopDbContext dbContext, Order order)
+    {
+        if (order.CustomerId is null || order.Status != OrderStatus.Paid)
+        {
+            return;
+        }
+
+        var customer = await dbContext.Customers.FirstOrDefaultAsync(x => x.Id == order.CustomerId.Value);
+        if (customer is null)
+        {
+            return;
+        }
+
+        var existingPoints = await dbContext.CustomerLoyaltyTransactions
+            .Where(x => x.OrderId == order.Id)
+            .SumAsync(x => (int?)x.Points) ?? 0;
+        var targetPoints = (int)Math.Floor(order.FinalPrice / 100000m);
+        var delta = targetPoints - existingPoints;
+        if (delta == 0)
+        {
+            return;
+        }
+
+        customer.LoyaltyPoints += delta;
+        customer.LifetimeSpend += order.FinalPrice;
+        dbContext.CustomerLoyaltyTransactions.Add(new CustomerLoyaltyTransaction
+        {
+            CustomerId = customer.Id,
+            OrderId = order.Id,
+            Points = delta,
+            Reason = "Paid order loyalty points",
+            CreatedTime = DateTime.Now
+        });
+
+        await dbContext.SaveChangesAsync();
     }
 
     public async Task<OperationResult> DeleteAsync(int orderId)

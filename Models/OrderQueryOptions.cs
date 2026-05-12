@@ -12,6 +12,18 @@ public class OrderQueryOptions
 
     public OrderSortOption SortOption { get; set; } = OrderSortOption.LatestFirst;
 
+    public bool SortDescending { get; set; }
+
+    public decimal? MinTotal { get; set; }
+
+    public decimal? MaxTotal { get; set; }
+
+    public int? CustomerId { get; set; }
+
+    public int? CurrentUserId { get; set; }
+
+    public UserRole CurrentUserRole { get; set; } = UserRole.Admin;
+
     public int PageNumber { get; set; } = 1;
 
     public int PageSize { get; set; } = 10;

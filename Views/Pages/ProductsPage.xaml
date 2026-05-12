@@ -12,8 +12,8 @@
 
     <ScrollViewer
         x:Name="ProductsPageScrollViewer"
-        HorizontalScrollBarVisibility="Auto"
-        HorizontalScrollMode="Auto"
+        HorizontalScrollBarVisibility="Disabled"
+        HorizontalScrollMode="Disabled"
         VerticalScrollBarVisibility="Auto"
         VerticalScrollMode="Enabled">
         <StackPanel Margin="28" Spacing="18">
@@ -95,9 +95,7 @@
             </Grid>
         </Border>
 
-        <Grid
-            MinWidth="980"
-            ColumnSpacing="18">
+        <Grid x:Name="ProductsWorkspaceGrid" ColumnSpacing="18">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="1.25*" />
                 <ColumnDefinition Width="1*" />

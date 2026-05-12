@@ -9,11 +9,12 @@
     Title="MyShop Gaming Accessories POS">
     <Grid Background="{ThemeResource AppCanvasBrush}">
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="280" />
+            <ColumnDefinition x:Name="ShellNavigationColumn" Width="280" />
             <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
 
         <Border
+            x:Name="ShellNavigation"
             Grid.Column="0"
             Margin="16"
             Padding="22"

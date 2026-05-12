@@ -175,6 +175,51 @@
                     <controls:SimplePieChart ItemsSource="{Binding ProductSalesShare}" />
                 </StackPanel>
             </Border>
+
+            <Border Style="{ThemeResource CardBorderStyle}">
+                <StackPanel Spacing="14">
+                    <TextBlock Style="{ThemeResource SectionHeaderTextBlockStyle}" Text="Sale Commission / KPI" />
+                    <ListView ItemsSource="{Binding SalesCommissions}" SelectionMode="None">
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <Grid Margin="0,6" ColumnSpacing="12">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*" />
+                                        <ColumnDefinition Width="Auto" />
+                                        <ColumnDefinition Width="Auto" />
+                                    </Grid.ColumnDefinitions>
+                                    <TextBlock FontWeight="SemiBold" Text="{Binding Salesperson}" />
+                                    <TextBlock Grid.Column="1" Text="{Binding RevenueText}" />
+                                    <TextBlock Grid.Column="2" Text="{Binding CommissionText}" />
+                                </Grid>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+                </StackPanel>
+            </Border>
+
+            <Border Style="{ThemeResource CardBorderStyle}">
+                <StackPanel Spacing="14">
+                    <TextBlock Style="{ThemeResource SectionHeaderTextBlockStyle}" Text="ML Restock Insights" />
+                    <ListView ItemsSource="{Binding MlInsights}" SelectionMode="None">
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <StackPanel Margin="0,6" Spacing="2">
+                                    <TextBlock FontWeight="SemiBold" Text="{Binding Title}" />
+                                    <TextBlock Text="{Binding Detail}" TextWrapping="WrapWholeWords" />
+                                </StackPanel>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+                </StackPanel>
+            </Border>
+
+            <Border Style="{ThemeResource CardBorderStyle}">
+                <StackPanel Spacing="10">
+                    <TextBlock Style="{ThemeResource SectionHeaderTextBlockStyle}" Text="Assistant" />
+                    <TextBlock Text="{Binding AssistantSummary}" TextWrapping="WrapWholeWords" />
+                </StackPanel>
+            </Border>
         </StackPanel>
     </ScrollViewer>
 </Page>

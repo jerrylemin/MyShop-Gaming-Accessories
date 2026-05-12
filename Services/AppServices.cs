@@ -11,7 +11,19 @@ public class AppServices
         NavigationService navigationService,
         DatabaseInitializer databaseInitializer,
         ExcelProductImportService excelProductImportService,
+        CurrentUserService currentUserService,
+        LicenseService licenseService,
+        DiscountService discountService,
+        BackupRestoreService backupRestoreService,
+        PluginService pluginService,
+        InvoiceExportService invoiceExportService,
+        MlInsightService mlInsightService,
+        LlmAssistantService llmAssistantService,
+        GraphQlPosService graphQlPosService,
+        OnboardingService onboardingService,
         CategoryRepository categoryRepository,
+        CustomerRepository customerRepository,
+        PromotionRepository promotionRepository,
         ProductRepository productRepository,
         OrderRepository orderRepository,
         DashboardService dashboardService,
@@ -23,7 +35,19 @@ public class AppServices
         NavigationService = navigationService;
         DatabaseInitializer = databaseInitializer;
         ExcelProductImportService = excelProductImportService;
+        CurrentUserService = currentUserService;
+        LicenseService = licenseService;
+        DiscountService = discountService;
+        BackupRestoreService = backupRestoreService;
+        PluginService = pluginService;
+        InvoiceExportService = invoiceExportService;
+        MlInsightService = mlInsightService;
+        LlmAssistantService = llmAssistantService;
+        GraphQlPosService = graphQlPosService;
+        OnboardingService = onboardingService;
         CategoryRepository = categoryRepository;
+        CustomerRepository = customerRepository;
+        PromotionRepository = promotionRepository;
         ProductRepository = productRepository;
         OrderRepository = orderRepository;
         DashboardService = dashboardService;
@@ -42,7 +66,31 @@ public class AppServices
 
     public ExcelProductImportService ExcelProductImportService { get; }
 
+    public CurrentUserService CurrentUserService { get; }
+
+    public LicenseService LicenseService { get; }
+
+    public DiscountService DiscountService { get; }
+
+    public BackupRestoreService BackupRestoreService { get; }
+
+    public PluginService PluginService { get; }
+
+    public InvoiceExportService InvoiceExportService { get; }
+
+    public MlInsightService MlInsightService { get; }
+
+    public LlmAssistantService LlmAssistantService { get; }
+
+    public GraphQlPosService GraphQlPosService { get; }
+
+    public OnboardingService OnboardingService { get; }
+
     public CategoryRepository CategoryRepository { get; }
+
+    public CustomerRepository CustomerRepository { get; }
+
+    public PromotionRepository PromotionRepository { get; }
 
     public ProductRepository ProductRepository { get; }
 

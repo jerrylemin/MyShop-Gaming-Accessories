@@ -11,13 +11,26 @@ public sealed partial class OrdersPage : Page
         ViewModel = new OrdersViewModel(
             App.Current.Services.OrderRepository,
             App.Current.Services.ProductRepository,
-            App.Current.Services.SettingsService);
+            App.Current.Services.SettingsService,
+            App.Current.Services.CustomerRepository,
+            App.Current.Services.PromotionRepository,
+            App.Current.Services.CurrentUserService,
+            App.Current.Services.InvoiceExportService);
         InitializeComponent();
         DataContext = ViewModel;
         Loaded += OrdersPage_Loaded;
+        SizeChanged += OrdersPage_SizeChanged;
     }
 
     public OrdersViewModel ViewModel { get; }
+
+    private void OrdersPage_SizeChanged(object sender, SizeChangedEventArgs e)
+    {
+        var isNarrow = e.NewSize.Width < 920;
+        OrdersWorkspaceGrid.ColumnDefinitions[0].Width = isNarrow ? new GridLength(0) : new GridLength(1.05, GridUnitType.Star);
+        OrdersWorkspaceGrid.ColumnDefinitions[1].Width = new GridLength(1, GridUnitType.Star);
+        OrdersWorkspaceGrid.Children[0].Visibility = isNarrow ? Visibility.Collapsed : Visibility.Visible;
+    }
 
     private async void OrdersPage_Loaded(object sender, RoutedEventArgs e)
     {

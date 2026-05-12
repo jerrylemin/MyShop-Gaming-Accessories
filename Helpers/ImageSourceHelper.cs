@@ -5,17 +5,17 @@ namespace ProjectTest.Helpers;
 
 public static class ImageSourceHelper
 {
-    private const string PlaceholderUri = "ms-appx:///Assets/StoreLogo.png";
+    public const string DefaultProductImagePath = "ms-appx:///Assets/StoreLogo.png";
 
     public static BitmapImage ToBitmap(string? path)
     {
-        var candidate = string.IsNullOrWhiteSpace(path) ? PlaceholderUri : path;
+        var candidate = string.IsNullOrWhiteSpace(path) ? DefaultProductImagePath : path;
 
         if (!candidate.StartsWith("ms-appx://", StringComparison.OrdinalIgnoreCase) &&
             !candidate.StartsWith("ms-appdata://", StringComparison.OrdinalIgnoreCase) &&
             !File.Exists(candidate))
         {
-            candidate = PlaceholderUri;
+            candidate = DefaultProductImagePath;
         }
 
         return new BitmapImage(new Uri(candidate));

@@ -48,6 +48,7 @@ public sealed partial class MainWindow : Window, INotifyPropertyChanged
         RegisterNavigationHoverStates();
         ContentFrame.Navigated += ContentFrame_Navigated;
         Activated += MainWindow_Activated;
+        SizeChanged += MainWindow_SizeChanged;
 
         UpdateBackButtonState();
         SelectNavigationItem("Dashboard");
@@ -88,6 +89,68 @@ public sealed partial class MainWindow : Window, INotifyPropertyChanged
         {
             _navigationService.Navigate("Dashboard");
         }
+
+        _ = ShowLicenseGateIfNeededAsync();
+        _ = ShowOnboardingIfNeededAsync();
+    }
+
+    private async Task ShowLicenseGateIfNeededAsync()
+    {
+        var state = await App.Current.Services.LicenseService.GetStateAsync();
+        if (state.CanUseFullApp || ContentFrame.XamlRoot is null)
+        {
+            return;
+        }
+
+        var codeBox = new TextBox { PlaceholderText = "Activation code" };
+        var dialog = new ContentDialog
+        {
+            Title = "Trial expired",
+            Content = codeBox,
+            PrimaryButtonText = "Activate",
+            CloseButtonText = "Exit",
+            XamlRoot = ContentFrame.XamlRoot
+        };
+
+        if (await dialog.ShowAsync() == ContentDialogResult.Primary)
+        {
+            var result = await App.Current.Services.LicenseService.ActivateAsync(codeBox.Text);
+            if (!result.Success)
+            {
+                App.Current.ShowLoginWindow();
+            }
+        }
+        else
+        {
+            App.Current.ShowLoginWindow();
+        }
+    }
+
+    private async Task ShowOnboardingIfNeededAsync()
+    {
+        var onboarding = App.Current.Services.OnboardingService;
+        if (onboarding.IsCompleted || ContentFrame.XamlRoot is null)
+        {
+            return;
+        }
+
+        var dialog = new ContentDialog
+        {
+            Title = "Welcome to MyShop POS",
+            Content = "Use Dashboard for store health, Products for catalog work, Orders for sales, Reports for revenue and KPI, and Settings for license, backup, plugins, and assistant configuration.",
+            PrimaryButtonText = "Start",
+            CloseButtonText = "Skip",
+            XamlRoot = ContentFrame.XamlRoot
+        };
+        await dialog.ShowAsync();
+        onboarding.Complete();
+    }
+
+    private void MainWindow_SizeChanged(object sender, WindowSizeChangedEventArgs args)
+    {
+        var isCompact = args.Size.Width < 760;
+        ShellNavigationColumn.Width = isCompact ? new GridLength(72) : new GridLength(280);
+        ShellNavigation.Margin = isCompact ? new Thickness(8) : new Thickness(16);
     }
 
     private void NavigationButton_Click(object sender, RoutedEventArgs e)

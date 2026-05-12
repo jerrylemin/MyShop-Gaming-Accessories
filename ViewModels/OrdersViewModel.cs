@@ -11,7 +11,13 @@ public class OrdersViewModel : ViewModelBase
     private readonly OrderRepository _orderRepository;
     private readonly ProductRepository _productRepository;
     private readonly SettingsService _settingsService;
+    private readonly CustomerRepository _customerRepository;
+    private readonly PromotionRepository _promotionRepository;
+    private readonly CurrentUserService _currentUserService;
+    private readonly InvoiceExportService _invoiceExportService;
+    private readonly AutoSaveService _autoSaveService = new();
     private readonly AsyncRelayCommand _saveCommand;
+    private readonly AsyncRelayCommand _printCommand;
     private readonly AsyncRelayCommand _refreshCommand;
     private readonly AsyncRelayCommand _applyDateFilterCommand;
     private readonly RelayCommand _firstPageCommand;
@@ -22,6 +28,8 @@ public class OrdersViewModel : ViewModelBase
     private OrderStatus _persistedStatus = OrderStatus.Created;
     private OrderSummary? _selectedOrder;
     private ProductLookupItem? _selectedProductToAdd;
+    private Customer? _selectedCustomer;
+    private Promotion? _selectedPromotion;
     private OrderStatusFilterOption? _selectedStatusFilter;
     private string _keyword = string.Empty;
     private OrderSortOption _selectedSortOption = OrderSortOption.LatestFirst;
@@ -30,31 +38,48 @@ public class OrdersViewModel : ViewModelBase
     private DateTimeOffset _draftCreatedTime = DateTimeOffset.Now;
     private OrderStatus _selectedStatus = OrderStatus.Created;
     private decimal _draftTotal;
+    private decimal _discountAmount;
     private string _statusMessage = string.Empty;
+    private string _autoSaveStatus = "Saved";
     private int _currentPage = 1;
     private int _totalPages = 1;
     private int _totalItems;
     private int _pageSize;
+    private bool _isLoadingDraft;
 
-    public OrdersViewModel(OrderRepository orderRepository, ProductRepository productRepository, SettingsService settingsService)
+    public OrdersViewModel(
+        OrderRepository orderRepository,
+        ProductRepository productRepository,
+        SettingsService settingsService,
+        CustomerRepository? customerRepository = null,
+        PromotionRepository? promotionRepository = null,
+        CurrentUserService? currentUserService = null,
+        InvoiceExportService? invoiceExportService = null)
     {
         _orderRepository = orderRepository;
         _productRepository = productRepository;
         _settingsService = settingsService;
+        _customerRepository = customerRepository ?? App.Current.Services.CustomerRepository;
+        _promotionRepository = promotionRepository ?? App.Current.Services.PromotionRepository;
+        _currentUserService = currentUserService ?? App.Current.Services.CurrentUserService;
+        _invoiceExportService = invoiceExportService ?? App.Current.Services.InvoiceExportService;
 
-        Orders = new ObservableCollection<OrderSummary>();
-        AvailableProducts = new ObservableCollection<ProductLookupItem>();
-        DraftItems = new ObservableCollection<OrderLineViewModel>();
-        StatusFilters = new ObservableCollection<OrderStatusFilterOption>
-        {
+        Orders = [];
+        AvailableProducts = [];
+        Customers = [];
+        Promotions = [];
+        DraftItems = [];
+        StatusFilters =
+        [
             new() { Name = "All statuses" },
             new() { Name = "Created", Status = OrderStatus.Created },
             new() { Name = "Paid", Status = OrderStatus.Paid },
             new() { Name = "Cancelled", Status = OrderStatus.Cancelled }
-        };
+        ];
         SortOptions = new ObservableCollection<OrderSortOption>(Enum.GetValues<OrderSortOption>());
 
         _saveCommand = new AsyncRelayCommand(SaveAsync, () => CanEditCurrentOrder);
+        _printCommand = new AsyncRelayCommand(PrintAsync, () => CurrentOrderId != 0);
         _refreshCommand = new AsyncRelayCommand(() => LoadAsync(CurrentPage));
         _applyDateFilterCommand = new AsyncRelayCommand(() => LoadAsync(1));
         _firstPageCommand = new RelayCommand(() => _ = LoadAsync(1), () => CurrentPage > 1);
@@ -63,6 +88,14 @@ public class OrdersViewModel : ViewModelBase
         _lastPageCommand = new RelayCommand(() => _ = LoadAsync(TotalPages), () => CurrentPage < TotalPages);
         NewOrderCommand = new RelayCommand(NewOrder);
         AddItemCommand = new RelayCommand(AddSelectedProduct, () => SelectedProductToAdd is not null && CanEditCurrentOrder);
+
+        _autoSaveService.StateChanged += (_, state) => AutoSaveStatus = state switch
+        {
+            AutoSaveState.Saving => "Saving...",
+            AutoSaveState.Saved => "Saved",
+            AutoSaveState.Error => "Error",
+            _ => AutoSaveStatus
+        };
 
         _settingsService.SettingsChanged += (_, settings) =>
         {
@@ -75,6 +108,10 @@ public class OrdersViewModel : ViewModelBase
 
     public ObservableCollection<ProductLookupItem> AvailableProducts { get; }
 
+    public ObservableCollection<Customer> Customers { get; }
+
+    public ObservableCollection<Promotion> Promotions { get; }
+
     public ObservableCollection<OrderLineViewModel> DraftItems { get; }
 
     public ObservableCollection<OrderStatus> StatusOptions { get; } = new(Enum.GetValues<OrderStatus>());
@@ -84,6 +121,8 @@ public class OrdersViewModel : ViewModelBase
     public ObservableCollection<OrderSortOption> SortOptions { get; }
 
     public AsyncRelayCommand SaveCommand => _saveCommand;
+
+    public AsyncRelayCommand PrintCommand => _printCommand;
 
     public AsyncRelayCommand RefreshCommand => _refreshCommand;
 
@@ -149,10 +188,41 @@ public class OrdersViewModel : ViewModelBase
         }
     }
 
+    public Customer? SelectedCustomer
+    {
+        get => _selectedCustomer;
+        set
+        {
+            if (SetProperty(ref _selectedCustomer, value))
+            {
+                ScheduleAutoSave();
+            }
+        }
+    }
+
+    public Promotion? SelectedPromotion
+    {
+        get => _selectedPromotion;
+        set
+        {
+            if (SetProperty(ref _selectedPromotion, value))
+            {
+                RecalculateTotals();
+                ScheduleAutoSave();
+            }
+        }
+    }
+
     public DateTimeOffset DraftCreatedTime
     {
         get => _draftCreatedTime;
-        set => SetProperty(ref _draftCreatedTime, value);
+        set
+        {
+            if (SetProperty(ref _draftCreatedTime, value))
+            {
+                ScheduleAutoSave();
+            }
+        }
     }
 
     public OrderStatus SelectedStatus
@@ -163,6 +233,7 @@ public class OrdersViewModel : ViewModelBase
             if (SetProperty(ref _selectedStatus, value))
             {
                 _saveCommand.NotifyCanExecuteChanged();
+                ScheduleAutoSave();
             }
         }
     }
@@ -181,10 +252,32 @@ public class OrdersViewModel : ViewModelBase
 
     public string DraftTotalText => CurrencyFormatter.ToCurrency(DraftTotal);
 
+    public decimal DiscountAmount
+    {
+        get => _discountAmount;
+        private set
+        {
+            if (SetProperty(ref _discountAmount, value))
+            {
+                OnPropertyChanged(nameof(DiscountAmountText));
+            }
+        }
+    }
+
+    public string DiscountAmountText => CurrencyFormatter.ToCurrency(DiscountAmount);
+
+    public string EditorActionText => CurrentOrderId == 0 ? "Create Order" : "Update Order";
+
     public string StatusMessage
     {
         get => _statusMessage;
         set => SetProperty(ref _statusMessage, value);
+    }
+
+    public string AutoSaveStatus
+    {
+        get => _autoSaveStatus;
+        set => SetProperty(ref _autoSaveStatus, value);
     }
 
     public int CurrentPage
@@ -252,6 +345,8 @@ public class OrdersViewModel : ViewModelBase
             Keyword = Keyword.Trim(),
             Status = SelectedStatusFilter?.Status,
             SortOption = SelectedSortOption,
+            CurrentUserId = _currentUserService.CurrentUser.Id,
+            CurrentUserRole = _currentUserService.CurrentUser.Role,
             PageNumber = Math.Max(1, pageNumber ?? CurrentPage),
             PageSize = PageSize
         });
@@ -272,8 +367,19 @@ public class OrdersViewModel : ViewModelBase
             AvailableProducts.Add(product);
         }
 
-        SelectedOrder = Orders.FirstOrDefault(x => x.Id == currentSelectedOrderId) ?? Orders.FirstOrDefault();
+        Customers.Clear();
+        foreach (var customer in await _customerRepository.GetAllAsync())
+        {
+            Customers.Add(customer);
+        }
 
+        Promotions.Clear();
+        foreach (var promotion in await _promotionRepository.GetActiveAsync())
+        {
+            Promotions.Add(promotion);
+        }
+
+        SelectedOrder = Orders.FirstOrDefault(x => x.Id == currentSelectedOrderId) ?? Orders.FirstOrDefault();
         if (SelectedOrder is not null && SelectedOrder.Id != CurrentOrderId)
         {
             await LoadOrderAsync(SelectedOrder.Id);
@@ -293,19 +399,30 @@ public class OrdersViewModel : ViewModelBase
             return;
         }
 
-        CurrentOrderId = draft.Id;
-        _persistedStatus = draft.Status;
-        DraftCreatedTime = draft.CreatedTime;
-        SelectedStatus = draft.Status;
-        DraftItems.Clear();
-
-        foreach (var item in draft.Items)
+        _isLoadingDraft = true;
+        try
         {
-            AddLine(item);
-        }
+            CurrentOrderId = draft.Id;
+            _persistedStatus = draft.Status;
+            DraftCreatedTime = draft.CreatedTime;
+            SelectedStatus = draft.Status;
+            SelectedCustomer = Customers.FirstOrDefault(x => x.Id == draft.CustomerId);
+            SelectedPromotion = Promotions.FirstOrDefault(x => x.Id == draft.PromotionId);
+            DiscountAmount = draft.DiscountAmount;
+            DraftItems.Clear();
 
-        RecalculateTotals();
-        RefreshEditorState();
+            foreach (var item in draft.Items)
+            {
+                AddLine(item);
+            }
+
+            RecalculateTotals();
+            RefreshEditorState();
+        }
+        finally
+        {
+            _isLoadingDraft = false;
+        }
     }
 
     public async Task DeleteSelectedAsync()
@@ -333,6 +450,7 @@ public class OrdersViewModel : ViewModelBase
         line.LineChanged -= DraftLineChanged;
         DraftItems.Remove(line);
         RecalculateTotals();
+        ScheduleAutoSave();
     }
 
     private int CurrentOrderId
@@ -342,6 +460,8 @@ public class OrdersViewModel : ViewModelBase
         {
             if (SetProperty(ref _currentOrderId, value))
             {
+                OnPropertyChanged(nameof(EditorActionText));
+                _printCommand.NotifyCanExecuteChanged();
                 RefreshEditorState();
             }
         }
@@ -349,14 +469,19 @@ public class OrdersViewModel : ViewModelBase
 
     private void NewOrder()
     {
+        _isLoadingDraft = true;
         CurrentOrderId = 0;
         _persistedStatus = OrderStatus.Created;
         SelectedOrder = null;
         DraftCreatedTime = DateTimeOffset.Now;
         SelectedStatus = OrderStatus.Created;
+        SelectedCustomer = Customers.FirstOrDefault();
+        SelectedPromotion = null;
         DraftItems.Clear();
+        DiscountAmount = 0m;
         DraftTotal = 0m;
         StatusMessage = string.Empty;
+        _isLoadingDraft = false;
         RefreshEditorState();
     }
 
@@ -371,6 +496,7 @@ public class OrdersViewModel : ViewModelBase
         if (existing is not null)
         {
             existing.Quantity += 1;
+            ScheduleAutoSave();
             return;
         }
 
@@ -384,6 +510,7 @@ public class OrdersViewModel : ViewModelBase
             AvailableStock = SelectedProductToAdd.Stock,
             ImagePath = SelectedProductToAdd.ImagePath
         });
+        ScheduleAutoSave();
     }
 
     private void AddLine(OrderDraftItem item)
@@ -423,6 +550,10 @@ public class OrdersViewModel : ViewModelBase
             Id = CurrentOrderId,
             CreatedTime = DraftCreatedTime.DateTime,
             Status = SelectedStatus,
+            CustomerId = SelectedCustomer?.Id,
+            PromotionId = SelectedPromotion?.Id,
+            CreatedByUserId = _currentUserService.CurrentUser.Id,
+            DiscountAmount = DiscountAmount,
             Items = DraftItems.Select(x => new OrderDraftItem
             {
                 ProductId = x.ProductId,
@@ -452,11 +583,40 @@ public class OrdersViewModel : ViewModelBase
     private void DraftLineChanged(object? sender, EventArgs e)
     {
         RecalculateTotals();
+        ScheduleAutoSave();
     }
 
     private void RecalculateTotals()
     {
-        DraftTotal = DraftItems.Sum(x => x.LineTotal);
+        var subtotal = DraftItems.Sum(x => x.LineTotal);
+        DiscountAmount = App.Current.Services.DiscountService.CalculateDiscount(subtotal, SelectedPromotion);
+        DraftTotal = Math.Max(0m, subtotal - DiscountAmount);
+    }
+
+    private void ScheduleAutoSave()
+    {
+        if (_isLoadingDraft || !CanEditCurrentOrder || DraftItems.Count == 0)
+        {
+            return;
+        }
+
+        AutoSaveStatus = "Saving...";
+        _autoSaveService.Schedule(async _ => await SaveAsync());
+    }
+
+    private async Task PrintAsync()
+    {
+        if (CurrentOrderId == 0)
+        {
+            StatusMessage = "Save the order before exporting an invoice.";
+            return;
+        }
+
+        var invoicePath = Path.Combine(
+            Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments),
+            $"MyShop-Invoice-{CurrentOrderId}.txt");
+        var result = await _invoiceExportService.ExportInvoiceAsync(CurrentOrderId, invoicePath);
+        StatusMessage = result.Success ? $"Invoice exported to {result.Value}" : result.Message;
     }
 
     private void RefreshEditorState()

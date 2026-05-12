@@ -64,6 +64,49 @@
                 </StackPanel>
             </Border>
 
+            <Border Style="{ThemeResource CardBorderStyle}">
+                <StackPanel Spacing="14">
+                    <TextBlock Style="{ThemeResource SectionHeaderTextBlockStyle}" Text="License" />
+                    <TextBlock Text="{Binding LicenseStatus}" TextWrapping="WrapWholeWords" />
+                    <TextBox PlaceholderText="Activation code" Text="{Binding ActivationCode, Mode=TwoWay}" />
+                    <Button Command="{Binding ActivateCommand}" Content="Activate" />
+                </StackPanel>
+            </Border>
+
+            <Border Style="{ThemeResource CardBorderStyle}">
+                <StackPanel Spacing="14">
+                    <TextBlock Style="{ThemeResource SectionHeaderTextBlockStyle}" Text="Backup / Restore" />
+                    <TextBox PlaceholderText="Backup file path" Text="{Binding BackupPath, Mode=TwoWay}" />
+                    <Button Command="{Binding BackupCommand}" Content="Backup database" />
+                    <TextBox PlaceholderText="Restore file path" Text="{Binding RestorePath, Mode=TwoWay}" />
+                    <Button Command="{Binding RestoreCommand}" Content="Restore database" />
+                </StackPanel>
+            </Border>
+
+            <Border Style="{ThemeResource CardBorderStyle}">
+                <StackPanel Spacing="14">
+                    <TextBlock Style="{ThemeResource SectionHeaderTextBlockStyle}" Text="LLM / SLM Assistant" />
+                    <TextBox PlaceholderText="API key or use MYSHOP_LLM_API_KEY" Text="{Binding LlmApiKey, Mode=TwoWay}" />
+                    <TextBox PlaceholderText="Endpoint" Text="{Binding LlmEndpoint, Mode=TwoWay}" />
+                </StackPanel>
+            </Border>
+
+            <Border Style="{ThemeResource CardBorderStyle}">
+                <StackPanel Spacing="14">
+                    <TextBlock Style="{ThemeResource SectionHeaderTextBlockStyle}" Text="Plugins" />
+                    <ListView ItemsSource="{Binding Plugins}" SelectionMode="None">
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <StackPanel Margin="0,6" Spacing="2">
+                                    <TextBlock FontWeight="SemiBold" Text="{Binding Name}" />
+                                    <TextBlock Style="{ThemeResource CaptionTextBlockStyle}" Text="{Binding Status}" />
+                                </StackPanel>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+                </StackPanel>
+            </Border>
+
             <TextBlock
                 Foreground="{ThemeResource AccentBrush}"
                 Text="{Binding StatusMessage}"

@@ -12,6 +12,12 @@ public class OrderSummary
 
     public int ItemCount { get; set; }
 
+    public string CustomerName { get; set; } = string.Empty;
+
+    public string Salesperson { get; set; } = string.Empty;
+
+    public decimal DiscountAmount { get; set; }
+
     public string OrderLabel => $"Order #{Id}";
 
     public string CreatedDisplay => CreatedTime.ToString("dd MMM yyyy HH:mm");

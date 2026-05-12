@@ -27,4 +27,10 @@ public class ReportsSnapshot
     public List<BarChartItem> ProductSalesByRange { get; set; } = new();
 
     public List<PieChartItem> ProductSalesShare { get; set; } = new();
+
+    public List<SalesCommissionSnapshot> SalesCommissions { get; set; } = new();
+
+    public List<MlInsight> MlInsights { get; set; } = new();
+
+    public AssistantResult AssistantResult { get; set; } = new();
 }

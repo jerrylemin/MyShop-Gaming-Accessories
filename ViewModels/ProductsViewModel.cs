@@ -12,6 +12,7 @@ public class ProductsViewModel : ViewModelBase
     private readonly CategoryRepository _categoryRepository;
     private readonly ExcelProductImportService _excelProductImportService;
     private readonly SettingsService _settingsService;
+    private readonly CurrentUserService _currentUserService;
     private readonly AsyncRelayCommand _refreshCommand;
     private readonly RelayCommand _previousPageCommand;
     private readonly RelayCommand _nextPageCommand;
@@ -37,12 +38,14 @@ public class ProductsViewModel : ViewModelBase
         ProductRepository productRepository,
         CategoryRepository categoryRepository,
         ExcelProductImportService excelProductImportService,
-        SettingsService settingsService)
+        SettingsService settingsService,
+        CurrentUserService? currentUserService = null)
     {
         _productRepository = productRepository;
         _categoryRepository = categoryRepository;
         _excelProductImportService = excelProductImportService;
         _settingsService = settingsService;
+        _currentUserService = currentUserService ?? App.Current.Services.CurrentUserService;
 
         SortOptions = new ObservableCollection<ProductSortOption>(Enum.GetValues<ProductSortOption>());
         CategoryFilters = new ObservableCollection<CategoryFilterOption>();
@@ -71,6 +74,8 @@ public class ProductsViewModel : ViewModelBase
     public event EventHandler<CategoryListItem?>? CategoryEditRequested;
 
     public ObservableCollection<Product> Products { get; }
+
+    public bool CanViewImportPrice => _currentUserService.CanViewImportPrice;
 
     public ObservableCollection<ProductSortOption> SortOptions { get; }
 
@@ -227,7 +232,8 @@ public class ProductsViewModel : ViewModelBase
                 MinPrice = TryParseDecimal(MinPrice),
                 MaxPrice = TryParseDecimal(MaxPrice),
                 CategoryId = SelectedCategoryFilter?.Id,
-                SortOption = SelectedSortOption
+                SortOption = SelectedSortOption,
+                CurrentUserRole = _currentUserService.CurrentUser.Role
             });
 
             CurrentPage = result.PageNumber;

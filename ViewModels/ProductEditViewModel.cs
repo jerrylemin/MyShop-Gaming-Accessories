@@ -1,6 +1,7 @@
 using ProjectTest.Helpers;
 using ProjectTest.Models;
 using ProjectTest.Repositories;
+using ProjectTest.Services;
 using System.Collections.ObjectModel;
 
 namespace ProjectTest.ViewModels;
@@ -9,6 +10,7 @@ public class ProductEditViewModel : ViewModelBase
 {
     private readonly ProductRepository _productRepository;
     private readonly CategoryRepository _categoryRepository;
+    private readonly AutoSaveService _autoSaveService = new();
     private readonly AsyncRelayCommand _saveCommand;
     private int _productId;
     private string _sku = string.Empty;
@@ -28,6 +30,7 @@ public class ProductEditViewModel : ViewModelBase
     private string _image2 = string.Empty;
     private string _image3 = string.Empty;
     private string _statusMessage = string.Empty;
+    private string _autoSaveStatus = "Saved";
     private bool _isLoading;
 
     public ProductEditViewModel(ProductRepository productRepository, CategoryRepository categoryRepository)
@@ -36,6 +39,13 @@ public class ProductEditViewModel : ViewModelBase
         _categoryRepository = categoryRepository;
         Categories = new ObservableCollection<Category>();
         _saveCommand = new AsyncRelayCommand(SaveAsync, () => !IsLoading);
+        _autoSaveService.StateChanged += (_, state) => AutoSaveStatus = state switch
+        {
+            AutoSaveState.Saving => "Saving...",
+            AutoSaveState.Saved => "Saved",
+            AutoSaveState.Error => "Error",
+            _ => AutoSaveStatus
+        };
     }
 
     public event EventHandler? Saved;
@@ -61,103 +71,109 @@ public class ProductEditViewModel : ViewModelBase
     public string SKU
     {
         get => _sku;
-        set => SetProperty(ref _sku, value);
+        set => SetAndScheduleAutoSave(ref _sku, value);
     }
 
     public string Name
     {
         get => _name;
-        set => SetProperty(ref _name, value);
+        set => SetAndScheduleAutoSave(ref _name, value);
     }
 
     public string Manufacturer
     {
         get => _manufacturer;
-        set => SetProperty(ref _manufacturer, value);
+        set => SetAndScheduleAutoSave(ref _manufacturer, value);
     }
 
     public string CPU
     {
         get => _cpu;
-        set => SetProperty(ref _cpu, value);
+        set => SetAndScheduleAutoSave(ref _cpu, value);
     }
 
     public string RAM
     {
         get => _ram;
-        set => SetProperty(ref _ram, value);
+        set => SetAndScheduleAutoSave(ref _ram, value);
     }
 
     public string Storage
     {
         get => _storage;
-        set => SetProperty(ref _storage, value);
+        set => SetAndScheduleAutoSave(ref _storage, value);
     }
 
     public string GPU
     {
         get => _gpu;
-        set => SetProperty(ref _gpu, value);
+        set => SetAndScheduleAutoSave(ref _gpu, value);
     }
 
     public string Screen
     {
         get => _screen;
-        set => SetProperty(ref _screen, value);
+        set => SetAndScheduleAutoSave(ref _screen, value);
     }
 
     public string ImportPrice
     {
         get => _importPrice;
-        set => SetProperty(ref _importPrice, value);
+        set => SetAndScheduleAutoSave(ref _importPrice, value);
     }
 
     public string SalePrice
     {
         get => _salePrice;
-        set => SetProperty(ref _salePrice, value);
+        set => SetAndScheduleAutoSave(ref _salePrice, value);
     }
 
     public string Stock
     {
         get => _stock;
-        set => SetProperty(ref _stock, value);
+        set => SetAndScheduleAutoSave(ref _stock, value);
     }
 
     public int SelectedCategoryId
     {
         get => _selectedCategoryId;
-        set => SetProperty(ref _selectedCategoryId, value);
+        set => SetAndScheduleAutoSave(ref _selectedCategoryId, value);
     }
 
     public string Description
     {
         get => _description;
-        set => SetProperty(ref _description, value);
+        set => SetAndScheduleAutoSave(ref _description, value);
     }
 
     public string Image1
     {
         get => _image1;
-        set => SetProperty(ref _image1, value);
+        set => SetAndScheduleAutoSave(ref _image1, value);
     }
 
     public string Image2
     {
         get => _image2;
-        set => SetProperty(ref _image2, value);
+        set => SetAndScheduleAutoSave(ref _image2, value);
     }
 
     public string Image3
     {
         get => _image3;
-        set => SetProperty(ref _image3, value);
+        set => SetAndScheduleAutoSave(ref _image3, value);
     }
 
     public string StatusMessage
     {
         get => _statusMessage;
         set => SetProperty(ref _statusMessage, value);
+    }
+
+    public string AutoSaveStatus
+    {
+        get => _autoSaveStatus;
+        set => SetProperty(ref _autoSaveStatus, value);
     }
 
     public bool IsLoading
@@ -269,6 +285,35 @@ public class ProductEditViewModel : ViewModelBase
 
         ProductId = result.Value;
         Saved?.Invoke(this, EventArgs.Empty);
+    }
+
+    private void ScheduleAutoSave()
+    {
+        if (IsLoading || !CanAttemptAutoSave())
+        {
+            return;
+        }
+
+        AutoSaveStatus = "Saving...";
+        _autoSaveService.Schedule(async _ => await SaveAsync());
+    }
+
+    private bool CanAttemptAutoSave()
+    {
+        return SelectedCategoryId != 0 &&
+               !string.IsNullOrWhiteSpace(SKU) &&
+               !string.IsNullOrWhiteSpace(Name) &&
+               decimal.TryParse(ImportPrice, out _) &&
+               decimal.TryParse(SalePrice, out _) &&
+               int.TryParse(Stock, out _);
+    }
+
+    private void SetAndScheduleAutoSave<T>(ref T storage, T value)
+    {
+        if (SetProperty(ref storage, value))
+        {
+            ScheduleAutoSave();
+        }
     }
 
     private void ResetForNewProduct()

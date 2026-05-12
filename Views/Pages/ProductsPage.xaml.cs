@@ -14,15 +14,25 @@ public sealed partial class ProductsPage : Page
             App.Current.Services.ProductRepository,
             App.Current.Services.CategoryRepository,
             App.Current.Services.ExcelProductImportService,
-            App.Current.Services.SettingsService);
+            App.Current.Services.SettingsService,
+            App.Current.Services.CurrentUserService);
         InitializeComponent();
         DataContext = ViewModel;
         Loaded += ProductsPage_Loaded;
+        SizeChanged += ProductsPage_SizeChanged;
         ViewModel.EditRequested += ViewModel_EditRequested;
         ViewModel.CategoryEditRequested += ViewModel_CategoryEditRequested;
     }
 
     public ProductsViewModel ViewModel { get; }
+
+    private void ProductsPage_SizeChanged(object sender, SizeChangedEventArgs e)
+    {
+        var isNarrow = e.NewSize.Width < 900;
+        ProductsWorkspaceGrid.ColumnDefinitions[0].Width = new GridLength(1, GridUnitType.Star);
+        ProductsWorkspaceGrid.ColumnDefinitions[1].Width = isNarrow ? new GridLength(0) : new GridLength(0.85, GridUnitType.Star);
+        ProductsWorkspaceGrid.Children[1].Visibility = isNarrow ? Visibility.Collapsed : Visibility.Visible;
+    }
 
     private async void ProductsPage_Loaded(object sender, RoutedEventArgs e)
     {

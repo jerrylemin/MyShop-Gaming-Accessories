@@ -10,6 +10,12 @@ public class AuthenticationService
     private const string CredentialsKey = "SavedCredentials";
     private const string BootstrapUsername = "admin";
     private const string BootstrapPassword = "MyShop123!";
+    private readonly CurrentUserService _currentUserService;
+
+    public AuthenticationService(CurrentUserService? currentUserService = null)
+    {
+        _currentUserService = currentUserService ?? new CurrentUserService();
+    }
 
     public string DefaultUsername => BootstrapUsername;
 
@@ -32,12 +38,23 @@ public class AuthenticationService
 
             var storedUsername = await UnprotectAsync(saved.ProtectedUsername);
             var storedPassword = await UnprotectAsync(saved.ProtectedPassword);
-            return string.Equals(username, storedUsername, StringComparison.Ordinal) &&
-                   string.Equals(password, storedPassword, StringComparison.Ordinal);
+            var savedValid = string.Equals(username, storedUsername, StringComparison.Ordinal) &&
+                             string.Equals(password, storedPassword, StringComparison.Ordinal);
+            if (savedValid)
+            {
+                _currentUserService.SetCurrentUser(BuildUser(username));
+            }
+
+            return savedValid;
         }
 
-        return string.Equals(username, BootstrapUsername, StringComparison.Ordinal) &&
-               string.Equals(password, BootstrapPassword, StringComparison.Ordinal);
+        var isValid = IsBootstrapCredential(username, password);
+        if (isValid)
+        {
+            _currentUserService.SetCurrentUser(BuildUser(username));
+        }
+
+        return isValid;
     }
 
     public async Task SaveCredentialsAsync(string username, string password)
@@ -81,5 +98,34 @@ public class AuthenticationService
         var buffer = CryptographicBuffer.DecodeFromBase64String(protectedInput);
         var unprotectedBuffer = await provider.UnprotectAsync(buffer);
         return CryptographicBuffer.ConvertBinaryToString(BinaryStringEncoding.Utf8, unprotectedBuffer);
+    }
+
+    private static bool IsBootstrapCredential(string username, string password)
+    {
+        if (!string.Equals(password, BootstrapPassword, StringComparison.Ordinal))
+        {
+            return false;
+        }
+
+        return string.Equals(username, BootstrapUsername, StringComparison.Ordinal) ||
+               string.Equals(username, "moderator", StringComparison.OrdinalIgnoreCase) ||
+               string.Equals(username, "sale", StringComparison.OrdinalIgnoreCase);
+    }
+
+    private static AppUser BuildUser(string username)
+    {
+        var role = username.Equals("sale", StringComparison.OrdinalIgnoreCase)
+            ? UserRole.Sale
+            : username.Equals("moderator", StringComparison.OrdinalIgnoreCase)
+                ? UserRole.Moderator
+                : UserRole.Admin;
+
+        return new AppUser
+        {
+            Id = role == UserRole.Admin ? 1 : role == UserRole.Moderator ? 2 : 3,
+            Username = username,
+            DisplayName = role.ToString(),
+            Role = role
+        };
     }
 }

@@ -1,5 +1,5 @@
 <Project>
-  <PropertyGroup Condition="'$(MSBuildProjectName)' != 'DatabaseRebuilder' and '$(MSBuildProjectName)' != 'VerificationRunner'">
+  <PropertyGroup Condition="'$(MSBuildProjectName)' != 'DatabaseRebuilder' and '$(MSBuildProjectName)' != 'VerificationRunner' and '$(MSBuildProjectName)' != 'ProjectTest.Tests'">
     <BaseOutputPath>$(LocalAppData)\ProjectTest\artifacts\bin\</BaseOutputPath>
     <BaseIntermediateOutputPath>$(LocalAppData)\ProjectTest\artifacts\obj\</BaseIntermediateOutputPath>
   </PropertyGroup>

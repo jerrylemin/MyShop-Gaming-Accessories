@@ -24,6 +24,9 @@ public class ReportsViewModel : ViewModelBase
     private ObservableCollection<BarChartItem> _profitByYear = [];
     private ObservableCollection<BarChartItem> _productSalesByRange = [];
     private ObservableCollection<PieChartItem> _productSalesShare = [];
+    private ObservableCollection<SalesCommissionSnapshot> _salesCommissions = [];
+    private ObservableCollection<MlInsight> _mlInsights = [];
+    private string _assistantSummary = string.Empty;
 
     public ReportsViewModel(ReportingService reportingService)
     {
@@ -89,6 +92,24 @@ public class ReportsViewModel : ViewModelBase
     {
         get => _productSalesShare;
         private set => SetProperty(ref _productSalesShare, value);
+    }
+
+    public ObservableCollection<SalesCommissionSnapshot> SalesCommissions
+    {
+        get => _salesCommissions;
+        private set => SetProperty(ref _salesCommissions, value);
+    }
+
+    public ObservableCollection<MlInsight> MlInsights
+    {
+        get => _mlInsights;
+        private set => SetProperty(ref _mlInsights, value);
+    }
+
+    public string AssistantSummary
+    {
+        get => _assistantSummary;
+        private set => SetProperty(ref _assistantSummary, value);
     }
 
     public AsyncRelayCommand RefreshCommand { get; }
@@ -176,6 +197,9 @@ public class ReportsViewModel : ViewModelBase
             ProfitByYear = new ObservableCollection<BarChartItem>(snapshot.ProfitByYear);
             ProductSalesByRange = new ObservableCollection<BarChartItem>(snapshot.ProductSalesByRange);
             ProductSalesShare = new ObservableCollection<PieChartItem>(snapshot.ProductSalesShare);
+            SalesCommissions = new ObservableCollection<SalesCommissionSnapshot>(snapshot.SalesCommissions);
+            MlInsights = new ObservableCollection<MlInsight>(snapshot.MlInsights);
+            AssistantSummary = snapshot.AssistantResult.Summary;
         }
         finally
         {

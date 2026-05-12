@@ -9,10 +9,14 @@ namespace ProjectTest.Services;
 public class ReportingService
 {
     private readonly MyShopDbContextFactory _dbContextFactory;
+    private readonly MlInsightService? _mlInsightService;
+    private readonly LlmAssistantService? _llmAssistantService;
 
-    public ReportingService(MyShopDbContextFactory dbContextFactory)
+    public ReportingService(MyShopDbContextFactory dbContextFactory, MlInsightService? mlInsightService = null, LlmAssistantService? llmAssistantService = null)
     {
         _dbContextFactory = dbContextFactory;
+        _mlInsightService = mlInsightService;
+        _llmAssistantService = llmAssistantService;
     }
 
     public async Task<ReportsSnapshot> GetSnapshotAsync(ReportQueryOptions? options = null)
@@ -95,7 +99,22 @@ public class ReportingService
             })
             .ToList();
 
-        return new ReportsSnapshot
+        var commissions = await dbContext.Orders
+            .Where(x => x.Status == OrderStatus.Paid && x.CreatedTime >= normalizedFromDate && x.CreatedTime < rangeEndExclusive)
+            .GroupBy(x => new { x.CreatedByUserId, x.CreatedByUser!.DisplayName, x.CreatedByUser.Role })
+            .Select(group => new SalesCommissionSnapshot
+            {
+                UserId = group.Key.CreatedByUserId ?? 0,
+                Salesperson = group.Key.DisplayName ?? "Unassigned",
+                Role = group.Key.Role,
+                Revenue = group.Sum(x => x.FinalPrice),
+                PaidOrders = group.Count(),
+                Commission = group.Sum(x => x.FinalPrice) * 0.03m
+            })
+            .OrderByDescending(x => x.Revenue)
+            .ToListAsync();
+
+        var snapshot = new ReportsSnapshot
         {
             RangeLabel = $"{normalizedFromDate:dd MMM yyyy} - {normalizedToDate:dd MMM yyyy}",
             TotalRevenue = paidItemsInRange.Sum(x => x.Revenue),
@@ -109,8 +128,16 @@ public class ReportingService
             RevenueByYear = revenueByYear,
             ProfitByYear = profitByYear,
             ProductSalesByRange = productSalesByRange,
-            ProductSalesShare = productSalesShare
+            ProductSalesShare = productSalesShare,
+            SalesCommissions = commissions,
+            MlInsights = _mlInsightService is null ? [] : await _mlInsightService.GetInsightsAsync()
         };
+
+        snapshot.AssistantResult = _llmAssistantService is null
+            ? new AssistantResult { Summary = "LLM assistant is not configured." }
+            : await _llmAssistantService.AnalyzeReportsAsync(snapshot);
+
+        return snapshot;
     }
 
     private static IEnumerable<DateTime> EachDate(DateTime startDate, DateTime endDate)

@@ -2,6 +2,7 @@ using Microsoft.EntityFrameworkCore;
 using ProjectTest.DataAccess;
 using ProjectTest.DataAccess.Seeding;
 using Npgsql;
+using ProjectTest.Models;
 
 namespace ProjectTest.Services;
 
@@ -26,6 +27,22 @@ public class DatabaseInitializer
 
         var categories = GamingAccessorySeedGenerator.BuildCategories();
         dbContext.Categories.AddRange(categories);
+        dbContext.Users.AddRange(
+            new AppUser { Username = "admin", DisplayName = "Administrator", Role = UserRole.Admin },
+            new AppUser { Username = "moderator", DisplayName = "Moderator", Role = UserRole.Moderator },
+            new AppUser { Username = "sale", DisplayName = "Sale", Role = UserRole.Sale });
+        dbContext.Customers.Add(new Customer { Name = "Walk-in customer", Phone = "", Email = "" });
+        dbContext.Promotions.Add(new Promotion
+        {
+            Code = "WELCOME10",
+            Name = "Welcome 10%",
+            DiscountType = DiscountType.Percentage,
+            DiscountValue = 10m,
+            StartDate = DateTime.Today.AddYears(-1),
+            EndDate = DateTime.Today.AddYears(1),
+            IsActive = true,
+            MinimumOrderTotal = 0m
+        });
         await dbContext.SaveChangesAsync();
 
         var persistedCategories = await dbContext.Categories.OrderBy(x => x.Id).ToListAsync();

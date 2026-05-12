@@ -120,7 +120,17 @@
                     <StackPanel Spacing="14">
                         <StackPanel Spacing="8">
                             <TextBlock Text="Image 1" />
-                            <TextBox Text="{Binding Image1, Mode=TwoWay}" />
+                            <Grid ColumnSpacing="10">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="Auto" />
+                                </Grid.ColumnDefinitions>
+                                <TextBox Text="{Binding Image1, Mode=TwoWay}" />
+                                <Button
+                                    Grid.Column="1"
+                                    Click="BrowseImage1Button_Click"
+                                    Content="Browse" />
+                            </Grid>
                             <Image
                                 MaxHeight="220"
                                 Stretch="Uniform"
@@ -128,7 +138,17 @@
                         </StackPanel>
                         <StackPanel Spacing="8">
                             <TextBlock Text="Image 2" />
-                            <TextBox Text="{Binding Image2, Mode=TwoWay}" />
+                            <Grid ColumnSpacing="10">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="Auto" />
+                                </Grid.ColumnDefinitions>
+                                <TextBox Text="{Binding Image2, Mode=TwoWay}" />
+                                <Button
+                                    Grid.Column="1"
+                                    Click="BrowseImage2Button_Click"
+                                    Content="Browse" />
+                            </Grid>
                             <Image
                                 MaxHeight="220"
                                 Stretch="Uniform"
@@ -136,7 +156,17 @@
                         </StackPanel>
                         <StackPanel Spacing="8">
                             <TextBlock Text="Image 3" />
-                            <TextBox Text="{Binding Image3, Mode=TwoWay}" />
+                            <Grid ColumnSpacing="10">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="Auto" />
+                                </Grid.ColumnDefinitions>
+                                <TextBox Text="{Binding Image3, Mode=TwoWay}" />
+                                <Button
+                                    Grid.Column="1"
+                                    Click="BrowseImage3Button_Click"
+                                    Content="Browse" />
+                            </Grid>
                             <Image
                                 MaxHeight="220"
                                 Stretch="Uniform"
@@ -148,6 +178,9 @@
                         Foreground="{ThemeResource AccentBrush}"
                         Text="{Binding StatusMessage}"
                         TextWrapping="WrapWholeWords" />
+                    <TextBlock
+                        Style="{ThemeResource CaptionTextBlockStyle}"
+                        Text="{Binding AutoSaveStatus}" />
 
                     <Grid ColumnSpacing="10">
                         <Grid.ColumnDefinitions>
