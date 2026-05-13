@@ -305,12 +305,11 @@
                                 SelectedItem="{Binding SelectedStatus, Mode=TwoWay}" />
                         </StackPanel>
                         <StackPanel Grid.Row="1" Spacing="6">
-                            <TextBlock Text="Customer" />
-                            <ComboBox
-                                DisplayMemberPath="Name"
+                            <TextBlock Text="Customer phone" />
+                            <TextBox
                                 IsEnabled="{Binding CanEditCurrentOrder}"
-                                ItemsSource="{Binding Customers}"
-                                SelectedItem="{Binding SelectedCustomer, Mode=TwoWay}" />
+                                PlaceholderText="Enter phone number"
+                                Text="{Binding CustomerPhone, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
                         </StackPanel>
                         <StackPanel Grid.Row="1" Grid.Column="1" Spacing="6">
                             <TextBlock Text="Promotion" />

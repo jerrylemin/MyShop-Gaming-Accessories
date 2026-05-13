@@ -53,6 +53,20 @@ public class CustomerRepository
             .FirstOrDefaultAsync(x => x.Id == customerId);
     }
 
+    public async Task<Customer?> GetByPhoneAsync(string phone)
+    {
+        var normalizedPhone = phone.Trim();
+        if (string.IsNullOrWhiteSpace(normalizedPhone))
+        {
+            return null;
+        }
+
+        await using var dbContext = _dbContextFactory.CreateDbContext();
+        return await dbContext.Customers
+            .AsNoTracking()
+            .FirstOrDefaultAsync(x => x.Phone == normalizedPhone);
+    }
+
     public async Task<CustomerProfile?> GetProfileAsync(int customerId)
     {
         await using var dbContext = _dbContextFactory.CreateDbContext();

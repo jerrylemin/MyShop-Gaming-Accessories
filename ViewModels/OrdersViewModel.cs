@@ -30,10 +30,10 @@ public class OrdersViewModel : ViewModelBase
     private OrderStatus _persistedStatus = OrderStatus.Created;
     private OrderSummary? _selectedOrder;
     private ProductLookupItem? _selectedProductToAdd;
-    private Customer? _selectedCustomer;
     private Promotion? _selectedPromotion;
     private OrderStatusFilterOption? _selectedStatusFilter;
     private string _keyword = string.Empty;
+    private string _customerPhone = string.Empty;
     private OrderSortOption _selectedSortOption = OrderSortOption.LatestFirst;
     private DateTimeOffset _fromDate = new(new DateTime(DateTime.Today.Year, DateTime.Today.Month, 1));
     private DateTimeOffset _toDate = new(DateTime.Today);
@@ -68,7 +68,6 @@ public class OrdersViewModel : ViewModelBase
 
         Orders = [];
         AvailableProducts = [];
-        Customers = [];
         Promotions = [];
         DraftItems = [];
         StatusFilters =
@@ -109,8 +108,6 @@ public class OrdersViewModel : ViewModelBase
     public ObservableCollection<OrderSummary> Orders { get; }
 
     public ObservableCollection<ProductLookupItem> AvailableProducts { get; }
-
-    public ObservableCollection<Customer> Customers { get; }
 
     public ObservableCollection<Promotion> Promotions { get; }
 
@@ -190,16 +187,10 @@ public class OrdersViewModel : ViewModelBase
         }
     }
 
-    public Customer? SelectedCustomer
+    public string CustomerPhone
     {
-        get => _selectedCustomer;
-        set
-        {
-            if (SetProperty(ref _selectedCustomer, value))
-            {
-                ScheduleAutoSave();
-            }
-        }
+        get => _customerPhone;
+        set => SetProperty(ref _customerPhone, value);
     }
 
     public Promotion? SelectedPromotion
@@ -369,12 +360,6 @@ public class OrdersViewModel : ViewModelBase
             AvailableProducts.Add(product);
         }
 
-        Customers.Clear();
-        foreach (var customer in await _customerRepository.GetAllAsync())
-        {
-            Customers.Add(customer);
-        }
-
         Promotions.Clear();
         foreach (var promotion in await _promotionRepository.GetActiveAsync())
         {
@@ -408,7 +393,9 @@ public class OrdersViewModel : ViewModelBase
             _persistedStatus = draft.Status;
             DraftCreatedTime = draft.CreatedTime;
             SelectedStatus = draft.Status;
-            SelectedCustomer = Customers.FirstOrDefault(x => x.Id == draft.CustomerId);
+            CustomerPhone = draft.CustomerId.HasValue
+                ? (await _customerRepository.GetByIdAsync(draft.CustomerId.Value))?.Phone ?? string.Empty
+                : string.Empty;
             SelectedPromotion = Promotions.FirstOrDefault(x => x.Id == draft.PromotionId);
             DiscountAmount = draft.DiscountAmount;
             DraftItems.Clear();
@@ -477,7 +464,7 @@ public class OrdersViewModel : ViewModelBase
         SelectedOrder = null;
         DraftCreatedTime = DateTimeOffset.Now;
         SelectedStatus = OrderStatus.Created;
-        SelectedCustomer = Customers.FirstOrDefault();
+        CustomerPhone = string.Empty;
         SelectedPromotion = null;
         DraftItems.Clear();
         DiscountAmount = 0m;
@@ -547,12 +534,19 @@ public class OrdersViewModel : ViewModelBase
             return;
         }
 
+        var customer = await ResolveCustomerByPhoneAsync();
+        if (!string.IsNullOrWhiteSpace(CustomerPhone) && customer is null)
+        {
+            StatusMessage = "No customer found for this phone number. Add the customer first or clear the phone field.";
+            return;
+        }
+
         var draft = new OrderDraft
         {
             Id = CurrentOrderId,
             CreatedTime = DraftCreatedTime.DateTime,
             Status = SelectedStatus,
-            CustomerId = SelectedCustomer?.Id,
+            CustomerId = customer?.Id,
             PromotionId = SelectedPromotion?.Id,
             CreatedByUserId = _currentUserService.CurrentUser.Id,
             DiscountAmount = DiscountAmount,
@@ -586,6 +580,13 @@ public class OrdersViewModel : ViewModelBase
     {
         RecalculateTotals();
         ScheduleAutoSave();
+    }
+
+    private async Task<Customer?> ResolveCustomerByPhoneAsync()
+    {
+        return string.IsNullOrWhiteSpace(CustomerPhone)
+            ? null
+            : await _customerRepository.GetByPhoneAsync(CustomerPhone);
     }
 
     private void RecalculateTotals()
