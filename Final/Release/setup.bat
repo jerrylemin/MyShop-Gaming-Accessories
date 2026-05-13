@@ -162,7 +162,7 @@ function Invoke-Psql {
     New-Item -ItemType Directory -Path $tempRoot -Force | Out-Null
     $sqlPath = Join-Path $tempRoot ("myshop-sql-" + [Guid]::NewGuid().ToString("N") + ".sql")
     try {
-        Set-Content -LiteralPath $sqlPath -Value $Sql -Encoding UTF8 -NoNewline
+        [System.IO.File]::WriteAllText($sqlPath, $Sql, (New-Object System.Text.UTF8Encoding($false)))
         $arguments = @(
             "-h", $script:DbHost,
             "-p", $script:Port,
