@@ -2,6 +2,80 @@
 
 Updated: 2026-05-13
 
+## Feature Reorganization Validation
+
+Updated: 2026-05-13
+
+Old flow issues:
+
+- Settings contained GraphQL, Plugins, and Customer Loyalty, which made it too broad and harder to explain.
+- Customer search was missing.
+- Plugins were loaded during bootstrap instead of when the Plugins page was opened.
+- License and LLM usage guidance was too light for demo/viva.
+
+New flow after this pass:
+
+- Customers owns search, add/edit/delete, loyalty, lifetime spend, paid order count, purchased products, and order history.
+- GraphQL is now a Main Menu page with sample query, Execute, query textbox, result textbox, and status.
+- Plugins is now a Main Menu page with refresh and plugin status list.
+- Settings now contains General, Credentials, License, Backup / Restore, and LLM / SLM Assistant configuration only.
+- Reports remains the place where the configured LLM / SLM Assistant is used.
+- Startup still restores only lightweight pages and does not restore Reports, GraphQL, or Plugins.
+
+Files changed:
+
+- `Views/MainWindow.xaml`
+- `Views/MainWindow.xaml.cs`
+- `Views/Pages/CustomersPage.xaml`
+- `ViewModels/CustomersViewModel.cs`
+- `Repositories/CustomerRepository.cs`
+- `Views/Pages/SettingsPage.xaml`
+- `Views/Pages/SettingsPage.xaml.cs`
+- `ViewModels/SettingsViewModel.cs`
+- `Views/Pages/GraphQlPage.xaml`
+- `Views/Pages/GraphQlPage.xaml.cs`
+- `ViewModels/GraphQlViewModel.cs`
+- `Views/Pages/PluginsPage.xaml`
+- `Views/Pages/PluginsPage.xaml.cs`
+- `ViewModels/PluginsViewModel.cs`
+- `Models/PluginInfo.cs`
+- `Services/AppBootstrapper.cs`
+- `Services/PluginService.cs`
+- `Services/LlmAssistantService.cs`
+- `Views/Pages/ReportsPage.xaml`
+- `README.md`
+- `codex_feature_reorg_audit.md`
+- `codex_feature_reorg_plan.md`
+- `codex_validation_report.md`
+
+Demo checklist:
+
+1. Open app and login with `admin / MyShop123!`.
+2. Confirm Main Menu has Customers, GraphQL, and Plugins.
+3. Customers: search by name, search by phone, clear search, add/edit/delete a customer without orders, select customer with orders, verify loyalty, purchased products, and order history.
+4. Settings: verify GraphQL, Plugins, and Customer Loyalty are gone; License shows the demo code guidance; LLM explains Settings input and Reports usage.
+5. GraphQL: Load Sample, Execute, verify JSON output. Run a bad query and verify JSON error output.
+6. Plugins: verify plugin list or no-plugin status and no crash on Refresh.
+7. Reports: verify Assistant says not configured when no key is available; configure key/endpoint in Settings and refresh Reports to use the assistant.
+8. Switch tabs repeatedly and verify no obvious lag.
+9. Close/reopen and verify startup lands on Dashboard or another lightweight restored page.
+
+Build commands for this pass:
+
+```powershell
+dotnet restore .\ProjectTest.csproj
+dotnet build .\ProjectTest.csproj -c Debug -p:Platform=x64
+```
+
+- `dotnet restore .\ProjectTest.csproj`: passed.
+- `dotnet build .\ProjectTest.csproj -c Debug -p:Platform=x64`: passed, 0 warnings, 0 errors.
+- Launch smoke: started the Debug x64 `ProjectTest.exe`, waited 8 seconds, verified the process was still running and responding, then stopped it.
+
+Remaining notes:
+
+- `setup.exe` was not rebuilt.
+- Orders customer selection still uses the existing ComboBox; customer search was implemented in Customers first and documented as a later enhancement if needed.
+
 ## Customer Management Finish Validation
 
 Updated: 2026-05-13

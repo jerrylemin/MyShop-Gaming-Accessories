@@ -16,14 +16,16 @@ This repository is a coursework-style Windows programming project built around a
 - Excel import for upserting products and creating missing categories.
 - Order management with date-range filtering, keyword search, sort options, full paging controls, inline order editing, item lines, status changes, and deletion.
 - Stock synchronization when orders are created, updated, cancelled, or deleted.
+- Customer management with search by name, phone, or email, add/edit/delete, loyalty points, lifetime spend, purchased products, and order history.
 - Customer selection on orders and customer loyalty points/lifetime spend after paid orders.
 - PDF invoice export through a FileSavePicker from Orders.
 - Reports for revenue and profit by day, week, month, and year.
 - Product sales analytics for top-selling items and sales share.
 - ML.Net revenue forecast and restock insights on Reports.
-- LLM assistant integration through an OpenAI-compatible endpoint configured in Settings or `MYSHOP_LLM_API_KEY`.
-- GraphQL.NET schema executor and Settings demo query console for products, orders, reports, `saveProduct`, and `saveOrder`.
-- Settings for items-per-page, saved login cleanup, GraphQL demo, plugins, LLM config, backup/restore, license, and customer loyalty.
+- LLM assistant integration in Reports through an OpenAI-compatible endpoint configured in Settings or `MYSHOP_LLM_API_KEY`.
+- GraphQL.NET schema executor under Main Menu > GraphQL for products, orders, reports, `saveProduct`, and `saveOrder`.
+- Plugins page under Main Menu > Plugins for local plugin discovery and reload.
+- Settings for items-per-page, saved login cleanup, LLM config, backup/restore, and license activation.
 - Sample plugin project and local UI automation smoke script.
 - Seed data for 5 categories, 110 products, and 440 seeded orders.
 - Packaged gaming accessory images stored inside the app assets.
@@ -163,6 +165,70 @@ Password: MyShop123!
 
 The database initializer also ensures `admin`, `moderator`, and `sale` users exist. For the coursework demo all three use `MyShop123!`. Saved credentials are encrypted, and auto-login restores the saved user's role.
 
+Roles:
+
+- `admin`: full demo access.
+- `moderator`: management-oriented access for product/order review flows.
+- `sale`: sales workflow access; import price is hidden and order visibility is scoped to the sale user.
+
+## Feature Flows
+
+### Customer Management
+
+Open Main Menu > Customers.
+
+- Search customers by name, phone, or email.
+- Use Apply Search to filter the customer list, or Clear to reset it.
+- Add and edit customer name, phone, and email.
+- Delete is allowed only for customers without order history.
+- Select a customer to view loyalty points, lifetime spend, paid order count, purchased products, and the 50 latest orders.
+- Paid orders increase loyalty points and lifetime spend.
+
+### GraphQL
+
+Open Main Menu > GraphQL.
+
+- Click Load Sample for a lightweight products query with `pageSize: 5`.
+- Click Execute to run the query.
+- Results appear as JSON in the result box.
+- Invalid queries return JSON error output instead of crashing the app.
+
+### Plugins
+
+Open Main Menu > Plugins.
+
+- The page lists plugin name, version, description, and status.
+- Click Refresh to reload local plugin manifests and DLLs.
+- To demo the sample plugin, run:
+
+```powershell
+powershell -ExecutionPolicy Bypass -File .\scripts\build-sample-plugin.ps1
+```
+
+The script copies the plugin to the local `Plugins` folder. Restart the app or open Main Menu > Plugins and click Refresh.
+
+### LLM / SLM Assistant
+
+Configure the assistant in Main Menu > Settings.
+
+1. Enter an API key, or set `MYSHOP_LLM_API_KEY`.
+2. Enter an OpenAI-compatible chat completions endpoint, or leave it blank to use the default OpenAI chat completions endpoint.
+3. Click Save Settings.
+4. Open Main Menu > Reports and refresh the report range.
+5. The Reports > Assistant section shows the API summary, a not-configured message, or a short safe error.
+
+Do not hardcode real API keys in code.
+
+### License
+
+The app has a 15-day trial. Open Main Menu > Settings > License to view trial status and activate after the trial expires.
+
+Demo activation rule:
+
+- Codes must start with `MYSHOP-`.
+- Codes must be at least 16 characters.
+- Demo code for coursework/viva: `MYSHOP-DEMO-2026`.
+
 ### Build the application
 
 ```powershell
@@ -282,7 +348,7 @@ ms-appx:///Assets/GamingProducts/{productId}_{imageNumber}.jpg
 - `scripts/obfuscate-release.ps1`
   Builds Release x64 and runs Obfuscar using `obfuscar.xml`. If Windows blocks `dotnet-tools.json` on a network path, run from a local clone or unblock the file before `dotnet tool restore`.
 - `scripts/build-sample-plugin.ps1`
-  Builds `plugins/SampleMyShopPlugin`, copies the DLL and manifest to `Plugins/SampleMyShopPlugin`, then the app can show it as `Loaded` in Settings after restart.
+  Builds `plugins/SampleMyShopPlugin`, copies the DLL and manifest to `Plugins/SampleMyShopPlugin`, then the app can show it as `Loaded` in Main Menu > Plugins after restart or refresh.
 - `scripts/ui-smoke.ps1`
   Local Windows UI Automation smoke script for login and navigation through Products, Orders, Reports, and Settings.
 
@@ -347,8 +413,10 @@ The Obfuscar config preserves WinUI, XAML-facing types, EF Core entities/migrati
 - Products: filter/search/page through gaming accessories and inspect accessory specs/image gallery.
 - Orders: create an order, choose a customer, apply `WELCOME10`, mark Paid, save, then export a PDF invoice with `Print / Export invoice`.
 - Reports: refresh a date range and verify charts, commissions, ML.Net forecast/restock insights, and assistant status.
-- Settings: run the GraphQL sample query, inspect customer loyalty, verify plugin list, and configure LLM endpoint/key if available.
-- Plugin: run `scripts/build-sample-plugin.ps1`, restart app, then verify `Sample MyShop Plugin` is `Loaded`.
+- Customers: search by name/phone, add/edit/delete a customer without orders, then select a customer with orders to inspect loyalty, purchased products, and order history.
+- GraphQL: open Main Menu > GraphQL, load the sample query, execute it, and verify JSON output.
+- Plugins: run `scripts/build-sample-plugin.ps1`, restart app or click Refresh in Main Menu > Plugins, then verify `Sample MyShop Plugin` is `Loaded`.
+- Settings: verify GraphQL, Plugins, and Customer Loyalty are no longer here; configure license and LLM endpoint/key if available.
 - DB verification: run `scripts/rebuild-dev-db.ps1` and `dotnet run --project .\tools\VerificationRunner\VerificationRunner.csproj`.
 
 ## Known Issues or Notes
@@ -358,7 +426,7 @@ The Obfuscar config preserves WinUI, XAML-facing types, EF Core entities/migrati
 - The login system is local/demo database based; it implements admin, moderator, and sale roles but not external identity providers.
 - Product spec fields are mapped onto legacy schema columns (`CPU`, `RAM`, `Storage`, `GPU`, `Screen`) for compatibility.
 - Paid and cancelled orders are intentionally read-only in the editor.
-- The shell is built programmatically in `Views/MainWindow.xaml.cs`; `Views/MainWindow.xaml` is only a minimal host.
+- The shell navigation lives in `Views/MainWindow.xaml`, with page registration and selection state in `Views/MainWindow.xaml.cs`.
 - The app currently forces a light theme and does not expose a theme switcher.
 - `dotnet test ProjectTest.slnx` passes; it may show an EF Core relational version warning from transitive Npgsql dependencies.
 - `dotnet tool restore` can be blocked by Windows on UNC/network workspaces. Build/test are not blocked; run tool restore from a local clone if Obfuscar restore is blocked.
