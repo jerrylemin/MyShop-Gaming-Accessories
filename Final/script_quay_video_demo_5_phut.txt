@@ -6,17 +6,23 @@ Tài khoản demo:
 - moderator / MyShop123!
 - sale / MyShop123!
 
+Mã license demo:
+- MYSHOP-1MONTH-2026: kích hoạt 1 tháng.
+- MYSHOP-1YEAR-2026: kích hoạt 1 năm.
+- MYSHOP-LIFETIME-2026: kích hoạt lifetime.
+- MYSHOP-DEMO-2026: mã demo tương thích cũ.
+
 Mục tiêu video:
-- Cho thấy app cài/mở được từ bản Release.
+- Cho thấy app mở được từ bản Release đã biên dịch.
 - Test các module chính theo từng phân quyền.
 - Nói rõ vai trò nào được dùng chức năng nào.
-- Không cần quay quá lâu từng form, chỉ cần thao tác nhanh và rõ.
+- Quay nhanh, thao tác rõ, không cần nhập quá nhiều dữ liệu.
 
 0:00 - 0:25 | Giới thiệu bản Release
-- Mở thư mục Final\Release.
-- Cho thấy có setup.exe và thư mục App chứa ProjectTest.exe.
-- Nói: setup.exe dùng để cài đầy đủ app, runtime, PostgreSQL/database demo và shortcut.
-- Mở app bằng shortcut MyShop Gaming Accessories POS hoặc chạy ProjectTest.exe nếu máy đã cài runtime/database.
+- Mở thư mục Final\Release\App.
+- Cho thấy file ProjectTest.exe và các file runtime đi kèm.
+- Nói: đây là bản thực thi được biên dịch từ mã nguồn. Thư mục Final\Release lần này không kèm setup.exe vì setup sẽ được tạo riêng khi cần.
+- Chạy ProjectTest.exe.
 
 0:25 - 0:45 | Màn hình đăng nhập
 - Cho thấy màn hình Login.
@@ -25,8 +31,9 @@ Mục tiêu video:
   moderator: quản lý nghiệp vụ và xem báo cáo, hạn chế cấu hình hệ thống.
   sale: bán hàng/POS và xem dữ liệu cần thiết cho nhân viên bán hàng.
 
+
 PHẦN 1 - ADMIN / TOÀN QUYỀN
-0:45 - 2:25
+0:45 - 2:35
 
 Đăng nhập:
 - Username: admin
@@ -37,7 +44,8 @@ Chức năng cần quay với admin:
 1. Dashboard
 - Vào Dashboard.
 - Cho thấy tổng sản phẩm, đơn hàng, doanh thu, sản phẩm sắp hết hàng.
-- Cho thấy biểu đồ/top sản phẩm/đơn hàng gần đây nếu có.
+- Bấm Refresh để chứng minh màn hình có thể cập nhật dữ liệu từ database.
+- Cho thấy biểu đồ, top sản phẩm hoặc đơn hàng gần đây nếu có.
 - Nói: admin xem được tổng quan toàn bộ cửa hàng.
 
 2. Products
@@ -45,21 +53,25 @@ Chức năng cần quay với admin:
 - Tìm kiếm một sản phẩm gaming, ví dụ keyboard/mouse/headset.
 - Lọc hoặc sắp xếp theo danh mục/giá/tồn kho.
 - Mở form thêm/sửa sản phẩm.
-- Cho thấy admin có quyền quản lý sản phẩm: thêm, sửa, xóa, import Excel nếu có.
+- Nói: admin có quyền quản lý sản phẩm như thêm, sửa, xóa, import Excel nếu có.
 - Có thể bấm Cancel để không làm thay đổi dữ liệu demo.
 
-3. Orders
+3. Orders - tạo đơn với khách hàng mới
 - Vào Orders.
 - Tạo đơn hàng mới.
-- Chọn khách hàng demo.
-- Thêm 2 sản phẩm vào đơn, thay đổi số lượng để tổng tiền cập nhật.
-- Nếu không muốn thay đổi database, dừng trước bước Save và bấm Cancel.
-- Nói: admin có quyền xem và quản lý đơn hàng.
+- Nhập một số điện thoại chưa có trong hệ thống.
+- Khi app hiện hộp thoại nhỏ yêu cầu nhập tên khách hàng mới, nhập tên demo, ví dụ Khách Test Video.
+- Xác nhận để app tự lưu khách hàng vào database.
+- Thêm 1 hoặc 2 sản phẩm vào đơn, thay đổi số lượng để tổng tiền cập nhật.
+- Lưu đơn hàng.
+- Bấm Refresh nếu cần và cho thấy đơn hàng mới xuất hiện trong danh sách.
+- Nói: luồng này xử lý trường hợp khách hàng mới ngay trong màn hình tạo order.
 
 4. Customers
 - Vào Customers.
-- Tìm kiếm một khách hàng demo.
-- Mở chi tiết khách hàng, cho thấy điểm loyalty, tổng chi tiêu, lịch sử mua hàng nếu có.
+- Tìm kiếm số điện thoại hoặc tên khách vừa tạo ở bước Orders.
+- Cho thấy khách hàng đã được lưu vào database.
+- Mở chi tiết khách hàng, cho thấy điểm loyalty, tổng chi tiêu hoặc lịch sử mua hàng nếu có.
 - Nói: admin có quyền quản lý khách hàng và loyalty.
 
 5. Reports
@@ -68,16 +80,21 @@ Chức năng cần quay với admin:
 - Cho thấy doanh thu, lợi nhuận, top sản phẩm, commission, ML insight nếu có.
 - Nói: admin xem được báo cáo tổng hợp để quản trị cửa hàng.
 
-6. Settings / Database / Plugins / GraphQL
+6. Settings / Database / License / Plugins / GraphQL
 - Vào Settings.
-- Cho thấy cấu hình số dòng mỗi trang, backup/restore, license/LLM config nếu có.
+- Cho thấy cấu hình số dòng mỗi trang và nút Refresh nếu có.
+- Ở phần Backup database, cho thấy nút browse chọn thư mục PostgreSQL/bin hoặc vị trí lưu file backup.
+- Ở phần Restore database, cho thấy nút browse chọn file restore.
+- Ở phần License, nhập hoặc hiển thị một mã demo như MYSHOP-1MONTH-2026, MYSHOP-1YEAR-2026 hoặc MYSHOP-LIFETIME-2026.
+- Cho thấy trạng thái plan đang kích hoạt.
 - Vào Plugins hoặc GraphQL nếu có trên menu.
 - Nói: admin có quyền cấu hình hệ thống và các tính năng mở rộng.
 
 Logout admin.
 
+
 PHẦN 2 - MODERATOR / QUẢN LÝ NGHIỆP VỤ
-2:25 - 3:35
+2:35 - 3:40
 
 Đăng nhập:
 - Username: moderator
@@ -88,13 +105,14 @@ Chức năng cần quay với moderator:
 1. Dashboard
 - Vào Dashboard.
 - Cho thấy moderator xem được tình hình bán hàng và tồn kho.
+- Bấm Refresh nếu có.
 - Nói: moderator theo dõi hoạt động cửa hàng nhưng không phải tài khoản cấu hình cao nhất.
 
 2. Products
 - Vào Products.
 - Tìm kiếm và mở chi tiết sản phẩm.
 - Nếu moderator có nút sửa/thêm thì mở form để cho thấy quyền quản lý nghiệp vụ.
-- Nếu một nút bị ẩn/bị khóa, nói rõ đây là hạn chế theo phân quyền.
+- Nếu một nút bị ẩn hoặc bị khóa, nói rõ đây là hạn chế theo phân quyền.
 
 3. Orders
 - Vào Orders.
@@ -115,8 +133,9 @@ Chức năng cần quay với moderator:
 
 Logout moderator.
 
+
 PHẦN 3 - SALE / NHÂN VIÊN BÁN HÀNG
-3:35 - 4:45
+3:40 - 4:45
 
 Đăng nhập:
 - Username: sale
@@ -130,14 +149,14 @@ Chức năng cần quay với sale:
 
 2. Products
 - Vào Products.
-- Tìm kiếm sản phẩm theo tên/SKU.
+- Tìm kiếm sản phẩm theo tên hoặc SKU.
 - Cho thấy sale xem được giá bán, tồn kho, hình ảnh sản phẩm để tư vấn khách.
 - Nếu không có nút thêm/sửa/xóa, nói: sale không có quyền quản trị sản phẩm.
 
 3. Orders / POS - phần quan trọng nhất của sale
 - Vào Orders.
 - Tạo đơn hàng mới.
-- Chọn khách hàng demo hoặc khách lẻ nếu app hỗ trợ.
+- Chọn khách hàng demo hoặc nhập số điện thoại khách mới để hiện hộp thoại nhập tên khách hàng.
 - Thêm sản phẩm vào đơn.
 - Tăng/giảm số lượng, xem tổng tiền.
 - Lưu đơn hàng nếu dữ liệu demo có thể thay đổi; nếu không, bấm Cancel sau khi đã cho thấy flow.
@@ -154,11 +173,12 @@ Chức năng cần quay với sale:
 - Thử vào Reports hoặc Settings nếu menu có hiện.
 - Nếu bị ẩn hoặc không cho thao tác, nói: sale bị hạn chế chức năng quản trị/báo cáo.
 
+
 PHẦN 4 - KẾT THÚC VÀ TÓM TẮT PHÂN QUYỀN
 4:45 - 5:00
 
 Nói tóm tắt:
-- Admin: quản lý toàn bộ hệ thống, sản phẩm, đơn hàng, khách hàng, báo cáo, settings, database/plugins/GraphQL.
+- Admin: quản lý toàn bộ hệ thống, sản phẩm, đơn hàng, khách hàng, báo cáo, settings, database/plugins/GraphQL và license.
 - Moderator: quản lý nghiệp vụ hằng ngày, xem dashboard, products, orders, customers, reports; hạn chế cấu hình hệ thống.
 - Sale: tập trung bán hàng, xem sản phẩm, tạo đơn/POS, tra cứu khách hàng; hạn chế quản trị và settings.
 
@@ -167,11 +187,25 @@ Nhắc lại tài khoản demo:
 - moderator / MyShop123!
 - sale / MyShop123!
 
-Checklist quay video:
-[ ] Mở Final\Release và cho thấy setup.exe
-[ ] Cho thấy Final\Release\App\ProjectTest.exe
+Nhắc lại license demo:
+- MYSHOP-1MONTH-2026
+- MYSHOP-1YEAR-2026
+- MYSHOP-LIFETIME-2026
+
+
+CHECKLIST QUAY VIDEO
+====================
+
+[ ] Mở Final\Release\App và cho thấy ProjectTest.exe
+[ ] Nói rõ Final\Release lần này không kèm setup.exe
 [ ] Login admin thành công
-[ ] Admin xem Dashboard, Products, Orders, Customers, Reports, Settings
+[ ] Admin xem Dashboard và bấm Refresh
+[ ] Admin xem Products, Orders, Customers, Reports, Settings
+[ ] Admin tạo thử order bằng số điện thoại khách hàng mới
+[ ] App hiện hộp thoại nhập tên khách hàng mới
+[ ] Khách hàng mới được lưu và đơn hàng xuất hiện sau khi lưu/Refresh
+[ ] Admin mở Backup/Restore và cho thấy nút browse PostgreSQL/bin, backup file, restore file
+[ ] Admin mở License và cho thấy plan/mã demo
 [ ] Logout admin
 [ ] Login moderator thành công
 [ ] Moderator xem Dashboard, Products, Orders, Customers, Reports
@@ -179,12 +213,15 @@ Checklist quay video:
 [ ] Login sale thành công
 [ ] Sale xem Products và tạo đơn Orders/POS
 [ ] Sale bị hạn chế hoặc không thao tác các phần quản trị nếu app có áp dụng
-[ ] Nhắc lại tài khoản demo và kết luận
+[ ] Nhắc lại tài khoản demo, license demo và kết luận
 
-Lưu ý khi quay:
+
+LƯU Ý KHI QUAY
+==============
+
 - Quay 1080p, zoom 100% hoặc 125% để chữ rõ.
 - Mỗi vai trò chỉ quay nhanh các thao tác chính, không cần nhập quá nhiều dữ liệu.
 - Nếu tạo/sửa dữ liệu, dùng dữ liệu demo để tránh lộ thông tin cá nhân.
 - Không hiện password thật, API key, connection string cá nhân.
-- Nếu Windows SmartScreen cảnh báo setup.exe, chọn More info > Run anyway và nói app chưa code-signing.
-- Nếu PostgreSQL port 5432 bị chiếm, nói theo README: dùng PostgreSQL có sẵn hoặc đổi port/cấu hình lại connection.
+- Nếu app báo thiếu Windows App Runtime, cài Windows App Runtime rồi mở lại ProjectTest.exe.
+- Nếu PostgreSQL port 5432 bị chiếm, đổi port trong connection string hoặc tắt service PostgreSQL đang chiếm port.

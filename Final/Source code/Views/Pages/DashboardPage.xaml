@@ -35,6 +35,11 @@
                         Style="{ThemeResource PageIntroTextBlockStyle}"
                         Text="Track low stock items, best-selling products, the latest three orders, and the daily revenue trend for the current month." />
 
+                    <Button
+                        HorizontalAlignment="Left"
+                        Command="{Binding RefreshCommand}"
+                        Content="Refresh" />
+
                     <Border
                         Padding="18"
                         Background="#FFFFFFFF"

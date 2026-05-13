@@ -163,10 +163,28 @@ public sealed partial class MainWindow : Window, INotifyPropertyChanged
         }
 
         var codeBox = new TextBox { PlaceholderText = "Activation code" };
+        var content = new StackPanel
+        {
+            Spacing = 10,
+            Children =
+            {
+                new TextBlock
+                {
+                    Text = "Enter a license code to activate 1 month, 1 year, or lifetime access.",
+                    TextWrapping = TextWrapping.WrapWholeWords
+                },
+                new TextBlock
+                {
+                    Text = $"Demo codes: {LicenseService.DemoOneMonthCode} | {LicenseService.DemoOneYearCode} | {LicenseService.DemoLifetimeCode}",
+                    TextWrapping = TextWrapping.WrapWholeWords
+                },
+                codeBox
+            }
+        };
         var dialog = new ContentDialog
         {
             Title = "Trial expired",
-            Content = codeBox,
+            Content = content,
             PrimaryButtonText = "Activate",
             CloseButtonText = "Exit",
             XamlRoot = ContentFrame.XamlRoot

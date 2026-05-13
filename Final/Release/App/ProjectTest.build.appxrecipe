@@ -1,0 +1,1608 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Machine>WIN-3KCCN0AS5KF</Machine>
+    <WindowsUser>Administrator</WindowsUser>
+    <TargetPlatformIdentifier>Windows</TargetPlatformIdentifier>
+    <TargetOsVersion>10.0</TargetOsVersion>
+    <TargetOsDescription>Windows 10.0</TargetOsDescription>
+    <SolutionConfiguration>Release|x64</SolutionConfiguration>
+    <PackageArchitecture>x64</PackageArchitecture>
+    <PackageIdentityName>ff9ef660-e70d-4e2a-8cbe-a57f3b431c5b</PackageIdentityName>
+    <PackageIdentityPublisher>CN=Administrator</PackageIdentityPublisher>
+    <IntermediateOutputPath>C:\Users\Administrator\AppData\Local\ProjectTest\artifacts\obj\x64\Release\net8.0-windows10.0.19041.0\win-x64\</IntermediateOutputPath>
+    <RemoteDeploymentType>CopyToDevice</RemoteDeploymentType>
+    <PackageRegistrationPath></PackageRegistrationPath>
+    <RemoveNonLayoutFiles>false</RemoveNonLayoutFiles>
+    <DeployOptionalPackages>false</DeployOptionalPackages>
+    <WindowsSdkPath>C:\Program Files %28x86%29\Windows Kits\10\</WindowsSdkPath>
+    <LayoutDir>C:\Users\Administrator\AppData\Local\ProjectTest\artifacts\bin\x64\Release\net8.0-windows10.0.19041.0\win-x64\AppX</LayoutDir>
+  </PropertyGroup>
+  <ItemGroup>
+    <AppXManifest Include="C:\Users\Administrator\AppData\Local\ProjectTest\artifacts\bin\x64\Release\net8.0-windows10.0.19041.0\win-x64\AppxManifest.xml">
+      <PackagePath>AppxManifest.xml</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+    </AppXManifest>
+  </ItemGroup>
+  <ItemGroup>
+    <AppxPackagedFile Include="C:\Users\Administrator\AppData\Local\ProjectTest\artifacts\bin\x64\Release\net8.0-windows10.0.19041.0\win-x64\ProjectTest.runtimeconfig.json">
+      <PackagePath>ProjectTest.runtimeconfig.json</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Administrator\AppData\Local\ProjectTest\artifacts\obj\x64\Release\net8.0-windows10.0.19041.0\win-x64\apphost.exe">
+      <PackagePath>ProjectTest.exe</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\MEGA\lap trinh windows\ProjectTest\Assets\GamingProducts\100_1.jpg">
+      <PackagePath>Assets\GamingProducts\100_1.jpg</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\MEGA\lap trinh windows\ProjectTest\Assets\GamingProducts\100_2.jpg">
+      <PackagePath>Assets\GamingProducts\100_2.jpg</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\MEGA\lap trinh windows\ProjectTest\Assets\GamingProducts\100_3.jpg">
+      <PackagePath>Assets\GamingProducts\100_3.jpg</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\MEGA\lap trinh windows\ProjectTest\Assets\GamingProducts\101_1.jpg">
+      <PackagePath>Assets\GamingProducts\101_1.jpg</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\MEGA\lap trinh windows\ProjectTest\Assets\GamingProducts\101_2.jpg">
+      <PackagePath>Assets\GamingProducts\101_2.jpg</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\MEGA\lap trinh windows\ProjectTest\Assets\GamingProducts\101_3.jpg">
+      <PackagePath>Assets\GamingProducts\101_3.jpg</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\MEGA\lap trinh windows\ProjectTest\Assets\GamingProducts\102_1.jpg">
+      <PackagePath>Assets\GamingProducts\102_1.jpg</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\MEGA\lap trinh windows\ProjectTest\Assets\GamingProducts\102_2.jpg">
+      <PackagePath>Assets\GamingProducts\102_2.jpg</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\MEGA\lap trinh windows\ProjectTest\Assets\GamingProducts\102_3.jpg">
+      <PackagePath>Assets\GamingProducts\102_3.jpg</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\MEGA\lap trinh windows\ProjectTest\Assets\GamingProducts\103_1.jpg">
+      <PackagePath>Assets\GamingProducts\103_1.jpg</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\MEGA\lap trinh windows\ProjectTest\Assets\GamingProducts\103_2.jpg">
+      <PackagePath>Assets\GamingProducts\103_2.jpg</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\MEGA\lap trinh windows\ProjectTest\Assets\GamingProducts\103_3.jpg">
+      <PackagePath>Assets\GamingProducts\103_3.jpg</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\MEGA\lap trinh windows\ProjectTest\Assets\GamingProducts\104_1.jpg">
+      <PackagePath>Assets\GamingProducts\104_1.jpg</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\MEGA\lap trinh windows\ProjectTest\Assets\GamingProducts\104_2.jpg">
+      <PackagePath>Assets\GamingProducts\104_2.jpg</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\MEGA\lap trinh windows\ProjectTest\Assets\GamingProducts\104_3.jpg">
+      <PackagePath>Assets\GamingProducts\104_3.jpg</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\MEGA\lap trinh windows\ProjectTest\Assets\GamingProducts\105_1.jpg">
+      <PackagePath>Assets\GamingProducts\105_1.jpg</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\MEGA\lap trinh windows\ProjectTest\Assets\GamingProducts\105_2.jpg">
+      <PackagePath>Assets\GamingProducts\105_2.jpg</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\MEGA\lap trinh windows\ProjectTest\Assets\GamingProducts\105_3.jpg">
+      <PackagePath>Assets\GamingProducts\105_3.jpg</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\MEGA\lap trinh windows\ProjectTest\Assets\GamingProducts\106_1.jpg">
+      <PackagePath>Assets\GamingProducts\106_1.jpg</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\MEGA\lap trinh windows\ProjectTest\Assets\GamingProducts\106_2.jpg">
+      <PackagePath>Assets\GamingProducts\106_2.jpg</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\MEGA\lap trinh windows\ProjectTest\Assets\GamingProducts\106_3.jpg">
+      <PackagePath>Assets\GamingProducts\106_3.jpg</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\MEGA\lap trinh windows\ProjectTest\Assets\GamingProducts\107_1.jpg">
+      <PackagePath>Assets\GamingProducts\107_1.jpg</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\MEGA\lap trinh windows\ProjectTest\Assets\GamingProducts\107_2.jpg">
+      <PackagePath>Assets\GamingProducts\107_2.jpg</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\MEGA\lap trinh windows\ProjectTest\Assets\GamingProducts\107_3.jpg">
+      <PackagePath>Assets\GamingProducts\107_3.jpg</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\MEGA\lap trinh windows\ProjectTest\Assets\GamingProducts\108_1.jpg">
+      <PackagePath>Assets\GamingProducts\108_1.jpg</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\MEGA\lap trinh windows\ProjectTest\Assets\GamingProducts\108_2.jpg">
+      <PackagePath>Assets\GamingProducts\108_2.jpg</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\MEGA\lap trinh windows\ProjectTest\Assets\GamingProducts\108_3.jpg">
+      <PackagePath>Assets\GamingProducts\108_3.jpg</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\MEGA\lap trinh windows\ProjectTest\Assets\GamingProducts\109_1.jpg">
+      <PackagePath>Assets\GamingProducts\109_1.jpg</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\MEGA\lap trinh windows\ProjectTest\Assets\GamingProducts\109_2.jpg">
+      <PackagePath>Assets\GamingProducts\109_2.jpg</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\MEGA\lap trinh windows\ProjectTest\Assets\GamingProducts\109_3.jpg">
+      <PackagePath>Assets\GamingProducts\109_3.jpg</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\MEGA\lap trinh windows\ProjectTest\Assets\GamingProducts\10_1.jpg">
+      <PackagePath>Assets\GamingProducts\10_1.jpg</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\MEGA\lap trinh windows\ProjectTest\Assets\GamingProducts\10_2.jpg">
+      <PackagePath>Assets\GamingProducts\10_2.jpg</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\MEGA\lap trinh windows\ProjectTest\Assets\GamingProducts\10_3.jpg">
+      <PackagePath>Assets\GamingProducts\10_3.jpg</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\MEGA\lap trinh windows\ProjectTest\Assets\GamingProducts\110_1.jpg">
+      <PackagePath>Assets\GamingProducts\110_1.jpg</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\MEGA\lap trinh windows\ProjectTest\Assets\GamingProducts\110_2.jpg">
+      <PackagePath>Assets\GamingProducts\110_2.jpg</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\MEGA\lap trinh windows\ProjectTest\Assets\GamingProducts\110_3.jpg">
+      <PackagePath>Assets\GamingProducts\110_3.jpg</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\MEGA\lap trinh windows\ProjectTest\Assets\GamingProducts\11_1.jpg">
+      <PackagePath>Assets\GamingProducts\11_1.jpg</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\MEGA\lap trinh windows\ProjectTest\Assets\GamingProducts\11_2.jpg">
+      <PackagePath>Assets\GamingProducts\11_2.jpg</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\MEGA\lap trinh windows\ProjectTest\Assets\GamingProducts\11_3.jpg">
+      <PackagePath>Assets\GamingProducts\11_3.jpg</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\MEGA\lap trinh windows\ProjectTest\Assets\GamingProducts\12_1.jpg">
+      <PackagePath>Assets\GamingProducts\12_1.jpg</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\MEGA\lap trinh windows\ProjectTest\Assets\GamingProducts\12_2.jpg">
+      <PackagePath>Assets\GamingProducts\12_2.jpg</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\MEGA\lap trinh windows\ProjectTest\Assets\GamingProducts\12_3.jpg">
+      <PackagePath>Assets\GamingProducts\12_3.jpg</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\MEGA\lap trinh windows\ProjectTest\Assets\GamingProducts\13_1.jpg">
+      <PackagePath>Assets\GamingProducts\13_1.jpg</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\MEGA\lap trinh windows\ProjectTest\Assets\GamingProducts\13_2.jpg">
+      <PackagePath>Assets\GamingProducts\13_2.jpg</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\MEGA\lap trinh windows\ProjectTest\Assets\GamingProducts\13_3.jpg">
+      <PackagePath>Assets\GamingProducts\13_3.jpg</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\MEGA\lap trinh windows\ProjectTest\Assets\GamingProducts\14_1.jpg">
+      <PackagePath>Assets\GamingProducts\14_1.jpg</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\MEGA\lap trinh windows\ProjectTest\Assets\GamingProducts\14_2.jpg">
+      <PackagePath>Assets\GamingProducts\14_2.jpg</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\MEGA\lap trinh windows\ProjectTest\Assets\GamingProducts\14_3.jpg">
+      <PackagePath>Assets\GamingProducts\14_3.jpg</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\MEGA\lap trinh windows\ProjectTest\Assets\GamingProducts\15_1.jpg">
+      <PackagePath>Assets\GamingProducts\15_1.jpg</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\MEGA\lap trinh windows\ProjectTest\Assets\GamingProducts\15_2.jpg">
+      <PackagePath>Assets\GamingProducts\15_2.jpg</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\MEGA\lap trinh windows\ProjectTest\Assets\GamingProducts\15_3.jpg">
+      <PackagePath>Assets\GamingProducts\15_3.jpg</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\MEGA\lap trinh windows\ProjectTest\Assets\GamingProducts\16_1.jpg">
+      <PackagePath>Assets\GamingProducts\16_1.jpg</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\MEGA\lap trinh windows\ProjectTest\Assets\GamingProducts\16_2.jpg">
+      <PackagePath>Assets\GamingProducts\16_2.jpg</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\MEGA\lap trinh windows\ProjectTest\Assets\GamingProducts\16_3.jpg">
+      <PackagePath>Assets\GamingProducts\16_3.jpg</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\MEGA\lap trinh windows\ProjectTest\Assets\GamingProducts\17_1.jpg">
+      <PackagePath>Assets\GamingProducts\17_1.jpg</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\MEGA\lap trinh windows\ProjectTest\Assets\GamingProducts\17_2.jpg">
+      <PackagePath>Assets\GamingProducts\17_2.jpg</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\MEGA\lap trinh windows\ProjectTest\Assets\GamingProducts\17_3.jpg">
+      <PackagePath>Assets\GamingProducts\17_3.jpg</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\MEGA\lap trinh windows\ProjectTest\Assets\GamingProducts\18_1.jpg">
+      <PackagePath>Assets\GamingProducts\18_1.jpg</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\MEGA\lap trinh windows\ProjectTest\Assets\GamingProducts\18_2.jpg">
+      <PackagePath>Assets\GamingProducts\18_2.jpg</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\MEGA\lap trinh windows\ProjectTest\Assets\GamingProducts\18_3.jpg">
+      <PackagePath>Assets\GamingProducts\18_3.jpg</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\MEGA\lap trinh windows\ProjectTest\Assets\GamingProducts\19_1.jpg">
+      <PackagePath>Assets\GamingProducts\19_1.jpg</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\MEGA\lap trinh windows\ProjectTest\Assets\GamingProducts\19_2.jpg">
+      <PackagePath>Assets\GamingProducts\19_2.jpg</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\MEGA\lap trinh windows\ProjectTest\Assets\GamingProducts\19_3.jpg">
+      <PackagePath>Assets\GamingProducts\19_3.jpg</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\MEGA\lap trinh windows\ProjectTest\Assets\GamingProducts\1_1.jpg">
+      <PackagePath>Assets\GamingProducts\1_1.jpg</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\MEGA\lap trinh windows\ProjectTest\Assets\GamingProducts\1_2.jpg">
+      <PackagePath>Assets\GamingProducts\1_2.jpg</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\MEGA\lap trinh windows\ProjectTest\Assets\GamingProducts\1_3.jpg">
+      <PackagePath>Assets\GamingProducts\1_3.jpg</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\MEGA\lap trinh windows\ProjectTest\Assets\GamingProducts\20_1.jpg">
+      <PackagePath>Assets\GamingProducts\20_1.jpg</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\MEGA\lap trinh windows\ProjectTest\Assets\GamingProducts\20_2.jpg">
+      <PackagePath>Assets\GamingProducts\20_2.jpg</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\MEGA\lap trinh windows\ProjectTest\Assets\GamingProducts\20_3.jpg">
+      <PackagePath>Assets\GamingProducts\20_3.jpg</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\MEGA\lap trinh windows\ProjectTest\Assets\GamingProducts\21_1.jpg">
+      <PackagePath>Assets\GamingProducts\21_1.jpg</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\MEGA\lap trinh windows\ProjectTest\Assets\GamingProducts\21_2.jpg">
+      <PackagePath>Assets\GamingProducts\21_2.jpg</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\MEGA\lap trinh windows\ProjectTest\Assets\GamingProducts\21_3.jpg">
+      <PackagePath>Assets\GamingProducts\21_3.jpg</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\MEGA\lap trinh windows\ProjectTest\Assets\GamingProducts\22_1.jpg">
+      <PackagePath>Assets\GamingProducts\22_1.jpg</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\MEGA\lap trinh windows\ProjectTest\Assets\GamingProducts\22_2.jpg">
+      <PackagePath>Assets\GamingProducts\22_2.jpg</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\MEGA\lap trinh windows\ProjectTest\Assets\GamingProducts\22_3.jpg">
+      <PackagePath>Assets\GamingProducts\22_3.jpg</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\MEGA\lap trinh windows\ProjectTest\Assets\GamingProducts\23_1.jpg">
+      <PackagePath>Assets\GamingProducts\23_1.jpg</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\MEGA\lap trinh windows\ProjectTest\Assets\GamingProducts\23_2.jpg">
+      <PackagePath>Assets\GamingProducts\23_2.jpg</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\MEGA\lap trinh windows\ProjectTest\Assets\GamingProducts\23_3.jpg">
+      <PackagePath>Assets\GamingProducts\23_3.jpg</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\MEGA\lap trinh windows\ProjectTest\Assets\GamingProducts\24_1.jpg">
+      <PackagePath>Assets\GamingProducts\24_1.jpg</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\MEGA\lap trinh windows\ProjectTest\Assets\GamingProducts\24_2.jpg">
+      <PackagePath>Assets\GamingProducts\24_2.jpg</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\MEGA\lap trinh windows\ProjectTest\Assets\GamingProducts\24_3.jpg">
+      <PackagePath>Assets\GamingProducts\24_3.jpg</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\MEGA\lap trinh windows\ProjectTest\Assets\GamingProducts\25_1.jpg">
+      <PackagePath>Assets\GamingProducts\25_1.jpg</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\MEGA\lap trinh windows\ProjectTest\Assets\GamingProducts\25_2.jpg">
+      <PackagePath>Assets\GamingProducts\25_2.jpg</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\MEGA\lap trinh windows\ProjectTest\Assets\GamingProducts\25_3.jpg">
+      <PackagePath>Assets\GamingProducts\25_3.jpg</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\MEGA\lap trinh windows\ProjectTest\Assets\GamingProducts\26_1.jpg">
+      <PackagePath>Assets\GamingProducts\26_1.jpg</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\MEGA\lap trinh windows\ProjectTest\Assets\GamingProducts\26_2.jpg">
+      <PackagePath>Assets\GamingProducts\26_2.jpg</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\MEGA\lap trinh windows\ProjectTest\Assets\GamingProducts\26_3.jpg">
+      <PackagePath>Assets\GamingProducts\26_3.jpg</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\MEGA\lap trinh windows\ProjectTest\Assets\GamingProducts\27_1.jpg">
+      <PackagePath>Assets\GamingProducts\27_1.jpg</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\MEGA\lap trinh windows\ProjectTest\Assets\GamingProducts\27_2.jpg">
+      <PackagePath>Assets\GamingProducts\27_2.jpg</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\MEGA\lap trinh windows\ProjectTest\Assets\GamingProducts\27_3.jpg">
+      <PackagePath>Assets\GamingProducts\27_3.jpg</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\MEGA\lap trinh windows\ProjectTest\Assets\GamingProducts\28_1.jpg">
+      <PackagePath>Assets\GamingProducts\28_1.jpg</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\MEGA\lap trinh windows\ProjectTest\Assets\GamingProducts\28_2.jpg">
+      <PackagePath>Assets\GamingProducts\28_2.jpg</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\MEGA\lap trinh windows\ProjectTest\Assets\GamingProducts\28_3.jpg">
+      <PackagePath>Assets\GamingProducts\28_3.jpg</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\MEGA\lap trinh windows\ProjectTest\Assets\GamingProducts\29_1.jpg">
+      <PackagePath>Assets\GamingProducts\29_1.jpg</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\MEGA\lap trinh windows\ProjectTest\Assets\GamingProducts\29_2.jpg">
+      <PackagePath>Assets\GamingProducts\29_2.jpg</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\MEGA\lap trinh windows\ProjectTest\Assets\GamingProducts\29_3.jpg">
+      <PackagePath>Assets\GamingProducts\29_3.jpg</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\MEGA\lap trinh windows\ProjectTest\Assets\GamingProducts\2_1.jpg">
+      <PackagePath>Assets\GamingProducts\2_1.jpg</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\MEGA\lap trinh windows\ProjectTest\Assets\GamingProducts\2_2.jpg">
+      <PackagePath>Assets\GamingProducts\2_2.jpg</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\MEGA\lap trinh windows\ProjectTest\Assets\GamingProducts\2_3.jpg">
+      <PackagePath>Assets\GamingProducts\2_3.jpg</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\MEGA\lap trinh windows\ProjectTest\Assets\GamingProducts\30_1.jpg">
+      <PackagePath>Assets\GamingProducts\30_1.jpg</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\MEGA\lap trinh windows\ProjectTest\Assets\GamingProducts\30_2.jpg">
+      <PackagePath>Assets\GamingProducts\30_2.jpg</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\MEGA\lap trinh windows\ProjectTest\Assets\GamingProducts\30_3.jpg">
+      <PackagePath>Assets\GamingProducts\30_3.jpg</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\MEGA\lap trinh windows\ProjectTest\Assets\GamingProducts\31_1.jpg">
+      <PackagePath>Assets\GamingProducts\31_1.jpg</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\MEGA\lap trinh windows\ProjectTest\Assets\GamingProducts\31_2.jpg">
+      <PackagePath>Assets\GamingProducts\31_2.jpg</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\MEGA\lap trinh windows\ProjectTest\Assets\GamingProducts\31_3.jpg">
+      <PackagePath>Assets\GamingProducts\31_3.jpg</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\MEGA\lap trinh windows\ProjectTest\Assets\GamingProducts\32_1.jpg">
+      <PackagePath>Assets\GamingProducts\32_1.jpg</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\MEGA\lap trinh windows\ProjectTest\Assets\GamingProducts\32_2.jpg">
+      <PackagePath>Assets\GamingProducts\32_2.jpg</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\MEGA\lap trinh windows\ProjectTest\Assets\GamingProducts\32_3.jpg">
+      <PackagePath>Assets\GamingProducts\32_3.jpg</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\MEGA\lap trinh windows\ProjectTest\Assets\GamingProducts\33_1.jpg">
+      <PackagePath>Assets\GamingProducts\33_1.jpg</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\MEGA\lap trinh windows\ProjectTest\Assets\GamingProducts\33_2.jpg">
+      <PackagePath>Assets\GamingProducts\33_2.jpg</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\MEGA\lap trinh windows\ProjectTest\Assets\GamingProducts\33_3.jpg">
+      <PackagePath>Assets\GamingProducts\33_3.jpg</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\MEGA\lap trinh windows\ProjectTest\Assets\GamingProducts\34_1.jpg">
+      <PackagePath>Assets\GamingProducts\34_1.jpg</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\MEGA\lap trinh windows\ProjectTest\Assets\GamingProducts\34_2.jpg">
+      <PackagePath>Assets\GamingProducts\34_2.jpg</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\MEGA\lap trinh windows\ProjectTest\Assets\GamingProducts\34_3.jpg">
+      <PackagePath>Assets\GamingProducts\34_3.jpg</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\MEGA\lap trinh windows\ProjectTest\Assets\GamingProducts\35_1.jpg">
+      <PackagePath>Assets\GamingProducts\35_1.jpg</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\MEGA\lap trinh windows\ProjectTest\Assets\GamingProducts\35_2.jpg">
+      <PackagePath>Assets\GamingProducts\35_2.jpg</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\MEGA\lap trinh windows\ProjectTest\Assets\GamingProducts\35_3.jpg">
+      <PackagePath>Assets\GamingProducts\35_3.jpg</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\MEGA\lap trinh windows\ProjectTest\Assets\GamingProducts\36_1.jpg">
+      <PackagePath>Assets\GamingProducts\36_1.jpg</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\MEGA\lap trinh windows\ProjectTest\Assets\GamingProducts\36_2.jpg">
+      <PackagePath>Assets\GamingProducts\36_2.jpg</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\MEGA\lap trinh windows\ProjectTest\Assets\GamingProducts\36_3.jpg">
+      <PackagePath>Assets\GamingProducts\36_3.jpg</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\MEGA\lap trinh windows\ProjectTest\Assets\GamingProducts\37_1.jpg">
+      <PackagePath>Assets\GamingProducts\37_1.jpg</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\MEGA\lap trinh windows\ProjectTest\Assets\GamingProducts\37_2.jpg">
+      <PackagePath>Assets\GamingProducts\37_2.jpg</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\MEGA\lap trinh windows\ProjectTest\Assets\GamingProducts\37_3.jpg">
+      <PackagePath>Assets\GamingProducts\37_3.jpg</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\MEGA\lap trinh windows\ProjectTest\Assets\GamingProducts\38_1.jpg">
+      <PackagePath>Assets\GamingProducts\38_1.jpg</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\MEGA\lap trinh windows\ProjectTest\Assets\GamingProducts\38_2.jpg">
+      <PackagePath>Assets\GamingProducts\38_2.jpg</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\MEGA\lap trinh windows\ProjectTest\Assets\GamingProducts\38_3.jpg">
+      <PackagePath>Assets\GamingProducts\38_3.jpg</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\MEGA\lap trinh windows\ProjectTest\Assets\GamingProducts\39_1.jpg">
+      <PackagePath>Assets\GamingProducts\39_1.jpg</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\MEGA\lap trinh windows\ProjectTest\Assets\GamingProducts\39_2.jpg">
+      <PackagePath>Assets\GamingProducts\39_2.jpg</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\MEGA\lap trinh windows\ProjectTest\Assets\GamingProducts\39_3.jpg">
+      <PackagePath>Assets\GamingProducts\39_3.jpg</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\MEGA\lap trinh windows\ProjectTest\Assets\GamingProducts\3_1.jpg">
+      <PackagePath>Assets\GamingProducts\3_1.jpg</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\MEGA\lap trinh windows\ProjectTest\Assets\GamingProducts\3_2.jpg">
+      <PackagePath>Assets\GamingProducts\3_2.jpg</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\MEGA\lap trinh windows\ProjectTest\Assets\GamingProducts\3_3.jpg">
+      <PackagePath>Assets\GamingProducts\3_3.jpg</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\MEGA\lap trinh windows\ProjectTest\Assets\GamingProducts\40_1.jpg">
+      <PackagePath>Assets\GamingProducts\40_1.jpg</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\MEGA\lap trinh windows\ProjectTest\Assets\GamingProducts\40_2.jpg">
+      <PackagePath>Assets\GamingProducts\40_2.jpg</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\MEGA\lap trinh windows\ProjectTest\Assets\GamingProducts\40_3.jpg">
+      <PackagePath>Assets\GamingProducts\40_3.jpg</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\MEGA\lap trinh windows\ProjectTest\Assets\GamingProducts\41_1.jpg">
+      <PackagePath>Assets\GamingProducts\41_1.jpg</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\MEGA\lap trinh windows\ProjectTest\Assets\GamingProducts\41_2.jpg">
+      <PackagePath>Assets\GamingProducts\41_2.jpg</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\MEGA\lap trinh windows\ProjectTest\Assets\GamingProducts\41_3.jpg">
+      <PackagePath>Assets\GamingProducts\41_3.jpg</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\MEGA\lap trinh windows\ProjectTest\Assets\GamingProducts\42_1.jpg">
+      <PackagePath>Assets\GamingProducts\42_1.jpg</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\MEGA\lap trinh windows\ProjectTest\Assets\GamingProducts\42_2.jpg">
+      <PackagePath>Assets\GamingProducts\42_2.jpg</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\MEGA\lap trinh windows\ProjectTest\Assets\GamingProducts\42_3.jpg">
+      <PackagePath>Assets\GamingProducts\42_3.jpg</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\MEGA\lap trinh windows\ProjectTest\Assets\GamingProducts\43_1.jpg">
+      <PackagePath>Assets\GamingProducts\43_1.jpg</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\MEGA\lap trinh windows\ProjectTest\Assets\GamingProducts\43_2.jpg">
+      <PackagePath>Assets\GamingProducts\43_2.jpg</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\MEGA\lap trinh windows\ProjectTest\Assets\GamingProducts\43_3.jpg">
+      <PackagePath>Assets\GamingProducts\43_3.jpg</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\MEGA\lap trinh windows\ProjectTest\Assets\GamingProducts\44_1.jpg">
+      <PackagePath>Assets\GamingProducts\44_1.jpg</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\MEGA\lap trinh windows\ProjectTest\Assets\GamingProducts\44_2.jpg">
+      <PackagePath>Assets\GamingProducts\44_2.jpg</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\MEGA\lap trinh windows\ProjectTest\Assets\GamingProducts\44_3.jpg">
+      <PackagePath>Assets\GamingProducts\44_3.jpg</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\MEGA\lap trinh windows\ProjectTest\Assets\GamingProducts\45_1.jpg">
+      <PackagePath>Assets\GamingProducts\45_1.jpg</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\MEGA\lap trinh windows\ProjectTest\Assets\GamingProducts\45_2.jpg">
+      <PackagePath>Assets\GamingProducts\45_2.jpg</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\MEGA\lap trinh windows\ProjectTest\Assets\GamingProducts\45_3.jpg">
+      <PackagePath>Assets\GamingProducts\45_3.jpg</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\MEGA\lap trinh windows\ProjectTest\Assets\GamingProducts\46_1.jpg">
+      <PackagePath>Assets\GamingProducts\46_1.jpg</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\MEGA\lap trinh windows\ProjectTest\Assets\GamingProducts\46_2.jpg">
+      <PackagePath>Assets\GamingProducts\46_2.jpg</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\MEGA\lap trinh windows\ProjectTest\Assets\GamingProducts\46_3.jpg">
+      <PackagePath>Assets\GamingProducts\46_3.jpg</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\MEGA\lap trinh windows\ProjectTest\Assets\GamingProducts\47_1.jpg">
+      <PackagePath>Assets\GamingProducts\47_1.jpg</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\MEGA\lap trinh windows\ProjectTest\Assets\GamingProducts\47_2.jpg">
+      <PackagePath>Assets\GamingProducts\47_2.jpg</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\MEGA\lap trinh windows\ProjectTest\Assets\GamingProducts\47_3.jpg">
+      <PackagePath>Assets\GamingProducts\47_3.jpg</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\MEGA\lap trinh windows\ProjectTest\Assets\GamingProducts\48_1.jpg">
+      <PackagePath>Assets\GamingProducts\48_1.jpg</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\MEGA\lap trinh windows\ProjectTest\Assets\GamingProducts\48_2.jpg">
+      <PackagePath>Assets\GamingProducts\48_2.jpg</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\MEGA\lap trinh windows\ProjectTest\Assets\GamingProducts\48_3.jpg">
+      <PackagePath>Assets\GamingProducts\48_3.jpg</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\MEGA\lap trinh windows\ProjectTest\Assets\GamingProducts\49_1.jpg">
+      <PackagePath>Assets\GamingProducts\49_1.jpg</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\MEGA\lap trinh windows\ProjectTest\Assets\GamingProducts\49_2.jpg">
+      <PackagePath>Assets\GamingProducts\49_2.jpg</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\MEGA\lap trinh windows\ProjectTest\Assets\GamingProducts\49_3.jpg">
+      <PackagePath>Assets\GamingProducts\49_3.jpg</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\MEGA\lap trinh windows\ProjectTest\Assets\GamingProducts\4_1.jpg">
+      <PackagePath>Assets\GamingProducts\4_1.jpg</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\MEGA\lap trinh windows\ProjectTest\Assets\GamingProducts\4_2.jpg">
+      <PackagePath>Assets\GamingProducts\4_2.jpg</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\MEGA\lap trinh windows\ProjectTest\Assets\GamingProducts\4_3.jpg">
+      <PackagePath>Assets\GamingProducts\4_3.jpg</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\MEGA\lap trinh windows\ProjectTest\Assets\GamingProducts\50_1.jpg">
+      <PackagePath>Assets\GamingProducts\50_1.jpg</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\MEGA\lap trinh windows\ProjectTest\Assets\GamingProducts\50_2.jpg">
+      <PackagePath>Assets\GamingProducts\50_2.jpg</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\MEGA\lap trinh windows\ProjectTest\Assets\GamingProducts\50_3.jpg">
+      <PackagePath>Assets\GamingProducts\50_3.jpg</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\MEGA\lap trinh windows\ProjectTest\Assets\GamingProducts\51_1.jpg">
+      <PackagePath>Assets\GamingProducts\51_1.jpg</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\MEGA\lap trinh windows\ProjectTest\Assets\GamingProducts\51_2.jpg">
+      <PackagePath>Assets\GamingProducts\51_2.jpg</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\MEGA\lap trinh windows\ProjectTest\Assets\GamingProducts\51_3.jpg">
+      <PackagePath>Assets\GamingProducts\51_3.jpg</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\MEGA\lap trinh windows\ProjectTest\Assets\GamingProducts\52_1.jpg">
+      <PackagePath>Assets\GamingProducts\52_1.jpg</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\MEGA\lap trinh windows\ProjectTest\Assets\GamingProducts\52_2.jpg">
+      <PackagePath>Assets\GamingProducts\52_2.jpg</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\MEGA\lap trinh windows\ProjectTest\Assets\GamingProducts\52_3.jpg">
+      <PackagePath>Assets\GamingProducts\52_3.jpg</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\MEGA\lap trinh windows\ProjectTest\Assets\GamingProducts\53_1.jpg">
+      <PackagePath>Assets\GamingProducts\53_1.jpg</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\MEGA\lap trinh windows\ProjectTest\Assets\GamingProducts\53_2.jpg">
+      <PackagePath>Assets\GamingProducts\53_2.jpg</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\MEGA\lap trinh windows\ProjectTest\Assets\GamingProducts\53_3.jpg">
+      <PackagePath>Assets\GamingProducts\53_3.jpg</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\MEGA\lap trinh windows\ProjectTest\Assets\GamingProducts\54_1.jpg">
+      <PackagePath>Assets\GamingProducts\54_1.jpg</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\MEGA\lap trinh windows\ProjectTest\Assets\GamingProducts\54_2.jpg">
+      <PackagePath>Assets\GamingProducts\54_2.jpg</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\MEGA\lap trinh windows\ProjectTest\Assets\GamingProducts\54_3.jpg">
+      <PackagePath>Assets\GamingProducts\54_3.jpg</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\MEGA\lap trinh windows\ProjectTest\Assets\GamingProducts\55_1.jpg">
+      <PackagePath>Assets\GamingProducts\55_1.jpg</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\MEGA\lap trinh windows\ProjectTest\Assets\GamingProducts\55_2.jpg">
+      <PackagePath>Assets\GamingProducts\55_2.jpg</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\MEGA\lap trinh windows\ProjectTest\Assets\GamingProducts\55_3.jpg">
+      <PackagePath>Assets\GamingProducts\55_3.jpg</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\MEGA\lap trinh windows\ProjectTest\Assets\GamingProducts\56_1.jpg">
+      <PackagePath>Assets\GamingProducts\56_1.jpg</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\MEGA\lap trinh windows\ProjectTest\Assets\GamingProducts\56_2.jpg">
+      <PackagePath>Assets\GamingProducts\56_2.jpg</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\MEGA\lap trinh windows\ProjectTest\Assets\GamingProducts\56_3.jpg">
+      <PackagePath>Assets\GamingProducts\56_3.jpg</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\MEGA\lap trinh windows\ProjectTest\Assets\GamingProducts\57_1.jpg">
+      <PackagePath>Assets\GamingProducts\57_1.jpg</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\MEGA\lap trinh windows\ProjectTest\Assets\GamingProducts\57_2.jpg">
+      <PackagePath>Assets\GamingProducts\57_2.jpg</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\MEGA\lap trinh windows\ProjectTest\Assets\GamingProducts\57_3.jpg">
+      <PackagePath>Assets\GamingProducts\57_3.jpg</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\MEGA\lap trinh windows\ProjectTest\Assets\GamingProducts\58_1.jpg">
+      <PackagePath>Assets\GamingProducts\58_1.jpg</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\MEGA\lap trinh windows\ProjectTest\Assets\GamingProducts\58_2.jpg">
+      <PackagePath>Assets\GamingProducts\58_2.jpg</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\MEGA\lap trinh windows\ProjectTest\Assets\GamingProducts\58_3.jpg">
+      <PackagePath>Assets\GamingProducts\58_3.jpg</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\MEGA\lap trinh windows\ProjectTest\Assets\GamingProducts\59_1.jpg">
+      <PackagePath>Assets\GamingProducts\59_1.jpg</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\MEGA\lap trinh windows\ProjectTest\Assets\GamingProducts\59_2.jpg">
+      <PackagePath>Assets\GamingProducts\59_2.jpg</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\MEGA\lap trinh windows\ProjectTest\Assets\GamingProducts\59_3.jpg">
+      <PackagePath>Assets\GamingProducts\59_3.jpg</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\MEGA\lap trinh windows\ProjectTest\Assets\GamingProducts\5_1.jpg">
+      <PackagePath>Assets\GamingProducts\5_1.jpg</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\MEGA\lap trinh windows\ProjectTest\Assets\GamingProducts\5_2.jpg">
+      <PackagePath>Assets\GamingProducts\5_2.jpg</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\MEGA\lap trinh windows\ProjectTest\Assets\GamingProducts\5_3.jpg">
+      <PackagePath>Assets\GamingProducts\5_3.jpg</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\MEGA\lap trinh windows\ProjectTest\Assets\GamingProducts\60_1.jpg">
+      <PackagePath>Assets\GamingProducts\60_1.jpg</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\MEGA\lap trinh windows\ProjectTest\Assets\GamingProducts\60_2.jpg">
+      <PackagePath>Assets\GamingProducts\60_2.jpg</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\MEGA\lap trinh windows\ProjectTest\Assets\GamingProducts\60_3.jpg">
+      <PackagePath>Assets\GamingProducts\60_3.jpg</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\MEGA\lap trinh windows\ProjectTest\Assets\GamingProducts\61_1.jpg">
+      <PackagePath>Assets\GamingProducts\61_1.jpg</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\MEGA\lap trinh windows\ProjectTest\Assets\GamingProducts\61_2.jpg">
+      <PackagePath>Assets\GamingProducts\61_2.jpg</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\MEGA\lap trinh windows\ProjectTest\Assets\GamingProducts\61_3.jpg">
+      <PackagePath>Assets\GamingProducts\61_3.jpg</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\MEGA\lap trinh windows\ProjectTest\Assets\GamingProducts\62_1.jpg">
+      <PackagePath>Assets\GamingProducts\62_1.jpg</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\MEGA\lap trinh windows\ProjectTest\Assets\GamingProducts\62_2.jpg">
+      <PackagePath>Assets\GamingProducts\62_2.jpg</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\MEGA\lap trinh windows\ProjectTest\Assets\GamingProducts\62_3.jpg">
+      <PackagePath>Assets\GamingProducts\62_3.jpg</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\MEGA\lap trinh windows\ProjectTest\Assets\GamingProducts\63_1.jpg">
+      <PackagePath>Assets\GamingProducts\63_1.jpg</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\MEGA\lap trinh windows\ProjectTest\Assets\GamingProducts\63_2.jpg">
+      <PackagePath>Assets\GamingProducts\63_2.jpg</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\MEGA\lap trinh windows\ProjectTest\Assets\GamingProducts\63_3.jpg">
+      <PackagePath>Assets\GamingProducts\63_3.jpg</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\MEGA\lap trinh windows\ProjectTest\Assets\GamingProducts\64_1.jpg">
+      <PackagePath>Assets\GamingProducts\64_1.jpg</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\MEGA\lap trinh windows\ProjectTest\Assets\GamingProducts\64_2.jpg">
+      <PackagePath>Assets\GamingProducts\64_2.jpg</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\MEGA\lap trinh windows\ProjectTest\Assets\GamingProducts\64_3.jpg">
+      <PackagePath>Assets\GamingProducts\64_3.jpg</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\MEGA\lap trinh windows\ProjectTest\Assets\GamingProducts\65_1.jpg">
+      <PackagePath>Assets\GamingProducts\65_1.jpg</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\MEGA\lap trinh windows\ProjectTest\Assets\GamingProducts\65_2.jpg">
+      <PackagePath>Assets\GamingProducts\65_2.jpg</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\MEGA\lap trinh windows\ProjectTest\Assets\GamingProducts\65_3.jpg">
+      <PackagePath>Assets\GamingProducts\65_3.jpg</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\MEGA\lap trinh windows\ProjectTest\Assets\GamingProducts\66_1.jpg">
+      <PackagePath>Assets\GamingProducts\66_1.jpg</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\MEGA\lap trinh windows\ProjectTest\Assets\GamingProducts\66_2.jpg">
+      <PackagePath>Assets\GamingProducts\66_2.jpg</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\MEGA\lap trinh windows\ProjectTest\Assets\GamingProducts\66_3.jpg">
+      <PackagePath>Assets\GamingProducts\66_3.jpg</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\MEGA\lap trinh windows\ProjectTest\Assets\GamingProducts\67_1.jpg">
+      <PackagePath>Assets\GamingProducts\67_1.jpg</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\MEGA\lap trinh windows\ProjectTest\Assets\GamingProducts\67_2.jpg">
+      <PackagePath>Assets\GamingProducts\67_2.jpg</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\MEGA\lap trinh windows\ProjectTest\Assets\GamingProducts\67_3.jpg">
+      <PackagePath>Assets\GamingProducts\67_3.jpg</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\MEGA\lap trinh windows\ProjectTest\Assets\GamingProducts\68_1.jpg">
+      <PackagePath>Assets\GamingProducts\68_1.jpg</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\MEGA\lap trinh windows\ProjectTest\Assets\GamingProducts\68_2.jpg">
+      <PackagePath>Assets\GamingProducts\68_2.jpg</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\MEGA\lap trinh windows\ProjectTest\Assets\GamingProducts\68_3.jpg">
+      <PackagePath>Assets\GamingProducts\68_3.jpg</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\MEGA\lap trinh windows\ProjectTest\Assets\GamingProducts\69_1.jpg">
+      <PackagePath>Assets\GamingProducts\69_1.jpg</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\MEGA\lap trinh windows\ProjectTest\Assets\GamingProducts\69_2.jpg">
+      <PackagePath>Assets\GamingProducts\69_2.jpg</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\MEGA\lap trinh windows\ProjectTest\Assets\GamingProducts\69_3.jpg">
+      <PackagePath>Assets\GamingProducts\69_3.jpg</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\MEGA\lap trinh windows\ProjectTest\Assets\GamingProducts\6_1.jpg">
+      <PackagePath>Assets\GamingProducts\6_1.jpg</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\MEGA\lap trinh windows\ProjectTest\Assets\GamingProducts\6_2.jpg">
+      <PackagePath>Assets\GamingProducts\6_2.jpg</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\MEGA\lap trinh windows\ProjectTest\Assets\GamingProducts\6_3.jpg">
+      <PackagePath>Assets\GamingProducts\6_3.jpg</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\MEGA\lap trinh windows\ProjectTest\Assets\GamingProducts\70_1.jpg">
+      <PackagePath>Assets\GamingProducts\70_1.jpg</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\MEGA\lap trinh windows\ProjectTest\Assets\GamingProducts\70_2.jpg">
+      <PackagePath>Assets\GamingProducts\70_2.jpg</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\MEGA\lap trinh windows\ProjectTest\Assets\GamingProducts\70_3.jpg">
+      <PackagePath>Assets\GamingProducts\70_3.jpg</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\MEGA\lap trinh windows\ProjectTest\Assets\GamingProducts\71_1.jpg">
+      <PackagePath>Assets\GamingProducts\71_1.jpg</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\MEGA\lap trinh windows\ProjectTest\Assets\GamingProducts\71_2.jpg">
+      <PackagePath>Assets\GamingProducts\71_2.jpg</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\MEGA\lap trinh windows\ProjectTest\Assets\GamingProducts\71_3.jpg">
+      <PackagePath>Assets\GamingProducts\71_3.jpg</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\MEGA\lap trinh windows\ProjectTest\Assets\GamingProducts\72_1.jpg">
+      <PackagePath>Assets\GamingProducts\72_1.jpg</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\MEGA\lap trinh windows\ProjectTest\Assets\GamingProducts\72_2.jpg">
+      <PackagePath>Assets\GamingProducts\72_2.jpg</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\MEGA\lap trinh windows\ProjectTest\Assets\GamingProducts\72_3.jpg">
+      <PackagePath>Assets\GamingProducts\72_3.jpg</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\MEGA\lap trinh windows\ProjectTest\Assets\GamingProducts\73_1.jpg">
+      <PackagePath>Assets\GamingProducts\73_1.jpg</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\MEGA\lap trinh windows\ProjectTest\Assets\GamingProducts\73_2.jpg">
+      <PackagePath>Assets\GamingProducts\73_2.jpg</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\MEGA\lap trinh windows\ProjectTest\Assets\GamingProducts\73_3.jpg">
+      <PackagePath>Assets\GamingProducts\73_3.jpg</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\MEGA\lap trinh windows\ProjectTest\Assets\GamingProducts\74_1.jpg">
+      <PackagePath>Assets\GamingProducts\74_1.jpg</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\MEGA\lap trinh windows\ProjectTest\Assets\GamingProducts\74_2.jpg">
+      <PackagePath>Assets\GamingProducts\74_2.jpg</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\MEGA\lap trinh windows\ProjectTest\Assets\GamingProducts\74_3.jpg">
+      <PackagePath>Assets\GamingProducts\74_3.jpg</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\MEGA\lap trinh windows\ProjectTest\Assets\GamingProducts\75_1.jpg">
+      <PackagePath>Assets\GamingProducts\75_1.jpg</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\MEGA\lap trinh windows\ProjectTest\Assets\GamingProducts\75_2.jpg">
+      <PackagePath>Assets\GamingProducts\75_2.jpg</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\MEGA\lap trinh windows\ProjectTest\Assets\GamingProducts\75_3.jpg">
+      <PackagePath>Assets\GamingProducts\75_3.jpg</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\MEGA\lap trinh windows\ProjectTest\Assets\GamingProducts\76_1.jpg">
+      <PackagePath>Assets\GamingProducts\76_1.jpg</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\MEGA\lap trinh windows\ProjectTest\Assets\GamingProducts\76_2.jpg">
+      <PackagePath>Assets\GamingProducts\76_2.jpg</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\MEGA\lap trinh windows\ProjectTest\Assets\GamingProducts\76_3.jpg">
+      <PackagePath>Assets\GamingProducts\76_3.jpg</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\MEGA\lap trinh windows\ProjectTest\Assets\GamingProducts\77_1.jpg">
+      <PackagePath>Assets\GamingProducts\77_1.jpg</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\MEGA\lap trinh windows\ProjectTest\Assets\GamingProducts\77_2.jpg">
+      <PackagePath>Assets\GamingProducts\77_2.jpg</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\MEGA\lap trinh windows\ProjectTest\Assets\GamingProducts\77_3.jpg">
+      <PackagePath>Assets\GamingProducts\77_3.jpg</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\MEGA\lap trinh windows\ProjectTest\Assets\GamingProducts\78_1.jpg">
+      <PackagePath>Assets\GamingProducts\78_1.jpg</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\MEGA\lap trinh windows\ProjectTest\Assets\GamingProducts\78_2.jpg">
+      <PackagePath>Assets\GamingProducts\78_2.jpg</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\MEGA\lap trinh windows\ProjectTest\Assets\GamingProducts\78_3.jpg">
+      <PackagePath>Assets\GamingProducts\78_3.jpg</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\MEGA\lap trinh windows\ProjectTest\Assets\GamingProducts\79_1.jpg">
+      <PackagePath>Assets\GamingProducts\79_1.jpg</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\MEGA\lap trinh windows\ProjectTest\Assets\GamingProducts\79_2.jpg">
+      <PackagePath>Assets\GamingProducts\79_2.jpg</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\MEGA\lap trinh windows\ProjectTest\Assets\GamingProducts\79_3.jpg">
+      <PackagePath>Assets\GamingProducts\79_3.jpg</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\MEGA\lap trinh windows\ProjectTest\Assets\GamingProducts\7_1.jpg">
+      <PackagePath>Assets\GamingProducts\7_1.jpg</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\MEGA\lap trinh windows\ProjectTest\Assets\GamingProducts\7_2.jpg">
+      <PackagePath>Assets\GamingProducts\7_2.jpg</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\MEGA\lap trinh windows\ProjectTest\Assets\GamingProducts\7_3.jpg">
+      <PackagePath>Assets\GamingProducts\7_3.jpg</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\MEGA\lap trinh windows\ProjectTest\Assets\GamingProducts\80_1.jpg">
+      <PackagePath>Assets\GamingProducts\80_1.jpg</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\MEGA\lap trinh windows\ProjectTest\Assets\GamingProducts\80_2.jpg">
+      <PackagePath>Assets\GamingProducts\80_2.jpg</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\MEGA\lap trinh windows\ProjectTest\Assets\GamingProducts\80_3.jpg">
+      <PackagePath>Assets\GamingProducts\80_3.jpg</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\MEGA\lap trinh windows\ProjectTest\Assets\GamingProducts\81_1.jpg">
+      <PackagePath>Assets\GamingProducts\81_1.jpg</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\MEGA\lap trinh windows\ProjectTest\Assets\GamingProducts\81_2.jpg">
+      <PackagePath>Assets\GamingProducts\81_2.jpg</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\MEGA\lap trinh windows\ProjectTest\Assets\GamingProducts\81_3.jpg">
+      <PackagePath>Assets\GamingProducts\81_3.jpg</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\MEGA\lap trinh windows\ProjectTest\Assets\GamingProducts\82_1.jpg">
+      <PackagePath>Assets\GamingProducts\82_1.jpg</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\MEGA\lap trinh windows\ProjectTest\Assets\GamingProducts\82_2.jpg">
+      <PackagePath>Assets\GamingProducts\82_2.jpg</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\MEGA\lap trinh windows\ProjectTest\Assets\GamingProducts\82_3.jpg">
+      <PackagePath>Assets\GamingProducts\82_3.jpg</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\MEGA\lap trinh windows\ProjectTest\Assets\GamingProducts\83_1.jpg">
+      <PackagePath>Assets\GamingProducts\83_1.jpg</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\MEGA\lap trinh windows\ProjectTest\Assets\GamingProducts\83_2.jpg">
+      <PackagePath>Assets\GamingProducts\83_2.jpg</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\MEGA\lap trinh windows\ProjectTest\Assets\GamingProducts\83_3.jpg">
+      <PackagePath>Assets\GamingProducts\83_3.jpg</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\MEGA\lap trinh windows\ProjectTest\Assets\GamingProducts\84_1.jpg">
+      <PackagePath>Assets\GamingProducts\84_1.jpg</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\MEGA\lap trinh windows\ProjectTest\Assets\GamingProducts\84_2.jpg">
+      <PackagePath>Assets\GamingProducts\84_2.jpg</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\MEGA\lap trinh windows\ProjectTest\Assets\GamingProducts\84_3.jpg">
+      <PackagePath>Assets\GamingProducts\84_3.jpg</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\MEGA\lap trinh windows\ProjectTest\Assets\GamingProducts\85_1.jpg">
+      <PackagePath>Assets\GamingProducts\85_1.jpg</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\MEGA\lap trinh windows\ProjectTest\Assets\GamingProducts\85_2.jpg">
+      <PackagePath>Assets\GamingProducts\85_2.jpg</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\MEGA\lap trinh windows\ProjectTest\Assets\GamingProducts\85_3.jpg">
+      <PackagePath>Assets\GamingProducts\85_3.jpg</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\MEGA\lap trinh windows\ProjectTest\Assets\GamingProducts\86_1.jpg">
+      <PackagePath>Assets\GamingProducts\86_1.jpg</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\MEGA\lap trinh windows\ProjectTest\Assets\GamingProducts\86_2.jpg">
+      <PackagePath>Assets\GamingProducts\86_2.jpg</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\MEGA\lap trinh windows\ProjectTest\Assets\GamingProducts\86_3.jpg">
+      <PackagePath>Assets\GamingProducts\86_3.jpg</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\MEGA\lap trinh windows\ProjectTest\Assets\GamingProducts\87_1.jpg">
+      <PackagePath>Assets\GamingProducts\87_1.jpg</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\MEGA\lap trinh windows\ProjectTest\Assets\GamingProducts\87_2.jpg">
+      <PackagePath>Assets\GamingProducts\87_2.jpg</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\MEGA\lap trinh windows\ProjectTest\Assets\GamingProducts\87_3.jpg">
+      <PackagePath>Assets\GamingProducts\87_3.jpg</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\MEGA\lap trinh windows\ProjectTest\Assets\GamingProducts\88_1.jpg">
+      <PackagePath>Assets\GamingProducts\88_1.jpg</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\MEGA\lap trinh windows\ProjectTest\Assets\GamingProducts\88_2.jpg">
+      <PackagePath>Assets\GamingProducts\88_2.jpg</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\MEGA\lap trinh windows\ProjectTest\Assets\GamingProducts\88_3.jpg">
+      <PackagePath>Assets\GamingProducts\88_3.jpg</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\MEGA\lap trinh windows\ProjectTest\Assets\GamingProducts\89_1.jpg">
+      <PackagePath>Assets\GamingProducts\89_1.jpg</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\MEGA\lap trinh windows\ProjectTest\Assets\GamingProducts\89_2.jpg">
+      <PackagePath>Assets\GamingProducts\89_2.jpg</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\MEGA\lap trinh windows\ProjectTest\Assets\GamingProducts\89_3.jpg">
+      <PackagePath>Assets\GamingProducts\89_3.jpg</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\MEGA\lap trinh windows\ProjectTest\Assets\GamingProducts\8_1.jpg">
+      <PackagePath>Assets\GamingProducts\8_1.jpg</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\MEGA\lap trinh windows\ProjectTest\Assets\GamingProducts\8_2.jpg">
+      <PackagePath>Assets\GamingProducts\8_2.jpg</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\MEGA\lap trinh windows\ProjectTest\Assets\GamingProducts\8_3.jpg">
+      <PackagePath>Assets\GamingProducts\8_3.jpg</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\MEGA\lap trinh windows\ProjectTest\Assets\GamingProducts\90_1.jpg">
+      <PackagePath>Assets\GamingProducts\90_1.jpg</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\MEGA\lap trinh windows\ProjectTest\Assets\GamingProducts\90_2.jpg">
+      <PackagePath>Assets\GamingProducts\90_2.jpg</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\MEGA\lap trinh windows\ProjectTest\Assets\GamingProducts\90_3.jpg">
+      <PackagePath>Assets\GamingProducts\90_3.jpg</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\MEGA\lap trinh windows\ProjectTest\Assets\GamingProducts\91_1.jpg">
+      <PackagePath>Assets\GamingProducts\91_1.jpg</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\MEGA\lap trinh windows\ProjectTest\Assets\GamingProducts\91_2.jpg">
+      <PackagePath>Assets\GamingProducts\91_2.jpg</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\MEGA\lap trinh windows\ProjectTest\Assets\GamingProducts\91_3.jpg">
+      <PackagePath>Assets\GamingProducts\91_3.jpg</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\MEGA\lap trinh windows\ProjectTest\Assets\GamingProducts\92_1.jpg">
+      <PackagePath>Assets\GamingProducts\92_1.jpg</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\MEGA\lap trinh windows\ProjectTest\Assets\GamingProducts\92_2.jpg">
+      <PackagePath>Assets\GamingProducts\92_2.jpg</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\MEGA\lap trinh windows\ProjectTest\Assets\GamingProducts\92_3.jpg">
+      <PackagePath>Assets\GamingProducts\92_3.jpg</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\MEGA\lap trinh windows\ProjectTest\Assets\GamingProducts\93_1.jpg">
+      <PackagePath>Assets\GamingProducts\93_1.jpg</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\MEGA\lap trinh windows\ProjectTest\Assets\GamingProducts\93_2.jpg">
+      <PackagePath>Assets\GamingProducts\93_2.jpg</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\MEGA\lap trinh windows\ProjectTest\Assets\GamingProducts\93_3.jpg">
+      <PackagePath>Assets\GamingProducts\93_3.jpg</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\MEGA\lap trinh windows\ProjectTest\Assets\GamingProducts\94_1.jpg">
+      <PackagePath>Assets\GamingProducts\94_1.jpg</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\MEGA\lap trinh windows\ProjectTest\Assets\GamingProducts\94_2.jpg">
+      <PackagePath>Assets\GamingProducts\94_2.jpg</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\MEGA\lap trinh windows\ProjectTest\Assets\GamingProducts\94_3.jpg">
+      <PackagePath>Assets\GamingProducts\94_3.jpg</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\MEGA\lap trinh windows\ProjectTest\Assets\GamingProducts\95_1.jpg">
+      <PackagePath>Assets\GamingProducts\95_1.jpg</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\MEGA\lap trinh windows\ProjectTest\Assets\GamingProducts\95_2.jpg">
+      <PackagePath>Assets\GamingProducts\95_2.jpg</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\MEGA\lap trinh windows\ProjectTest\Assets\GamingProducts\95_3.jpg">
+      <PackagePath>Assets\GamingProducts\95_3.jpg</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\MEGA\lap trinh windows\ProjectTest\Assets\GamingProducts\96_1.jpg">
+      <PackagePath>Assets\GamingProducts\96_1.jpg</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\MEGA\lap trinh windows\ProjectTest\Assets\GamingProducts\96_2.jpg">
+      <PackagePath>Assets\GamingProducts\96_2.jpg</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\MEGA\lap trinh windows\ProjectTest\Assets\GamingProducts\96_3.jpg">
+      <PackagePath>Assets\GamingProducts\96_3.jpg</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\MEGA\lap trinh windows\ProjectTest\Assets\GamingProducts\97_1.jpg">
+      <PackagePath>Assets\GamingProducts\97_1.jpg</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\MEGA\lap trinh windows\ProjectTest\Assets\GamingProducts\97_2.jpg">
+      <PackagePath>Assets\GamingProducts\97_2.jpg</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\MEGA\lap trinh windows\ProjectTest\Assets\GamingProducts\97_3.jpg">
+      <PackagePath>Assets\GamingProducts\97_3.jpg</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\MEGA\lap trinh windows\ProjectTest\Assets\GamingProducts\98_1.jpg">
+      <PackagePath>Assets\GamingProducts\98_1.jpg</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\MEGA\lap trinh windows\ProjectTest\Assets\GamingProducts\98_2.jpg">
+      <PackagePath>Assets\GamingProducts\98_2.jpg</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\MEGA\lap trinh windows\ProjectTest\Assets\GamingProducts\98_3.jpg">
+      <PackagePath>Assets\GamingProducts\98_3.jpg</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\MEGA\lap trinh windows\ProjectTest\Assets\GamingProducts\99_1.jpg">
+      <PackagePath>Assets\GamingProducts\99_1.jpg</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\MEGA\lap trinh windows\ProjectTest\Assets\GamingProducts\99_2.jpg">
+      <PackagePath>Assets\GamingProducts\99_2.jpg</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\MEGA\lap trinh windows\ProjectTest\Assets\GamingProducts\99_3.jpg">
+      <PackagePath>Assets\GamingProducts\99_3.jpg</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\MEGA\lap trinh windows\ProjectTest\Assets\GamingProducts\9_1.jpg">
+      <PackagePath>Assets\GamingProducts\9_1.jpg</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\MEGA\lap trinh windows\ProjectTest\Assets\GamingProducts\9_2.jpg">
+      <PackagePath>Assets\GamingProducts\9_2.jpg</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\MEGA\lap trinh windows\ProjectTest\Assets\GamingProducts\9_3.jpg">
+      <PackagePath>Assets\GamingProducts\9_3.jpg</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\MEGA\lap trinh windows\ProjectTest\Assets\LockScreenLogo.scale-200.png">
+      <PackagePath>Assets\LockScreenLogo.scale-200.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\MEGA\lap trinh windows\ProjectTest\Assets\SplashScreen.scale-200.png">
+      <PackagePath>Assets\SplashScreen.scale-200.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\MEGA\lap trinh windows\ProjectTest\Assets\Square150x150Logo.scale-200.png">
+      <PackagePath>Assets\Square150x150Logo.scale-200.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\MEGA\lap trinh windows\ProjectTest\Assets\Square44x44Logo.scale-200.png">
+      <PackagePath>Assets\Square44x44Logo.scale-200.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\MEGA\lap trinh windows\ProjectTest\Assets\Square44x44Logo.targetsize-24_altform-unplated.png">
+      <PackagePath>Assets\Square44x44Logo.targetsize-24_altform-unplated.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\MEGA\lap trinh windows\ProjectTest\Assets\StoreLogo.png">
+      <PackagePath>Assets\StoreLogo.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="D:\MEGA\lap trinh windows\ProjectTest\Assets\Wide310x150Logo.scale-200.png">
+      <PackagePath>Assets\Wide310x150Logo.scale-200.png</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Administrator\.nuget\packages\microsoft.netcore.app.runtime.win-x64\8.0.26\runtimes\win-x64\native\Microsoft.DiaSymReader.Native.amd64.dll">
+      <PackagePath>Microsoft.DiaSymReader.Native.amd64.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Administrator\.nuget\packages\microsoft.netcore.app.runtime.win-x64\8.0.26\runtimes\win-x64\native\System.IO.Compression.Native.dll">
+      <PackagePath>System.IO.Compression.Native.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Administrator\.nuget\packages\microsoft.netcore.app.runtime.win-x64\8.0.26\runtimes\win-x64\native\clretwrc.dll">
+      <PackagePath>clretwrc.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Administrator\.nuget\packages\microsoft.netcore.app.runtime.win-x64\8.0.26\runtimes\win-x64\native\clrgc.dll">
+      <PackagePath>clrgc.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Administrator\.nuget\packages\microsoft.netcore.app.runtime.win-x64\8.0.26\runtimes\win-x64\native\clrjit.dll">
+      <PackagePath>clrjit.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Administrator\.nuget\packages\microsoft.netcore.app.runtime.win-x64\8.0.26\runtimes\win-x64\native\coreclr.dll">
+      <PackagePath>coreclr.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Administrator\.nuget\packages\microsoft.netcore.app.runtime.win-x64\8.0.26\runtimes\win-x64\native\createdump.exe">
+      <PackagePath>createdump.exe</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Administrator\.nuget\packages\microsoft.netcore.app.runtime.win-x64\8.0.26\runtimes\win-x64\native\hostfxr.dll">
+      <PackagePath>hostfxr.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Administrator\.nuget\packages\microsoft.netcore.app.runtime.win-x64\8.0.26\runtimes\win-x64\native\hostpolicy.dll">
+      <PackagePath>hostpolicy.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Administrator\.nuget\packages\microsoft.netcore.app.runtime.win-x64\8.0.26\runtimes\win-x64\native\mscordaccore.dll">
+      <PackagePath>mscordaccore.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Administrator\.nuget\packages\microsoft.netcore.app.runtime.win-x64\8.0.26\runtimes\win-x64\native\mscordaccore_amd64_amd64_8.0.2626.16921.dll">
+      <PackagePath>mscordaccore_amd64_amd64_8.0.2626.16921.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Administrator\.nuget\packages\microsoft.netcore.app.runtime.win-x64\8.0.26\runtimes\win-x64\native\mscordbi.dll">
+      <PackagePath>mscordbi.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Administrator\.nuget\packages\microsoft.netcore.app.runtime.win-x64\8.0.26\runtimes\win-x64\native\mscorrc.dll">
+      <PackagePath>mscorrc.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Administrator\.nuget\packages\microsoft.netcore.app.runtime.win-x64\8.0.26\runtimes\win-x64\native\msquic.dll">
+      <PackagePath>msquic.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Administrator\.nuget\packages\microsoft.ml\3.0.1\runtimes\win-x64\native\LdaNative.dll">
+      <PackagePath>LdaNative.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Administrator\.nuget\packages\microsoft.web.webview2\1.0.3179.45\runtimes\win-x64\native\WebView2Loader.dll">
+      <PackagePath>WebView2Loader.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Administrator\.nuget\packages\microsoft.windowsappsdk.foundation\1.8.260203002\runtimes\win-x64\native\Microsoft.Windows.ApplicationModel.Background.UniversalBGTask.dll">
+      <PackagePath>Microsoft.Windows.ApplicationModel.Background.UniversalBGTask.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Administrator\.nuget\packages\microsoft.windowsappsdk.foundation\1.8.260203002\runtimes\win-x64\native\Microsoft.WindowsAppRuntime.Bootstrap.dll">
+      <PackagePath>Microsoft.WindowsAppRuntime.Bootstrap.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Administrator\.nuget\packages\microsoft.web.webview2\1.0.3179.45\runtimes\win-x64\native_uap\Microsoft.Web.WebView2.Core.dll">
+      <PackagePath>Microsoft.Web.WebView2.Core.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Administrator\AppData\Local\ProjectTest\artifacts\obj\x64\Release\net8.0-windows10.0.19041.0\win-x64\linked\Microsoft.Extensions.Configuration.Abstractions.dll">
+      <PackagePath>Microsoft.Extensions.Configuration.Abstractions.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Administrator\AppData\Local\ProjectTest\artifacts\obj\x64\Release\net8.0-windows10.0.19041.0\win-x64\linked\Microsoft.Extensions.Primitives.dll">
+      <PackagePath>Microsoft.Extensions.Primitives.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Administrator\AppData\Local\ProjectTest\artifacts\obj\x64\Release\net8.0-windows10.0.19041.0\win-x64\linked\System.ComponentModel.dll">
+      <PackagePath>System.ComponentModel.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Administrator\AppData\Local\ProjectTest\artifacts\obj\x64\Release\net8.0-windows10.0.19041.0\win-x64\linked\System.Drawing.dll">
+      <PackagePath>System.Drawing.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Administrator\AppData\Local\ProjectTest\artifacts\obj\x64\Release\net8.0-windows10.0.19041.0\win-x64\linked\System.Xml.Linq.dll">
+      <PackagePath>System.Xml.Linq.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Administrator\AppData\Local\ProjectTest\artifacts\obj\x64\Release\net8.0-windows10.0.19041.0\win-x64\linked\System.dll">
+      <PackagePath>System.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Administrator\AppData\Local\ProjectTest\artifacts\obj\x64\Release\net8.0-windows10.0.19041.0\win-x64\R2R\DocumentFormat.OpenXml.dll">
+      <PackagePath>DocumentFormat.OpenXml.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Administrator\AppData\Local\ProjectTest\artifacts\obj\x64\Release\net8.0-windows10.0.19041.0\win-x64\R2R\DocumentFormat.OpenXml.Framework.dll">
+      <PackagePath>DocumentFormat.OpenXml.Framework.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Administrator\AppData\Local\ProjectTest\artifacts\obj\x64\Release\net8.0-windows10.0.19041.0\win-x64\R2R\GraphQL.dll">
+      <PackagePath>GraphQL.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Administrator\AppData\Local\ProjectTest\artifacts\obj\x64\Release\net8.0-windows10.0.19041.0\win-x64\R2R\GraphQLParser.dll">
+      <PackagePath>GraphQLParser.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Administrator\AppData\Local\ProjectTest\artifacts\obj\x64\Release\net8.0-windows10.0.19041.0\win-x64\R2R\GraphQL.SystemTextJson.dll">
+      <PackagePath>GraphQL.SystemTextJson.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Administrator\AppData\Local\ProjectTest\artifacts\obj\x64\Release\net8.0-windows10.0.19041.0\win-x64\R2R\Microsoft.EntityFrameworkCore.dll">
+      <PackagePath>Microsoft.EntityFrameworkCore.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Administrator\AppData\Local\ProjectTest\artifacts\obj\x64\Release\net8.0-windows10.0.19041.0\win-x64\R2R\Microsoft.EntityFrameworkCore.Abstractions.dll">
+      <PackagePath>Microsoft.EntityFrameworkCore.Abstractions.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Administrator\AppData\Local\ProjectTest\artifacts\obj\x64\Release\net8.0-windows10.0.19041.0\win-x64\R2R\Microsoft.EntityFrameworkCore.Relational.dll">
+      <PackagePath>Microsoft.EntityFrameworkCore.Relational.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Administrator\AppData\Local\ProjectTest\artifacts\obj\x64\Release\net8.0-windows10.0.19041.0\win-x64\R2R\Microsoft.Extensions.Caching.Abstractions.dll">
+      <PackagePath>Microsoft.Extensions.Caching.Abstractions.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Administrator\AppData\Local\ProjectTest\artifacts\obj\x64\Release\net8.0-windows10.0.19041.0\win-x64\R2R\Microsoft.Extensions.Caching.Memory.dll">
+      <PackagePath>Microsoft.Extensions.Caching.Memory.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Administrator\AppData\Local\ProjectTest\artifacts\obj\x64\Release\net8.0-windows10.0.19041.0\win-x64\R2R\Microsoft.Extensions.DependencyInjection.dll">
+      <PackagePath>Microsoft.Extensions.DependencyInjection.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Administrator\AppData\Local\ProjectTest\artifacts\obj\x64\Release\net8.0-windows10.0.19041.0\win-x64\R2R\Microsoft.Extensions.DependencyInjection.Abstractions.dll">
+      <PackagePath>Microsoft.Extensions.DependencyInjection.Abstractions.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Administrator\AppData\Local\ProjectTest\artifacts\obj\x64\Release\net8.0-windows10.0.19041.0\win-x64\R2R\Microsoft.Extensions.Logging.dll">
+      <PackagePath>Microsoft.Extensions.Logging.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Administrator\AppData\Local\ProjectTest\artifacts\obj\x64\Release\net8.0-windows10.0.19041.0\win-x64\R2R\Microsoft.Extensions.Logging.Abstractions.dll">
+      <PackagePath>Microsoft.Extensions.Logging.Abstractions.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Administrator\AppData\Local\ProjectTest\artifacts\obj\x64\Release\net8.0-windows10.0.19041.0\win-x64\R2R\Microsoft.Extensions.Options.dll">
+      <PackagePath>Microsoft.Extensions.Options.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Administrator\AppData\Local\ProjectTest\artifacts\obj\x64\Release\net8.0-windows10.0.19041.0\win-x64\R2R\Microsoft.ML.Core.dll">
+      <PackagePath>Microsoft.ML.Core.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Administrator\AppData\Local\ProjectTest\artifacts\obj\x64\Release\net8.0-windows10.0.19041.0\win-x64\R2R\Microsoft.ML.Data.dll">
+      <PackagePath>Microsoft.ML.Data.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Administrator\AppData\Local\ProjectTest\artifacts\obj\x64\Release\net8.0-windows10.0.19041.0\win-x64\R2R\Microsoft.ML.StandardTrainers.dll">
+      <PackagePath>Microsoft.ML.StandardTrainers.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Administrator\AppData\Local\ProjectTest\artifacts\obj\x64\Release\net8.0-windows10.0.19041.0\win-x64\R2R\Microsoft.ML.CpuMath.dll">
+      <PackagePath>Microsoft.ML.CpuMath.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Administrator\AppData\Local\ProjectTest\artifacts\obj\x64\Release\net8.0-windows10.0.19041.0\win-x64\R2R\Microsoft.ML.DataView.dll">
+      <PackagePath>Microsoft.ML.DataView.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Administrator\AppData\Local\ProjectTest\artifacts\obj\x64\Release\net8.0-windows10.0.19041.0\win-x64\R2R\Microsoft.Windows.ApplicationModel.WindowsAppRuntime.Projection.dll">
+      <PackagePath>Microsoft.Windows.ApplicationModel.WindowsAppRuntime.Projection.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Administrator\AppData\Local\ProjectTest\artifacts\obj\x64\Release\net8.0-windows10.0.19041.0\win-x64\R2R\Microsoft.WindowsAppRuntime.Bootstrap.Net.dll">
+      <PackagePath>Microsoft.WindowsAppRuntime.Bootstrap.Net.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Administrator\AppData\Local\ProjectTest\artifacts\obj\x64\Release\net8.0-windows10.0.19041.0\win-x64\R2R\Microsoft.InteractiveExperiences.Projection.dll">
+      <PackagePath>Microsoft.InteractiveExperiences.Projection.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Administrator\AppData\Local\ProjectTest\artifacts\obj\x64\Release\net8.0-windows10.0.19041.0\win-x64\R2R\Microsoft.WinUI.dll">
+      <PackagePath>Microsoft.WinUI.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Administrator\AppData\Local\ProjectTest\artifacts\obj\x64\Release\net8.0-windows10.0.19041.0\win-x64\R2R\Npgsql.dll">
+      <PackagePath>Npgsql.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Administrator\AppData\Local\ProjectTest\artifacts\obj\x64\Release\net8.0-windows10.0.19041.0\win-x64\R2R\Npgsql.EntityFrameworkCore.PostgreSQL.dll">
+      <PackagePath>Npgsql.EntityFrameworkCore.PostgreSQL.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Administrator\AppData\Local\ProjectTest\artifacts\obj\x64\Release\net8.0-windows10.0.19041.0\win-x64\R2R\System.IO.Packaging.dll">
+      <PackagePath>System.IO.Packaging.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Administrator\AppData\Local\ProjectTest\artifacts\obj\x64\Release\net8.0-windows10.0.19041.0\win-x64\R2R\System.Numerics.Tensors.dll">
+      <PackagePath>System.Numerics.Tensors.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Administrator\AppData\Local\ProjectTest\artifacts\obj\x64\Release\net8.0-windows10.0.19041.0\win-x64\R2R\ProjectTest.dll">
+      <PackagePath>ProjectTest.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Administrator\AppData\Local\ProjectTest\artifacts\obj\x64\Release\net8.0-windows10.0.19041.0\win-x64\R2R\Microsoft.CSharp.dll">
+      <PackagePath>Microsoft.CSharp.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Administrator\AppData\Local\ProjectTest\artifacts\obj\x64\Release\net8.0-windows10.0.19041.0\win-x64\R2R\Microsoft.Win32.Registry.dll">
+      <PackagePath>Microsoft.Win32.Registry.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Administrator\AppData\Local\ProjectTest\artifacts\obj\x64\Release\net8.0-windows10.0.19041.0\win-x64\R2R\System.Collections.Concurrent.dll">
+      <PackagePath>System.Collections.Concurrent.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Administrator\AppData\Local\ProjectTest\artifacts\obj\x64\Release\net8.0-windows10.0.19041.0\win-x64\R2R\System.Collections.Immutable.dll">
+      <PackagePath>System.Collections.Immutable.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Administrator\AppData\Local\ProjectTest\artifacts\obj\x64\Release\net8.0-windows10.0.19041.0\win-x64\R2R\System.Collections.NonGeneric.dll">
+      <PackagePath>System.Collections.NonGeneric.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Administrator\AppData\Local\ProjectTest\artifacts\obj\x64\Release\net8.0-windows10.0.19041.0\win-x64\R2R\System.Collections.Specialized.dll">
+      <PackagePath>System.Collections.Specialized.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Administrator\AppData\Local\ProjectTest\artifacts\obj\x64\Release\net8.0-windows10.0.19041.0\win-x64\R2R\System.Collections.dll">
+      <PackagePath>System.Collections.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Administrator\AppData\Local\ProjectTest\artifacts\obj\x64\Release\net8.0-windows10.0.19041.0\win-x64\R2R\System.ComponentModel.Annotations.dll">
+      <PackagePath>System.ComponentModel.Annotations.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Administrator\AppData\Local\ProjectTest\artifacts\obj\x64\Release\net8.0-windows10.0.19041.0\win-x64\R2R\System.ComponentModel.Primitives.dll">
+      <PackagePath>System.ComponentModel.Primitives.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Administrator\AppData\Local\ProjectTest\artifacts\obj\x64\Release\net8.0-windows10.0.19041.0\win-x64\R2R\System.ComponentModel.TypeConverter.dll">
+      <PackagePath>System.ComponentModel.TypeConverter.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Administrator\AppData\Local\ProjectTest\artifacts\obj\x64\Release\net8.0-windows10.0.19041.0\win-x64\R2R\System.Console.dll">
+      <PackagePath>System.Console.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Administrator\AppData\Local\ProjectTest\artifacts\obj\x64\Release\net8.0-windows10.0.19041.0\win-x64\R2R\System.Data.Common.dll">
+      <PackagePath>System.Data.Common.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Administrator\AppData\Local\ProjectTest\artifacts\obj\x64\Release\net8.0-windows10.0.19041.0\win-x64\R2R\System.Diagnostics.DiagnosticSource.dll">
+      <PackagePath>System.Diagnostics.DiagnosticSource.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Administrator\AppData\Local\ProjectTest\artifacts\obj\x64\Release\net8.0-windows10.0.19041.0\win-x64\R2R\System.Diagnostics.Process.dll">
+      <PackagePath>System.Diagnostics.Process.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Administrator\AppData\Local\ProjectTest\artifacts\obj\x64\Release\net8.0-windows10.0.19041.0\win-x64\R2R\System.Diagnostics.StackTrace.dll">
+      <PackagePath>System.Diagnostics.StackTrace.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Administrator\AppData\Local\ProjectTest\artifacts\obj\x64\Release\net8.0-windows10.0.19041.0\win-x64\R2R\System.Diagnostics.TraceSource.dll">
+      <PackagePath>System.Diagnostics.TraceSource.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Administrator\AppData\Local\ProjectTest\artifacts\obj\x64\Release\net8.0-windows10.0.19041.0\win-x64\R2R\System.Drawing.Primitives.dll">
+      <PackagePath>System.Drawing.Primitives.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Administrator\AppData\Local\ProjectTest\artifacts\obj\x64\Release\net8.0-windows10.0.19041.0\win-x64\R2R\System.Formats.Asn1.dll">
+      <PackagePath>System.Formats.Asn1.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Administrator\AppData\Local\ProjectTest\artifacts\obj\x64\Release\net8.0-windows10.0.19041.0\win-x64\R2R\System.IO.Compression.dll">
+      <PackagePath>System.IO.Compression.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Administrator\AppData\Local\ProjectTest\artifacts\obj\x64\Release\net8.0-windows10.0.19041.0\win-x64\R2R\System.IO.MemoryMappedFiles.dll">
+      <PackagePath>System.IO.MemoryMappedFiles.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Administrator\AppData\Local\ProjectTest\artifacts\obj\x64\Release\net8.0-windows10.0.19041.0\win-x64\R2R\System.Linq.Expressions.dll">
+      <PackagePath>System.Linq.Expressions.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Administrator\AppData\Local\ProjectTest\artifacts\obj\x64\Release\net8.0-windows10.0.19041.0\win-x64\R2R\System.Linq.Queryable.dll">
+      <PackagePath>System.Linq.Queryable.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Administrator\AppData\Local\ProjectTest\artifacts\obj\x64\Release\net8.0-windows10.0.19041.0\win-x64\R2R\System.Linq.dll">
+      <PackagePath>System.Linq.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Administrator\AppData\Local\ProjectTest\artifacts\obj\x64\Release\net8.0-windows10.0.19041.0\win-x64\R2R\System.Memory.dll">
+      <PackagePath>System.Memory.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Administrator\AppData\Local\ProjectTest\artifacts\obj\x64\Release\net8.0-windows10.0.19041.0\win-x64\R2R\System.Net.Http.dll">
+      <PackagePath>System.Net.Http.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Administrator\AppData\Local\ProjectTest\artifacts\obj\x64\Release\net8.0-windows10.0.19041.0\win-x64\R2R\System.Net.NameResolution.dll">
+      <PackagePath>System.Net.NameResolution.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Administrator\AppData\Local\ProjectTest\artifacts\obj\x64\Release\net8.0-windows10.0.19041.0\win-x64\R2R\System.Net.NetworkInformation.dll">
+      <PackagePath>System.Net.NetworkInformation.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Administrator\AppData\Local\ProjectTest\artifacts\obj\x64\Release\net8.0-windows10.0.19041.0\win-x64\R2R\System.Net.Primitives.dll">
+      <PackagePath>System.Net.Primitives.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Administrator\AppData\Local\ProjectTest\artifacts\obj\x64\Release\net8.0-windows10.0.19041.0\win-x64\R2R\System.Net.Quic.dll">
+      <PackagePath>System.Net.Quic.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Administrator\AppData\Local\ProjectTest\artifacts\obj\x64\Release\net8.0-windows10.0.19041.0\win-x64\R2R\System.Net.Security.dll">
+      <PackagePath>System.Net.Security.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Administrator\AppData\Local\ProjectTest\artifacts\obj\x64\Release\net8.0-windows10.0.19041.0\win-x64\R2R\System.Net.Sockets.dll">
+      <PackagePath>System.Net.Sockets.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Administrator\AppData\Local\ProjectTest\artifacts\obj\x64\Release\net8.0-windows10.0.19041.0\win-x64\R2R\System.ObjectModel.dll">
+      <PackagePath>System.ObjectModel.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Administrator\AppData\Local\ProjectTest\artifacts\obj\x64\Release\net8.0-windows10.0.19041.0\win-x64\R2R\System.Private.CoreLib.dll">
+      <PackagePath>System.Private.CoreLib.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Administrator\AppData\Local\ProjectTest\artifacts\obj\x64\Release\net8.0-windows10.0.19041.0\win-x64\R2R\System.Private.Uri.dll">
+      <PackagePath>System.Private.Uri.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Administrator\AppData\Local\ProjectTest\artifacts\obj\x64\Release\net8.0-windows10.0.19041.0\win-x64\R2R\System.Private.Xml.Linq.dll">
+      <PackagePath>System.Private.Xml.Linq.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Administrator\AppData\Local\ProjectTest\artifacts\obj\x64\Release\net8.0-windows10.0.19041.0\win-x64\R2R\System.Private.Xml.dll">
+      <PackagePath>System.Private.Xml.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Administrator\AppData\Local\ProjectTest\artifacts\obj\x64\Release\net8.0-windows10.0.19041.0\win-x64\R2R\System.Reflection.Metadata.dll">
+      <PackagePath>System.Reflection.Metadata.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Administrator\AppData\Local\ProjectTest\artifacts\obj\x64\Release\net8.0-windows10.0.19041.0\win-x64\R2R\System.Runtime.InteropServices.dll">
+      <PackagePath>System.Runtime.InteropServices.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Administrator\AppData\Local\ProjectTest\artifacts\obj\x64\Release\net8.0-windows10.0.19041.0\win-x64\R2R\System.Runtime.Numerics.dll">
+      <PackagePath>System.Runtime.Numerics.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Administrator\AppData\Local\ProjectTest\artifacts\obj\x64\Release\net8.0-windows10.0.19041.0\win-x64\R2R\System.Runtime.Serialization.Formatters.dll">
+      <PackagePath>System.Runtime.Serialization.Formatters.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Administrator\AppData\Local\ProjectTest\artifacts\obj\x64\Release\net8.0-windows10.0.19041.0\win-x64\R2R\System.Security.Claims.dll">
+      <PackagePath>System.Security.Claims.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Administrator\AppData\Local\ProjectTest\artifacts\obj\x64\Release\net8.0-windows10.0.19041.0\win-x64\R2R\System.Security.Cryptography.dll">
+      <PackagePath>System.Security.Cryptography.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Administrator\AppData\Local\ProjectTest\artifacts\obj\x64\Release\net8.0-windows10.0.19041.0\win-x64\R2R\System.Security.Principal.Windows.dll">
+      <PackagePath>System.Security.Principal.Windows.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Administrator\AppData\Local\ProjectTest\artifacts\obj\x64\Release\net8.0-windows10.0.19041.0\win-x64\R2R\System.Text.Encodings.Web.dll">
+      <PackagePath>System.Text.Encodings.Web.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Administrator\AppData\Local\ProjectTest\artifacts\obj\x64\Release\net8.0-windows10.0.19041.0\win-x64\R2R\System.Text.Json.dll">
+      <PackagePath>System.Text.Json.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Administrator\AppData\Local\ProjectTest\artifacts\obj\x64\Release\net8.0-windows10.0.19041.0\win-x64\R2R\System.Text.RegularExpressions.dll">
+      <PackagePath>System.Text.RegularExpressions.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Administrator\AppData\Local\ProjectTest\artifacts\obj\x64\Release\net8.0-windows10.0.19041.0\win-x64\R2R\System.Threading.Channels.dll">
+      <PackagePath>System.Threading.Channels.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Administrator\AppData\Local\ProjectTest\artifacts\obj\x64\Release\net8.0-windows10.0.19041.0\win-x64\R2R\System.Threading.Tasks.Parallel.dll">
+      <PackagePath>System.Threading.Tasks.Parallel.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Administrator\AppData\Local\ProjectTest\artifacts\obj\x64\Release\net8.0-windows10.0.19041.0\win-x64\R2R\System.Threading.dll">
+      <PackagePath>System.Threading.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Administrator\AppData\Local\ProjectTest\artifacts\obj\x64\Release\net8.0-windows10.0.19041.0\win-x64\R2R\System.Transactions.Local.dll">
+      <PackagePath>System.Transactions.Local.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Administrator\AppData\Local\ProjectTest\artifacts\obj\x64\Release\net8.0-windows10.0.19041.0\win-x64\R2R\Microsoft.Windows.SDK.NET.dll">
+      <PackagePath>Microsoft.Windows.SDK.NET.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Administrator\AppData\Local\ProjectTest\artifacts\obj\x64\Release\net8.0-windows10.0.19041.0\win-x64\R2R\WinRT.Runtime.dll">
+      <PackagePath>WinRT.Runtime.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Administrator\AppData\Local\ProjectTest\artifacts\obj\x64\Release\net8.0-windows10.0.19041.0\win-x64\ProjectTest.deps.json">
+      <PackagePath>ProjectTest.deps.json</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Administrator\.nuget\packages\humanizer.core\2.14.1\lib\net6.0\Humanizer.dll">
+      <PackagePath>Humanizer.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Administrator\.nuget\packages\microsoft.bcl.asyncinterfaces\6.0.0\lib\netstandard2.1\Microsoft.Bcl.AsyncInterfaces.dll">
+      <PackagePath>Microsoft.Bcl.AsyncInterfaces.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Administrator\.nuget\packages\microsoft.codeanalysis.common\4.5.0\lib\netcoreapp3.1\Microsoft.CodeAnalysis.dll">
+      <PackagePath>Microsoft.CodeAnalysis.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Administrator\.nuget\packages\microsoft.codeanalysis.csharp\4.5.0\lib\netcoreapp3.1\Microsoft.CodeAnalysis.CSharp.dll">
+      <PackagePath>Microsoft.CodeAnalysis.CSharp.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Administrator\.nuget\packages\microsoft.codeanalysis.csharp.workspaces\4.5.0\lib\netcoreapp3.1\Microsoft.CodeAnalysis.CSharp.Workspaces.dll">
+      <PackagePath>Microsoft.CodeAnalysis.CSharp.Workspaces.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Administrator\.nuget\packages\microsoft.codeanalysis.workspaces.common\4.5.0\lib\netcoreapp3.1\Microsoft.CodeAnalysis.Workspaces.dll">
+      <PackagePath>Microsoft.CodeAnalysis.Workspaces.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Administrator\.nuget\packages\microsoft.entityframeworkcore.design\8.0.22\lib\net8.0\Microsoft.EntityFrameworkCore.Design.dll">
+      <PackagePath>Microsoft.EntityFrameworkCore.Design.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Administrator\.nuget\packages\microsoft.extensions.dependencymodel\8.0.2\lib\net8.0\Microsoft.Extensions.DependencyModel.dll">
+      <PackagePath>Microsoft.Extensions.DependencyModel.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Administrator\.nuget\packages\mono.texttemplating\2.2.1\lib\netstandard2.0\Mono.TextTemplating.dll">
+      <PackagePath>Mono.TextTemplating.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Administrator\.nuget\packages\system.composition.attributedmodel\6.0.0\lib\net6.0\System.Composition.AttributedModel.dll">
+      <PackagePath>System.Composition.AttributedModel.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Administrator\.nuget\packages\system.composition.convention\6.0.0\lib\net6.0\System.Composition.Convention.dll">
+      <PackagePath>System.Composition.Convention.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Administrator\.nuget\packages\system.composition.hosting\6.0.0\lib\net6.0\System.Composition.Hosting.dll">
+      <PackagePath>System.Composition.Hosting.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Administrator\.nuget\packages\system.composition.runtime\6.0.0\lib\net6.0\System.Composition.Runtime.dll">
+      <PackagePath>System.Composition.Runtime.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Administrator\.nuget\packages\system.composition.typedparts\6.0.0\lib\net6.0\System.Composition.TypedParts.dll">
+      <PackagePath>System.Composition.TypedParts.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Administrator\.nuget\packages\system.io.pipelines\6.0.3\lib\net6.0\System.IO.Pipelines.dll">
+      <PackagePath>System.IO.Pipelines.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Administrator\.nuget\packages\microsoft.codeanalysis.common\4.5.0\lib\netcoreapp3.1\cs\Microsoft.CodeAnalysis.resources.dll">
+      <PackagePath>cs\Microsoft.CodeAnalysis.resources.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Administrator\.nuget\packages\microsoft.codeanalysis.common\4.5.0\lib\netcoreapp3.1\de\Microsoft.CodeAnalysis.resources.dll">
+      <PackagePath>de\Microsoft.CodeAnalysis.resources.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Administrator\.nuget\packages\microsoft.codeanalysis.common\4.5.0\lib\netcoreapp3.1\es\Microsoft.CodeAnalysis.resources.dll">
+      <PackagePath>es\Microsoft.CodeAnalysis.resources.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Administrator\.nuget\packages\microsoft.codeanalysis.common\4.5.0\lib\netcoreapp3.1\fr\Microsoft.CodeAnalysis.resources.dll">
+      <PackagePath>fr\Microsoft.CodeAnalysis.resources.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Administrator\.nuget\packages\microsoft.codeanalysis.common\4.5.0\lib\netcoreapp3.1\it\Microsoft.CodeAnalysis.resources.dll">
+      <PackagePath>it\Microsoft.CodeAnalysis.resources.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Administrator\.nuget\packages\microsoft.codeanalysis.common\4.5.0\lib\netcoreapp3.1\ja\Microsoft.CodeAnalysis.resources.dll">
+      <PackagePath>ja\Microsoft.CodeAnalysis.resources.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Administrator\.nuget\packages\microsoft.codeanalysis.common\4.5.0\lib\netcoreapp3.1\ko\Microsoft.CodeAnalysis.resources.dll">
+      <PackagePath>ko\Microsoft.CodeAnalysis.resources.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Administrator\.nuget\packages\microsoft.codeanalysis.common\4.5.0\lib\netcoreapp3.1\pl\Microsoft.CodeAnalysis.resources.dll">
+      <PackagePath>pl\Microsoft.CodeAnalysis.resources.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Administrator\.nuget\packages\microsoft.codeanalysis.common\4.5.0\lib\netcoreapp3.1\pt-BR\Microsoft.CodeAnalysis.resources.dll">
+      <PackagePath>pt-BR\Microsoft.CodeAnalysis.resources.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Administrator\.nuget\packages\microsoft.codeanalysis.common\4.5.0\lib\netcoreapp3.1\ru\Microsoft.CodeAnalysis.resources.dll">
+      <PackagePath>ru\Microsoft.CodeAnalysis.resources.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Administrator\.nuget\packages\microsoft.codeanalysis.common\4.5.0\lib\netcoreapp3.1\tr\Microsoft.CodeAnalysis.resources.dll">
+      <PackagePath>tr\Microsoft.CodeAnalysis.resources.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Administrator\.nuget\packages\microsoft.codeanalysis.common\4.5.0\lib\netcoreapp3.1\zh-Hans\Microsoft.CodeAnalysis.resources.dll">
+      <PackagePath>zh-Hans\Microsoft.CodeAnalysis.resources.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Administrator\.nuget\packages\microsoft.codeanalysis.common\4.5.0\lib\netcoreapp3.1\zh-Hant\Microsoft.CodeAnalysis.resources.dll">
+      <PackagePath>zh-Hant\Microsoft.CodeAnalysis.resources.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Administrator\.nuget\packages\microsoft.codeanalysis.csharp\4.5.0\lib\netcoreapp3.1\cs\Microsoft.CodeAnalysis.CSharp.resources.dll">
+      <PackagePath>cs\Microsoft.CodeAnalysis.CSharp.resources.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Administrator\.nuget\packages\microsoft.codeanalysis.csharp\4.5.0\lib\netcoreapp3.1\de\Microsoft.CodeAnalysis.CSharp.resources.dll">
+      <PackagePath>de\Microsoft.CodeAnalysis.CSharp.resources.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Administrator\.nuget\packages\microsoft.codeanalysis.csharp\4.5.0\lib\netcoreapp3.1\es\Microsoft.CodeAnalysis.CSharp.resources.dll">
+      <PackagePath>es\Microsoft.CodeAnalysis.CSharp.resources.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Administrator\.nuget\packages\microsoft.codeanalysis.csharp\4.5.0\lib\netcoreapp3.1\fr\Microsoft.CodeAnalysis.CSharp.resources.dll">
+      <PackagePath>fr\Microsoft.CodeAnalysis.CSharp.resources.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Administrator\.nuget\packages\microsoft.codeanalysis.csharp\4.5.0\lib\netcoreapp3.1\it\Microsoft.CodeAnalysis.CSharp.resources.dll">
+      <PackagePath>it\Microsoft.CodeAnalysis.CSharp.resources.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Administrator\.nuget\packages\microsoft.codeanalysis.csharp\4.5.0\lib\netcoreapp3.1\ja\Microsoft.CodeAnalysis.CSharp.resources.dll">
+      <PackagePath>ja\Microsoft.CodeAnalysis.CSharp.resources.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Administrator\.nuget\packages\microsoft.codeanalysis.csharp\4.5.0\lib\netcoreapp3.1\ko\Microsoft.CodeAnalysis.CSharp.resources.dll">
+      <PackagePath>ko\Microsoft.CodeAnalysis.CSharp.resources.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Administrator\.nuget\packages\microsoft.codeanalysis.csharp\4.5.0\lib\netcoreapp3.1\pl\Microsoft.CodeAnalysis.CSharp.resources.dll">
+      <PackagePath>pl\Microsoft.CodeAnalysis.CSharp.resources.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Administrator\.nuget\packages\microsoft.codeanalysis.csharp\4.5.0\lib\netcoreapp3.1\pt-BR\Microsoft.CodeAnalysis.CSharp.resources.dll">
+      <PackagePath>pt-BR\Microsoft.CodeAnalysis.CSharp.resources.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Administrator\.nuget\packages\microsoft.codeanalysis.csharp\4.5.0\lib\netcoreapp3.1\ru\Microsoft.CodeAnalysis.CSharp.resources.dll">
+      <PackagePath>ru\Microsoft.CodeAnalysis.CSharp.resources.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Administrator\.nuget\packages\microsoft.codeanalysis.csharp\4.5.0\lib\netcoreapp3.1\tr\Microsoft.CodeAnalysis.CSharp.resources.dll">
+      <PackagePath>tr\Microsoft.CodeAnalysis.CSharp.resources.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Administrator\.nuget\packages\microsoft.codeanalysis.csharp\4.5.0\lib\netcoreapp3.1\zh-Hans\Microsoft.CodeAnalysis.CSharp.resources.dll">
+      <PackagePath>zh-Hans\Microsoft.CodeAnalysis.CSharp.resources.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Administrator\.nuget\packages\microsoft.codeanalysis.csharp\4.5.0\lib\netcoreapp3.1\zh-Hant\Microsoft.CodeAnalysis.CSharp.resources.dll">
+      <PackagePath>zh-Hant\Microsoft.CodeAnalysis.CSharp.resources.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Administrator\.nuget\packages\microsoft.codeanalysis.csharp.workspaces\4.5.0\lib\netcoreapp3.1\cs\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll">
+      <PackagePath>cs\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Administrator\.nuget\packages\microsoft.codeanalysis.csharp.workspaces\4.5.0\lib\netcoreapp3.1\de\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll">
+      <PackagePath>de\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Administrator\.nuget\packages\microsoft.codeanalysis.csharp.workspaces\4.5.0\lib\netcoreapp3.1\es\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll">
+      <PackagePath>es\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Administrator\.nuget\packages\microsoft.codeanalysis.csharp.workspaces\4.5.0\lib\netcoreapp3.1\fr\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll">
+      <PackagePath>fr\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Administrator\.nuget\packages\microsoft.codeanalysis.csharp.workspaces\4.5.0\lib\netcoreapp3.1\it\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll">
+      <PackagePath>it\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Administrator\.nuget\packages\microsoft.codeanalysis.csharp.workspaces\4.5.0\lib\netcoreapp3.1\ja\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll">
+      <PackagePath>ja\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Administrator\.nuget\packages\microsoft.codeanalysis.csharp.workspaces\4.5.0\lib\netcoreapp3.1\ko\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll">
+      <PackagePath>ko\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Administrator\.nuget\packages\microsoft.codeanalysis.csharp.workspaces\4.5.0\lib\netcoreapp3.1\pl\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll">
+      <PackagePath>pl\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Administrator\.nuget\packages\microsoft.codeanalysis.csharp.workspaces\4.5.0\lib\netcoreapp3.1\pt-BR\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll">
+      <PackagePath>pt-BR\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Administrator\.nuget\packages\microsoft.codeanalysis.csharp.workspaces\4.5.0\lib\netcoreapp3.1\ru\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll">
+      <PackagePath>ru\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Administrator\.nuget\packages\microsoft.codeanalysis.csharp.workspaces\4.5.0\lib\netcoreapp3.1\tr\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll">
+      <PackagePath>tr\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Administrator\.nuget\packages\microsoft.codeanalysis.csharp.workspaces\4.5.0\lib\netcoreapp3.1\zh-Hans\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll">
+      <PackagePath>zh-Hans\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Administrator\.nuget\packages\microsoft.codeanalysis.csharp.workspaces\4.5.0\lib\netcoreapp3.1\zh-Hant\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll">
+      <PackagePath>zh-Hant\Microsoft.CodeAnalysis.CSharp.Workspaces.resources.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Administrator\.nuget\packages\microsoft.codeanalysis.workspaces.common\4.5.0\lib\netcoreapp3.1\cs\Microsoft.CodeAnalysis.Workspaces.resources.dll">
+      <PackagePath>cs\Microsoft.CodeAnalysis.Workspaces.resources.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Administrator\.nuget\packages\microsoft.codeanalysis.workspaces.common\4.5.0\lib\netcoreapp3.1\de\Microsoft.CodeAnalysis.Workspaces.resources.dll">
+      <PackagePath>de\Microsoft.CodeAnalysis.Workspaces.resources.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Administrator\.nuget\packages\microsoft.codeanalysis.workspaces.common\4.5.0\lib\netcoreapp3.1\es\Microsoft.CodeAnalysis.Workspaces.resources.dll">
+      <PackagePath>es\Microsoft.CodeAnalysis.Workspaces.resources.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Administrator\.nuget\packages\microsoft.codeanalysis.workspaces.common\4.5.0\lib\netcoreapp3.1\fr\Microsoft.CodeAnalysis.Workspaces.resources.dll">
+      <PackagePath>fr\Microsoft.CodeAnalysis.Workspaces.resources.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Administrator\.nuget\packages\microsoft.codeanalysis.workspaces.common\4.5.0\lib\netcoreapp3.1\it\Microsoft.CodeAnalysis.Workspaces.resources.dll">
+      <PackagePath>it\Microsoft.CodeAnalysis.Workspaces.resources.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Administrator\.nuget\packages\microsoft.codeanalysis.workspaces.common\4.5.0\lib\netcoreapp3.1\ja\Microsoft.CodeAnalysis.Workspaces.resources.dll">
+      <PackagePath>ja\Microsoft.CodeAnalysis.Workspaces.resources.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Administrator\.nuget\packages\microsoft.codeanalysis.workspaces.common\4.5.0\lib\netcoreapp3.1\ko\Microsoft.CodeAnalysis.Workspaces.resources.dll">
+      <PackagePath>ko\Microsoft.CodeAnalysis.Workspaces.resources.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Administrator\.nuget\packages\microsoft.codeanalysis.workspaces.common\4.5.0\lib\netcoreapp3.1\pl\Microsoft.CodeAnalysis.Workspaces.resources.dll">
+      <PackagePath>pl\Microsoft.CodeAnalysis.Workspaces.resources.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Administrator\.nuget\packages\microsoft.codeanalysis.workspaces.common\4.5.0\lib\netcoreapp3.1\pt-BR\Microsoft.CodeAnalysis.Workspaces.resources.dll">
+      <PackagePath>pt-BR\Microsoft.CodeAnalysis.Workspaces.resources.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Administrator\.nuget\packages\microsoft.codeanalysis.workspaces.common\4.5.0\lib\netcoreapp3.1\ru\Microsoft.CodeAnalysis.Workspaces.resources.dll">
+      <PackagePath>ru\Microsoft.CodeAnalysis.Workspaces.resources.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Administrator\.nuget\packages\microsoft.codeanalysis.workspaces.common\4.5.0\lib\netcoreapp3.1\tr\Microsoft.CodeAnalysis.Workspaces.resources.dll">
+      <PackagePath>tr\Microsoft.CodeAnalysis.Workspaces.resources.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Administrator\.nuget\packages\microsoft.codeanalysis.workspaces.common\4.5.0\lib\netcoreapp3.1\zh-Hans\Microsoft.CodeAnalysis.Workspaces.resources.dll">
+      <PackagePath>zh-Hans\Microsoft.CodeAnalysis.Workspaces.resources.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Administrator\.nuget\packages\microsoft.codeanalysis.workspaces.common\4.5.0\lib\netcoreapp3.1\zh-Hant\Microsoft.CodeAnalysis.Workspaces.resources.dll">
+      <PackagePath>zh-Hant\Microsoft.CodeAnalysis.Workspaces.resources.dll</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Administrator\.nuget\packages\microsoft.web.webview2\1.0.3179.45\build\..\lib\Microsoft.Web.WebView2.Core.winmd">
+      <PackagePath>Microsoft.Web.WebView2.Core.winmd</PackagePath>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\Administrator\AppData\Local\ProjectTest\artifacts\bin\x64\Release\net8.0-windows10.0.19041.0\win-x64\resources.pri">
+      <PackagePath>resources.pri</PackagePath>
+    </AppxPackagedFile>
+  </ItemGroup>
+  <ItemGroup>
+    <ResolvedSDKReference Include="C:\Users\Administrator\.nuget\packages\microsoft.windowsappsdk.runtime\1.8.260209005\buildTransitive\..\tools\MSIX\win10-x86\Microsoft.WindowsAppRuntime.1.8.msix">
+      <Name>Microsoft.WindowsAppRuntime.1.8</Name>
+      <Version>8000.770.947.0</Version>
+      <Architecture>x86</Architecture>
+      <FrameworkIdentity>Name = Microsoft.WindowsAppRuntime.1.8, MinVersion = 8000.770.947.0, Publisher = %27CN=Microsoft Corporation, O=Microsoft Corporation, L=Redmond, S=Washington, C=US%27</FrameworkIdentity>
+      <AppxLocation>C:\Users\Administrator\.nuget\packages\microsoft.windowsappsdk.runtime\1.8.260209005\buildTransitive\..\tools\MSIX\win10-x86\Microsoft.WindowsAppRuntime.1.8.msix</AppxLocation>
+      <MoreInfo></MoreInfo>
+    </ResolvedSDKReference>
+    <ResolvedSDKReference Include="C:\Users\Administrator\.nuget\packages\microsoft.windowsappsdk.runtime\1.8.260209005\buildTransitive\..\tools\MSIX\win10-x86\Microsoft.WindowsAppRuntime.1.8.msix">
+      <Name>Microsoft.WindowsAppRuntime.1.8</Name>
+      <Version>8000.770.947.0</Version>
+      <Architecture>win32</Architecture>
+      <FrameworkIdentity>Name = Microsoft.WindowsAppRuntime.1.8, MinVersion = 8000.770.947.0, Publisher = %27CN=Microsoft Corporation, O=Microsoft Corporation, L=Redmond, S=Washington, C=US%27</FrameworkIdentity>
+      <AppxLocation>C:\Users\Administrator\.nuget\packages\microsoft.windowsappsdk.runtime\1.8.260209005\buildTransitive\..\tools\MSIX\win10-x86\Microsoft.WindowsAppRuntime.1.8.msix</AppxLocation>
+      <MoreInfo></MoreInfo>
+    </ResolvedSDKReference>
+    <ResolvedSDKReference Include="C:\Users\Administrator\.nuget\packages\microsoft.windowsappsdk.runtime\1.8.260209005\buildTransitive\..\tools\MSIX\win10-x64\Microsoft.WindowsAppRuntime.1.8.msix">
+      <Name>Microsoft.WindowsAppRuntime.1.8</Name>
+      <Version>8000.770.947.0</Version>
+      <Architecture>x64</Architecture>
+      <FrameworkIdentity>Name = Microsoft.WindowsAppRuntime.1.8, MinVersion = 8000.770.947.0, Publisher = %27CN=Microsoft Corporation, O=Microsoft Corporation, L=Redmond, S=Washington, C=US%27</FrameworkIdentity>
+      <AppxLocation>C:\Users\Administrator\.nuget\packages\microsoft.windowsappsdk.runtime\1.8.260209005\buildTransitive\..\tools\MSIX\win10-x64\Microsoft.WindowsAppRuntime.1.8.msix</AppxLocation>
+      <MoreInfo></MoreInfo>
+    </ResolvedSDKReference>
+    <ResolvedSDKReference Include="C:\Users\Administrator\.nuget\packages\microsoft.windowsappsdk.runtime\1.8.260209005\buildTransitive\..\tools\MSIX\win10-arm64\Microsoft.WindowsAppRuntime.1.8.msix">
+      <Name>Microsoft.WindowsAppRuntime.1.8</Name>
+      <Version>8000.770.947.0</Version>
+      <Architecture>arm64</Architecture>
+      <FrameworkIdentity>Name = Microsoft.WindowsAppRuntime.1.8, MinVersion = 8000.770.947.0, Publisher = %27CN=Microsoft Corporation, O=Microsoft Corporation, L=Redmond, S=Washington, C=US%27</FrameworkIdentity>
+      <AppxLocation>C:\Users\Administrator\.nuget\packages\microsoft.windowsappsdk.runtime\1.8.260209005\buildTransitive\..\tools\MSIX\win10-arm64\Microsoft.WindowsAppRuntime.1.8.msix</AppxLocation>
+      <MoreInfo></MoreInfo>
+    </ResolvedSDKReference>
+  </ItemGroup>
+</Project>

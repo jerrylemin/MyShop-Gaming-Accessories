@@ -1,0 +1,6 @@
+{
+  "id": "sample-myshop-plugin",
+  "name": "Sample MyShop Plugin",
+  "version": "1.0.0",
+  "status": "Build the sample project and copy the DLL to the app Plugins folder to load it."
+}

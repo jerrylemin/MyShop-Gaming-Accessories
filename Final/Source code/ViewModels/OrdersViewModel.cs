@@ -113,6 +113,8 @@ public class OrdersViewModel : ViewModelBase
 
     public ObservableCollection<OrderLineViewModel> DraftItems { get; }
 
+    public event EventHandler<CreateCustomerRequestedEventArgs>? CreateCustomerRequested;
+
     public ObservableCollection<OrderStatus> StatusOptions { get; } = new(Enum.GetValues<OrderStatus>());
 
     public ObservableCollection<OrderStatusFilterOption> StatusFilters { get; }
@@ -190,7 +192,13 @@ public class OrdersViewModel : ViewModelBase
     public string CustomerPhone
     {
         get => _customerPhone;
-        set => SetProperty(ref _customerPhone, value);
+        set
+        {
+            if (SetProperty(ref _customerPhone, value))
+            {
+                ScheduleAutoSave();
+            }
+        }
     }
 
     public Promotion? SelectedPromotion
@@ -522,6 +530,11 @@ public class OrdersViewModel : ViewModelBase
 
     private async Task SaveAsync()
     {
+        await SaveAsync(allowCreateCustomerPrompt: true);
+    }
+
+    private async Task SaveAsync(bool allowCreateCustomerPrompt)
+    {
         if (DraftItems.Count == 0)
         {
             StatusMessage = "Add at least one product.";
@@ -537,10 +550,21 @@ public class OrdersViewModel : ViewModelBase
         var customer = await ResolveCustomerByPhoneAsync();
         if (!string.IsNullOrWhiteSpace(CustomerPhone) && customer is null)
         {
-            StatusMessage = "No customer found for this phone number. Add the customer first or clear the phone field.";
-            return;
+            if (!allowCreateCustomerPrompt)
+            {
+                StatusMessage = "Customer phone is new. Click Create Order to add customer info before saving.";
+                return;
+            }
+
+            customer = await RequestNewCustomerAsync(CustomerPhone);
+            if (customer is null)
+            {
+                StatusMessage = "Order was not saved because the customer was not created.";
+                return;
+            }
         }
 
+        var isNewOrder = CurrentOrderId == 0;
         var draft = new OrderDraft
         {
             Id = CurrentOrderId,
@@ -568,7 +592,7 @@ public class OrdersViewModel : ViewModelBase
         {
             CurrentOrderId = result.Value;
             _persistedStatus = SelectedStatus;
-            await LoadAsync(CurrentPage);
+            await LoadAsync(isNewOrder ? 1 : CurrentPage);
             if (CurrentOrderId != 0)
             {
                 await LoadOrderAsync(CurrentOrderId);
@@ -589,6 +613,13 @@ public class OrdersViewModel : ViewModelBase
             : await _customerRepository.GetByPhoneAsync(CustomerPhone);
     }
 
+    private async Task<Customer?> RequestNewCustomerAsync(string phone)
+    {
+        var args = new CreateCustomerRequestedEventArgs(phone.Trim());
+        CreateCustomerRequested?.Invoke(this, args);
+        return await args.WaitForCustomerAsync();
+    }
+
     private void RecalculateTotals()
     {
         var subtotal = DraftItems.Sum(x => x.LineTotal);
@@ -604,7 +635,7 @@ public class OrdersViewModel : ViewModelBase
         }
 
         AutoSaveStatus = "Saving...";
-        _autoSaveService.Schedule(async _ => await SaveAsync());
+        _autoSaveService.Schedule(async _ => await SaveAsync(allowCreateCustomerPrompt: false));
     }
 
     private async Task PrintAsync()
@@ -651,5 +682,27 @@ public class OrdersViewModel : ViewModelBase
         _previousPageCommand.NotifyCanExecuteChanged();
         _nextPageCommand.NotifyCanExecuteChanged();
         _lastPageCommand.NotifyCanExecuteChanged();
+    }
+}
+
+public sealed class CreateCustomerRequestedEventArgs : EventArgs
+{
+    private readonly TaskCompletionSource<Customer?> _completion = new();
+
+    public CreateCustomerRequestedEventArgs(string phone)
+    {
+        Phone = phone;
+    }
+
+    public string Phone { get; }
+
+    public void SetResult(Customer? customer)
+    {
+        _completion.TrySetResult(customer);
+    }
+
+    public Task<Customer?> WaitForCustomerAsync()
+    {
+        return _completion.Task;
     }
 }

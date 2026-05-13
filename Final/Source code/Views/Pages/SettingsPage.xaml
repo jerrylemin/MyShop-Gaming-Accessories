@@ -67,10 +67,39 @@
             <Border Style="{ThemeResource CardBorderStyle}">
                 <StackPanel Spacing="14">
                     <TextBlock Style="{ThemeResource SectionHeaderTextBlockStyle}" Text="License" />
-                    <TextBlock Text="{Binding LicenseStatus}" TextWrapping="WrapWholeWords" />
+                    <Grid ColumnSpacing="12">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <Border
+                            Padding="10,6"
+                            Background="{ThemeResource AccentBrush}"
+                            CornerRadius="6">
+                            <TextBlock
+                                Foreground="White"
+                                FontWeight="SemiBold"
+                                Text="{Binding LicensePlanName}" />
+                        </Border>
+                        <StackPanel Grid.Column="1" Spacing="4">
+                            <TextBlock FontWeight="SemiBold" Text="{Binding LicenseStatus}" TextWrapping="WrapWholeWords" />
+                            <TextBlock
+                                Style="{ThemeResource CaptionTextBlockStyle}"
+                                Text="{Binding LicenseExpiryStatus}"
+                                TextWrapping="WrapWholeWords" />
+                        </StackPanel>
+                    </Grid>
+                    <ProgressBar
+                        Maximum="100"
+                        Value="{Binding LicenseProgressValue}"
+                        Visibility="{Binding LicenseProgressVisibility}" />
                     <TextBlock
                         Style="{ThemeResource CaptionTextBlockStyle}"
-                        Text="Trial lasts 15 days. If the trial expires, enter an activation code that starts with MYSHOP- and is at least 16 characters. Demo activation code: MYSHOP-DEMO-2026."
+                        Text="Trial lasts 15 days. Activation plans support 1 month, 1 year, or lifetime access."
+                        TextWrapping="WrapWholeWords" />
+                    <TextBlock
+                        Style="{ThemeResource CaptionTextBlockStyle}"
+                        Text="{Binding DemoActivationCodes}"
                         TextWrapping="WrapWholeWords" />
                     <TextBox PlaceholderText="Activation code" Text="{Binding ActivationCode, Mode=TwoWay}" />
                     <Button Command="{Binding ActivateCommand}" Content="Activate" />
@@ -80,9 +109,62 @@
             <Border Style="{ThemeResource CardBorderStyle}">
                 <StackPanel Spacing="14">
                     <TextBlock Style="{ThemeResource SectionHeaderTextBlockStyle}" Text="Backup / Restore" />
-                    <TextBox PlaceholderText="Backup file path" Text="{Binding BackupPath, Mode=TwoWay}" />
+                    <TextBlock
+                        Style="{ThemeResource CaptionTextBlockStyle}"
+                        Text="{Binding PostgreSqlToolsStatus}"
+                        TextWrapping="WrapWholeWords" />
+                    <Grid ColumnSpacing="8">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="Auto" />
+                        </Grid.ColumnDefinitions>
+                        <TextBox
+                            Header="PostgreSQL bin folder"
+                            PlaceholderText="C:\Program Files\PostgreSQL\18\bin"
+                            Text="{Binding PostgreSqlToolsPath, Mode=TwoWay}" />
+                        <Button
+                            Grid.Column="1"
+                            VerticalAlignment="Bottom"
+                            Click="BrowsePostgreSqlToolsButton_Click"
+                            Content="Browse" />
+                        <Button
+                            Grid.Column="2"
+                            VerticalAlignment="Bottom"
+                            Click="InstallPostgreSqlButton_Click"
+                            Content="Install tools" />
+                    </Grid>
+                    <Grid ColumnSpacing="8">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="Auto" />
+                        </Grid.ColumnDefinitions>
+                        <TextBox
+                            Header="Backup file"
+                            PlaceholderText="Backup file path"
+                            Text="{Binding BackupPath, Mode=TwoWay}" />
+                        <Button
+                            Grid.Column="1"
+                            VerticalAlignment="Bottom"
+                            Click="BrowseBackupButton_Click"
+                            Content="Browse" />
+                    </Grid>
                     <Button Command="{Binding BackupCommand}" Content="Backup database" />
-                    <TextBox PlaceholderText="Restore file path" Text="{Binding RestorePath, Mode=TwoWay}" />
+                    <Grid ColumnSpacing="8">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="Auto" />
+                        </Grid.ColumnDefinitions>
+                        <TextBox
+                            Header="Restore file"
+                            PlaceholderText="Restore file path"
+                            Text="{Binding RestorePath, Mode=TwoWay}" />
+                        <Button
+                            Grid.Column="1"
+                            VerticalAlignment="Bottom"
+                            Click="BrowseRestoreButton_Click"
+                            Content="Browse" />
+                    </Grid>
                     <Button Command="{Binding RestoreCommand}" Content="Restore database" />
                 </StackPanel>
             </Border>
@@ -109,6 +191,9 @@
                 Style="{ThemeResource AccentButtonStyle}"
                 Command="{Binding SaveCommand}"
                 Content="Save Settings" />
+            <Button
+                Command="{Binding RefreshCommand}"
+                Content="Refresh Settings" />
         </StackPanel>
     </ScrollViewer>
 </Page>
