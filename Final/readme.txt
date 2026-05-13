@@ -20,7 +20,8 @@ CẤU TRÚC THƯ MỤC FINAL
 2. Release
 - Chứa thư mục App là bản thực thi đã biên dịch ra từ mã nguồn.
 - File chạy chính: Release\App\ProjectTest.exe.
-- Không kèm setup.exe trong lần nộp này theo yêu cầu tách riêng việc tạo installer.
+- Có setup.exe nếu nhóm đã tạo installer đầy đủ.
+- Có setup.bat để cài nhanh từ mã nguồn trong Final\Source code, dùng PowerShell, tự xin quyền Administrator, tự publish lại app vào Release\App, cấu hình database và tạo shortcut Desktop.
 
 3. readme.txt
 - File mô tả thông tin nhóm, chức năng, hướng dẫn chạy và phân công công việc.
@@ -160,20 +161,28 @@ Nhận xét phân công:
 HƯỚNG DẪN CHẠY BẢN RELEASE
 ==========================
 
-1. Mở thư mục Final\Release\App.
-2. Chạy ProjectTest.exe.
-3. Máy chạy app cần có:
+1. Cách nhanh khi chỉ nộp thư mục Final:
+   - Mở Final\Release.
+   - Bấm chuột phải setup.bat, chọn Run as administrator.
+   - File này sẽ dùng mã nguồn trong Final\Source code để restore/build/publish app, kiểm tra runtime, cấu hình PostgreSQL/database, tạo shortcut Desktop và mở app.
+2. Nếu muốn dùng installer đầy đủ:
+   - Mở Final\Release.
+   - Chạy setup.exe nếu file này có trong thư mục Release.
+3. Nếu máy đã có đủ môi trường:
+   - Mở Final\Release\App.
+   - Chạy ProjectTest.exe.
+4. Máy chạy app cần có:
    - .NET 8 Desktop Runtime.
    - Windows App Runtime phù hợp với WinUI 3.
    - PostgreSQL đang chạy và connection string đã cấu hình hoặc database demo đã được seed/restore.
-4. Đăng nhập bằng:
+5. Đăng nhập bằng:
    - admin / MyShop123!
    - moderator / MyShop123!
    - sale / MyShop123!
-5. Nếu app hỏi cấu hình database, nhập thông tin PostgreSQL local đang dùng.
-6. Nếu cần tạo setup.exe, chạy lại quy trình build installer từ source chính bên ngoài thư mục Final.
+6. Nếu app hỏi cấu hình database, nhập thông tin PostgreSQL local đang dùng.
 
 Lưu ý:
-- Final\Release hiện không chứa setup.exe.
+- setup.bat nhanh hơn setup.exe vì build/cấu hình trực tiếp từ Final\Source code thay vì giải nén/cài gói installer lớn.
+- Nếu PostgreSQL đã có mật khẩu khác, set biến môi trường MYSHOP_POSTGRES_ADMIN_PASSWORD rồi chạy lại setup.bat.
 - Nếu port PostgreSQL 5432 bị chiếm, kiểm tra service PostgreSQL đang chạy hoặc đổi port trong connection string.
 - Nếu Windows báo thiếu Windows App Runtime, cài Windows App Runtime rồi mở lại ProjectTest.exe.

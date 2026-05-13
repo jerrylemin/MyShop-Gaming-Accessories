@@ -8,6 +8,7 @@ namespace ProjectTest.ViewModels;
 
 public class ProductEditViewModel : ViewModelBase
 {
+    private const decimal MaxCurrencyValue = 9999999999.99m;
     private readonly ProductRepository _productRepository;
     private readonly CategoryRepository _categoryRepository;
     private readonly AutoSaveService _autoSaveService = new();
@@ -242,11 +243,28 @@ public class ProductEditViewModel : ViewModelBase
 
     private async Task SaveAsync()
     {
+        await SaveAsync(navigateAfterSave: true);
+    }
+
+    private async Task SaveAsync(bool navigateAfterSave)
+    {
         if (!decimal.TryParse(ImportPrice, out var importPrice) ||
             !decimal.TryParse(SalePrice, out var salePrice) ||
             !int.TryParse(Stock, out var stockValue))
         {
             StatusMessage = "Enter valid numeric values for prices and stock.";
+            return;
+        }
+
+        if (importPrice < 0 || salePrice < 0 || stockValue < 0)
+        {
+            StatusMessage = "Prices and stock cannot be negative.";
+            return;
+        }
+
+        if (importPrice > MaxCurrencyValue || salePrice > MaxCurrencyValue)
+        {
+            StatusMessage = "Import price and sale price must be less than 10,000,000,000.00.";
             return;
         }
 
@@ -284,7 +302,10 @@ public class ProductEditViewModel : ViewModelBase
         }
 
         ProductId = result.Value;
-        Saved?.Invoke(this, EventArgs.Empty);
+        if (navigateAfterSave)
+        {
+            Saved?.Invoke(this, EventArgs.Empty);
+        }
     }
 
     private void ScheduleAutoSave()
@@ -295,7 +316,7 @@ public class ProductEditViewModel : ViewModelBase
         }
 
         AutoSaveStatus = "Saving...";
-        _autoSaveService.Schedule(async _ => await SaveAsync());
+        _autoSaveService.Schedule(async _ => await SaveAsync(navigateAfterSave: false));
     }
 
     private bool CanAttemptAutoSave()

@@ -1,8 +1,8 @@
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Navigation;
+using ProjectTest.Helpers;
 using ProjectTest.ViewModels;
-using Windows.Storage;
 using Windows.Storage.Pickers;
 using WinRT.Interop;
 
@@ -51,43 +51,59 @@ public sealed partial class ProductEditPage : Page
 
     private async void BrowseImage1Button_Click(object sender, RoutedEventArgs e)
     {
-        ViewModel.Image1 = await PickAndStoreImageAsync(ViewModel.Image1);
+        var selectedPath = await PickImageAsync(ViewModel.Image1, "Image 1");
+        ApplySelectedImage(selectedPath, value => ViewModel.Image1 = value, Image1TextBox, Image1Preview);
     }
 
     private async void BrowseImage2Button_Click(object sender, RoutedEventArgs e)
     {
-        ViewModel.Image2 = await PickAndStoreImageAsync(ViewModel.Image2);
+        var selectedPath = await PickImageAsync(ViewModel.Image2, "Image 2");
+        ApplySelectedImage(selectedPath, value => ViewModel.Image2 = value, Image2TextBox, Image2Preview);
     }
 
     private async void BrowseImage3Button_Click(object sender, RoutedEventArgs e)
     {
-        ViewModel.Image3 = await PickAndStoreImageAsync(ViewModel.Image3);
+        var selectedPath = await PickImageAsync(ViewModel.Image3, "Image 3");
+        ApplySelectedImage(selectedPath, value => ViewModel.Image3 = value, Image3TextBox, Image3Preview);
     }
 
-    private async Task<string> PickAndStoreImageAsync(string currentPath)
+    private async Task<string> PickImageAsync(string currentPath, string label)
     {
-        var picker = new FileOpenPicker();
-        picker.FileTypeFilter.Add(".jpg");
-        picker.FileTypeFilter.Add(".jpeg");
-        picker.FileTypeFilter.Add(".png");
-        picker.FileTypeFilter.Add(".webp");
-        picker.SuggestedStartLocation = PickerLocationId.PicturesLibrary;
-
-        if (App.Current.ActiveWindow is not null)
+        try
         {
-            InitializeWithWindow.Initialize(picker, WindowNative.GetWindowHandle(App.Current.ActiveWindow));
+            var picker = new FileOpenPicker();
+            picker.FileTypeFilter.Add(".jpg");
+            picker.FileTypeFilter.Add(".jpeg");
+            picker.FileTypeFilter.Add(".png");
+            picker.FileTypeFilter.Add(".webp");
+            picker.SuggestedStartLocation = PickerLocationId.PicturesLibrary;
+
+            if (App.Current.ActiveWindow is not null)
+            {
+                InitializeWithWindow.Initialize(picker, WindowNative.GetWindowHandle(App.Current.ActiveWindow));
+            }
+
+            var file = await picker.PickSingleFileAsync();
+            if (file is null)
+            {
+                ViewModel.StatusMessage = $"{label} was not changed.";
+                return currentPath;
+            }
+
+            ViewModel.StatusMessage = $"{label} selected: {file.Path}";
+            return file.Path;
         }
-
-        var file = await picker.PickSingleFileAsync();
-        if (file is null)
+        catch (Exception ex)
         {
+            ViewModel.StatusMessage = $"Could not select {label.ToLowerInvariant()}: {ex.GetBaseException().Message}";
             return currentPath;
         }
+    }
 
-        var productImagesFolder = await ApplicationData.Current.LocalFolder.CreateFolderAsync("ProductEditorImages", CreationCollisionOption.OpenIfExists);
-        var extension = Path.GetExtension(file.Name);
-        var destinationName = $"{DateTime.UtcNow:yyyyMMddHHmmssfff}_{Guid.NewGuid():N}{extension}";
-        var copiedFile = await file.CopyAsync(productImagesFolder, destinationName, NameCollisionOption.ReplaceExisting);
-        return copiedFile.Path;
+    private static void ApplySelectedImage(string path, Action<string> setViewModelPath, TextBox textBox, Image preview)
+    {
+        setViewModelPath(path);
+        textBox.Text = path;
+        preview.Source = ImageSourceHelper.ToBitmap(path);
     }
 }
