@@ -1,99 +1,190 @@
-﻿KICH BAN QUAY VIDEO DEMO TEST APP - MYSHOP GAMING ACCESSORIES POS
+KICH BAN QUAY VIDEO DEMO TEST APP - MYSHOP GAMING ACCESSORIES POS
 Thoi luong muc tieu: khoang 5 phut
 
-Thong tin dang nhap demo:
+Tai khoan demo:
 - admin / MyShop123!
 - moderator / MyShop123!
 - sale / MyShop123!
 
-0:00 - 0:20 | Gioi thieu nhanh
+Muc tieu video:
+- Cho thay app cai/mo duoc tu ban Release.
+- Test cac module chinh theo tung phan quyen.
+- Noi ro vai tro nao duoc dung chuc nang nao.
+- Khong can quay qua lau tung form, chi can thao tac nhanh va ro.
+
+0:00 - 0:25 | Gioi thieu ban Release
 - Mo thu muc Final\Release.
-- Cho thay trong Release co setup.exe va thu muc App chua ProjectTest.exe.
-- Noi ngan gon: day la ung dung MyShop Gaming Accessories POS, co installer, database PostgreSQL demo, san pham, don hang, khach hang, dashboard, reports va phan quyen.
+- Cho thay co setup.exe va thu muc App chua ProjectTest.exe.
+- Noi: setup.exe dung de cai day du app, runtime, PostgreSQL/database demo va shortcut.
+- Mo app bang shortcut MyShop Gaming Accessories POS hoac chay ProjectTest.exe neu may da cai runtime/database.
 
-0:20 - 0:50 | Cai dat / mo ung dung
-- Neu quay tren may da cai san: mo shortcut MyShop Gaming Accessories POS tren Desktop hoac Start Menu.
-- Neu muon quay installer: bam chuot phai setup.exe, chon Run as administrator, cho thay installer tu cai runtime/database/shortcut. Co the cat nhanh doan cho doi.
-- Mo ung dung den man hinh Login.
+0:25 - 0:45 | Man hinh dang nhap
+- Cho thay man hinh Login.
+- Noi app co 3 phan quyen demo:
+  admin: toan quyen quan ly.
+  moderator: quan ly nghiep vu va xem bao cao, han che cau hinh he thong.
+  sale: ban hang/POS va xem du lieu can thiet cho nhan vien ban hang.
 
-0:50 - 1:15 | Dang nhap va phan quyen
-- Dang nhap bang admin / MyShop123!.
-- Cho thay login thanh cong va vao man hinh chinh.
-- Noi: app co 3 tai khoan demo admin, moderator, sale; mat khau chung MyShop123!.
+PHAN 1 - ADMIN / TOAN QUYEN
+0:45 - 2:25
 
-1:15 - 1:45 | Dashboard
+Dang nhap:
+- Username: admin
+- Password: MyShop123!
+
+Chuc nang can quay voi admin:
+
+1. Dashboard
 - Vao Dashboard.
-- Quay cac thong tin tong quan: tong san pham, don hang, doanh thu, san pham sap het hang.
-- Keo/xem bieu do doanh thu, don hang gan day, top san pham ban chay.
-- Noi: Dashboard lay du lieu tu PostgreSQL demo duoc restore tu dump hoac seed fallback.
+- Cho thay tong san pham, don hang, doanh thu, san pham sap het hang.
+- Cho thay bieu do/top san pham/don hang gan day neu co.
+- Noi: admin xem duoc tong quan toan bo cua hang.
 
-1:45 - 2:25 | Products va Categories
+2. Products
 - Vao Products.
 - Tim kiem mot san pham gaming, vi du keyboard/mouse/headset.
-- Loc theo danh muc hoac sap xep gia/ton kho neu co.
-- Mo chi tiet/chinh sua mot san pham, cho thay SKU, ten, danh muc, gia ban, ton kho, hinh anh.
-- Neu an toan, them mot san pham demo nhanh roi huy/khong luu; neu khong, chi sua man hinh va cancel.
-- Noi: app quan ly danh sach san pham gaming accessories kem hinh anh va ton kho.
+- Loc hoac sap xep theo danh muc/gia/ton kho.
+- Mo form them/sua san pham.
+- Cho thay admin co quyen quan ly san pham: them, sua, xoa, import Excel neu co.
+- Co the bam Cancel de khong lam thay doi du lieu demo.
 
-2:25 - 3:05 | Orders / POS
+3. Orders
 - Vao Orders.
 - Tao don hang moi.
-- Chon khach hang demo neu co.
-- Them 2-3 san pham vao gio hang.
-- Thay doi so luong de cho thay tong tien cap nhat.
-- Luu don hang hoac neu khong muon thay doi database thi quay thao tac den truoc khi luu va bam cancel.
-- Neu co chuc nang export invoice/PDF, mo nhanh nut xuat hoa don.
-- Noi: don hang tu dong tinh tong tien va lien ket voi san pham/khach hang.
+- Chon khach hang demo.
+- Them 2 san pham vao don, thay doi so luong de tong tien cap nhat.
+- Neu khong muon thay doi database, dung truoc buoc Save va bam Cancel.
+- Noi: admin co quyen xem va quan ly don hang.
 
-3:05 - 3:35 | Customers va Loyalty
+4. Customers
 - Vao Customers.
 - Tim kiem mot khach hang demo.
-- Mo chi tiet khach hang, cho thay so dien thoai/email, tong chi tieu, diem loyalty, lich su mua hang neu co.
-- Neu co nut them/sua, mo form them/sua va cancel.
-- Noi: app quan ly khach hang va diem tich luy.
+- Mo chi tiet khach hang, cho thay diem loyalty, tong chi tieu, lich su mua hang neu co.
+- Noi: admin co quyen quan ly khach hang va loyalty.
 
-3:35 - 4:10 | Reports
+5. Reports
 - Vao Reports.
-- Chon khoang ngay thang hien tai hoac demo.
-- Cho thay bao cao doanh thu, loi nhuan, top san pham ban chay, commission/ML insight neu co.
-- Doi bo loc ngay/thang neu co de cho thay report cap nhat.
-- Noi: Reports ho tro theo doi doanh thu, loi nhuan va san pham ban chay.
+- Chon/doi khoang ngay neu co.
+- Cho thay doanh thu, loi nhuan, top san pham, commission, ML insight neu co.
+- Noi: admin xem duoc bao cao tong hop de quan tri cua hang.
 
-4:10 - 4:35 | GraphQL / Plugins / Settings
-- Vao GraphQL neu co tren menu, chay/xem query demo san pham hoac don hang.
-- Vao Plugins, cho thay sample plugin duoc doc tu thu muc plugins.
-- Vao Settings, cho thay cau hinh so dong moi trang, backup/restore, LLM config/license neu co.
-- Noi ngan: day la cac tinh nang mo rong cua app ngoai POS co ban.
+6. Settings / Database / Plugins / GraphQL
+- Vao Settings.
+- Cho thay cau hinh so dong moi trang, backup/restore, license/LLM config neu co.
+- Vao Plugins hoac GraphQL neu co tren menu.
+- Noi: admin co quyen cau hinh he thong va cac tinh nang mo rong.
 
-4:35 - 4:50 | Database va installer evidence
-- Mo nhanh installer\HUONG_DAN_CAI_DAT.txt hoac README section neu can.
-- Cho thay file installer\database\myshop_demo.dump ton tai trong source/installer.
-- Noi: installer uu tien restore database tu dump, neu khong co dump thi app fallback seed data.
+Logout admin.
 
-4:50 - 5:00 | Ket thuc
-- Logout hoac dong app.
-- Noi lai tai khoan demo:
-  admin / MyShop123!
-  moderator / MyShop123!
-  sale / MyShop123!
-- Ket luan: app co the cai bang setup.exe, mo bang shortcut va test day du cac module chinh.
+PHAN 2 - MODERATOR / QUAN LY NGHIEP VU
+2:25 - 3:35
 
-Checklist can quay du trong video:
-[ ] Thu muc Final\Release co setup.exe
-[ ] Thu muc Final\Release\App co ProjectTest.exe
-[ ] Mo app thanh cong
+Dang nhap:
+- Username: moderator
+- Password: MyShop123!
+
+Chuc nang can quay voi moderator:
+
+1. Dashboard
+- Vao Dashboard.
+- Cho thay moderator xem duoc tinh hinh ban hang va ton kho.
+- Noi: moderator theo doi hoat dong cua hang nhung khong phai tai khoan cau hinh cao nhat.
+
+2. Products
+- Vao Products.
+- Tim kiem va mo chi tiet san pham.
+- Neu moderator co nut sua/them thi mo form de cho thay quyen quan ly nghiep vu.
+- Neu mot nut bi an/bi khoa, noi ro day la han che theo phan quyen.
+
+3. Orders
+- Vao Orders.
+- Xem danh sach don hang.
+- Mo chi tiet hoac tao thu mot don hang demo den buoc truoc Save.
+- Noi: moderator co the ho tro quan ly don hang va xu ly nghiep vu ban hang.
+
+4. Customers
+- Vao Customers.
+- Tim kiem khach hang.
+- Cho thay thong tin khach hang va loyalty.
+- Noi: moderator xem/quan ly du lieu khach hang phuc vu cham soc khach.
+
+5. Reports
+- Vao Reports.
+- Cho thay moderator xem duoc bao cao doanh thu/san pham ban chay.
+- Neu Settings he thong bi han che thi chuyen nhanh sang phan tiep theo.
+
+Logout moderator.
+
+PHAN 3 - SALE / NHAN VIEN BAN HANG
+3:35 - 4:45
+
+Dang nhap:
+- Username: sale
+- Password: MyShop123!
+
+Chuc nang can quay voi sale:
+
+1. Dashboard hoac man hinh ban hang
+- Cho thay sale vao duoc app.
+- Neu Dashboard hien thi ban rut gon, noi: sale chi can nhin thong tin lien quan ban hang.
+
+2. Products
+- Vao Products.
+- Tim kiem san pham theo ten/SKU.
+- Cho thay sale xem duoc gia ban, ton kho, hinh anh san pham de tu van khach.
+- Neu khong co nut them/sua/xoa, noi: sale khong co quyen quan tri san pham.
+
+3. Orders / POS - phan quan trong nhat cua sale
+- Vao Orders.
+- Tao don hang moi.
+- Chon khach hang demo hoac khach le neu app ho tro.
+- Them san pham vao don.
+- Tang/giam so luong, xem tong tien.
+- Luu don hang neu du lieu demo co the thay doi; neu khong, bam Cancel sau khi da cho thay flow.
+- Neu co export invoice/PDF, bam cho thay nut hoa don.
+- Noi: sale tap trung vao ban hang, tao don, tinh tien va xuat hoa don.
+
+4. Customers
+- Vao Customers neu sale duoc phep.
+- Tim khach hang theo ten/so dien thoai.
+- Noi: sale co the tra cuu khach hang va diem tich luy khi ban hang.
+- Neu sale khong duoc vao Customers, noi day la gioi han phan quyen.
+
+5. Settings/Reports neu bi han che
+- Thu vao Reports hoac Settings neu menu co hien.
+- Neu bi an hoac khong cho thao tac, noi: sale bi han che chuc nang quan tri/bao cao.
+
+PHAN 4 - KET THUC VA TOM TAT PHAN QUYEN
+4:45 - 5:00
+
+Noi tom tat:
+- Admin: quan ly toan bo he thong, san pham, don hang, khach hang, bao cao, settings, database/plugins/GraphQL.
+- Moderator: quan ly nghiep vu hang ngay, xem dashboard, products, orders, customers, reports; han che cau hinh he thong.
+- Sale: tap trung ban hang, xem san pham, tao don/POS, tra cuu khach hang; han che quan tri va settings.
+
+Nhac lai tai khoan demo:
+- admin / MyShop123!
+- moderator / MyShop123!
+- sale / MyShop123!
+
+Checklist quay video:
+[ ] Mo Final\Release va cho thay setup.exe
+[ ] Cho thay Final\Release\App\ProjectTest.exe
 [ ] Login admin thanh cong
-[ ] Dashboard co du lieu
-[ ] Products co san pham va hinh anh
-[ ] Orders tao/xem duoc don hang
-[ ] Customers co du lieu va loyalty
-[ ] Reports co thong ke
-[ ] Settings/GraphQL/Plugins neu con thoi gian
-[ ] Nhac tai khoan demo o cuoi video
+[ ] Admin xem Dashboard, Products, Orders, Customers, Reports, Settings
+[ ] Logout admin
+[ ] Login moderator thanh cong
+[ ] Moderator xem Dashboard, Products, Orders, Customers, Reports
+[ ] Logout moderator
+[ ] Login sale thanh cong
+[ ] Sale xem Products va tao don Orders/POS
+[ ] Sale bi han che hoac khong thao tac cac phan quan tri neu app co ap dung
+[ ] Nhac lai tai khoan demo va ket luan
 
 Luu y khi quay:
-- Quay man hinh 1080p, zoom 100% hoac 125% de chu ro.
-- Neu installer mat lau, co the cat nhanh phan loading nhung van cho thay setup.exe chay.
-- Khong hien thi password that, API key, connection string ca nhan.
-- Neu co loi Windows SmartScreen, chon More info > Run anyway va noi vi app chua code-signing.
-- Neu PostgreSQL port 5432 da bi chiem, noi theo README: dung PostgreSQL co san hoac doi port/cau hinh lai connection.
+- Quay 1080p, zoom 100% hoac 125% de chu ro.
+- Moi vai tro chi quay nhanh cac thao tac chinh, khong can nhap qua nhieu du lieu.
+- Neu tao/sua du lieu, dung du lieu demo de tranh lo thong tin ca nhan.
+- Khong hien password that, API key, connection string ca nhan.
+- Neu Windows SmartScreen canh bao setup.exe, chon More info > Run anyway va noi app chua code-signing.
+- Neu PostgreSQL port 5432 bi chiem, noi theo README: dung PostgreSQL co san hoac doi port/cau hinh lai connection.
