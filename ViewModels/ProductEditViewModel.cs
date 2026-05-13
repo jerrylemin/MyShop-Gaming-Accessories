@@ -242,6 +242,11 @@ public class ProductEditViewModel : ViewModelBase
 
     private async Task SaveAsync()
     {
+        await SaveAsync(navigateAfterSave: true);
+    }
+
+    private async Task SaveAsync(bool navigateAfterSave)
+    {
         if (!decimal.TryParse(ImportPrice, out var importPrice) ||
             !decimal.TryParse(SalePrice, out var salePrice) ||
             !int.TryParse(Stock, out var stockValue))
@@ -284,7 +289,10 @@ public class ProductEditViewModel : ViewModelBase
         }
 
         ProductId = result.Value;
-        Saved?.Invoke(this, EventArgs.Empty);
+        if (navigateAfterSave)
+        {
+            Saved?.Invoke(this, EventArgs.Empty);
+        }
     }
 
     private void ScheduleAutoSave()
@@ -295,7 +303,7 @@ public class ProductEditViewModel : ViewModelBase
         }
 
         AutoSaveStatus = "Saving...";
-        _autoSaveService.Schedule(async _ => await SaveAsync());
+        _autoSaveService.Schedule(async _ => await SaveAsync(navigateAfterSave: false));
     }
 
     private bool CanAttemptAutoSave()

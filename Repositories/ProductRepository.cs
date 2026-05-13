@@ -1,4 +1,5 @@
 using Microsoft.EntityFrameworkCore;
+using Npgsql;
 using ProjectTest.DataAccess;
 using ProjectTest.Helpers;
 using ProjectTest.Models;
@@ -115,44 +116,58 @@ public class ProductRepository
     {
         await using var dbContext = _dbContextFactory.CreateDbContext();
 
-        if (product.Id == 0)
+        try
         {
-            dbContext.Products.Add(product);
-            await dbContext.SaveChangesAsync();
+            var normalizedSku = product.SKU.Trim();
+            var skuExists = await dbContext.Products.AnyAsync(x => x.SKU == normalizedSku && x.Id != product.Id);
+            if (skuExists)
+            {
+                return OperationResult<int>.Fail($"SKU '{normalizedSku}' already exists. Enter a different SKU.");
+            }
 
+            product.SKU = normalizedSku;
             product.Image1 = string.IsNullOrWhiteSpace(product.Image1) ? ImageSourceHelper.DefaultProductImagePath : product.Image1;
             product.Image2 = string.IsNullOrWhiteSpace(product.Image2) ? ImageSourceHelper.DefaultProductImagePath : product.Image2;
             product.Image3 = string.IsNullOrWhiteSpace(product.Image3) ? ImageSourceHelper.DefaultProductImagePath : product.Image3;
+
+            if (product.Id == 0)
+            {
+                dbContext.Products.Add(product);
+                await dbContext.SaveChangesAsync();
+
+                return OperationResult<int>.Ok(product.Id, "Product created.");
+            }
+
+            var existing = await dbContext.Products.FirstOrDefaultAsync(x => x.Id == product.Id);
+            if (existing is null)
+            {
+                return OperationResult<int>.Fail("Product not found.");
+            }
+
+            existing.SKU = product.SKU;
+            existing.Name = product.Name;
+            existing.Manufacturer = product.Manufacturer;
+            existing.CPU = product.CPU;
+            existing.RAM = product.RAM;
+            existing.Storage = product.Storage;
+            existing.GPU = product.GPU;
+            existing.Screen = product.Screen;
+            existing.ImportPrice = product.ImportPrice;
+            existing.SalePrice = product.SalePrice;
+            existing.Stock = product.Stock;
+            existing.CategoryId = product.CategoryId;
+            existing.Description = product.Description;
+            existing.Image1 = product.Image1;
+            existing.Image2 = product.Image2;
+            existing.Image3 = product.Image3;
+
             await dbContext.SaveChangesAsync();
-
-            return OperationResult<int>.Ok(product.Id, "Product created.");
+            return OperationResult<int>.Ok(existing.Id, "Product updated.");
         }
-
-        var existing = await dbContext.Products.FirstOrDefaultAsync(x => x.Id == product.Id);
-        if (existing is null)
+        catch (DbUpdateException ex) when (ex.GetBaseException() is PostgresException { SqlState: PostgresErrorCodes.UniqueViolation })
         {
-            return OperationResult<int>.Fail("Product not found.");
+            return OperationResult<int>.Fail($"SKU '{product.SKU.Trim()}' already exists. Enter a different SKU.");
         }
-
-        existing.SKU = product.SKU;
-        existing.Name = product.Name;
-        existing.Manufacturer = product.Manufacturer;
-        existing.CPU = product.CPU;
-        existing.RAM = product.RAM;
-        existing.Storage = product.Storage;
-        existing.GPU = product.GPU;
-        existing.Screen = product.Screen;
-        existing.ImportPrice = product.ImportPrice;
-        existing.SalePrice = product.SalePrice;
-        existing.Stock = product.Stock;
-        existing.CategoryId = product.CategoryId;
-        existing.Description = product.Description;
-        existing.Image1 = string.IsNullOrWhiteSpace(product.Image1) ? ImageSourceHelper.DefaultProductImagePath : product.Image1;
-        existing.Image2 = string.IsNullOrWhiteSpace(product.Image2) ? ImageSourceHelper.DefaultProductImagePath : product.Image2;
-        existing.Image3 = string.IsNullOrWhiteSpace(product.Image3) ? ImageSourceHelper.DefaultProductImagePath : product.Image3;
-
-        await dbContext.SaveChangesAsync();
-        return OperationResult<int>.Ok(existing.Id, "Product updated.");
     }
 
     public async Task<OperationResult> DeleteAsync(int productId)

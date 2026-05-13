@@ -51,43 +51,53 @@ public sealed partial class ProductEditPage : Page
 
     private async void BrowseImage1Button_Click(object sender, RoutedEventArgs e)
     {
-        ViewModel.Image1 = await PickAndStoreImageAsync(ViewModel.Image1);
+        ViewModel.Image1 = await PickAndStoreImageAsync(ViewModel.Image1, "Image 1");
     }
 
     private async void BrowseImage2Button_Click(object sender, RoutedEventArgs e)
     {
-        ViewModel.Image2 = await PickAndStoreImageAsync(ViewModel.Image2);
+        ViewModel.Image2 = await PickAndStoreImageAsync(ViewModel.Image2, "Image 2");
     }
 
     private async void BrowseImage3Button_Click(object sender, RoutedEventArgs e)
     {
-        ViewModel.Image3 = await PickAndStoreImageAsync(ViewModel.Image3);
+        ViewModel.Image3 = await PickAndStoreImageAsync(ViewModel.Image3, "Image 3");
     }
 
-    private async Task<string> PickAndStoreImageAsync(string currentPath)
+    private async Task<string> PickAndStoreImageAsync(string currentPath, string label)
     {
-        var picker = new FileOpenPicker();
-        picker.FileTypeFilter.Add(".jpg");
-        picker.FileTypeFilter.Add(".jpeg");
-        picker.FileTypeFilter.Add(".png");
-        picker.FileTypeFilter.Add(".webp");
-        picker.SuggestedStartLocation = PickerLocationId.PicturesLibrary;
-
-        if (App.Current.ActiveWindow is not null)
+        try
         {
-            InitializeWithWindow.Initialize(picker, WindowNative.GetWindowHandle(App.Current.ActiveWindow));
+            var picker = new FileOpenPicker();
+            picker.FileTypeFilter.Add(".jpg");
+            picker.FileTypeFilter.Add(".jpeg");
+            picker.FileTypeFilter.Add(".png");
+            picker.FileTypeFilter.Add(".webp");
+            picker.SuggestedStartLocation = PickerLocationId.PicturesLibrary;
+
+            if (App.Current.ActiveWindow is not null)
+            {
+                InitializeWithWindow.Initialize(picker, WindowNative.GetWindowHandle(App.Current.ActiveWindow));
+            }
+
+            var file = await picker.PickSingleFileAsync();
+            if (file is null)
+            {
+                ViewModel.StatusMessage = $"{label} was not changed.";
+                return currentPath;
+            }
+
+            var productImagesFolder = await ApplicationData.Current.LocalFolder.CreateFolderAsync("ProductEditorImages", CreationCollisionOption.OpenIfExists);
+            var extension = Path.GetExtension(file.Name);
+            var destinationName = $"{DateTime.UtcNow:yyyyMMddHHmmssfff}_{Guid.NewGuid():N}{extension}";
+            var copiedFile = await file.CopyAsync(productImagesFolder, destinationName, NameCollisionOption.ReplaceExisting);
+            ViewModel.StatusMessage = $"{label} selected. Click Save Product to finish, or continue editing.";
+            return copiedFile.Path;
         }
-
-        var file = await picker.PickSingleFileAsync();
-        if (file is null)
+        catch (Exception ex)
         {
+            ViewModel.StatusMessage = $"Could not select {label.ToLowerInvariant()}: {ex.GetBaseException().Message}";
             return currentPath;
         }
-
-        var productImagesFolder = await ApplicationData.Current.LocalFolder.CreateFolderAsync("ProductEditorImages", CreationCollisionOption.OpenIfExists);
-        var extension = Path.GetExtension(file.Name);
-        var destinationName = $"{DateTime.UtcNow:yyyyMMddHHmmssfff}_{Guid.NewGuid():N}{extension}";
-        var copiedFile = await file.CopyAsync(productImagesFolder, destinationName, NameCollisionOption.ReplaceExisting);
-        return copiedFile.Path;
     }
 }
