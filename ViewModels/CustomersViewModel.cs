@@ -9,12 +9,15 @@ public class CustomersViewModel : ViewModelBase
 {
     private readonly CustomerRepository _customerRepository;
     private readonly AsyncRelayCommand _refreshCommand;
+    private readonly AsyncRelayCommand _applySearchCommand;
     private readonly AsyncRelayCommand _saveCommand;
     private readonly AsyncRelayCommand _deleteCommand;
     private readonly RelayCommand _newCommand;
+    private readonly RelayCommand _clearSearchCommand;
     private Customer? _selectedCustomer;
     private CustomerProfile? _selectedProfile;
     private int _editingCustomerId;
+    private string _searchKeyword = string.Empty;
     private string _name = string.Empty;
     private string _phone = string.Empty;
     private string _email = string.Empty;
@@ -28,9 +31,11 @@ public class CustomersViewModel : ViewModelBase
         PurchasedProducts = [];
         OrderHistory = [];
         _refreshCommand = new AsyncRelayCommand(LoadAsync, () => !IsLoading);
+        _applySearchCommand = new AsyncRelayCommand(LoadAsync, () => !IsLoading);
         _saveCommand = new AsyncRelayCommand(SaveAsync, () => !IsLoading && !string.IsNullOrWhiteSpace(Name));
         _deleteCommand = new AsyncRelayCommand(DeleteAsync, () => !IsLoading && SelectedCustomer is not null);
         _newCommand = new RelayCommand(NewCustomer, () => !IsLoading);
+        _clearSearchCommand = new RelayCommand(ClearSearch, () => !IsLoading && !string.IsNullOrWhiteSpace(SearchKeyword));
     }
 
     public ObservableCollection<Customer> Customers { get; }
@@ -41,11 +46,27 @@ public class CustomersViewModel : ViewModelBase
 
     public AsyncRelayCommand RefreshCommand => _refreshCommand;
 
+    public AsyncRelayCommand ApplySearchCommand => _applySearchCommand;
+
     public AsyncRelayCommand SaveCommand => _saveCommand;
 
     public AsyncRelayCommand DeleteCommand => _deleteCommand;
 
     public RelayCommand NewCommand => _newCommand;
+
+    public RelayCommand ClearSearchCommand => _clearSearchCommand;
+
+    public string SearchKeyword
+    {
+        get => _searchKeyword;
+        set
+        {
+            if (SetProperty(ref _searchKeyword, value))
+            {
+                _clearSearchCommand.NotifyCanExecuteChanged();
+            }
+        }
+    }
 
     public Customer? SelectedCustomer
     {
@@ -73,6 +94,8 @@ public class CustomersViewModel : ViewModelBase
                 OnPropertyChanged(nameof(ProfileSummary));
                 OnPropertyChanged(nameof(LoyaltySummary));
                 OnPropertyChanged(nameof(TotalSpendText));
+                OnPropertyChanged(nameof(PaidOrdersText));
+                OnPropertyChanged(nameof(LifetimeSpendText));
             }
         }
     }
@@ -115,9 +138,11 @@ public class CustomersViewModel : ViewModelBase
             if (SetProperty(ref _isLoading, value))
             {
                 _refreshCommand.NotifyCanExecuteChanged();
+                _applySearchCommand.NotifyCanExecuteChanged();
                 _saveCommand.NotifyCanExecuteChanged();
                 _deleteCommand.NotifyCanExecuteChanged();
                 _newCommand.NotifyCanExecuteChanged();
+                _clearSearchCommand.NotifyCanExecuteChanged();
             }
         }
     }
@@ -130,6 +155,10 @@ public class CustomersViewModel : ViewModelBase
 
     public string TotalSpendText => SelectedProfile?.TotalSpendText ?? Helpers.CurrencyFormatter.ToCurrency(0m);
 
+    public string PaidOrdersText => SelectedProfile is null ? "0" : SelectedProfile.PaidOrderCount.ToString();
+
+    public string LifetimeSpendText => SelectedProfile?.Customer.LifetimeSpendText ?? Helpers.CurrencyFormatter.ToCurrency(0m);
+
     public async Task LoadAsync()
     {
         IsLoading = true;
@@ -137,7 +166,7 @@ public class CustomersViewModel : ViewModelBase
         {
             var selectedId = SelectedCustomer?.Id;
             Customers.Clear();
-            foreach (var customer in await _customerRepository.GetAllAsync())
+            foreach (var customer in await _customerRepository.SearchAsync(SearchKeyword))
             {
                 Customers.Add(customer);
             }
@@ -148,7 +177,11 @@ public class CustomersViewModel : ViewModelBase
                 NewCustomer();
             }
 
-            StatusMessage = $"Loaded {Customers.Count} customer(s).";
+            StatusMessage = Customers.Count == 0
+                ? "No customers match this search."
+                : string.IsNullOrWhiteSpace(SearchKeyword)
+                    ? $"Loaded {Customers.Count} customer(s)."
+                    : $"Found {Customers.Count} customer(s).";
         }
         finally
         {
@@ -194,6 +227,12 @@ public class CustomersViewModel : ViewModelBase
         PurchasedProducts.Clear();
         OrderHistory.Clear();
         StatusMessage = "Enter customer information, then save.";
+    }
+
+    private void ClearSearch()
+    {
+        SearchKeyword = string.Empty;
+        _ = LoadAsync();
     }
 
     private async Task SaveAsync()

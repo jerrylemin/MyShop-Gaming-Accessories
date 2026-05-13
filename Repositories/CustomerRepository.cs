@@ -22,6 +22,29 @@ public class CustomerRepository
             .ToListAsync();
     }
 
+    public async Task<List<Customer>> SearchAsync(string keyword)
+    {
+        await using var dbContext = _dbContextFactory.CreateDbContext();
+        var query = dbContext.Customers
+            .AsNoTracking()
+            .AsQueryable();
+
+        var search = keyword.Trim();
+        if (!string.IsNullOrWhiteSpace(search))
+        {
+            var pattern = $"%{search}%";
+            query = query.Where(x =>
+                EF.Functions.ILike(x.Name, pattern) ||
+                EF.Functions.ILike(x.Phone, pattern) ||
+                EF.Functions.ILike(x.Email, pattern));
+        }
+
+        return await query
+            .OrderBy(x => x.Name)
+            .Take(200)
+            .ToListAsync();
+    }
+
     public async Task<Customer?> GetByIdAsync(int customerId)
     {
         await using var dbContext = _dbContextFactory.CreateDbContext();

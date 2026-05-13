@@ -41,10 +41,23 @@
                     <Grid RowSpacing="12">
                         <Grid.RowDefinitions>
                             <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
                             <RowDefinition Height="*" />
                         </Grid.RowDefinitions>
                         <TextBlock Style="{ThemeResource SectionHeaderTextBlockStyle}" Text="Customer list" />
-                        <ListView Grid.Row="1" ItemsSource="{Binding Customers}" SelectedItem="{Binding SelectedCustomer, Mode=TwoWay}">
+                        <Grid Grid.Row="1" ColumnSpacing="10">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="Auto" />
+                                <ColumnDefinition Width="Auto" />
+                            </Grid.ColumnDefinitions>
+                            <TextBox
+                                PlaceholderText="Search name, phone, or email"
+                                Text="{Binding SearchKeyword, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                            <Button Grid.Column="1" Style="{ThemeResource AccentButtonStyle}" Command="{Binding ApplySearchCommand}" Content="Apply Search" />
+                            <Button Grid.Column="2" Style="{ThemeResource SubtleButtonStyle}" Command="{Binding ClearSearchCommand}" Content="Clear" />
+                        </Grid>
+                        <ListView Grid.Row="2" ItemsSource="{Binding Customers}" SelectedItem="{Binding SelectedCustomer, Mode=TwoWay}">
                             <ListView.ItemTemplate>
                                 <DataTemplate>
                                     <Border Margin="0,4" Padding="12" Background="{ThemeResource PageSurfaceBrush}" BorderBrush="{ThemeResource CardStrokeBrush}" BorderThickness="1" CornerRadius="16">
@@ -107,24 +120,30 @@
 
                     <Border Grid.Row="1" Style="{ThemeResource CardBorderStyle}">
                         <StackPanel Spacing="12">
-                            <TextBlock Style="{ThemeResource SectionHeaderTextBlockStyle}" Text="Customer summary" />
+                            <TextBlock Style="{ThemeResource SectionHeaderTextBlockStyle}" Text="Loyalty" />
+                            <TextBlock Style="{ThemeResource CaptionTextBlockStyle}" Text="Paid orders increase loyalty points." />
                             <Grid ColumnSpacing="12">
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="*" />
                                     <ColumnDefinition Width="*" />
                                     <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="*" />
                                 </Grid.ColumnDefinitions>
                                 <StackPanel Spacing="4">
-                                    <TextBlock Style="{ThemeResource CaptionTextBlockStyle}" Text="Orders" />
+                                    <TextBlock Style="{ThemeResource CaptionTextBlockStyle}" Text="All orders" />
                                     <TextBlock FontSize="22" FontWeight="SemiBold" Text="{Binding ProfileSummary}" TextWrapping="WrapWholeWords" />
                                 </StackPanel>
                                 <StackPanel Grid.Column="1" Spacing="4">
-                                    <TextBlock Style="{ThemeResource CaptionTextBlockStyle}" Text="Loyalty" />
+                                    <TextBlock Style="{ThemeResource CaptionTextBlockStyle}" Text="Points" />
                                     <TextBlock FontSize="22" FontWeight="SemiBold" Text="{Binding LoyaltySummary}" TextWrapping="WrapWholeWords" />
                                 </StackPanel>
                                 <StackPanel Grid.Column="2" Spacing="4">
+                                    <TextBlock Style="{ThemeResource CaptionTextBlockStyle}" Text="Paid orders" />
+                                    <TextBlock FontSize="22" FontWeight="SemiBold" Text="{Binding PaidOrdersText}" TextWrapping="WrapWholeWords" />
+                                </StackPanel>
+                                <StackPanel Grid.Column="3" Spacing="4">
                                     <TextBlock Style="{ThemeResource CaptionTextBlockStyle}" Text="Paid spend" />
-                                    <TextBlock FontSize="22" FontWeight="SemiBold" Text="{Binding TotalSpendText}" TextWrapping="WrapWholeWords" />
+                                    <TextBlock FontSize="22" FontWeight="SemiBold" Text="{Binding LifetimeSpendText}" TextWrapping="WrapWholeWords" />
                                 </StackPanel>
                             </Grid>
                         </StackPanel>
