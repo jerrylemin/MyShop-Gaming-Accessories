@@ -1,190 +1,190 @@
-KICH BAN QUAY VIDEO DEMO TEST APP - MYSHOP GAMING ACCESSORIES POS
-Thoi luong muc tieu: khoang 5 phut
+﻿KỊCH BẢN QUAY VIDEO DEMO TEST APP - MYSHOP GAMING ACCESSORIES POS
+Thời lượng mục tiêu: khoảng 5 phút
 
-Tai khoan demo:
+Tài khoản demo:
 - admin / MyShop123!
 - moderator / MyShop123!
 - sale / MyShop123!
 
-Muc tieu video:
-- Cho thay app cai/mo duoc tu ban Release.
-- Test cac module chinh theo tung phan quyen.
-- Noi ro vai tro nao duoc dung chuc nang nao.
-- Khong can quay qua lau tung form, chi can thao tac nhanh va ro.
+Mục tiêu video:
+- Cho thấy app cài/mở được từ bản Release.
+- Test các module chính theo từng phân quyền.
+- Nói rõ vai trò nào được dùng chức năng nào.
+- Không cần quay quá lâu từng form, chỉ cần thao tác nhanh và rõ.
 
-0:00 - 0:25 | Gioi thieu ban Release
-- Mo thu muc Final\Release.
-- Cho thay co setup.exe va thu muc App chua ProjectTest.exe.
-- Noi: setup.exe dung de cai day du app, runtime, PostgreSQL/database demo va shortcut.
-- Mo app bang shortcut MyShop Gaming Accessories POS hoac chay ProjectTest.exe neu may da cai runtime/database.
+0:00 - 0:25 | Giới thiệu bản Release
+- Mở thư mục Final\Release.
+- Cho thấy có setup.exe và thư mục App chứa ProjectTest.exe.
+- Nói: setup.exe dùng để cài đầy đủ app, runtime, PostgreSQL/database demo và shortcut.
+- Mở app bằng shortcut MyShop Gaming Accessories POS hoặc chạy ProjectTest.exe nếu máy đã cài runtime/database.
 
-0:25 - 0:45 | Man hinh dang nhap
-- Cho thay man hinh Login.
-- Noi app co 3 phan quyen demo:
-  admin: toan quyen quan ly.
-  moderator: quan ly nghiep vu va xem bao cao, han che cau hinh he thong.
-  sale: ban hang/POS va xem du lieu can thiet cho nhan vien ban hang.
+0:25 - 0:45 | Màn hình đăng nhập
+- Cho thấy màn hình Login.
+- Nói app có 3 phân quyền demo:
+  admin: toàn quyền quản lý.
+  moderator: quản lý nghiệp vụ và xem báo cáo, hạn chế cấu hình hệ thống.
+  sale: bán hàng/POS và xem dữ liệu cần thiết cho nhân viên bán hàng.
 
-PHAN 1 - ADMIN / TOAN QUYEN
+PHẦN 1 - ADMIN / TOÀN QUYỀN
 0:45 - 2:25
 
-Dang nhap:
+Đăng nhập:
 - Username: admin
 - Password: MyShop123!
 
-Chuc nang can quay voi admin:
+Chức năng cần quay với admin:
 
 1. Dashboard
-- Vao Dashboard.
-- Cho thay tong san pham, don hang, doanh thu, san pham sap het hang.
-- Cho thay bieu do/top san pham/don hang gan day neu co.
-- Noi: admin xem duoc tong quan toan bo cua hang.
+- Vào Dashboard.
+- Cho thấy tổng sản phẩm, đơn hàng, doanh thu, sản phẩm sắp hết hàng.
+- Cho thấy biểu đồ/top sản phẩm/đơn hàng gần đây nếu có.
+- Nói: admin xem được tổng quan toàn bộ cửa hàng.
 
 2. Products
-- Vao Products.
-- Tim kiem mot san pham gaming, vi du keyboard/mouse/headset.
-- Loc hoac sap xep theo danh muc/gia/ton kho.
-- Mo form them/sua san pham.
-- Cho thay admin co quyen quan ly san pham: them, sua, xoa, import Excel neu co.
-- Co the bam Cancel de khong lam thay doi du lieu demo.
+- Vào Products.
+- Tìm kiếm một sản phẩm gaming, ví dụ keyboard/mouse/headset.
+- Lọc hoặc sắp xếp theo danh mục/giá/tồn kho.
+- Mở form thêm/sửa sản phẩm.
+- Cho thấy admin có quyền quản lý sản phẩm: thêm, sửa, xóa, import Excel nếu có.
+- Có thể bấm Cancel để không làm thay đổi dữ liệu demo.
 
 3. Orders
-- Vao Orders.
-- Tao don hang moi.
-- Chon khach hang demo.
-- Them 2 san pham vao don, thay doi so luong de tong tien cap nhat.
-- Neu khong muon thay doi database, dung truoc buoc Save va bam Cancel.
-- Noi: admin co quyen xem va quan ly don hang.
+- Vào Orders.
+- Tạo đơn hàng mới.
+- Chọn khách hàng demo.
+- Thêm 2 sản phẩm vào đơn, thay đổi số lượng để tổng tiền cập nhật.
+- Nếu không muốn thay đổi database, dừng trước bước Save và bấm Cancel.
+- Nói: admin có quyền xem và quản lý đơn hàng.
 
 4. Customers
-- Vao Customers.
-- Tim kiem mot khach hang demo.
-- Mo chi tiet khach hang, cho thay diem loyalty, tong chi tieu, lich su mua hang neu co.
-- Noi: admin co quyen quan ly khach hang va loyalty.
+- Vào Customers.
+- Tìm kiếm một khách hàng demo.
+- Mở chi tiết khách hàng, cho thấy điểm loyalty, tổng chi tiêu, lịch sử mua hàng nếu có.
+- Nói: admin có quyền quản lý khách hàng và loyalty.
 
 5. Reports
-- Vao Reports.
-- Chon/doi khoang ngay neu co.
-- Cho thay doanh thu, loi nhuan, top san pham, commission, ML insight neu co.
-- Noi: admin xem duoc bao cao tong hop de quan tri cua hang.
+- Vào Reports.
+- Chọn/đổi khoảng ngày nếu có.
+- Cho thấy doanh thu, lợi nhuận, top sản phẩm, commission, ML insight nếu có.
+- Nói: admin xem được báo cáo tổng hợp để quản trị cửa hàng.
 
 6. Settings / Database / Plugins / GraphQL
-- Vao Settings.
-- Cho thay cau hinh so dong moi trang, backup/restore, license/LLM config neu co.
-- Vao Plugins hoac GraphQL neu co tren menu.
-- Noi: admin co quyen cau hinh he thong va cac tinh nang mo rong.
+- Vào Settings.
+- Cho thấy cấu hình số dòng mỗi trang, backup/restore, license/LLM config nếu có.
+- Vào Plugins hoặc GraphQL nếu có trên menu.
+- Nói: admin có quyền cấu hình hệ thống và các tính năng mở rộng.
 
 Logout admin.
 
-PHAN 2 - MODERATOR / QUAN LY NGHIEP VU
+PHẦN 2 - MODERATOR / QUẢN LÝ NGHIỆP VỤ
 2:25 - 3:35
 
-Dang nhap:
+Đăng nhập:
 - Username: moderator
 - Password: MyShop123!
 
-Chuc nang can quay voi moderator:
+Chức năng cần quay với moderator:
 
 1. Dashboard
-- Vao Dashboard.
-- Cho thay moderator xem duoc tinh hinh ban hang va ton kho.
-- Noi: moderator theo doi hoat dong cua hang nhung khong phai tai khoan cau hinh cao nhat.
+- Vào Dashboard.
+- Cho thấy moderator xem được tình hình bán hàng và tồn kho.
+- Nói: moderator theo dõi hoạt động cửa hàng nhưng không phải tài khoản cấu hình cao nhất.
 
 2. Products
-- Vao Products.
-- Tim kiem va mo chi tiet san pham.
-- Neu moderator co nut sua/them thi mo form de cho thay quyen quan ly nghiep vu.
-- Neu mot nut bi an/bi khoa, noi ro day la han che theo phan quyen.
+- Vào Products.
+- Tìm kiếm và mở chi tiết sản phẩm.
+- Nếu moderator có nút sửa/thêm thì mở form để cho thấy quyền quản lý nghiệp vụ.
+- Nếu một nút bị ẩn/bị khóa, nói rõ đây là hạn chế theo phân quyền.
 
 3. Orders
-- Vao Orders.
-- Xem danh sach don hang.
-- Mo chi tiet hoac tao thu mot don hang demo den buoc truoc Save.
-- Noi: moderator co the ho tro quan ly don hang va xu ly nghiep vu ban hang.
+- Vào Orders.
+- Xem danh sách đơn hàng.
+- Mở chi tiết hoặc tạo thử một đơn hàng demo đến bước trước Save.
+- Nói: moderator có thể hỗ trợ quản lý đơn hàng và xử lý nghiệp vụ bán hàng.
 
 4. Customers
-- Vao Customers.
-- Tim kiem khach hang.
-- Cho thay thong tin khach hang va loyalty.
-- Noi: moderator xem/quan ly du lieu khach hang phuc vu cham soc khach.
+- Vào Customers.
+- Tìm kiếm khách hàng.
+- Cho thấy thông tin khách hàng và loyalty.
+- Nói: moderator xem/quản lý dữ liệu khách hàng phục vụ chăm sóc khách.
 
 5. Reports
-- Vao Reports.
-- Cho thay moderator xem duoc bao cao doanh thu/san pham ban chay.
-- Neu Settings he thong bi han che thi chuyen nhanh sang phan tiep theo.
+- Vào Reports.
+- Cho thấy moderator xem được báo cáo doanh thu/sản phẩm bán chạy.
+- Nếu Settings hệ thống bị hạn chế thì chuyển nhanh sang phần tiếp theo.
 
 Logout moderator.
 
-PHAN 3 - SALE / NHAN VIEN BAN HANG
+PHẦN 3 - SALE / NHÂN VIÊN BÁN HÀNG
 3:35 - 4:45
 
-Dang nhap:
+Đăng nhập:
 - Username: sale
 - Password: MyShop123!
 
-Chuc nang can quay voi sale:
+Chức năng cần quay với sale:
 
-1. Dashboard hoac man hinh ban hang
-- Cho thay sale vao duoc app.
-- Neu Dashboard hien thi ban rut gon, noi: sale chi can nhin thong tin lien quan ban hang.
+1. Dashboard hoặc màn hình bán hàng
+- Cho thấy sale vào được app.
+- Nếu Dashboard hiển thị bản rút gọn, nói: sale chỉ cần nhìn thông tin liên quan bán hàng.
 
 2. Products
-- Vao Products.
-- Tim kiem san pham theo ten/SKU.
-- Cho thay sale xem duoc gia ban, ton kho, hinh anh san pham de tu van khach.
-- Neu khong co nut them/sua/xoa, noi: sale khong co quyen quan tri san pham.
+- Vào Products.
+- Tìm kiếm sản phẩm theo tên/SKU.
+- Cho thấy sale xem được giá bán, tồn kho, hình ảnh sản phẩm để tư vấn khách.
+- Nếu không có nút thêm/sửa/xóa, nói: sale không có quyền quản trị sản phẩm.
 
-3. Orders / POS - phan quan trong nhat cua sale
-- Vao Orders.
-- Tao don hang moi.
-- Chon khach hang demo hoac khach le neu app ho tro.
-- Them san pham vao don.
-- Tang/giam so luong, xem tong tien.
-- Luu don hang neu du lieu demo co the thay doi; neu khong, bam Cancel sau khi da cho thay flow.
-- Neu co export invoice/PDF, bam cho thay nut hoa don.
-- Noi: sale tap trung vao ban hang, tao don, tinh tien va xuat hoa don.
+3. Orders / POS - phần quan trọng nhất của sale
+- Vào Orders.
+- Tạo đơn hàng mới.
+- Chọn khách hàng demo hoặc khách lẻ nếu app hỗ trợ.
+- Thêm sản phẩm vào đơn.
+- Tăng/giảm số lượng, xem tổng tiền.
+- Lưu đơn hàng nếu dữ liệu demo có thể thay đổi; nếu không, bấm Cancel sau khi đã cho thấy flow.
+- Nếu có export invoice/PDF, bấm cho thấy nút hóa đơn.
+- Nói: sale tập trung vào bán hàng, tạo đơn, tính tiền và xuất hóa đơn.
 
 4. Customers
-- Vao Customers neu sale duoc phep.
-- Tim khach hang theo ten/so dien thoai.
-- Noi: sale co the tra cuu khach hang va diem tich luy khi ban hang.
-- Neu sale khong duoc vao Customers, noi day la gioi han phan quyen.
+- Vào Customers nếu sale được phép.
+- Tìm khách hàng theo tên/số điện thoại.
+- Nói: sale có thể tra cứu khách hàng và điểm tích lũy khi bán hàng.
+- Nếu sale không được vào Customers, nói đây là giới hạn phân quyền.
 
-5. Settings/Reports neu bi han che
-- Thu vao Reports hoac Settings neu menu co hien.
-- Neu bi an hoac khong cho thao tac, noi: sale bi han che chuc nang quan tri/bao cao.
+5. Settings/Reports nếu bị hạn chế
+- Thử vào Reports hoặc Settings nếu menu có hiện.
+- Nếu bị ẩn hoặc không cho thao tác, nói: sale bị hạn chế chức năng quản trị/báo cáo.
 
-PHAN 4 - KET THUC VA TOM TAT PHAN QUYEN
+PHẦN 4 - KẾT THÚC VÀ TÓM TẮT PHÂN QUYỀN
 4:45 - 5:00
 
-Noi tom tat:
-- Admin: quan ly toan bo he thong, san pham, don hang, khach hang, bao cao, settings, database/plugins/GraphQL.
-- Moderator: quan ly nghiep vu hang ngay, xem dashboard, products, orders, customers, reports; han che cau hinh he thong.
-- Sale: tap trung ban hang, xem san pham, tao don/POS, tra cuu khach hang; han che quan tri va settings.
+Nói tóm tắt:
+- Admin: quản lý toàn bộ hệ thống, sản phẩm, đơn hàng, khách hàng, báo cáo, settings, database/plugins/GraphQL.
+- Moderator: quản lý nghiệp vụ hằng ngày, xem dashboard, products, orders, customers, reports; hạn chế cấu hình hệ thống.
+- Sale: tập trung bán hàng, xem sản phẩm, tạo đơn/POS, tra cứu khách hàng; hạn chế quản trị và settings.
 
-Nhac lai tai khoan demo:
+Nhắc lại tài khoản demo:
 - admin / MyShop123!
 - moderator / MyShop123!
 - sale / MyShop123!
 
 Checklist quay video:
-[ ] Mo Final\Release va cho thay setup.exe
-[ ] Cho thay Final\Release\App\ProjectTest.exe
-[ ] Login admin thanh cong
+[ ] Mở Final\Release và cho thấy setup.exe
+[ ] Cho thấy Final\Release\App\ProjectTest.exe
+[ ] Login admin thành công
 [ ] Admin xem Dashboard, Products, Orders, Customers, Reports, Settings
 [ ] Logout admin
-[ ] Login moderator thanh cong
+[ ] Login moderator thành công
 [ ] Moderator xem Dashboard, Products, Orders, Customers, Reports
 [ ] Logout moderator
-[ ] Login sale thanh cong
-[ ] Sale xem Products va tao don Orders/POS
-[ ] Sale bi han che hoac khong thao tac cac phan quan tri neu app co ap dung
-[ ] Nhac lai tai khoan demo va ket luan
+[ ] Login sale thành công
+[ ] Sale xem Products và tạo đơn Orders/POS
+[ ] Sale bị hạn chế hoặc không thao tác các phần quản trị nếu app có áp dụng
+[ ] Nhắc lại tài khoản demo và kết luận
 
-Luu y khi quay:
-- Quay 1080p, zoom 100% hoac 125% de chu ro.
-- Moi vai tro chi quay nhanh cac thao tac chinh, khong can nhap qua nhieu du lieu.
-- Neu tao/sua du lieu, dung du lieu demo de tranh lo thong tin ca nhan.
-- Khong hien password that, API key, connection string ca nhan.
-- Neu Windows SmartScreen canh bao setup.exe, chon More info > Run anyway va noi app chua code-signing.
-- Neu PostgreSQL port 5432 bi chiem, noi theo README: dung PostgreSQL co san hoac doi port/cau hinh lai connection.
+Lưu ý khi quay:
+- Quay 1080p, zoom 100% hoặc 125% để chữ rõ.
+- Mỗi vai trò chỉ quay nhanh các thao tác chính, không cần nhập quá nhiều dữ liệu.
+- Nếu tạo/sửa dữ liệu, dùng dữ liệu demo để tránh lộ thông tin cá nhân.
+- Không hiện password thật, API key, connection string cá nhân.
+- Nếu Windows SmartScreen cảnh báo setup.exe, chọn More info > Run anyway và nói app chưa code-signing.
+- Nếu PostgreSQL port 5432 bị chiếm, nói theo README: dùng PostgreSQL có sẵn hoặc đổi port/cấu hình lại connection.

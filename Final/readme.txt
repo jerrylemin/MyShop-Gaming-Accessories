@@ -1,146 +1,146 @@
-﻿THONG TIN DO AN
+﻿THÔNG TIN ĐỒ ÁN
 ===============
 
-Ten do an: MyShop Gaming Accessories POS
-Mon: Lap trinh Windows
+Tên đồ án: MyShop Gaming Accessories POS
+Môn: Lập trình Windows
 
-Thanh vien nhom:
-- Le Minh - MSSV: 21127645
-- Nguyen Vu Bach - MSSV: 21127224
+Thành viên nhóm:
+- Lê Minh - MSSV: 21127645
+- Nguyễn Vũ Bách - MSSV: 21127224
 
 
-CAC CHUC NANG DA THUC HIEN
+CÁC CHỨC NĂNG ĐÃ THỰC HIỆN
 ==========================
 
-1. Dang nhap va phan quyen
-- Dang nhap bang tai khoan demo admin / MyShop123!, moderator / MyShop123!, sale / MyShop123!.
-- Phan quyen theo vai tro Admin, Moderator, Sale.
-- Luu thong tin dang nhap da ma hoa o local storage.
+1. Đăng nhập và phân quyền
+- Đăng nhập bằng tài khoản demo admin / MyShop123!, moderator / MyShop123!, sale / MyShop123!.
+- Phân quyền theo vai trò Admin, Moderator, Sale.
+- Lưu thông tin đăng nhập đã mã hóa ở local storage.
 
-2. Quan ly san pham gaming accessories
-- Danh sach san pham co hinh anh, SKU, hang san xuat, gia nhap, gia ban, ton kho, danh muc.
-- Them, sua, xoa, xem chi tiet san pham.
-- Tim kiem, loc theo danh muc/gia, sap xep va phan trang.
-- Import san pham tu Excel.
-- Dong goi san hinh anh gaming products trong Assets/GamingProducts.
+2. Quản lý sản phẩm gaming accessories
+- Danh sách sản phẩm có hình ảnh, SKU, hãng sản xuất, giá nhập, giá bán, tồn kho, danh mục.
+- Thêm, sửa, xóa, xem chi tiết sản phẩm.
+- Tìm kiếm, lọc theo danh mục/giá, sắp xếp và phân trang.
+- Import sản phẩm từ Excel.
+- Đóng gói sẵn hình ảnh gaming products trong Assets/GamingProducts.
 
-3. Quan ly danh muc
-- Xem danh sach danh muc.
-- Them, sua, xoa danh muc.
-- Lien ket danh muc voi san pham.
+3. Quản lý danh mục
+- Xem danh sách danh mục.
+- Thêm, sửa, xóa danh mục.
+- Liên kết danh mục với sản phẩm.
 
-4. Quan ly don hang POS
-- Tao don hang tu nhieu san pham.
-- Cap nhat so luong, gia, trang thai don hang.
-- Tu dong tru/hoan ton kho khi tao, sua, huy, xoa don.
-- Tim kiem, loc ngay, sap xep, phan trang don hang.
-- Xuat hoa don PDF.
+4. Quản lý đơn hàng POS
+- Tạo đơn hàng từ nhiều sản phẩm.
+- Cập nhật số lượng, giá, trạng thái đơn hàng.
+- Tự động trừ/hoàn tồn kho khi tạo, sửa, hủy, xóa đơn.
+- Tìm kiếm, lọc ngày, sắp xếp, phân trang đơn hàng.
+- Xuất hóa đơn PDF.
 
-5. Quan ly khach hang va loyalty
-- Them, sua, xoa khach hang.
-- Tim kiem theo ten, so dien thoai, email.
-- Luu diem tich luy, tong chi tieu, lich su mua hang.
-- Lien ket khach hang voi don hang.
-- Ghi nhan giao dich diem loyalty.
+5. Quản lý khách hàng và loyalty
+- Thêm, sửa, xóa khách hàng.
+- Tìm kiếm theo tên, số điện thoại, email.
+- Lưu điểm tích lũy, tổng chi tiêu, lịch sử mua hàng.
+- Liên kết khách hàng với đơn hàng.
+- Ghi nhận giao dịch điểm loyalty.
 
-6. Khuyen mai
-- Co bang khuyen mai va ma khuyen mai demo.
-- Ho tro tinh giam gia theo luong logic trong don hang.
+6. Khuyến mãi
+- Có bảng khuyến mãi và mã khuyến mãi demo.
+- Hỗ trợ tính giảm giá theo luồng logic trong đơn hàng.
 
 7. Dashboard
-- Tong san pham, san pham sap het hang.
-- Don hang hom nay, doanh thu hom nay.
-- Don hang gan day, top san pham ban chay.
-- Bieu do thong ke doanh thu.
+- Tổng sản phẩm, sản phẩm sắp hết hàng.
+- Đơn hàng hôm nay, doanh thu hôm nay.
+- Đơn hàng gần đây, top sản phẩm bán chạy.
+- Biểu đồ thống kê doanh thu.
 
 8. Reports
-- Bao cao doanh thu va loi nhuan theo ngay, tuan, thang, nam.
-- Top san pham ban chay.
-- Ty trong doanh so san pham.
-- Hoa hong nhan vien ban hang.
-- ML.Net insight/forecast doanh thu va goi y restock.
+- Báo cáo doanh thu và lợi nhuận theo ngày, tuần, tháng, năm.
+- Top sản phẩm bán chạy.
+- Tỷ trọng doanh số sản phẩm.
+- Hoa hồng nhân viên bán hàng.
+- ML.Net insight/forecast doanh thu và gợi ý restock.
 
 9. GraphQL
-- Trang GraphQL demo query san pham, don hang, bao cao.
-- Co mutation demo luu san pham va don hang.
+- Trang GraphQL demo query sản phẩm, đơn hàng, báo cáo.
+- Có mutation demo lưu sản phẩm và đơn hàng.
 
 10. Plugins
-- Trang Plugins de doc plugin local.
-- Co sample plugin project.
+- Trang Plugins để đọc plugin local.
+- Có sample plugin project.
 
-11. Cai dat va cau hinh
-- Settings cho so dong moi trang, login saved credentials, LLM config, backup/restore, license activation.
-- Database setup window khi app khong ket noi duoc PostgreSQL.
+11. Cài đặt và cấu hình
+- Settings cho số dòng mỗi trang, login saved credentials, LLM config, backup/restore, license activation.
+- Database setup window khi app không kết nối được PostgreSQL.
 
 12. Database
-- Su dung PostgreSQL va Entity Framework Core migrations.
-- Co seed demo 5 danh muc, 110 san pham, nhieu don hang, khach hang, khuyen mai, users va loyalty.
-- Co dump PostgreSQL demo tai installer/database/myshop_demo.dump.
+- Sử dụng PostgreSQL và Entity Framework Core migrations.
+- Có seed demo 5 danh mục, 110 sản phẩm, nhiều đơn hàng, khách hàng, khuyến mãi, users và loyalty.
+- Có dump PostgreSQL demo tại installer/database/myshop_demo.dump.
 
 13. Installer
-- Co file setup.exe mot file duy nhat trong thu muc Release.
-- Co thu muc Release\App chua ProjectTest.exe va cac file runtime publish truc tiep tu ma nguon.
-- setup.exe cai app, .NET 8 Desktop Runtime, Windows App Runtime 1.8, PostgreSQL 18, database demo, shortcut Desktop/Start Menu.
-- Installer uu tien restore database tu dump PostgreSQL, neu loi thi fallback seed bang code.
-- Co script export/restore/test installer va log cai dat.
+- Có file setup.exe một file duy nhất trong thư mục Release.
+- Có thư mục Release\App chứa ProjectTest.exe và các file runtime publish trực tiếp từ mã nguồn.
+- setup.exe cài app, .NET 8 Desktop Runtime, Windows App Runtime 1.8, PostgreSQL 18, database demo, shortcut Desktop/Start Menu.
+- Installer ưu tiên restore database từ dump PostgreSQL, nếu lỗi thì fallback seed bằng code.
+- Có script export/restore/test installer và log cài đặt.
 
 
-CAC CHUC NANG CHUA THUC HIEN
+CÁC CHỨC NĂNG CHƯA THỰC HIỆN
 ============================
 
-- Chua ky so code-signing cho setup.exe nen Windows SmartScreen co the canh bao app khong ro nguon goc.
-- Chua co dong bo cloud/multi-branch real-time giua nhieu may.
-- Chua tich hop thiet bi ban hang that nhu may quet ma vach, may in hoa don nhiet, ngan keo tien.
-- LLM assistant can API key rieng cua nguoi dung, khong hardcode API key that trong source code.
-- Chua co he thong phan quyen chi tiet den tung nut/chuc nang nho, moi dung theo vai tro chinh.
+- Chưa ký số code-signing cho setup.exe nên Windows SmartScreen có thể cảnh báo app không rõ nguồn gốc.
+- Chưa có đồng bộ cloud/multi-branch real-time giữa nhiều máy.
+- Chưa tích hợp thiết bị bán hàng thật như máy quét mã vạch, máy in hóa đơn nhiệt, ngăn kéo tiền.
+- LLM assistant cần API key riêng của người dùng, không hardcode API key thật trong source code.
+- Chưa có hệ thống phân quyền chi tiết đến từng nút/chức năng nhỏ, mới dùng theo vai trò chính.
 
 
-CAC CHUC NANG DE NGHI GIANG VIEN XEM XET CONG DIEM
+CÁC CHỨC NĂNG ĐỀ NGHỊ GIẢNG VIÊN XEM XÉT CỘNG ĐIỂM
 ==================================================
 
-- Installer setup.exe mot file: tu cai runtime, PostgreSQL, restore database dump, fallback seed, tao shortcut va ghi config ket noi.
-- Database demo duoc export/restore bang PostgreSQL custom-format dump thay vi chi seed lai bang code.
-- App co day du workflow POS: san pham, danh muc, don hang, khach hang, loyalty, khuyen mai, ton kho, hoa don.
-- Reports co doanh thu, loi nhuan, top products, sales commission va ML.Net insight.
-- Co GraphQL demo va plugin loading demo, vuot ngoai yeu cau POS co ban.
-- Co nhieu script tu dong hoa build, export database, restore database, test installer va verification runner.
-- Giao dien WinUI 3 co nhieu trang, MVVM, repository/service layer va data binding ro rang.
+- Installer setup.exe một file: tự cài runtime, PostgreSQL, restore database dump, fallback seed, tạo shortcut và ghi config kết nối.
+- Database demo được export/restore bằng PostgreSQL custom-format dump thay vì chỉ seed lại bằng code.
+- App có đầy đủ workflow POS: sản phẩm, danh mục, đơn hàng, khách hàng, loyalty, khuyến mãi, tồn kho, hóa đơn.
+- Reports có doanh thu, lợi nhuận, top products, sales commission và ML.Net insight.
+- Có GraphQL demo và plugin loading demo, vượt ngoài yêu cầu POS cơ bản.
+- Có nhiều script tự động hóa build, export database, restore database, test installer và verification runner.
+- Giao diện WinUI 3 có nhiều trang, MVVM, repository/service layer và data binding rõ ràng.
 
 
-BANG PHAN CONG CONG VIEC VA DIEM TU DANH GIA
+BẢNG PHÂN CÔNG CÔNG VIỆC VÀ ĐIỂM TỰ ĐÁNH GIÁ
 ============================================
 
 +----------------+----------+--------------------------------------------------------------+-------------+
-| Thanh vien     | MSSV     | Cong viec chinh                                               | Tu danh gia |
+| Thành viên     | MSSV     | Công việc chính                                               | Tự đánh giá |
 +----------------+----------+--------------------------------------------------------------+-------------+
-| Le Minh        | 21127645 | Database PostgreSQL/EF Core, migrations, seed data,           | 9.5/10      |
+| Lê Minh        | 21127645 | Database PostgreSQL/EF Core, migrations, seed data,           | 9.5/10      |
 |                |          | installer setup.exe, dump/restore database, scripts build,    |             |
-|                |          | reports, dashboard, validation va dong goi nop bai.           |             |
+|                |          | reports, dashboard, validation và đóng gói nộp bài.           |             |
 +----------------+----------+--------------------------------------------------------------+-------------+
-| Nguyen Vu Bach | 21127224 | UI WinUI, Products, Orders, Customers, Login, Settings,       | 9.5/10      |
-|                |          | navigation, assets, testing cac luong nghiep vu, README va    |             |
-|                |          | hoan thien demo flows.                                       |             |
+| Nguyễn Vũ Bách | 21127224 | UI WinUI, Products, Orders, Customers, Login, Settings,       | 9.5/10      |
+|                |          | navigation, assets, testing các luồng nghiệp vụ, README và    |             |
+|                |          | hoàn thiện demo flows.                                       |             |
 +----------------+----------+--------------------------------------------------------------+-------------+
 
-Nhan xet phan cong:
-- Cong viec duoc chia gan deu giua backend/database/installer va UI/nghiep vu/testing.
-- Ca hai thanh vien deu tham gia hoan thien demo, sua loi va kiem tra ung dung.
-- Diem tu danh gia bang nhau vi khoi luong dong gop duoc chia deu va deu anh huong truc tiep den ban nop cuoi.
+Nhận xét phân công:
+- Công việc được chia gần đều giữa backend/database/installer và UI/nghiệp vụ/testing.
+- Cả hai thành viên đều tham gia hoàn thiện demo, sửa lỗi và kiểm tra ứng dụng.
+- Điểm tự đánh giá bằng nhau vì khối lượng đóng góp được chia đều và đều ảnh hưởng trực tiếp đến bản nộp cuối.
 
 
-HUONG DAN CHAY BAN RELEASE
+HƯỚNG DẪN CHẠY BẢN RELEASE
 ==========================
 
-1. Mo thu muc Release.
-2. Nen cai bang setup.exe: bam chuot phai setup.exe, chon Run as administrator.
-3. Cho installer cai runtime, PostgreSQL va database demo.
-4. Mo shortcut MyShop Gaming Accessories POS tren Desktop hoac Start Menu.
-5. Thu muc Release\App co ProjectTest.exe duoc publish truc tiep tu ma nguon, dung de doi chieu file thuc thi sau khi build. Neu chay truc tiep file nay thi may van can co runtime va database da cau hinh.
-6. Dang nhap bang:
+1. Mở thư mục Release.
+2. Nên cài bằng setup.exe: bấm chuột phải setup.exe, chọn Run as administrator.
+3. Chờ installer cài runtime, PostgreSQL và database demo.
+4. Mở shortcut MyShop Gaming Accessories POS trên Desktop hoặc Start Menu.
+5. Thư mục Release\App có ProjectTest.exe được publish trực tiếp từ mã nguồn, dùng để đối chiếu file thực thi sau khi build. Nếu chạy trực tiếp file này thì máy vẫn cần có runtime và database đã cấu hình.
+6. Đăng nhập bằng:
    - admin / MyShop123!
    - moderator / MyShop123!
    - sale / MyShop123!
 
-Neu cai dat loi, xem log:
+Nếu cài đặt lỗi, xem log:
 - C:\ProgramData\MyShop POS\Logs\setup-log.txt
 - C:\ProgramData\MyShop POS\Logs\restore-demo-database.log
