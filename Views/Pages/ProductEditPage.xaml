@@ -125,13 +125,16 @@
                                     <ColumnDefinition Width="*" />
                                     <ColumnDefinition Width="Auto" />
                                 </Grid.ColumnDefinitions>
-                                <TextBox Text="{Binding Image1, Mode=TwoWay}" />
+                                <TextBox
+                                    x:Name="Image1TextBox"
+                                    Text="{Binding Image1, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
                                 <Button
                                     Grid.Column="1"
                                     Click="BrowseImage1Button_Click"
                                     Content="Browse" />
                             </Grid>
                             <Image
+                                x:Name="Image1Preview"
                                 MaxHeight="220"
                                 Stretch="Uniform"
                                 Source="{Binding Image1, Converter={StaticResource ImagePathConverter}}" />
@@ -143,13 +146,16 @@
                                     <ColumnDefinition Width="*" />
                                     <ColumnDefinition Width="Auto" />
                                 </Grid.ColumnDefinitions>
-                                <TextBox Text="{Binding Image2, Mode=TwoWay}" />
+                                <TextBox
+                                    x:Name="Image2TextBox"
+                                    Text="{Binding Image2, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
                                 <Button
                                     Grid.Column="1"
                                     Click="BrowseImage2Button_Click"
                                     Content="Browse" />
                             </Grid>
                             <Image
+                                x:Name="Image2Preview"
                                 MaxHeight="220"
                                 Stretch="Uniform"
                                 Source="{Binding Image2, Converter={StaticResource ImagePathConverter}}" />
@@ -161,13 +167,16 @@
                                     <ColumnDefinition Width="*" />
                                     <ColumnDefinition Width="Auto" />
                                 </Grid.ColumnDefinitions>
-                                <TextBox Text="{Binding Image3, Mode=TwoWay}" />
+                                <TextBox
+                                    x:Name="Image3TextBox"
+                                    Text="{Binding Image3, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
                                 <Button
                                     Grid.Column="1"
                                     Click="BrowseImage3Button_Click"
                                     Content="Browse" />
                             </Grid>
                             <Image
+                                x:Name="Image3Preview"
                                 MaxHeight="220"
                                 Stretch="Uniform"
                                 Source="{Binding Image3, Converter={StaticResource ImagePathConverter}}" />
