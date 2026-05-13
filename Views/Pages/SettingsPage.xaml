@@ -67,10 +67,39 @@
             <Border Style="{ThemeResource CardBorderStyle}">
                 <StackPanel Spacing="14">
                     <TextBlock Style="{ThemeResource SectionHeaderTextBlockStyle}" Text="License" />
-                    <TextBlock Text="{Binding LicenseStatus}" TextWrapping="WrapWholeWords" />
+                    <Grid ColumnSpacing="12">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <Border
+                            Padding="10,6"
+                            Background="{ThemeResource AccentBrush}"
+                            CornerRadius="6">
+                            <TextBlock
+                                Foreground="White"
+                                FontWeight="SemiBold"
+                                Text="{Binding LicensePlanName}" />
+                        </Border>
+                        <StackPanel Grid.Column="1" Spacing="4">
+                            <TextBlock FontWeight="SemiBold" Text="{Binding LicenseStatus}" TextWrapping="WrapWholeWords" />
+                            <TextBlock
+                                Style="{ThemeResource CaptionTextBlockStyle}"
+                                Text="{Binding LicenseExpiryStatus}"
+                                TextWrapping="WrapWholeWords" />
+                        </StackPanel>
+                    </Grid>
+                    <ProgressBar
+                        Maximum="100"
+                        Value="{Binding LicenseProgressValue}"
+                        Visibility="{Binding LicenseProgressVisibility}" />
                     <TextBlock
                         Style="{ThemeResource CaptionTextBlockStyle}"
-                        Text="Trial lasts 15 days. If the trial expires, enter an activation code that starts with MYSHOP- and is at least 16 characters. Demo activation code: MYSHOP-DEMO-2026."
+                        Text="Trial lasts 15 days. Activation plans support 1 month, 1 year, or lifetime access."
+                        TextWrapping="WrapWholeWords" />
+                    <TextBlock
+                        Style="{ThemeResource CaptionTextBlockStyle}"
+                        Text="{Binding DemoActivationCodes}"
                         TextWrapping="WrapWholeWords" />
                     <TextBox PlaceholderText="Activation code" Text="{Binding ActivationCode, Mode=TwoWay}" />
                     <Button Command="{Binding ActivateCommand}" Content="Activate" />
