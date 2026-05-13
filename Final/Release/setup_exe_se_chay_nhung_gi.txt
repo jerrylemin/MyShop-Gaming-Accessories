@@ -1,8 +1,6 @@
 ﻿SETUP.EXE SẼ CHẠY NHỮNG GÌ
 ===========================
 
-Lưu ý: Thư mục Release hiện tại chưa kèm setup.exe. File này dùng để giải thích luồng cài đặt dự kiến khi nhóm tự tạo lại setup.exe.
-
 Khi người dùng bấm setup.exe, installer sẽ thực hiện các bước sau:
 
 1. Kiểm tra môi trường Windows
