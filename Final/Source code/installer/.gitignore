@@ -1,8 +1,0 @@
-staging/
-output/
-output-final/*
-!output-final/
-!output-final/setup.exe
-prerequisites/*.exe
-prerequisites/*.msi
-logs/

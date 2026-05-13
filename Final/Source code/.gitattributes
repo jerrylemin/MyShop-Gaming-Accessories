@@ -1,5 +1,0 @@
-# Auto detect text files and perform LF normalization
-* text=auto
-installer/output-final/setup.exe filter=lfs diff=lfs merge=lfs -text
-21127224_21127645.zip filter=lfs diff=lfs merge=lfs -text
-Final/Release/setup.exe filter=lfs diff=lfs merge=lfs -text
