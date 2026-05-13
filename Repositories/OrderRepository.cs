@@ -77,9 +77,13 @@ public class OrderRepository
         {
             var keyword = options.Keyword.Trim().ToLower();
             var parsedOrderId = int.TryParse(keyword, out var orderId);
+            var matchingStatuses = Enum.GetValues<OrderStatus>()
+                .Where(status => status.ToString().Contains(keyword, StringComparison.OrdinalIgnoreCase))
+                .ToArray();
+
             query = query.Where(x =>
                 (parsedOrderId && x.Id == orderId) ||
-                x.Status.ToString().ToLower().Contains(keyword) ||
+                matchingStatuses.Contains(x.Status) ||
                 x.Items.Any(item =>
                     item.Product != null &&
                     (item.Product.Name.ToLower().Contains(keyword) ||
