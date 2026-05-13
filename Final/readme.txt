@@ -79,6 +79,7 @@ CAC CHUC NANG DA THUC HIEN
 
 13. Installer
 - Co file setup.exe mot file duy nhat trong thu muc Release.
+- Co thu muc Release\App chua ProjectTest.exe va cac file runtime publish truc tiep tu ma nguon.
 - setup.exe cai app, .NET 8 Desktop Runtime, Windows App Runtime 1.8, PostgreSQL 18, database demo, shortcut Desktop/Start Menu.
 - Installer uu tien restore database tu dump PostgreSQL, neu loi thi fallback seed bang code.
 - Co script export/restore/test installer va log cai dat.
@@ -131,10 +132,11 @@ HUONG DAN CHAY BAN RELEASE
 ==========================
 
 1. Mo thu muc Release.
-2. Bam chuot phai setup.exe, chon Run as administrator.
+2. Nen cai bang setup.exe: bam chuot phai setup.exe, chon Run as administrator.
 3. Cho installer cai runtime, PostgreSQL va database demo.
 4. Mo shortcut MyShop Gaming Accessories POS tren Desktop hoac Start Menu.
-5. Dang nhap bang:
+5. Thu muc Release\App co ProjectTest.exe duoc publish truc tiep tu ma nguon, dung de doi chieu file thuc thi sau khi build. Neu chay truc tiep file nay thi may van can co runtime va database da cau hinh.
+6. Dang nhap bang:
    - admin / MyShop123!
    - moderator / MyShop123!
    - sale / MyShop123!
