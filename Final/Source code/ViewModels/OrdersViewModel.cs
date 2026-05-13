@@ -42,7 +42,7 @@ public class OrdersViewModel : ViewModelBase
     private decimal _draftTotal;
     private decimal _discountAmount;
     private string _statusMessage = string.Empty;
-    private string _autoSaveStatus = "Saved";
+    private string _autoSaveStatus = "Manual save only";
     private int _currentPage = 1;
     private int _totalPages = 1;
     private int _totalItems;

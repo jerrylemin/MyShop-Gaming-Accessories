@@ -1,6 +1,8 @@
-using ProjectTest.Helpers;
+﻿using ProjectTest.Helpers;
 using ProjectTest.Models;
 using ProjectTest.Repositories;
+using ProjectTest.Services;
+using Microsoft.UI.Xaml;
 using System.Collections.ObjectModel;
 
 namespace ProjectTest.ViewModels;
@@ -8,6 +10,7 @@ namespace ProjectTest.ViewModels;
 public class CustomersViewModel : ViewModelBase
 {
     private readonly CustomerRepository _customerRepository;
+    private readonly CurrentUserService _currentUserService;
     private readonly AsyncRelayCommand _refreshCommand;
     private readonly AsyncRelayCommand _applySearchCommand;
     private readonly AsyncRelayCommand _saveCommand;
@@ -24,17 +27,18 @@ public class CustomersViewModel : ViewModelBase
     private string _statusMessage = string.Empty;
     private bool _isLoading;
 
-    public CustomersViewModel(CustomerRepository customerRepository)
+    public CustomersViewModel(CustomerRepository customerRepository, CurrentUserService? currentUserService = null)
     {
         _customerRepository = customerRepository;
+        _currentUserService = currentUserService ?? App.Current.Services.CurrentUserService;
         Customers = [];
         PurchasedProducts = [];
         OrderHistory = [];
         _refreshCommand = new AsyncRelayCommand(LoadAsync, () => !IsLoading);
         _applySearchCommand = new AsyncRelayCommand(LoadAsync, () => !IsLoading);
-        _saveCommand = new AsyncRelayCommand(SaveAsync, () => !IsLoading && !string.IsNullOrWhiteSpace(Name));
-        _deleteCommand = new AsyncRelayCommand(DeleteAsync, () => !IsLoading && SelectedCustomer is not null);
-        _newCommand = new RelayCommand(NewCustomer, () => !IsLoading);
+        _saveCommand = new AsyncRelayCommand(SaveAsync, () => !IsLoading && !string.IsNullOrWhiteSpace(Name) && CanManageCustomers);
+        _deleteCommand = new AsyncRelayCommand(DeleteAsync, () => !IsLoading && SelectedCustomer is not null && CanDeleteCustomers);
+        _newCommand = new RelayCommand(NewCustomer, () => !IsLoading && CanManageCustomers);
         _clearSearchCommand = new RelayCommand(ClearSearch, () => !IsLoading && !string.IsNullOrWhiteSpace(SearchKeyword));
     }
 
@@ -55,6 +59,16 @@ public class CustomersViewModel : ViewModelBase
     public RelayCommand NewCommand => _newCommand;
 
     public RelayCommand ClearSearchCommand => _clearSearchCommand;
+
+    public bool CanManageCustomers => _currentUserService.CanManageCustomers;
+
+    public bool CanDeleteCustomers => _currentUserService.CanDeleteCustomers;
+
+    public Visibility CustomerEditVisibility => CanManageCustomers ? Visibility.Visible : Visibility.Collapsed;
+
+    public Visibility CustomerDeleteVisibility => CanDeleteCustomers ? Visibility.Visible : Visibility.Collapsed;
+
+    public string RolePermissionSummary => _currentUserService.RoleDisplayName;
 
     public string SearchKeyword
     {
@@ -153,11 +167,11 @@ public class CustomersViewModel : ViewModelBase
 
     public string LoyaltySummary => SelectedProfile?.Customer.LoyaltySummary ?? "0 points";
 
-    public string TotalSpendText => SelectedProfile?.TotalSpendText ?? Helpers.CurrencyFormatter.ToCurrency(0m);
+    public string TotalSpendText => SelectedProfile?.TotalSpendText ?? CurrencyFormatter.ToCurrency(0m);
 
     public string PaidOrdersText => SelectedProfile is null ? "0" : SelectedProfile.PaidOrderCount.ToString();
 
-    public string LifetimeSpendText => SelectedProfile?.Customer.LifetimeSpendText ?? Helpers.CurrencyFormatter.ToCurrency(0m);
+    public string LifetimeSpendText => SelectedProfile?.Customer.LifetimeSpendText ?? CurrencyFormatter.ToCurrency(0m);
 
     public async Task LoadAsync()
     {
@@ -172,16 +186,14 @@ public class CustomersViewModel : ViewModelBase
             }
 
             SelectedCustomer = Customers.FirstOrDefault(x => x.Id == selectedId) ?? Customers.FirstOrDefault();
-            if (SelectedCustomer is null)
+            if (SelectedCustomer is null && CanManageCustomers)
             {
                 NewCustomer();
             }
 
             StatusMessage = Customers.Count == 0
                 ? "No customers match this search."
-                : string.IsNullOrWhiteSpace(SearchKeyword)
-                    ? $"Loaded {Customers.Count} customer(s)."
-                    : $"Found {Customers.Count} customer(s).";
+                : $"{RolePermissionSummary}. Loaded {Customers.Count} customer(s).";
         }
         finally
         {
@@ -219,6 +231,12 @@ public class CustomersViewModel : ViewModelBase
 
     private void NewCustomer()
     {
+        if (!CanManageCustomers)
+        {
+            StatusMessage = "This role can review customers but cannot create a customer.";
+            return;
+        }
+
         _editingCustomerId = 0;
         Name = string.Empty;
         Phone = string.Empty;
@@ -237,6 +255,12 @@ public class CustomersViewModel : ViewModelBase
 
     private async Task SaveAsync()
     {
+        if (!CanManageCustomers)
+        {
+            StatusMessage = "This role cannot save customers.";
+            return;
+        }
+
         var result = await _customerRepository.SaveAsync(new Customer
         {
             Id = _editingCustomerId,
@@ -257,6 +281,12 @@ public class CustomersViewModel : ViewModelBase
 
     private async Task DeleteAsync()
     {
+        if (!CanDeleteCustomers)
+        {
+            StatusMessage = "Only Admin can delete customers.";
+            return;
+        }
+
         if (SelectedCustomer is null)
         {
             StatusMessage = "Select a customer first.";

@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Page
     x:Class="ProjectTest.Views.Pages.OrdersPage"
     x:Name="RootPage"
@@ -42,7 +42,7 @@
                         FontFamily="Segoe UI Variable Display Semib"
                         FontSize="32"
                         FontWeight="SemiBold"
-                        Text="Manage orders"
+                        Text="{Binding RolePermissionSummary}"
                         TextWrapping="WrapWholeWords" />
                 </StackPanel>
 
@@ -63,6 +63,7 @@
                         Grid.Column="0"
                         Style="{ThemeResource AccentButtonStyle}"
                         Command="{Binding NewOrderCommand}"
+                        Visibility="{Binding OrderEditingVisibility}"
                         Content="New Order" />
                     <Button
                         Grid.Column="1"
@@ -74,12 +75,14 @@
                         Grid.Column="0"
                         Style="{ThemeResource AccentButtonStyle}"
                         Command="{Binding SaveCommand}"
+                        Visibility="{Binding OrderEditingVisibility}"
                         Content="{Binding EditorActionText}" />
                     <Button
                         Grid.Row="1"
                         Grid.Column="1"
                         Style="{ThemeResource SubtleButtonStyle}"
                         Click="DeleteButton_Click"
+                        Visibility="{Binding OrderEditingVisibility}"
                         Content="Delete Order" />
                 </Grid>
 
@@ -177,8 +180,9 @@
                             x:Name="OrdersListView"
                             Grid.Row="1"
                             ItemsSource="{Binding Orders}"
-                            ScrollViewer.VerticalScrollMode="Disabled"
-                            ScrollViewer.VerticalScrollBarVisibility="Disabled"
+                            MaxHeight="520"
+                            ScrollViewer.VerticalScrollMode="Enabled"
+                            ScrollViewer.VerticalScrollBarVisibility="Auto"
                             SelectedItem="{Binding SelectedOrder, Mode=TwoWay}"
                             SelectionChanged="OrdersListView_SelectionChanged">
                             <ListView.ItemTemplate>
@@ -269,13 +273,14 @@
                                 Text="Order Editor" />
                             <TextBlock
                                 Style="{ThemeResource CaptionTextBlockStyle}"
-                                Text="Paid and cancelled orders are read-only." />
+                                Text="Admin and Sale can create or update orders. Moderator can review only." />
                         </StackPanel>
                         <Button
                             Grid.Column="1"
                             VerticalAlignment="Center"
                             Style="{ThemeResource AccentButtonStyle}"
                             Command="{Binding SaveCommand}"
+                            Visibility="{Binding OrderEditingVisibility}"
                             Content="{Binding EditorActionText}" />
                     </Grid>
 
@@ -323,27 +328,51 @@
 
                     <Grid
                         Grid.Row="2"
-                        ColumnSpacing="10">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="*" />
-                            <ColumnDefinition Width="Auto" />
-                        </Grid.ColumnDefinitions>
-                        <ComboBox
-                            DisplayMemberPath="DisplayName"
+                        RowSpacing="10">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+
+                        <TextBox
+                            Grid.Row="0"
                             IsEnabled="{Binding CanEditCurrentOrder}"
-                            ItemsSource="{Binding AvailableProducts}"
-                            SelectedItem="{Binding SelectedProductToAdd, Mode=TwoWay}" />
-                        <Button
-                            Grid.Column="1"
-                            Command="{Binding AddItemCommand}"
-                            Content="Add Product" />
+                            PlaceholderText="Search product by name, SKU, brand, price, or stock"
+                            Text="{Binding ProductSearchText, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+
+                        <Grid
+                            Grid.Row="1"
+                            ColumnSpacing="10">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="Auto" />
+                            </Grid.ColumnDefinitions>
+                            <ComboBox
+                                DisplayMemberPath="DisplayName"
+                                IsEnabled="{Binding CanEditCurrentOrder}"
+                                ItemsSource="{Binding FilteredAvailableProducts}"
+                                PlaceholderText="Choose a filtered product"
+                                SelectedItem="{Binding SelectedProductToAdd, Mode=TwoWay}" />
+                            <Button
+                                Grid.Column="1"
+                                Command="{Binding AddItemCommand}"
+                                Content="Add Product" />
+                        </Grid>
+
+                        <TextBlock
+                            Grid.Row="2"
+                            Style="{ThemeResource CaptionTextBlockStyle}"
+                            Text="Type a few letters or a SKU, then choose from the filtered product results."
+                            TextWrapping="WrapWholeWords" />
                     </Grid>
 
                     <ListView
                         Grid.Row="3"
                         ItemsSource="{Binding DraftItems}"
-                        ScrollViewer.VerticalScrollMode="Disabled"
-                        ScrollViewer.VerticalScrollBarVisibility="Disabled"
+                        MaxHeight="360"
+                        ScrollViewer.VerticalScrollMode="Enabled"
+                        ScrollViewer.VerticalScrollBarVisibility="Auto"
                         SelectionMode="None">
                         <ListView.ItemTemplate>
                             <DataTemplate>
@@ -375,7 +404,8 @@
                                                 Grid.Column="2"
                                                 Click="RemoveLineButton_Click"
                                                 Content="Remove"
-                                                IsEnabled="{Binding DataContext.CanEditCurrentOrder, ElementName=RootPage}" />
+                                                IsEnabled="{Binding DataContext.CanEditCurrentOrder, ElementName=RootPage}"
+                                                Visibility="{Binding DataContext.OrderEditingVisibility, ElementName=RootPage}" />
                                         </Grid>
 
                                         <Grid ColumnSpacing="10">
@@ -455,3 +485,14 @@
         </StackPanel>
     </ScrollViewer>
 </Page>
+
+
+
+
+
+
+
+
+
+
+

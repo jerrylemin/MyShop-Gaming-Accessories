@@ -1,4 +1,4 @@
-using Microsoft.UI.Xaml;
+﻿using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using Windows.Storage.Pickers;
 using ProjectTest.ViewModels;
@@ -42,11 +42,23 @@ public sealed partial class ProductsPage : Page
 
     private void ViewModel_EditRequested(object? sender, int? productId)
     {
+        if (!ViewModel.CanManageProducts)
+        {
+            ViewModel.StatusMessage = "Only Admin can add or edit products.";
+            return;
+        }
+
         App.Current.Services.NavigationService.Navigate("ProductEdit", productId ?? 0, persist: false);
     }
 
     private async void DeleteButton_Click(object sender, RoutedEventArgs e)
     {
+        if (!ViewModel.CanManageProducts)
+        {
+            ViewModel.StatusMessage = "Only Admin can delete products.";
+            return;
+        }
+
         var dialog = new ContentDialog
         {
             Title = "Delete product",
@@ -64,6 +76,12 @@ public sealed partial class ProductsPage : Page
 
     private async void ImportExcelButton_Click(object sender, RoutedEventArgs e)
     {
+        if (!ViewModel.CanImportProducts)
+        {
+            ViewModel.StatusMessage = "Only Admin can import products.";
+            return;
+        }
+
         var picker = new FileOpenPicker();
         picker.FileTypeFilter.Add(".xlsx");
         picker.SuggestedStartLocation = PickerLocationId.DocumentsLibrary;
@@ -84,6 +102,12 @@ public sealed partial class ProductsPage : Page
 
     private async void ViewModel_CategoryEditRequested(object? sender, Models.CategoryListItem? category)
     {
+        if (!ViewModel.CanManageCategories)
+        {
+            ViewModel.StatusMessage = "Only Admin can manage categories.";
+            return;
+        }
+
         var nameBox = new TextBox
         {
             PlaceholderText = "Category name",

@@ -1,4 +1,4 @@
-using Microsoft.UI.Xaml;
+﻿using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Input;
 using Microsoft.UI.Xaml.Media;
@@ -44,7 +44,9 @@ public sealed partial class MainWindow : Window, INotifyPropertyChanged
             ["Settings"] = SettingsButton
         };
 
-        HeaderDateTextBlock.Text = DateTime.Now.ToString("dddd, dd MMM yyyy");
+        var currentUser = App.Current.Services.CurrentUserService.CurrentUser;
+        HeaderDateTextBlock.Text = $"{DateTime.Now:dddd, dd MMM yyyy} | {currentUser.DisplayName} ({currentUser.Role})";
+        ApplyRoleNavigation();
         PageTitleTextBlock.Text = CurrentPageTitle;
         PageSubtitleTextBlock.Text = GetPageSubtitle(CurrentPageTitle);
 
@@ -224,6 +226,53 @@ public sealed partial class MainWindow : Window, INotifyPropertyChanged
         onboarding.Complete();
     }
 
+    private void ApplyRoleNavigation()
+    {
+        var currentUser = App.Current.Services.CurrentUserService;
+
+        DashboardButton.Visibility = Visibility.Visible;
+        DashboardButton.IsEnabled = true;
+
+        ProductsButton.Visibility = currentUser.CanViewProductList ? Visibility.Visible : Visibility.Collapsed;
+        ProductsButton.IsEnabled = currentUser.CanViewProductList;
+
+        OrdersButton.Visibility = Visibility.Visible;
+        OrdersButton.IsEnabled = true;
+
+        CustomersButton.Visibility = Visibility.Visible;
+        CustomersButton.IsEnabled = true;
+
+        ReportsButton.Visibility = currentUser.CanViewReports ? Visibility.Visible : Visibility.Collapsed;
+        ReportsButton.IsEnabled = currentUser.CanViewReports;
+
+        GraphQlButton.Visibility = currentUser.CanUseTechnicalTools ? Visibility.Visible : Visibility.Collapsed;
+        GraphQlButton.IsEnabled = currentUser.CanUseTechnicalTools;
+
+        PluginsButton.Visibility = currentUser.CanUseTechnicalTools ? Visibility.Visible : Visibility.Collapsed;
+        PluginsButton.IsEnabled = currentUser.CanUseTechnicalTools;
+
+        SettingsButton.Visibility = currentUser.CanManageSettings ? Visibility.Visible : Visibility.Collapsed;
+        SettingsButton.IsEnabled = currentUser.CanManageSettings;
+    }
+
+    private bool CanNavigateTo(string key)
+    {
+        var currentUser = App.Current.Services.CurrentUserService;
+
+        return key switch
+        {
+            "Dashboard" => true,
+            "Products" => currentUser.CanViewProductList,
+            "ProductEdit" => currentUser.CanManageProducts,
+            "Orders" => true,
+            "Customers" => true,
+            "Reports" => currentUser.CanViewReports,
+            "GraphQL" => currentUser.CanUseTechnicalTools,
+            "Plugins" => currentUser.CanUseTechnicalTools,
+            "Settings" => currentUser.CanManageSettings,
+            _ => true
+        };
+    }
     private void MainWindow_SizeChanged(object sender, WindowSizeChangedEventArgs args)
     {
         var isCompact = args.Size.Width < 760;
@@ -236,6 +285,11 @@ public sealed partial class MainWindow : Window, INotifyPropertyChanged
         if (!_isNavigationReady ||
             sender is not Button button ||
             button.Tag is not string key)
+        {
+            return;
+        }
+
+        if (!CanNavigateTo(key))
         {
             return;
         }
@@ -541,3 +595,8 @@ public sealed partial class MainWindow : Window, INotifyPropertyChanged
             "startup-error.log");
     }
 }
+
+
+
+
+

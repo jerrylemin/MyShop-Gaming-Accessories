@@ -1,4 +1,4 @@
-using ProjectTest.Helpers;
+﻿using ProjectTest.Helpers;
 using ProjectTest.Services;
 
 namespace ProjectTest.ViewModels;
@@ -16,7 +16,7 @@ public class LoginViewModel : ViewModelBase
     {
         _authenticationService = authenticationService;
         VersionText = AppInfoHelper.GetDisplayVersion();
-        DefaultCredentialsHint = $"Default login: {_authenticationService.DefaultUsername} / {_authenticationService.DefaultPassword}";
+        DefaultCredentialsHint = $"Admin: admin / {_authenticationService.DefaultPassword} | Moderator: moderator / {_authenticationService.DefaultPassword} | Sale: sale / {_authenticationService.DefaultPassword}";
         _loginCommand = new AsyncRelayCommand(LoginAsync, CanLogin);
     }
 
@@ -100,3 +100,4 @@ public class LoginViewModel : ViewModelBase
         }
     }
 }
+

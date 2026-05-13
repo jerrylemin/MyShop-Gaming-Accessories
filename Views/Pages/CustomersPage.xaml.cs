@@ -1,4 +1,4 @@
-using Microsoft.UI.Xaml;
+﻿using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using ProjectTest.ViewModels;
 
@@ -8,7 +8,9 @@ public sealed partial class CustomersPage : Page
 {
     public CustomersPage()
     {
-        ViewModel = new CustomersViewModel(App.Current.Services.CustomerRepository);
+        ViewModel = new CustomersViewModel(
+            App.Current.Services.CustomerRepository,
+            App.Current.Services.CurrentUserService);
         InitializeComponent();
         DataContext = ViewModel;
         Loaded += CustomersPageLoaded;
@@ -22,3 +24,4 @@ public sealed partial class CustomersPage : Page
         await ViewModel.LoadAsync();
     }
 }
+

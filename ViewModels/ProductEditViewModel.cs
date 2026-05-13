@@ -1,7 +1,6 @@
 using ProjectTest.Helpers;
 using ProjectTest.Models;
 using ProjectTest.Repositories;
-using ProjectTest.Services;
 using System.Collections.ObjectModel;
 
 namespace ProjectTest.ViewModels;
@@ -11,7 +10,6 @@ public class ProductEditViewModel : ViewModelBase
     private const decimal MaxCurrencyValue = 9999999999.99m;
     private readonly ProductRepository _productRepository;
     private readonly CategoryRepository _categoryRepository;
-    private readonly AutoSaveService _autoSaveService = new();
     private readonly AsyncRelayCommand _saveCommand;
     private int _productId;
     private string _sku = string.Empty;
@@ -31,7 +29,7 @@ public class ProductEditViewModel : ViewModelBase
     private string _image2 = string.Empty;
     private string _image3 = string.Empty;
     private string _statusMessage = string.Empty;
-    private string _autoSaveStatus = "Saved";
+    private string _autoSaveStatus = "Manual save only";
     private bool _isLoading;
 
     public ProductEditViewModel(ProductRepository productRepository, CategoryRepository categoryRepository)
@@ -40,13 +38,6 @@ public class ProductEditViewModel : ViewModelBase
         _categoryRepository = categoryRepository;
         Categories = new ObservableCollection<Category>();
         _saveCommand = new AsyncRelayCommand(SaveAsync, () => !IsLoading);
-        _autoSaveService.StateChanged += (_, state) => AutoSaveStatus = state switch
-        {
-            AutoSaveState.Saving => "Saving...",
-            AutoSaveState.Saved => "Saved",
-            AutoSaveState.Error => "Error",
-            _ => AutoSaveStatus
-        };
     }
 
     public event EventHandler? Saved;
@@ -72,97 +63,97 @@ public class ProductEditViewModel : ViewModelBase
     public string SKU
     {
         get => _sku;
-        set => SetAndScheduleAutoSave(ref _sku, value);
+        set => SetProperty(ref _sku, value);
     }
 
     public string Name
     {
         get => _name;
-        set => SetAndScheduleAutoSave(ref _name, value);
+        set => SetProperty(ref _name, value);
     }
 
     public string Manufacturer
     {
         get => _manufacturer;
-        set => SetAndScheduleAutoSave(ref _manufacturer, value);
+        set => SetProperty(ref _manufacturer, value);
     }
 
     public string CPU
     {
         get => _cpu;
-        set => SetAndScheduleAutoSave(ref _cpu, value);
+        set => SetProperty(ref _cpu, value);
     }
 
     public string RAM
     {
         get => _ram;
-        set => SetAndScheduleAutoSave(ref _ram, value);
+        set => SetProperty(ref _ram, value);
     }
 
     public string Storage
     {
         get => _storage;
-        set => SetAndScheduleAutoSave(ref _storage, value);
+        set => SetProperty(ref _storage, value);
     }
 
     public string GPU
     {
         get => _gpu;
-        set => SetAndScheduleAutoSave(ref _gpu, value);
+        set => SetProperty(ref _gpu, value);
     }
 
     public string Screen
     {
         get => _screen;
-        set => SetAndScheduleAutoSave(ref _screen, value);
+        set => SetProperty(ref _screen, value);
     }
 
     public string ImportPrice
     {
         get => _importPrice;
-        set => SetAndScheduleAutoSave(ref _importPrice, value);
+        set => SetProperty(ref _importPrice, value);
     }
 
     public string SalePrice
     {
         get => _salePrice;
-        set => SetAndScheduleAutoSave(ref _salePrice, value);
+        set => SetProperty(ref _salePrice, value);
     }
 
     public string Stock
     {
         get => _stock;
-        set => SetAndScheduleAutoSave(ref _stock, value);
+        set => SetProperty(ref _stock, value);
     }
 
     public int SelectedCategoryId
     {
         get => _selectedCategoryId;
-        set => SetAndScheduleAutoSave(ref _selectedCategoryId, value);
+        set => SetProperty(ref _selectedCategoryId, value);
     }
 
     public string Description
     {
         get => _description;
-        set => SetAndScheduleAutoSave(ref _description, value);
+        set => SetProperty(ref _description, value);
     }
 
     public string Image1
     {
         get => _image1;
-        set => SetAndScheduleAutoSave(ref _image1, value);
+        set => SetProperty(ref _image1, value);
     }
 
     public string Image2
     {
         get => _image2;
-        set => SetAndScheduleAutoSave(ref _image2, value);
+        set => SetProperty(ref _image2, value);
     }
 
     public string Image3
     {
         get => _image3;
-        set => SetAndScheduleAutoSave(ref _image3, value);
+        set => SetProperty(ref _image3, value);
     }
 
     public string StatusMessage
@@ -234,6 +225,7 @@ public class ProductEditViewModel : ViewModelBase
             Image2 = product.Image2;
             Image3 = product.Image3;
             StatusMessage = string.Empty;
+            AutoSaveStatus = "Manual save only";
         }
         finally
         {
@@ -243,97 +235,82 @@ public class ProductEditViewModel : ViewModelBase
 
     private async Task SaveAsync()
     {
-        await SaveAsync(navigateAfterSave: true);
-    }
-
-    private async Task SaveAsync(bool navigateAfterSave)
-    {
         if (!decimal.TryParse(ImportPrice, out var importPrice) ||
             !decimal.TryParse(SalePrice, out var salePrice) ||
             !int.TryParse(Stock, out var stockValue))
         {
             StatusMessage = "Enter valid numeric values for prices and stock.";
+            AutoSaveStatus = "Check input";
             return;
         }
 
         if (importPrice < 0 || salePrice < 0 || stockValue < 0)
         {
             StatusMessage = "Prices and stock cannot be negative.";
+            AutoSaveStatus = "Check input";
             return;
         }
 
         if (importPrice > MaxCurrencyValue || salePrice > MaxCurrencyValue)
         {
             StatusMessage = "Import price and sale price must be less than 10,000,000,000.00.";
+            AutoSaveStatus = "Check input";
             return;
         }
 
         if (SelectedCategoryId == 0 || string.IsNullOrWhiteSpace(SKU) || string.IsNullOrWhiteSpace(Name))
         {
             StatusMessage = "SKU, name, and category are required.";
+            AutoSaveStatus = "Check input";
             return;
         }
 
-        var result = await _productRepository.SaveAsync(new Product
-        {
-            Id = ProductId,
-            SKU = SKU.Trim(),
-            Name = Name.Trim(),
-            Manufacturer = Manufacturer.Trim(),
-            CPU = CPU.Trim(),
-            RAM = RAM.Trim(),
-            Storage = Storage.Trim(),
-            GPU = GPU.Trim(),
-            Screen = Screen.Trim(),
-            ImportPrice = importPrice,
-            SalePrice = salePrice,
-            Stock = stockValue,
-            CategoryId = SelectedCategoryId,
-            Description = Description.Trim(),
-            Image1 = Image1.Trim(),
-            Image2 = Image2.Trim(),
-            Image3 = Image3.Trim()
-        });
+        IsLoading = true;
+        StatusMessage = "Saving product...";
+        AutoSaveStatus = "Saving...";
 
-        StatusMessage = result.Message;
-        if (!result.Success)
+        try
         {
-            return;
-        }
+            var result = await _productRepository.SaveAsync(new Product
+            {
+                Id = ProductId,
+                SKU = SKU.Trim(),
+                Name = Name.Trim(),
+                Manufacturer = Manufacturer.Trim(),
+                CPU = CPU.Trim(),
+                RAM = RAM.Trim(),
+                Storage = Storage.Trim(),
+                GPU = GPU.Trim(),
+                Screen = Screen.Trim(),
+                ImportPrice = importPrice,
+                SalePrice = salePrice,
+                Stock = stockValue,
+                CategoryId = SelectedCategoryId,
+                Description = Description.Trim(),
+                Image1 = Image1.Trim(),
+                Image2 = Image2.Trim(),
+                Image3 = Image3.Trim()
+            });
 
-        ProductId = result.Value;
-        if (navigateAfterSave)
-        {
+            StatusMessage = result.Message;
+            if (!result.Success)
+            {
+                AutoSaveStatus = "Save failed";
+                return;
+            }
+
+            ProductId = result.Value;
+            AutoSaveStatus = "Saved";
             Saved?.Invoke(this, EventArgs.Empty);
         }
-    }
-
-    private void ScheduleAutoSave()
-    {
-        if (IsLoading || !CanAttemptAutoSave())
+        catch (Exception ex)
         {
-            return;
+            StatusMessage = $"Could not save product: {ex.GetBaseException().Message}";
+            AutoSaveStatus = "Save failed";
         }
-
-        AutoSaveStatus = "Saving...";
-        _autoSaveService.Schedule(async _ => await SaveAsync(navigateAfterSave: false));
-    }
-
-    private bool CanAttemptAutoSave()
-    {
-        return SelectedCategoryId != 0 &&
-               !string.IsNullOrWhiteSpace(SKU) &&
-               !string.IsNullOrWhiteSpace(Name) &&
-               decimal.TryParse(ImportPrice, out _) &&
-               decimal.TryParse(SalePrice, out _) &&
-               int.TryParse(Stock, out _);
-    }
-
-    private void SetAndScheduleAutoSave<T>(ref T storage, T value)
-    {
-        if (SetProperty(ref storage, value))
+        finally
         {
-            ScheduleAutoSave();
+            IsLoading = false;
         }
     }
 
@@ -357,5 +334,6 @@ public class ProductEditViewModel : ViewModelBase
         Image2 = string.Empty;
         Image3 = string.Empty;
         StatusMessage = string.Empty;
+        AutoSaveStatus = "Manual save only";
     }
 }

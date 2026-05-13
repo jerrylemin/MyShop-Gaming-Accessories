@@ -31,7 +31,7 @@ public class ProductEditViewModel : ViewModelBase
     private string _image2 = string.Empty;
     private string _image3 = string.Empty;
     private string _statusMessage = string.Empty;
-    private string _autoSaveStatus = "Saved";
+    private string _autoSaveStatus = "Manual save only";
     private bool _isLoading;
 
     public ProductEditViewModel(ProductRepository productRepository, CategoryRepository categoryRepository)

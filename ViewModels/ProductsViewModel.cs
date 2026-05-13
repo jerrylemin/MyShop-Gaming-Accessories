@@ -1,4 +1,4 @@
-using ProjectTest.Helpers;
+﻿using ProjectTest.Helpers;
 using ProjectTest.Models;
 using ProjectTest.Repositories;
 using ProjectTest.Services;
@@ -49,36 +49,57 @@ public class ProductsViewModel : ViewModelBase
         _currentUserService = currentUserService ?? App.Current.Services.CurrentUserService;
 
         SortOptions = new ObservableCollection<ProductSortOption>(Enum.GetValues<ProductSortOption>());
-        CategoryFilters = new ObservableCollection<CategoryFilterOption>();
-        ManagedCategories = new ObservableCollection<CategoryListItem>();
-        Products = new ObservableCollection<Product>();
+        CategoryFilters = [];
+        ManagedCategories = [];
+        Products = [];
 
-        _refreshCommand = new AsyncRelayCommand(() => LoadAsync(1), () => !IsLoading);
-        _previousPageCommand = new RelayCommand(() => _ = LoadAsync(CurrentPage - 1), () => CurrentPage > 1 && !IsLoading);
-        _nextPageCommand = new RelayCommand(() => _ = LoadAsync(CurrentPage + 1), () => CurrentPage < TotalPages && !IsLoading);
-        _addCommand = new RelayCommand(() => EditRequested?.Invoke(this, null));
-        _editCommand = new RelayCommand(() => EditRequested?.Invoke(this, SelectedProduct?.Id), () => SelectedProduct is not null);
-        _addCategoryCommand = new RelayCommand(() => CategoryEditRequested?.Invoke(this, null));
+        _refreshCommand = new AsyncRelayCommand(() => LoadAsync(1), () => !IsLoading && CanViewProductList);
+        _previousPageCommand = new RelayCommand(() => _ = LoadAsync(CurrentPage - 1), () => CurrentPage > 1 && !IsLoading && CanViewProductList);
+        _nextPageCommand = new RelayCommand(() => _ = LoadAsync(CurrentPage + 1), () => CurrentPage < TotalPages && !IsLoading && CanViewProductList);
+        _addCommand = new RelayCommand(() => EditRequested?.Invoke(this, null), () => CanManageProducts);
+        _editCommand = new RelayCommand(() => EditRequested?.Invoke(this, SelectedProduct?.Id), () => SelectedProduct is not null && CanManageProducts);
+        _addCategoryCommand = new RelayCommand(() => CategoryEditRequested?.Invoke(this, null), () => CanManageCategories);
         _editCategoryCommand = new RelayCommand(() =>
         {
             if (SelectedCategoryItem is not null)
             {
                 CategoryEditRequested?.Invoke(this, SelectedCategoryItem);
             }
-        }, () => SelectedCategoryItem is not null);
-        _deleteCategoryCommand = new AsyncRelayCommand(DeleteSelectedCategoryAsync, () => SelectedCategoryItem is not null && !IsLoading);
+        }, () => SelectedCategoryItem is not null && CanManageCategories);
+        _deleteCategoryCommand = new AsyncRelayCommand(DeleteSelectedCategoryAsync, () => SelectedCategoryItem is not null && !IsLoading && CanManageCategories);
 
         _settingsService.SettingsChanged += (_, _) => _ = LoadAsync(1);
     }
 
     public event EventHandler<int?>? EditRequested;
+
     public event EventHandler<CategoryListItem?>? CategoryEditRequested;
 
     public ObservableCollection<Product> Products { get; }
 
+    public bool CanViewProductList => _currentUserService.CanViewProductList;
+
     public bool CanViewImportPrice => _currentUserService.CanViewImportPrice;
 
+    public bool CanManageProducts => _currentUserService.CanManageProducts;
+
+    public bool CanImportProducts => _currentUserService.CanImportProducts;
+
+    public bool CanManageCategories => _currentUserService.CanManageCategories;
+
+    public Visibility ProductListVisibility => CanViewProductList ? Visibility.Visible : Visibility.Collapsed;
+
     public Visibility ImportPriceVisibility => CanViewImportPrice ? Visibility.Visible : Visibility.Collapsed;
+
+    public Visibility ProductManagementVisibility => CanManageProducts ? Visibility.Visible : Visibility.Collapsed;
+
+    public Visibility ProductImportVisibility => CanImportProducts ? Visibility.Visible : Visibility.Collapsed;
+
+    public Visibility CategoryManagementVisibility => CanManageCategories ? Visibility.Visible : Visibility.Collapsed;
+
+    public Visibility ProductReadOnlyHintVisibility => CanManageProducts ? Visibility.Collapsed : Visibility.Visible;
+
+    public string RolePermissionSummary => _currentUserService.RoleDisplayName;
 
     public ObservableCollection<ProductSortOption> SortOptions { get; }
 
@@ -173,6 +194,10 @@ public class ProductsViewModel : ViewModelBase
                 _refreshCommand.NotifyCanExecuteChanged();
                 _previousPageCommand.NotifyCanExecuteChanged();
                 _nextPageCommand.NotifyCanExecuteChanged();
+                _addCommand.NotifyCanExecuteChanged();
+                _editCommand.NotifyCanExecuteChanged();
+                _addCategoryCommand.NotifyCanExecuteChanged();
+                _editCategoryCommand.NotifyCanExecuteChanged();
                 _deleteCategoryCommand.NotifyCanExecuteChanged();
             }
         }
@@ -222,6 +247,13 @@ public class ProductsViewModel : ViewModelBase
 
     public async Task LoadAsync(int? pageNumber = null)
     {
+        if (!CanViewProductList)
+        {
+            Products.Clear();
+            StatusMessage = "This role cannot view products.";
+            return;
+        }
+
         IsLoading = true;
 
         try
@@ -230,7 +262,7 @@ public class ProductsViewModel : ViewModelBase
             var result = await _productRepository.GetPagedAsync(new ProductQueryOptions
             {
                 PageNumber = Math.Max(1, pageNumber ?? CurrentPage),
-                PageSize = _settingsService.CurrentSettings.ItemsPerPage,
+                PageSize = Math.Max(1, _settingsService.CurrentSettings.ItemsPerPage),
                 Keyword = Keyword.Trim(),
                 MinPrice = TryParseDecimal(MinPrice),
                 MaxPrice = TryParseDecimal(MaxPrice),
@@ -251,7 +283,9 @@ public class ProductsViewModel : ViewModelBase
 
             SelectedProduct = Products.FirstOrDefault();
 
-            StatusMessage = Products.Count == 0 ? "No products matched the current filters." : string.Empty;
+            StatusMessage = Products.Count == 0
+                ? "No products matched the current filters."
+                : $"Loaded {Products.Count} product(s). {RolePermissionSummary}";
         }
         finally
         {
@@ -261,6 +295,12 @@ public class ProductsViewModel : ViewModelBase
 
     public async Task ImportFromExcelAsync(string filePath)
     {
+        if (!CanImportProducts)
+        {
+            StatusMessage = "Only Admin can import products.";
+            return;
+        }
+
         var result = await _excelProductImportService.ImportAsync(filePath);
         StatusMessage = result.Message;
         if (result.Success)
@@ -272,6 +312,12 @@ public class ProductsViewModel : ViewModelBase
 
     public async Task DeleteSelectedAsync()
     {
+        if (!CanManageProducts)
+        {
+            StatusMessage = "Only Admin can delete products.";
+            return;
+        }
+
         if (SelectedProduct is null)
         {
             StatusMessage = "Select a product first.";
@@ -288,6 +334,12 @@ public class ProductsViewModel : ViewModelBase
 
     public async Task SaveCategoryAsync(int categoryId, string name, string description)
     {
+        if (!CanManageCategories)
+        {
+            StatusMessage = "Only Admin can manage categories.";
+            return;
+        }
+
         if (string.IsNullOrWhiteSpace(name))
         {
             StatusMessage = "Category name is required.";
@@ -351,6 +403,12 @@ public class ProductsViewModel : ViewModelBase
 
     private async Task DeleteSelectedCategoryAsync()
     {
+        if (!CanManageCategories)
+        {
+            StatusMessage = "Only Admin can delete categories.";
+            return;
+        }
+
         if (SelectedCategoryItem is null)
         {
             StatusMessage = "Select a category first.";

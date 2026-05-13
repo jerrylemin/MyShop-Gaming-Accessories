@@ -1,10 +1,12 @@
-using ProjectTest.Helpers;
+﻿using ProjectTest.Helpers;
 
 namespace ProjectTest.Models;
 
 public class ProductLookupItem
 {
     public int Id { get; set; }
+
+    public string SKU { get; set; } = string.Empty;
 
     public string Name { get; set; } = string.Empty;
 
@@ -16,5 +18,7 @@ public class ProductLookupItem
 
     public string ImagePath { get; set; } = string.Empty;
 
-    public string DisplayName => $"{Manufacturer} {Name} ({CurrencyFormatter.ToCurrency(SalePrice)})";
+    public string DisplayName => $"{SKU} | {Manufacturer} {Name} | {CurrencyFormatter.ToCurrency(SalePrice)} | Stock {Stock}";
+
+    public string SearchText => $"{SKU} {Manufacturer} {Name} {SalePrice} {Stock}".ToLowerInvariant();
 }

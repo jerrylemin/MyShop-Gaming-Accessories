@@ -1,4 +1,4 @@
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using Npgsql;
 using ProjectTest.DataAccess;
 using ProjectTest.Helpers;
@@ -98,6 +98,7 @@ public class ProductRepository
             .Select(x => new ProductLookupItem
             {
                 Id = x.Id,
+                SKU = x.SKU,
                 Name = x.Name,
                 Manufacturer = x.Manufacturer,
                 SalePrice = x.SalePrice,
@@ -204,3 +205,4 @@ public class ProductRepository
         return OperationResult.Ok("Product deleted.");
     }
 }
+

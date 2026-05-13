@@ -1,4 +1,4 @@
-using ProjectTest.Helpers;
+﻿using ProjectTest.Helpers;
 using ProjectTest.Services;
 using System.Text.Json;
 
@@ -16,12 +16,21 @@ public class GraphQlViewModel : ViewModelBase
         _graphQlPosService = graphQlPosService;
         ExecuteGraphQlCommand = new AsyncRelayCommand(ExecuteGraphQlAsync);
         LoadSampleGraphQlCommand = new RelayCommand(LoadSampleGraphQl);
+        LoadSchemaCommand = new RelayCommand(LoadSchemaQuery);
+        LoadOrderDetailCommand = new RelayCommand(LoadOrderDetailQuery);
+        LoadMutationSampleCommand = new RelayCommand(LoadMutationSample);
         LoadSampleGraphQl();
     }
 
     public AsyncRelayCommand ExecuteGraphQlCommand { get; }
 
     public RelayCommand LoadSampleGraphQlCommand { get; }
+
+    public RelayCommand LoadSchemaCommand { get; }
+
+    public RelayCommand LoadOrderDetailCommand { get; }
+
+    public RelayCommand LoadMutationSampleCommand { get; }
 
     public string GraphQlQuery
     {
@@ -44,7 +53,57 @@ public class GraphQlViewModel : ViewModelBase
     private void LoadSampleGraphQl()
     {
         GraphQlQuery = _graphQlPosService.GetSampleQuery();
-        GraphQlResult = "Sample query loaded. Click Execute GraphQL to run it.";
+        GraphQlResult = "Sample POS query loaded. Click Execute to run GraphQL.";
+        StatusMessage = "Ready.";
+    }
+
+    private void LoadSchemaQuery()
+    {
+        GraphQlQuery = """
+            query Schema {
+              schemaSummary
+            }
+            """;
+        GraphQlResult = "Schema summary query loaded.";
+        StatusMessage = "Ready.";
+    }
+
+    private void LoadOrderDetailQuery()
+    {
+        GraphQlQuery = """
+            query OrderDetail {
+              orderById(id: 1) {
+                id
+                createdTime
+                status
+                customerName
+                discountAmount
+                items {
+                  productId
+                  productName
+                  quantity
+                  unitSalePrice
+                  totalPrice
+                }
+              }
+            }
+            """;
+        GraphQlResult = "Order detail query loaded. Change id if needed.";
+        StatusMessage = "Ready.";
+    }
+
+    private void LoadMutationSample()
+    {
+        GraphQlQuery = """
+            mutation SaveOrderDemo {
+              saveOrder(inputJson: "{\"id\":0,\"status\":0,\"createdTime\":\"2026-01-01T10:00:00\",\"items\":[]}") {
+                success
+                message
+                value
+              }
+            }
+            """;
+        GraphQlResult = "Mutation sample loaded. Add valid items before executing.";
         StatusMessage = "Ready.";
     }
 
@@ -61,9 +120,9 @@ public class GraphQlViewModel : ViewModelBase
         catch (Exception ex)
         {
             GraphQlResult = JsonSerializer.Serialize(
-                new { errors = new[] { new { message = ex.Message } } },
+                new { errors = new[] { new { message = ex.GetBaseException().Message } } },
                 new JsonSerializerOptions { WriteIndented = true });
-            StatusMessage = $"GraphQL query failed: {ex.Message}";
+            StatusMessage = $"GraphQL query failed: {ex.GetBaseException().Message}";
         }
     }
 }

@@ -1,4 +1,4 @@
-using GraphQL;
+﻿using GraphQL;
 using GraphQL.SystemTextJson;
 using GraphQL.Types;
 using ProjectTest.Models;
@@ -60,14 +60,16 @@ public class GraphQlPosService
         }
         catch (Exception ex)
         {
-            return JsonSerializer.Serialize(new { errors = new[] { new { message = ex.Message } } }, JsonOptions);
+            return JsonSerializer.Serialize(new { errors = new[] { new { message = ex.GetBaseException().Message } } }, JsonOptions);
         }
     }
 
     public string GetSampleQuery()
     {
         return """
-            query Demo {
+            query PosDemo {
+              schemaSummary
+
               products(pageNumber: 1, pageSize: 5, keyword: "") {
                 pageNumber
                 totalCount
@@ -80,6 +82,23 @@ public class GraphQlPosService
                   stock
                 }
               }
+
+              orders(pageNumber: 1, pageSize: 5) {
+                totalCount
+                items {
+                  id
+                  createdTime
+                  finalPrice
+                  status
+                  customerName
+                }
+              }
+
+              reports(fromDate: "2026-01-01T00:00:00", toDate: "2100-12-31T00:00:00") {
+                rangeLabel
+                totalRevenue
+                totalProfit
+              }
             }
             """;
     }
@@ -87,6 +106,12 @@ public class GraphQlPosService
     private ISchema BuildSchema()
     {
         var query = new ObjectGraphType { Name = "MyShopQuery" };
+
+        query.Field<StringGraphType>(
+            "schemaSummary",
+            "Lists available query and mutation fields.",
+            resolve: _ => "Queries: products, productById, orders, orderById, reports. Mutations: saveProduct, saveOrder. This app demonstrates GraphQL execution for POS data instead of REST.");
+
         query.FieldAsync<ProductPagedResultGraphType>(
             "products",
             "Products with paging, keyword/category/price filters, and sort options.",
@@ -101,13 +126,19 @@ public class GraphQlPosService
             async context => await _productRepository.GetPagedAsync(new ProductQueryOptions
             {
                 PageNumber = context.GetArgument("pageNumber", 1),
-                PageSize = Math.Clamp(context.GetArgument("pageSize", 10), 1, 20),
+                PageSize = Math.Clamp(context.GetArgument("pageSize", 10), 1, 50),
                 Keyword = context.GetArgument("keyword", string.Empty),
                 CategoryId = context.GetArgument<int?>("categoryId"),
                 MinPrice = context.GetArgument<decimal?>("minPrice"),
                 MaxPrice = context.GetArgument<decimal?>("maxPrice"),
                 SortOption = context.GetArgument("sort", ProductSortOption.Name)
             }));
+
+        query.FieldAsync<ProductGraphType>(
+            "productById",
+            "Single product detail by id.",
+            new QueryArguments(new QueryArgument<NonNullGraphType<IntGraphType>> { Name = "id" }),
+            async context => await _productRepository.GetByIdAsync(context.GetArgument<int>("id")));
 
         query.FieldAsync<OrderPagedResultGraphType>(
             "orders",
@@ -123,13 +154,19 @@ public class GraphQlPosService
             async context => await _orderRepository.GetPagedAsync(new OrderQueryOptions
             {
                 PageNumber = context.GetArgument("pageNumber", 1),
-                PageSize = Math.Clamp(context.GetArgument("pageSize", 10), 1, 20),
+                PageSize = Math.Clamp(context.GetArgument("pageSize", 10), 1, 50),
                 Keyword = context.GetArgument("keyword", string.Empty),
                 FromDate = context.GetArgument<DateTime?>("fromDate"),
                 ToDate = context.GetArgument<DateTime?>("toDate"),
                 Status = context.GetArgument<OrderStatus?>("status"),
                 CustomerId = context.GetArgument<int?>("customerId")
             }));
+
+        query.FieldAsync<OrderDraftGraphType>(
+            "orderById",
+            "Single order with line items by id.",
+            new QueryArguments(new QueryArgument<NonNullGraphType<IntGraphType>> { Name = "id" }),
+            async context => await _orderRepository.GetDraftByIdAsync(context.GetArgument<int>("id")));
 
         query.FieldAsync<ReportsSnapshotGraphType>(
             "reports",
@@ -169,6 +206,7 @@ public class GraphQlPosService
 }
 
 public sealed class ProductSortOptionGraphType : EnumerationGraphType<ProductSortOption> { }
+
 public sealed class OrderStatusGraphType : EnumerationGraphType<OrderStatus> { }
 
 public sealed class ProductGraphType : ObjectGraphType<Product>
@@ -184,6 +222,8 @@ public sealed class ProductGraphType : ObjectGraphType<Product>
         Field<DecimalGraphType>("importPrice").Resolve(context => context.Source.ImportPrice);
         Field<DecimalGraphType>("salePrice").Resolve(context => context.Source.SalePrice);
         Field<IntGraphType>("stock").Resolve(context => context.Source.Stock);
+        Field<StringGraphType>("description").Resolve(context => context.Source.Description);
+        Field<StringGraphType>("image1").Resolve(context => context.Source.Image1);
         Field<ListGraphType<StringGraphType>>("accessorySpecs").Resolve(context => context.Source.AccessorySpecs);
     }
 }
@@ -198,6 +238,37 @@ public sealed class ProductPagedResultGraphType : ObjectGraphType<PagedResult<Pr
         Field<IntGraphType>("totalCount").Resolve(context => context.Source.TotalCount);
         Field<IntGraphType>("totalPages").Resolve(context => context.Source.TotalPages);
         Field<ListGraphType<ProductGraphType>>("items").Resolve(context => context.Source.Items);
+    }
+}
+
+public sealed class OrderDraftItemGraphType : ObjectGraphType<OrderDraftItem>
+{
+    public OrderDraftItemGraphType()
+    {
+        Name = "OrderDraftItem";
+        Field<IntGraphType>("productId").Resolve(context => context.Source.ProductId);
+        Field<StringGraphType>("productName").Resolve(context => context.Source.ProductName);
+        Field<StringGraphType>("manufacturer").Resolve(context => context.Source.Manufacturer);
+        Field<DecimalGraphType>("unitSalePrice").Resolve(context => context.Source.UnitSalePrice);
+        Field<IntGraphType>("quantity").Resolve(context => context.Source.Quantity);
+        Field<DecimalGraphType>("totalPrice").Resolve(context => context.Source.TotalPrice);
+        Field<IntGraphType>("availableStock").Resolve(context => context.Source.AvailableStock);
+    }
+}
+
+public sealed class OrderDraftGraphType : ObjectGraphType<OrderDraft>
+{
+    public OrderDraftGraphType()
+    {
+        Name = "OrderDraft";
+        Field<IntGraphType>("id").Resolve(context => context.Source.Id);
+        Field<DateTimeGraphType>("createdTime").Resolve(context => context.Source.CreatedTime);
+        Field<StringGraphType>("status").Resolve(context => context.Source.Status.ToString());
+        Field<IntGraphType>("customerId").Resolve(context => context.Source.CustomerId);
+        Field<StringGraphType>("customerName").Resolve(context => context.Source.CustomerName);
+        Field<IntGraphType>("promotionId").Resolve(context => context.Source.PromotionId);
+        Field<DecimalGraphType>("discountAmount").Resolve(context => context.Source.DiscountAmount);
+        Field<ListGraphType<OrderDraftItemGraphType>>("items").Resolve(context => context.Source.Items);
     }
 }
 

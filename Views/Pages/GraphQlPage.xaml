@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Page
     x:Class="ProjectTest.Views.Pages.GraphQlPage"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
@@ -6,38 +6,52 @@
     RequestedTheme="Light"
     Background="{ThemeResource AppCanvasBrush}">
 
-    <ScrollViewer>
+    <ScrollViewer VerticalScrollBarVisibility="Auto" VerticalScrollMode="Enabled">
         <StackPanel Margin="28" Spacing="18">
             <Border Style="{ThemeResource HeroCardBorderStyle}">
-                <Grid ColumnSpacing="18">
+                <Grid ColumnSpacing="18" RowSpacing="12">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*" />
                         <ColumnDefinition Width="Auto" />
                     </Grid.ColumnDefinitions>
                     <StackPanel Spacing="10">
                         <Border HorizontalAlignment="Left" Style="{ThemeResource BadgeBorderStyle}">
-                            <TextBlock Style="{ThemeResource BadgeTextBlockStyle}" Text="GraphQL" />
+                            <TextBlock Style="{ThemeResource BadgeTextBlockStyle}" Text="GraphQL API" />
                         </Border>
-                        <TextBlock FontFamily="Segoe UI Variable Display Semib" FontSize="32" FontWeight="SemiBold" Text="GraphQL" />
+                        <TextBlock FontFamily="Segoe UI Variable Display Semib" FontSize="32" FontWeight="SemiBold" Text="GraphQL POS API demo" />
+                        <TextBlock Style="{ThemeResource PageIntroTextBlockStyle}" Text="Use GraphQL queries and mutations for products, orders, and reports." TextWrapping="WrapWholeWords" />
                     </StackPanel>
-                    <Grid Grid.Column="1" ColumnSpacing="12">
+                    <Grid Grid.Column="1" ColumnSpacing="10" RowSpacing="10">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="Auto" />
                             <ColumnDefinition Width="Auto" />
                         </Grid.ColumnDefinitions>
-                        <Button Grid.Column="0" Style="{ThemeResource AccentButtonStyle}" Command="{Binding ExecuteGraphQlCommand}" Content="Execute" />
-                        <Button Grid.Column="1" Style="{ThemeResource SubtleButtonStyle}" Command="{Binding LoadSampleGraphQlCommand}" Content="Load Sample" />
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+                        <Button Grid.Row="0" Grid.Column="0" Style="{ThemeResource AccentButtonStyle}" Command="{Binding ExecuteGraphQlCommand}" Content="Execute" />
+                        <Button Grid.Row="0" Grid.Column="1" Style="{ThemeResource SubtleButtonStyle}" Command="{Binding LoadSampleGraphQlCommand}" Content="POS Sample" />
+                        <Button Grid.Row="1" Grid.Column="0" Style="{ThemeResource SubtleButtonStyle}" Command="{Binding LoadSchemaCommand}" Content="Schema" />
+                        <Button Grid.Row="1" Grid.Column="1" Style="{ThemeResource SubtleButtonStyle}" Command="{Binding LoadOrderDetailCommand}" Content="Order Detail" />
                     </Grid>
                 </Grid>
             </Border>
 
             <Border Style="{ThemeResource CardBorderStyle}">
                 <StackPanel Spacing="14">
-                    <TextBlock Style="{ThemeResource SectionHeaderTextBlockStyle}" Text="Query" />
+                    <Grid ColumnSpacing="10">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="Auto" />
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Style="{ThemeResource SectionHeaderTextBlockStyle}" Text="Query / Mutation" />
+                        <Button Grid.Column="1" Style="{ThemeResource SubtleButtonStyle}" Command="{Binding LoadMutationSampleCommand}" Content="Mutation Sample" />
+                    </Grid>
                     <TextBox
                         AcceptsReturn="True"
                         FontFamily="Consolas"
-                        MinHeight="240"
+                        MinHeight="260"
                         Text="{Binding GraphQlQuery, Mode=TwoWay}"
                         TextWrapping="Wrap" />
                     <TextBlock Foreground="{ThemeResource AccentBrush}" Text="{Binding StatusMessage}" TextWrapping="WrapWholeWords" />
@@ -51,7 +65,7 @@
                         AcceptsReturn="True"
                         FontFamily="Consolas"
                         IsReadOnly="True"
-                        MinHeight="280"
+                        MinHeight="300"
                         Text="{Binding GraphQlResult}"
                         TextWrapping="Wrap" />
                 </StackPanel>

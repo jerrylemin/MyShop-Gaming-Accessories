@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Window
     x:Class="ProjectTest.Views.LoginWindow"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
@@ -95,7 +95,7 @@
                                 Text="Login" />
                             <TextBlock
                                 Style="{ThemeResource PageIntroTextBlockStyle}"
-                                Text="Use your local account to continue. Saved credentials remain encrypted for the next launch." />
+                                Text="Sign in as Admin, Moderator, or Sale. Each role opens a different workspace and action set." />
                         </StackPanel>
 
                         <StackPanel Spacing="8">
@@ -123,7 +123,7 @@
                                     FontSize="12"
                                     FontWeight="SemiBold"
                                     Foreground="{ThemeResource AccentBrush}"
-                                    Text="Default account" />
+                                    Text="Available demo accounts" />
                                 <TextBlock
                                     Foreground="{ThemeResource AccentBrush}"
                                     Text="{Binding DefaultCredentialsHint}"
@@ -159,3 +159,5 @@
         </Grid>
     </ScrollViewer>
 </Window>
+
+

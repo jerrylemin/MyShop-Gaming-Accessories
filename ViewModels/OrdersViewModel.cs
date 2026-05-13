@@ -1,7 +1,8 @@
-using ProjectTest.Helpers;
+﻿using ProjectTest.Helpers;
 using ProjectTest.Models;
 using ProjectTest.Repositories;
 using ProjectTest.Services;
+using Microsoft.UI.Xaml;
 using System.Collections.ObjectModel;
 using Windows.Storage.Pickers;
 using WinRT.Interop;
@@ -17,7 +18,6 @@ public class OrdersViewModel : ViewModelBase
     private readonly PromotionRepository _promotionRepository;
     private readonly CurrentUserService _currentUserService;
     private readonly InvoiceExportService _invoiceExportService;
-    private readonly AutoSaveService _autoSaveService = new();
     private readonly AsyncRelayCommand _saveCommand;
     private readonly AsyncRelayCommand _printCommand;
     private readonly AsyncRelayCommand _refreshCommand;
@@ -30,19 +30,20 @@ public class OrdersViewModel : ViewModelBase
     private OrderStatus _persistedStatus = OrderStatus.Created;
     private OrderSummary? _selectedOrder;
     private ProductLookupItem? _selectedProductToAdd;
+    private string _productSearchText = string.Empty;
     private Promotion? _selectedPromotion;
     private OrderStatusFilterOption? _selectedStatusFilter;
     private string _keyword = string.Empty;
     private string _customerPhone = string.Empty;
     private OrderSortOption _selectedSortOption = OrderSortOption.LatestFirst;
-    private DateTimeOffset _fromDate = new(new DateTime(DateTime.Today.Year, DateTime.Today.Month, 1));
-    private DateTimeOffset _toDate = new(DateTime.Today);
+    private DateTimeOffset _fromDate = new(new DateTime(2000, 1, 1));
+    private DateTimeOffset _toDate = new(new DateTime(2100, 12, 31));
     private DateTimeOffset _draftCreatedTime = DateTimeOffset.Now;
     private OrderStatus _selectedStatus = OrderStatus.Created;
     private decimal _draftTotal;
     private decimal _discountAmount;
     private string _statusMessage = string.Empty;
-    private string _autoSaveStatus = "Saved";
+    private string _autoSaveStatus = "Manual save only";
     private int _currentPage = 1;
     private int _totalPages = 1;
     private int _totalItems;
@@ -68,6 +69,7 @@ public class OrdersViewModel : ViewModelBase
 
         Orders = [];
         AvailableProducts = [];
+        FilteredAvailableProducts = [];
         Promotions = [];
         DraftItems = [];
         StatusFilters =
@@ -87,16 +89,9 @@ public class OrdersViewModel : ViewModelBase
         _previousPageCommand = new RelayCommand(() => _ = LoadAsync(CurrentPage - 1), () => CurrentPage > 1);
         _nextPageCommand = new RelayCommand(() => _ = LoadAsync(CurrentPage + 1), () => CurrentPage < TotalPages);
         _lastPageCommand = new RelayCommand(() => _ = LoadAsync(TotalPages), () => CurrentPage < TotalPages);
-        NewOrderCommand = new RelayCommand(NewOrder);
+        NewOrderCommand = new RelayCommand(NewOrder, () => CanEditOrders);
         AddItemCommand = new RelayCommand(AddSelectedProduct, () => SelectedProductToAdd is not null && CanEditCurrentOrder);
 
-        _autoSaveService.StateChanged += (_, state) => AutoSaveStatus = state switch
-        {
-            AutoSaveState.Saving => "Saving...",
-            AutoSaveState.Saved => "Saved",
-            AutoSaveState.Error => "Error",
-            _ => AutoSaveStatus
-        };
 
         _settingsService.SettingsChanged += (_, settings) =>
         {
@@ -108,6 +103,8 @@ public class OrdersViewModel : ViewModelBase
     public ObservableCollection<OrderSummary> Orders { get; }
 
     public ObservableCollection<ProductLookupItem> AvailableProducts { get; }
+
+    public ObservableCollection<ProductLookupItem> FilteredAvailableProducts { get; }
 
     public ObservableCollection<Promotion> Promotions { get; }
 
@@ -189,16 +186,22 @@ public class OrdersViewModel : ViewModelBase
         }
     }
 
+    public string ProductSearchText
+    {
+        get => _productSearchText;
+        set
+        {
+            if (SetProperty(ref _productSearchText, value))
+            {
+                RefreshFilteredProducts();
+            }
+        }
+    }
+
     public string CustomerPhone
     {
         get => _customerPhone;
-        set
-        {
-            if (SetProperty(ref _customerPhone, value))
-            {
-                ScheduleAutoSave();
-            }
-        }
+        set => SetProperty(ref _customerPhone, value);
     }
 
     public Promotion? SelectedPromotion
@@ -209,7 +212,6 @@ public class OrdersViewModel : ViewModelBase
             if (SetProperty(ref _selectedPromotion, value))
             {
                 RecalculateTotals();
-                ScheduleAutoSave();
             }
         }
     }
@@ -217,13 +219,7 @@ public class OrdersViewModel : ViewModelBase
     public DateTimeOffset DraftCreatedTime
     {
         get => _draftCreatedTime;
-        set
-        {
-            if (SetProperty(ref _draftCreatedTime, value))
-            {
-                ScheduleAutoSave();
-            }
-        }
+        set => SetProperty(ref _draftCreatedTime, value);
     }
 
     public OrderStatus SelectedStatus
@@ -234,7 +230,6 @@ public class OrdersViewModel : ViewModelBase
             if (SetProperty(ref _selectedStatus, value))
             {
                 _saveCommand.NotifyCanExecuteChanged();
-                ScheduleAutoSave();
             }
         }
     }
@@ -333,7 +328,15 @@ public class OrdersViewModel : ViewModelBase
 
     public string PageSummary => $"Page {CurrentPage} of {TotalPages} | {TotalItems} orders | Page size {PageSize}";
 
-    public bool CanEditCurrentOrder => CurrentOrderId == 0 || _persistedStatus == OrderStatus.Created;
+    public bool CanEditOrders => _currentUserService.CanManageOrders;
+
+    public Visibility OrderEditingVisibility => CanEditOrders ? Visibility.Visible : Visibility.Collapsed;
+
+    public Visibility OrderReadOnlyVisibility => CanEditOrders ? Visibility.Collapsed : Visibility.Visible;
+
+    public string RolePermissionSummary => _currentUserService.RoleDisplayName;
+
+    public bool CanEditCurrentOrder => CanEditOrders && (CurrentOrderId == 0 || _persistedStatus == OrderStatus.Created);
 
     public async Task LoadAsync(int? pageNumber = null)
     {
@@ -367,6 +370,8 @@ public class OrdersViewModel : ViewModelBase
         {
             AvailableProducts.Add(product);
         }
+
+        RefreshFilteredProducts();
 
         Promotions.Clear();
         foreach (var promotion in await _promotionRepository.GetActiveAsync())
@@ -424,6 +429,12 @@ public class OrdersViewModel : ViewModelBase
 
     public async Task DeleteSelectedAsync()
     {
+        if (!CanEditOrders)
+        {
+            StatusMessage = "This role can review orders but cannot delete them.";
+            return;
+        }
+
         var orderId = SelectedOrder?.Id ?? CurrentOrderId;
         if (orderId == 0)
         {
@@ -444,10 +455,15 @@ public class OrdersViewModel : ViewModelBase
 
     public void RemoveLine(OrderLineViewModel line)
     {
+        if (!CanEditOrders)
+        {
+            StatusMessage = "This role can review orders but cannot change order lines.";
+            return;
+        }
+
         line.LineChanged -= DraftLineChanged;
         DraftItems.Remove(line);
         RecalculateTotals();
-        ScheduleAutoSave();
     }
 
     private int CurrentOrderId
@@ -459,6 +475,7 @@ public class OrdersViewModel : ViewModelBase
             {
                 OnPropertyChanged(nameof(EditorActionText));
                 _printCommand.NotifyCanExecuteChanged();
+                NewOrderCommand.NotifyCanExecuteChanged();
                 RefreshEditorState();
             }
         }
@@ -466,6 +483,12 @@ public class OrdersViewModel : ViewModelBase
 
     private void NewOrder()
     {
+        if (!CanEditOrders)
+        {
+            StatusMessage = "This role can review orders but cannot create new orders.";
+            return;
+        }
+
         _isLoadingDraft = true;
         CurrentOrderId = 0;
         _persistedStatus = OrderStatus.Created;
@@ -474,16 +497,25 @@ public class OrdersViewModel : ViewModelBase
         SelectedStatus = OrderStatus.Created;
         CustomerPhone = string.Empty;
         SelectedPromotion = null;
+        ProductSearchText = string.Empty;
+        SelectedProductToAdd = null;
         DraftItems.Clear();
         DiscountAmount = 0m;
         DraftTotal = 0m;
         StatusMessage = string.Empty;
+        AutoSaveStatus = "Manual save only";
         _isLoadingDraft = false;
         RefreshEditorState();
     }
 
     private void AddSelectedProduct()
     {
+        if (!CanEditOrders)
+        {
+            StatusMessage = "This role can review orders but cannot add products to orders.";
+            return;
+        }
+
         if (SelectedProductToAdd is null)
         {
             return;
@@ -493,7 +525,9 @@ public class OrdersViewModel : ViewModelBase
         if (existing is not null)
         {
             existing.Quantity += 1;
-            ScheduleAutoSave();
+            RecalculateTotals();
+            ProductSearchText = string.Empty;
+            SelectedProductToAdd = null;
             return;
         }
 
@@ -507,7 +541,9 @@ public class OrdersViewModel : ViewModelBase
             AvailableStock = SelectedProductToAdd.Stock,
             ImagePath = SelectedProductToAdd.ImagePath
         });
-        ScheduleAutoSave();
+
+        ProductSearchText = string.Empty;
+        SelectedProductToAdd = null;
     }
 
     private void AddLine(OrderDraftItem item)
@@ -546,6 +582,12 @@ public class OrdersViewModel : ViewModelBase
             StatusMessage = "Paid and cancelled orders are read-only.";
             return;
         }
+
+        StatusMessage = "Saving order...";
+        AutoSaveStatus = "Saving...";
+
+        StatusMessage = "Saving order...";
+        AutoSaveStatus = "Saving...";
 
         var customer = await ResolveCustomerByPhoneAsync();
         if (!string.IsNullOrWhiteSpace(CustomerPhone) && customer is null)
@@ -588,22 +630,74 @@ public class OrdersViewModel : ViewModelBase
 
         var result = await _orderRepository.SaveAsync(draft);
         StatusMessage = result.Message;
-        if (result.Success)
+        if (!result.Success)
         {
-            CurrentOrderId = result.Value;
-            _persistedStatus = SelectedStatus;
-            await LoadAsync(isNewOrder ? 1 : CurrentPage);
-            if (CurrentOrderId != 0)
-            {
-                await LoadOrderAsync(CurrentOrderId);
-            }
+            AutoSaveStatus = "Save failed";
+            return;
+        }
+
+        CurrentOrderId = result.Value;
+        _persistedStatus = SelectedStatus;
+        AutoSaveStatus = "Saved";
+        await LoadAsync(isNewOrder ? 1 : CurrentPage);
+
+        if (CurrentOrderId != 0)
+        {
+            await LoadOrderAsync(CurrentOrderId);
         }
     }
 
+    private void RefreshFilteredProducts()
+    {
+        if (FilteredAvailableProducts is null)
+        {
+            return;
+        }
+
+        var selectedProductId = SelectedProductToAdd?.Id;
+        var search = ProductSearchText?.Trim() ?? string.Empty;
+        var terms = search.Split(' ', StringSplitOptions.RemoveEmptyEntries | StringSplitOptions.TrimEntries);
+
+        IEnumerable<ProductLookupItem> query = AvailableProducts;
+
+        if (terms.Length > 0)
+        {
+            query = query.Where(product =>
+            {
+                var searchText = product.SearchText;
+                return terms.All(term => searchText.Contains(term, StringComparison.OrdinalIgnoreCase));
+            });
+        }
+
+        var filteredProducts = query
+            .OrderByDescending(product => product.Stock > 0)
+            .ThenBy(product => product.Name)
+            .Take(80)
+            .ToList();
+
+        FilteredAvailableProducts.Clear();
+        foreach (var product in filteredProducts)
+        {
+            FilteredAvailableProducts.Add(product);
+        }
+
+        if (selectedProductId.HasValue)
+        {
+            SelectedProductToAdd = FilteredAvailableProducts.FirstOrDefault(product => product.Id == selectedProductId.Value);
+        }
+        else if (FilteredAvailableProducts.Count == 1)
+        {
+            SelectedProductToAdd = FilteredAvailableProducts[0];
+        }
+        else if (SelectedProductToAdd is not null &&
+                 FilteredAvailableProducts.All(product => product.Id != SelectedProductToAdd.Id))
+        {
+            SelectedProductToAdd = null;
+        }
+    }
     private void DraftLineChanged(object? sender, EventArgs e)
     {
         RecalculateTotals();
-        ScheduleAutoSave();
     }
 
     private async Task<Customer?> ResolveCustomerByPhoneAsync()
@@ -627,16 +721,6 @@ public class OrdersViewModel : ViewModelBase
         DraftTotal = Math.Max(0m, subtotal - DiscountAmount);
     }
 
-    private void ScheduleAutoSave()
-    {
-        if (_isLoadingDraft || !CanEditCurrentOrder || DraftItems.Count == 0)
-        {
-            return;
-        }
-
-        AutoSaveStatus = "Saving...";
-        _autoSaveService.Schedule(async _ => await SaveAsync(allowCreateCustomerPrompt: false));
-    }
 
     private async Task PrintAsync()
     {
@@ -706,3 +790,25 @@ public sealed class CreateCustomerRequestedEventArgs : EventArgs
         return _completion.Task;
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

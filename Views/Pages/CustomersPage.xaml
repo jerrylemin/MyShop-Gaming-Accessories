@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Page
     x:Class="ProjectTest.Views.Pages.CustomersPage"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
@@ -18,7 +18,7 @@
                         <Border HorizontalAlignment="Left" Style="{ThemeResource BadgeBorderStyle}">
                             <TextBlock Style="{ThemeResource BadgeTextBlockStyle}" Text="Customers" />
                         </Border>
-                        <TextBlock FontFamily="Segoe UI Variable Display Semib" FontSize="32" FontWeight="SemiBold" Text="Customer management" TextWrapping="WrapWholeWords" />
+                        <TextBlock FontFamily="Segoe UI Variable Display Semib" FontSize="32" FontWeight="SemiBold" Text="{Binding RolePermissionSummary}" TextWrapping="WrapWholeWords" />
                     </StackPanel>
                     <Grid Grid.Column="1" ColumnSpacing="12">
                         <Grid.ColumnDefinitions>
@@ -26,7 +26,7 @@
                             <ColumnDefinition Width="Auto" />
                         </Grid.ColumnDefinitions>
                         <Button Grid.Column="0" Style="{ThemeResource SubtleButtonStyle}" Command="{Binding RefreshCommand}" Content="Refresh" />
-                        <Button Grid.Column="1" Style="{ThemeResource AccentButtonStyle}" Command="{Binding NewCommand}" Content="New Customer" />
+                        <Button Grid.Column="1" Style="{ThemeResource AccentButtonStyle}" Command="{Binding NewCommand}" Visibility="{Binding CustomerEditVisibility}" Content="New Customer" />
                     </Grid>
                 </Grid>
             </Border>
@@ -57,7 +57,7 @@
                             <Button Grid.Column="1" Style="{ThemeResource AccentButtonStyle}" Command="{Binding ApplySearchCommand}" Content="Apply Search" />
                             <Button Grid.Column="2" Style="{ThemeResource SubtleButtonStyle}" Command="{Binding ClearSearchCommand}" Content="Clear" />
                         </Grid>
-                        <ListView Grid.Row="2" ItemsSource="{Binding Customers}" SelectedItem="{Binding SelectedCustomer, Mode=TwoWay}">
+                        <ListView Grid.Row="2" MaxHeight="620" ScrollViewer.VerticalScrollMode="Enabled" ScrollViewer.VerticalScrollBarVisibility="Auto" ItemsSource="{Binding Customers}" SelectedItem="{Binding SelectedCustomer, Mode=TwoWay}">
                             <ListView.ItemTemplate>
                                 <DataTemplate>
                                     <Border Margin="0,4" Padding="12" Background="{ThemeResource PageSurfaceBrush}" BorderBrush="{ThemeResource CardStrokeBrush}" BorderThickness="1" CornerRadius="16">
@@ -111,8 +111,8 @@
                                     <ColumnDefinition Width="*" />
                                     <ColumnDefinition Width="*" />
                                 </Grid.ColumnDefinitions>
-                                <Button Grid.Column="0" Style="{ThemeResource AccentButtonStyle}" Command="{Binding SaveCommand}" Content="Save Customer" />
-                                <Button Grid.Column="1" Style="{ThemeResource SubtleButtonStyle}" Command="{Binding DeleteCommand}" Content="Delete Customer" />
+                                <Button Grid.Column="0" Style="{ThemeResource AccentButtonStyle}" Command="{Binding SaveCommand}" Visibility="{Binding CustomerEditVisibility}" Content="Save Customer" />
+                                <Button Grid.Column="1" Style="{ThemeResource SubtleButtonStyle}" Command="{Binding DeleteCommand}" Visibility="{Binding CustomerDeleteVisibility}" Content="Delete Customer" />
                             </Grid>
                             <TextBlock Foreground="{ThemeResource AccentBrush}" Text="{Binding StatusMessage}" TextWrapping="WrapWholeWords" />
                         </StackPanel>
@@ -210,3 +210,7 @@
         </StackPanel>
     </ScrollViewer>
 </Page>
+
+
+
+

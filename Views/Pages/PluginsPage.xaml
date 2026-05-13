@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Page
     x:Class="ProjectTest.Views.Pages.PluginsPage"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
@@ -6,10 +6,10 @@
     RequestedTheme="Light"
     Background="{ThemeResource AppCanvasBrush}">
 
-    <ScrollViewer>
+    <ScrollViewer VerticalScrollBarVisibility="Auto" VerticalScrollMode="Enabled">
         <StackPanel Margin="28" Spacing="18">
             <Border Style="{ThemeResource HeroCardBorderStyle}">
-                <Grid ColumnSpacing="18">
+                <Grid ColumnSpacing="18" RowSpacing="12">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*" />
                         <ColumnDefinition Width="Auto" />
@@ -18,9 +18,22 @@
                         <Border HorizontalAlignment="Left" Style="{ThemeResource BadgeBorderStyle}">
                             <TextBlock Style="{ThemeResource BadgeTextBlockStyle}" Text="Plugins" />
                         </Border>
-                        <TextBlock FontFamily="Segoe UI Variable Display Semib" FontSize="32" FontWeight="SemiBold" Text="Plugins" />
+                        <TextBlock FontFamily="Segoe UI Variable Display Semib" FontSize="32" FontWeight="SemiBold" Text="Dynamic plugin architecture" />
+                        <TextBlock Style="{ThemeResource PageIntroTextBlockStyle}" Text="{Binding ArchitectureSummary}" TextWrapping="WrapWholeWords" />
                     </StackPanel>
-                    <Button Grid.Column="1" Style="{ThemeResource AccentButtonStyle}" Command="{Binding RefreshCommand}" Content="Refresh" />
+                    <Grid Grid.Column="1" ColumnSpacing="10" RowSpacing="10">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="Auto" />
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+                        <Button Grid.Row="0" Grid.Column="0" Style="{ThemeResource AccentButtonStyle}" Command="{Binding RefreshCommand}" Content="Refresh" />
+                        <Button Grid.Row="0" Grid.Column="1" Style="{ThemeResource SubtleButtonStyle}" Command="{Binding CreateSamplesCommand}" Content="Create Samples" />
+                        <Button Grid.Row="1" Grid.ColumnSpan="2" Style="{ThemeResource SubtleButtonStyle}" Command="{Binding OpenFolderCommand}" Content="Open Plugins Folder" />
+                    </Grid>
                 </Grid>
             </Border>
 
@@ -28,21 +41,27 @@
                 <StackPanel Spacing="14">
                     <TextBlock Style="{ThemeResource SectionHeaderTextBlockStyle}" Text="Loaded plugins" />
                     <TextBlock Foreground="{ThemeResource AccentBrush}" Text="{Binding StatusMessage}" TextWrapping="WrapWholeWords" />
-                    <ListView ItemsSource="{Binding Plugins}" SelectionMode="None">
+                    <ListView ItemsSource="{Binding Plugins}" SelectionMode="None" MaxHeight="620" ScrollViewer.VerticalScrollMode="Enabled" ScrollViewer.VerticalScrollBarVisibility="Auto">
                         <ListView.ItemTemplate>
                             <DataTemplate>
                                 <Border Margin="0,5" Padding="14" Background="{ThemeResource PageSurfaceBrush}" BorderBrush="{ThemeResource CardStrokeBrush}" BorderThickness="1" CornerRadius="16">
-                                    <Grid ColumnSpacing="12">
+                                    <Grid ColumnSpacing="12" RowSpacing="8">
                                         <Grid.ColumnDefinitions>
                                             <ColumnDefinition Width="*" />
                                             <ColumnDefinition Width="Auto" />
                                         </Grid.ColumnDefinitions>
-                                        <StackPanel Spacing="3">
+                                        <StackPanel Spacing="4">
                                             <TextBlock FontWeight="SemiBold" Text="{Binding Name}" TextWrapping="WrapWholeWords" />
                                             <TextBlock Style="{ThemeResource CaptionTextBlockStyle}" Text="{Binding Description}" TextWrapping="WrapWholeWords" />
+                                            <TextBlock Style="{ThemeResource CaptionTextBlockStyle}" Text="{Binding CapabilitiesText}" TextWrapping="WrapWholeWords" />
+                                            <TextBlock Style="{ThemeResource CaptionTextBlockStyle}" Text="{Binding FolderPath}" TextWrapping="WrapWholeWords" />
                                             <TextBlock Style="{ThemeResource CaptionTextBlockStyle}" Text="{Binding Status}" TextWrapping="WrapWholeWords" />
                                         </StackPanel>
-                                        <TextBlock Grid.Column="1" Text="{Binding Version}" />
+                                        <StackPanel Grid.Column="1" HorizontalAlignment="Right" Spacing="4">
+                                            <TextBlock FontWeight="SemiBold" Text="{Binding Version}" />
+                                            <TextBlock Style="{ThemeResource CaptionTextBlockStyle}" Text="{Binding Type}" />
+                                            <TextBlock Style="{ThemeResource CaptionTextBlockStyle}" Text="{Binding LastLoadedText}" />
+                                        </StackPanel>
                                     </Grid>
                                 </Border>
                             </DataTemplate>
