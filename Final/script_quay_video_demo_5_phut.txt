@@ -1,0 +1,99 @@
+﻿KICH BAN QUAY VIDEO DEMO TEST APP - MYSHOP GAMING ACCESSORIES POS
+Thoi luong muc tieu: khoang 5 phut
+
+Thong tin dang nhap demo:
+- admin / MyShop123!
+- moderator / MyShop123!
+- sale / MyShop123!
+
+0:00 - 0:20 | Gioi thieu nhanh
+- Mo thu muc Final\Release.
+- Cho thay trong Release co setup.exe va thu muc App chua ProjectTest.exe.
+- Noi ngan gon: day la ung dung MyShop Gaming Accessories POS, co installer, database PostgreSQL demo, san pham, don hang, khach hang, dashboard, reports va phan quyen.
+
+0:20 - 0:50 | Cai dat / mo ung dung
+- Neu quay tren may da cai san: mo shortcut MyShop Gaming Accessories POS tren Desktop hoac Start Menu.
+- Neu muon quay installer: bam chuot phai setup.exe, chon Run as administrator, cho thay installer tu cai runtime/database/shortcut. Co the cat nhanh doan cho doi.
+- Mo ung dung den man hinh Login.
+
+0:50 - 1:15 | Dang nhap va phan quyen
+- Dang nhap bang admin / MyShop123!.
+- Cho thay login thanh cong va vao man hinh chinh.
+- Noi: app co 3 tai khoan demo admin, moderator, sale; mat khau chung MyShop123!.
+
+1:15 - 1:45 | Dashboard
+- Vao Dashboard.
+- Quay cac thong tin tong quan: tong san pham, don hang, doanh thu, san pham sap het hang.
+- Keo/xem bieu do doanh thu, don hang gan day, top san pham ban chay.
+- Noi: Dashboard lay du lieu tu PostgreSQL demo duoc restore tu dump hoac seed fallback.
+
+1:45 - 2:25 | Products va Categories
+- Vao Products.
+- Tim kiem mot san pham gaming, vi du keyboard/mouse/headset.
+- Loc theo danh muc hoac sap xep gia/ton kho neu co.
+- Mo chi tiet/chinh sua mot san pham, cho thay SKU, ten, danh muc, gia ban, ton kho, hinh anh.
+- Neu an toan, them mot san pham demo nhanh roi huy/khong luu; neu khong, chi sua man hinh va cancel.
+- Noi: app quan ly danh sach san pham gaming accessories kem hinh anh va ton kho.
+
+2:25 - 3:05 | Orders / POS
+- Vao Orders.
+- Tao don hang moi.
+- Chon khach hang demo neu co.
+- Them 2-3 san pham vao gio hang.
+- Thay doi so luong de cho thay tong tien cap nhat.
+- Luu don hang hoac neu khong muon thay doi database thi quay thao tac den truoc khi luu va bam cancel.
+- Neu co chuc nang export invoice/PDF, mo nhanh nut xuat hoa don.
+- Noi: don hang tu dong tinh tong tien va lien ket voi san pham/khach hang.
+
+3:05 - 3:35 | Customers va Loyalty
+- Vao Customers.
+- Tim kiem mot khach hang demo.
+- Mo chi tiet khach hang, cho thay so dien thoai/email, tong chi tieu, diem loyalty, lich su mua hang neu co.
+- Neu co nut them/sua, mo form them/sua va cancel.
+- Noi: app quan ly khach hang va diem tich luy.
+
+3:35 - 4:10 | Reports
+- Vao Reports.
+- Chon khoang ngay thang hien tai hoac demo.
+- Cho thay bao cao doanh thu, loi nhuan, top san pham ban chay, commission/ML insight neu co.
+- Doi bo loc ngay/thang neu co de cho thay report cap nhat.
+- Noi: Reports ho tro theo doi doanh thu, loi nhuan va san pham ban chay.
+
+4:10 - 4:35 | GraphQL / Plugins / Settings
+- Vao GraphQL neu co tren menu, chay/xem query demo san pham hoac don hang.
+- Vao Plugins, cho thay sample plugin duoc doc tu thu muc plugins.
+- Vao Settings, cho thay cau hinh so dong moi trang, backup/restore, LLM config/license neu co.
+- Noi ngan: day la cac tinh nang mo rong cua app ngoai POS co ban.
+
+4:35 - 4:50 | Database va installer evidence
+- Mo nhanh installer\HUONG_DAN_CAI_DAT.txt hoac README section neu can.
+- Cho thay file installer\database\myshop_demo.dump ton tai trong source/installer.
+- Noi: installer uu tien restore database tu dump, neu khong co dump thi app fallback seed data.
+
+4:50 - 5:00 | Ket thuc
+- Logout hoac dong app.
+- Noi lai tai khoan demo:
+  admin / MyShop123!
+  moderator / MyShop123!
+  sale / MyShop123!
+- Ket luan: app co the cai bang setup.exe, mo bang shortcut va test day du cac module chinh.
+
+Checklist can quay du trong video:
+[ ] Thu muc Final\Release co setup.exe
+[ ] Thu muc Final\Release\App co ProjectTest.exe
+[ ] Mo app thanh cong
+[ ] Login admin thanh cong
+[ ] Dashboard co du lieu
+[ ] Products co san pham va hinh anh
+[ ] Orders tao/xem duoc don hang
+[ ] Customers co du lieu va loyalty
+[ ] Reports co thong ke
+[ ] Settings/GraphQL/Plugins neu con thoi gian
+[ ] Nhac tai khoan demo o cuoi video
+
+Luu y khi quay:
+- Quay man hinh 1080p, zoom 100% hoac 125% de chu ro.
+- Neu installer mat lau, co the cat nhanh phan loading nhung van cho thay setup.exe chay.
+- Khong hien thi password that, API key, connection string ca nhan.
+- Neu co loi Windows SmartScreen, chon More info > Run anyway va noi vi app chua code-signing.
+- Neu PostgreSQL port 5432 da bi chiem, noi theo README: dung PostgreSQL co san hoac doi port/cau hinh lai connection.
