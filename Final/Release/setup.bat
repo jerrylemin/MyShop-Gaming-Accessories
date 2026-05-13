@@ -158,7 +158,9 @@ function Invoke-Psql {
         $env:PGPASSWORD = $script:Password
     }
 
-    $sqlPath = [System.IO.Path]::GetTempFileName()
+    $tempRoot = if ($script:SqlTempDir) { $script:SqlTempDir } else { $env:TEMP }
+    New-Item -ItemType Directory -Path $tempRoot -Force | Out-Null
+    $sqlPath = Join-Path $tempRoot ("myshop-sql-" + [Guid]::NewGuid().ToString("N") + ".sql")
     try {
         Set-Content -LiteralPath $sqlPath -Value $Sql -Encoding UTF8 -NoNewline
         $arguments = @(
@@ -193,9 +195,12 @@ function Test-PostgresCredential {
 
 function Enable-TemporaryTrustAuth {
     $script:PgHbaOriginal = Get-Content -LiteralPath $script:PgHbaPath -Raw
-    $patched = $script:PgHbaOriginal `
-        -replace '(?m)^host\s+all\s+all\s+127\.0\.0\.1/32\s+\S+\s*$', 'host    all             all             127.0.0.1/32            trust' `
-        -replace '(?m)^host\s+all\s+all\s+::1/128\s+\S+\s*$', 'host    all             all             ::1/128                 trust'
+    $trustBlock = @"
+host    all             all             127.0.0.1/32            trust
+host    all             all             ::1/128                 trust
+
+"@
+    $patched = $trustBlock + $script:PgHbaOriginal
 
     Set-Content -LiteralPath $script:PgHbaPath -Value $patched -NoNewline
     & $script:PgCtlExe reload -D $script:Installation.DataDir | Out-Null
@@ -282,8 +287,13 @@ $publishDir = Join-Path $releaseDir "App"
 $appExe = Join-Path $publishDir "ProjectTest.exe"
 $logDir = Join-Path $releaseDir "logs"
 $logPath = Join-Path $logDir ("setup-bat-" + (Get-Date -Format "yyyyMMdd-HHmmss") + ".log")
+$safeTempDir = Join-Path $logDir "temp"
 
 New-Item -ItemType Directory -Path $logDir -Force | Out-Null
+New-Item -ItemType Directory -Path $safeTempDir -Force | Out-Null
+$env:TEMP = $safeTempDir
+$env:TMP = $safeTempDir
+$script:SqlTempDir = $safeTempDir
 Start-Transcript -LiteralPath $logPath -Append | Out-Null
 
 try {
@@ -317,8 +327,9 @@ try {
 
     $connectionString = "Host=$script:DbHost;Port=$script:Port;Database=$script:Database;Username=$script:Username;Password=$script:Password;Include Error Detail=true"
     [Environment]::SetEnvironmentVariable("MYSHOP_CONNECTION_STRING", $connectionString, "User")
+    [Environment]::SetEnvironmentVariable("MYSHOP_CONNECTION_STRING", $connectionString, "Machine")
     $env:MYSHOP_CONNECTION_STRING = $connectionString
-    Write-Ok "Database connection string saved to current user environment"
+    Write-Ok "Database connection string saved to user and machine environment"
 
     Push-Location $sourceDir
     try {
@@ -342,6 +353,12 @@ try {
     if (-not (Test-Path -LiteralPath $appExe)) {
         throw "Published app executable was not found: $appExe"
     }
+
+    $databaseConfigPath = Join-Path $publishDir "myshop.database.json"
+    @{ ConnectionString = $connectionString } |
+        ConvertTo-Json -Depth 2 |
+        Set-Content -LiteralPath $databaseConfigPath -Encoding UTF8
+    Write-Ok "Database config written: $databaseConfigPath"
 
     $runCmdPath = Join-Path $publishDir "Run-ProjectTest.cmd"
     $runCmd = @(
