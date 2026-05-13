@@ -1,6 +1,5 @@
 using ProjectTest.Helpers;
 using ProjectTest.Models;
-using ProjectTest.Repositories;
 using ProjectTest.Services;
 using System.Collections.ObjectModel;
 
@@ -12,9 +11,7 @@ public class SettingsViewModel : ViewModelBase
     private readonly AuthenticationService _authenticationService;
     private readonly LicenseService _licenseService;
     private readonly BackupRestoreService _backupRestoreService;
-    private readonly PluginService _pluginService;
-    private readonly GraphQlPosService _graphQlPosService;
-    private readonly CustomerRepository _customerRepository;
+    private readonly LlmAssistantService _llmAssistantService;
     private int _selectedItemsPerPage;
     private string _lastOpenedScreen = string.Empty;
     private string _statusMessage = string.Empty;
@@ -25,43 +22,30 @@ public class SettingsViewModel : ViewModelBase
     private string _restorePath = string.Empty;
     private string _llmApiKey = string.Empty;
     private string _llmEndpoint = string.Empty;
-    private string _graphQlQuery = string.Empty;
-    private string _graphQlResult = string.Empty;
 
     public SettingsViewModel(
         SettingsService settingsService,
         AuthenticationService authenticationService,
         LicenseService? licenseService = null,
         BackupRestoreService? backupRestoreService = null,
-        PluginService? pluginService = null,
-        GraphQlPosService? graphQlPosService = null,
-        CustomerRepository? customerRepository = null)
+        LlmAssistantService? llmAssistantService = null)
     {
         _settingsService = settingsService;
         _authenticationService = authenticationService;
         _licenseService = licenseService ?? App.Current.Services.LicenseService;
         _backupRestoreService = backupRestoreService ?? App.Current.Services.BackupRestoreService;
-        _pluginService = pluginService ?? App.Current.Services.PluginService;
-        _graphQlPosService = graphQlPosService ?? App.Current.Services.GraphQlPosService;
-        _customerRepository = customerRepository ?? App.Current.Services.CustomerRepository;
+        _llmAssistantService = llmAssistantService ?? App.Current.Services.LlmAssistantService;
         SaveCommand = new AsyncRelayCommand(SaveAsync);
         ClearCredentialsCommand = new AsyncRelayCommand(ClearCredentialsAsync);
         ActivateCommand = new AsyncRelayCommand(ActivateAsync);
         BackupCommand = new AsyncRelayCommand(BackupAsync);
         RestoreCommand = new AsyncRelayCommand(RestoreAsync);
-        ExecuteGraphQlCommand = new AsyncRelayCommand(ExecuteGraphQlAsync);
-        LoadSampleGraphQlCommand = new RelayCommand(LoadSampleGraphQl);
+        TestAssistantCommand = new AsyncRelayCommand(TestAssistantAsync);
 
         PageSizeOptions = new ObservableCollection<int>([5, 10, 15, 20]);
-        Plugins = new ObservableCollection<PluginInfo>();
-        Customers = new ObservableCollection<Customer>();
     }
 
     public ObservableCollection<int> PageSizeOptions { get; }
-
-    public ObservableCollection<PluginInfo> Plugins { get; }
-
-    public ObservableCollection<Customer> Customers { get; }
 
     public AsyncRelayCommand SaveCommand { get; }
 
@@ -73,9 +57,7 @@ public class SettingsViewModel : ViewModelBase
 
     public AsyncRelayCommand RestoreCommand { get; }
 
-    public AsyncRelayCommand ExecuteGraphQlCommand { get; }
-
-    public RelayCommand LoadSampleGraphQlCommand { get; }
+    public AsyncRelayCommand TestAssistantCommand { get; }
 
     public int SelectedItemsPerPage
     {
@@ -137,18 +119,6 @@ public class SettingsViewModel : ViewModelBase
         set => SetProperty(ref _llmEndpoint, value);
     }
 
-    public string GraphQlQuery
-    {
-        get => _graphQlQuery;
-        set => SetProperty(ref _graphQlQuery, value);
-    }
-
-    public string GraphQlResult
-    {
-        get => _graphQlResult;
-        set => SetProperty(ref _graphQlResult, value);
-    }
-
     public async Task LoadAsync()
     {
         var settings = _settingsService.CurrentSettings;
@@ -156,10 +126,6 @@ public class SettingsViewModel : ViewModelBase
         LastOpenedScreen = settings.LastOpenedScreen;
         LlmApiKey = settings.LlmApiKey;
         LlmEndpoint = settings.LlmEndpoint;
-        if (string.IsNullOrWhiteSpace(GraphQlQuery))
-        {
-            LoadSampleGraphQl();
-        }
 
         BackupPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), $"myshop-backup-{DateTime.Today:yyyyMMdd}.dump");
         CredentialStatus = await _authenticationService.HasSavedCredentialsAsync()
@@ -169,17 +135,6 @@ public class SettingsViewModel : ViewModelBase
         LicenseStatus = license.IsActivated
             ? "Activated"
             : license.IsTrialExpired ? "Trial expired. Activation is required." : $"Trial active. {license.TrialDaysRemaining} day(s) remaining.";
-        Plugins.Clear();
-        foreach (var plugin in _pluginService.Plugins)
-        {
-            Plugins.Add(plugin);
-        }
-
-        Customers.Clear();
-        foreach (var customer in await _customerRepository.GetAllAsync())
-        {
-            Customers.Add(customer);
-        }
     }
 
     private async Task SaveAsync()
@@ -226,28 +181,13 @@ public class SettingsViewModel : ViewModelBase
         StatusMessage = result.Message;
     }
 
-    private void LoadSampleGraphQl()
+    private async Task TestAssistantAsync()
     {
-        GraphQlQuery = _graphQlPosService.GetSampleQuery();
-        GraphQlResult = "Sample query loaded. Click Execute GraphQL to run it.";
-    }
-
-    private async Task ExecuteGraphQlAsync()
-    {
-        GraphQlResult = "Running...";
-        StatusMessage = "Running GraphQL query...";
-
-        try
-        {
-            GraphQlResult = await _graphQlPosService.ExecuteAsync(GraphQlQuery);
-            StatusMessage = "GraphQL query executed.";
-        }
-        catch (Exception ex)
-        {
-            GraphQlResult = System.Text.Json.JsonSerializer.Serialize(
-                new { errors = new[] { new { message = ex.Message } } },
-                new System.Text.Json.JsonSerializerOptions { WriteIndented = true });
-            StatusMessage = $"GraphQL query failed: {ex.Message}";
-        }
+        await SaveAsync();
+        StatusMessage = "Testing Assistant connection...";
+        var result = await _llmAssistantService.TestConnectionAsync();
+        StatusMessage = result.IsConfigured
+            ? $"Assistant test finished: {result.Summary}"
+            : result.Summary;
     }
 }

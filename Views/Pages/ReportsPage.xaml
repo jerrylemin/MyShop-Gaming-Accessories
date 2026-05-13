@@ -237,6 +237,10 @@
             <Border Style="{ThemeResource CardBorderStyle}">
                 <StackPanel Spacing="10">
                     <TextBlock Style="{ThemeResource SectionHeaderTextBlockStyle}" Text="Assistant" />
+                    <TextBlock
+                        Style="{ThemeResource CaptionTextBlockStyle}"
+                        Text="Configure the LLM / SLM Assistant in Settings, then refresh Reports."
+                        TextWrapping="WrapWholeWords" />
                     <TextBlock Text="{Binding AssistantSummary}" TextWrapping="WrapWholeWords" />
                 </StackPanel>
             </Border>

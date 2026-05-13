@@ -60,7 +60,6 @@ public static class AppBootstrapper
             dashboardService,
             reportingService);
 
-        await pluginService.LoadAsync(services);
         return services;
     }
 }

@@ -19,7 +19,19 @@ public class LlmAssistantService
     public LlmAssistantService(SettingsService settingsService, HttpClient? httpClient = null)
     {
         _settingsService = settingsService;
-        _httpClient = httpClient ?? new HttpClient { Timeout = TimeSpan.FromSeconds(20) };
+        _httpClient = httpClient ?? new HttpClient { Timeout = TimeSpan.FromSeconds(12) };
+    }
+
+    public async Task<AssistantResult> TestConnectionAsync(CancellationToken cancellationToken = default)
+    {
+        var snapshot = new ReportsSnapshot
+        {
+            RangeLabel = "Connection test",
+            TotalRevenue = 0,
+            TotalProfit = 0
+        };
+
+        return await AnalyzeReportsAsync(snapshot, cancellationToken).ConfigureAwait(false);
     }
 
     public async Task<AssistantResult> AnalyzeReportsAsync(ReportsSnapshot snapshot, CancellationToken cancellationToken = default)
@@ -30,7 +42,7 @@ public class LlmAssistantService
             return new AssistantResult
             {
                 IsConfigured = false,
-                Summary = "LLM assistant is not configured. Set MYSHOP_LLM_API_KEY or save a key in Settings."
+                Summary = "LLM assistant is not configured. Add API key in Settings."
             };
         }
 

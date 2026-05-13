@@ -68,6 +68,10 @@
                 <StackPanel Spacing="14">
                     <TextBlock Style="{ThemeResource SectionHeaderTextBlockStyle}" Text="License" />
                     <TextBlock Text="{Binding LicenseStatus}" TextWrapping="WrapWholeWords" />
+                    <TextBlock
+                        Style="{ThemeResource CaptionTextBlockStyle}"
+                        Text="Trial lasts 15 days. If the trial expires, enter an activation code that starts with MYSHOP- and is at least 16 characters. Demo activation code: MYSHOP-DEMO-2026."
+                        TextWrapping="WrapWholeWords" />
                     <TextBox PlaceholderText="Activation code" Text="{Binding ActivationCode, Mode=TwoWay}" />
                     <Button Command="{Binding ActivateCommand}" Content="Activate" />
                 </StackPanel>
@@ -86,92 +90,13 @@
             <Border Style="{ThemeResource CardBorderStyle}">
                 <StackPanel Spacing="14">
                     <TextBlock Style="{ThemeResource SectionHeaderTextBlockStyle}" Text="LLM / SLM Assistant" />
+                    <TextBlock
+                        Style="{ThemeResource CaptionTextBlockStyle}"
+                        Text="Configure the Assistant used in Reports. Use an OpenAI-compatible chat completions endpoint, or set MYSHOP_LLM_API_KEY as an environment variable. Do not hardcode real keys in code."
+                        TextWrapping="WrapWholeWords" />
                     <TextBox PlaceholderText="API key or use MYSHOP_LLM_API_KEY" Text="{Binding LlmApiKey, Mode=TwoWay}" />
                     <TextBox PlaceholderText="Endpoint" Text="{Binding LlmEndpoint, Mode=TwoWay}" />
-                </StackPanel>
-            </Border>
-
-            <Border Style="{ThemeResource CardBorderStyle}">
-                <StackPanel Spacing="14">
-                    <TextBlock Style="{ThemeResource SectionHeaderTextBlockStyle}" Text="GraphQL Demo" />
-                    <TextBlock
-                        Style="{ThemeResource CaptionTextBlockStyle}"
-                        Text="Run POS GraphQL queries."
-                        TextWrapping="WrapWholeWords" />
-                    <TextBox
-                        AcceptsReturn="True"
-                        FontFamily="Consolas"
-                        MinHeight="220"
-                        Text="{Binding GraphQlQuery, Mode=TwoWay}"
-                        TextWrapping="Wrap" />
-                    <Grid ColumnSpacing="12">
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="Auto" />
-                            <ColumnDefinition Width="Auto" />
-                        </Grid.ColumnDefinitions>
-                        <Button
-                            Grid.Column="0"
-                            Style="{ThemeResource AccentButtonStyle}"
-                            Command="{Binding ExecuteGraphQlCommand}"
-                            Content="Execute GraphQL" />
-                        <Button
-                            Grid.Column="1"
-                            Style="{ThemeResource SubtleButtonStyle}"
-                            Command="{Binding LoadSampleGraphQlCommand}"
-                            Content="Load Sample" />
-                    </Grid>
-                    <TextBox
-                        AcceptsReturn="True"
-                        FontFamily="Consolas"
-                        IsReadOnly="True"
-                        MinHeight="220"
-                        Text="{Binding GraphQlResult}"
-                        TextWrapping="Wrap" />
-                </StackPanel>
-            </Border>
-
-            <Border Style="{ThemeResource CardBorderStyle}">
-                <StackPanel Spacing="14">
-                    <TextBlock Style="{ThemeResource SectionHeaderTextBlockStyle}" Text="Plugins" />
-                    <ListView ItemsSource="{Binding Plugins}" SelectionMode="None">
-                        <ListView.ItemTemplate>
-                            <DataTemplate>
-                                <StackPanel Margin="0,6" Spacing="2">
-                                    <TextBlock FontWeight="SemiBold" Text="{Binding Name}" />
-                                    <TextBlock Style="{ThemeResource CaptionTextBlockStyle}" Text="{Binding Status}" />
-                                </StackPanel>
-                            </DataTemplate>
-                        </ListView.ItemTemplate>
-                    </ListView>
-                </StackPanel>
-            </Border>
-
-            <Border Style="{ThemeResource CardBorderStyle}">
-                <StackPanel Spacing="14">
-                    <TextBlock Style="{ThemeResource SectionHeaderTextBlockStyle}" Text="Customer Loyalty" />
-                    <TextBlock
-                        Style="{ThemeResource CaptionTextBlockStyle}"
-                        Text="Paid orders increase loyalty points for the selected customer in Orders."
-                        TextWrapping="WrapWholeWords" />
-                    <ListView ItemsSource="{Binding Customers}" SelectionMode="None">
-                        <ListView.ItemTemplate>
-                            <DataTemplate>
-                                <Grid Margin="0,6" ColumnSpacing="12">
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="*" />
-                                        <ColumnDefinition Width="Auto" />
-                                        <ColumnDefinition Width="Auto" />
-                                    </Grid.ColumnDefinitions>
-                                    <StackPanel Spacing="2">
-                                        <TextBlock FontWeight="SemiBold" Text="{Binding Name}" TextWrapping="WrapWholeWords" />
-                                        <TextBlock Style="{ThemeResource CaptionTextBlockStyle}" Text="{Binding Phone}" />
-                                    </StackPanel>
-                                    <TextBlock Grid.Column="1" Text="{Binding LoyaltySummary}" />
-                                    <TextBlock Grid.Column="2" Text="{Binding LifetimeSpendText}" />
-                                </Grid>
-                            </DataTemplate>
-                        </ListView.ItemTemplate>
-                    </ListView>
+                    <Button Style="{ThemeResource SubtleButtonStyle}" Command="{Binding TestAssistantCommand}" Content="Test Assistant Connection" />
                 </StackPanel>
             </Border>
 

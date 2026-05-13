@@ -43,16 +43,17 @@
                     </StackPanel>
                 </Grid>
 
-                <StackPanel Grid.Row="1" Spacing="10">
-                    <TextBlock Margin="10,4,0,4" FontSize="12" FontWeight="SemiBold" Foreground="{ThemeResource SidebarMutedTextBrush}" Text="MAIN MENU" />
+                <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto" VerticalScrollMode="Enabled">
+                    <StackPanel Spacing="10">
+                        <TextBlock Margin="10,4,0,4" FontSize="12" FontWeight="SemiBold" Foreground="{ThemeResource SidebarMutedTextBrush}" Text="MAIN MENU" />
 
-                    <Button x:Name="DashboardButton" Style="{ThemeResource SidebarNavButtonStyle}" Click="NavigationButton_Click" Tag="Dashboard">
-                        <Grid ColumnSpacing="12">
-                            <Grid.ColumnDefinitions><ColumnDefinition Width="Auto" /><ColumnDefinition Width="*" /></Grid.ColumnDefinitions>
-                            <FontIcon Style="{ThemeResource SidebarNavIconStyle}" FontFamily="Segoe Fluent Icons" Glyph="&#xE80F;" />
-                            <TextBlock Grid.Column="1" Style="{ThemeResource SidebarNavTextBlockStyle}" VerticalAlignment="Center" Text="Dashboard" />
-                        </Grid>
-                    </Button>
+                        <Button x:Name="DashboardButton" Style="{ThemeResource SidebarNavButtonStyle}" Click="NavigationButton_Click" Tag="Dashboard">
+                            <Grid ColumnSpacing="12">
+                                <Grid.ColumnDefinitions><ColumnDefinition Width="Auto" /><ColumnDefinition Width="*" /></Grid.ColumnDefinitions>
+                                <FontIcon Style="{ThemeResource SidebarNavIconStyle}" FontFamily="Segoe Fluent Icons" Glyph="&#xE80F;" />
+                                <TextBlock Grid.Column="1" Style="{ThemeResource SidebarNavTextBlockStyle}" VerticalAlignment="Center" Text="Dashboard" />
+                            </Grid>
+                        </Button>
 
                     <Button x:Name="ProductsButton" Style="{ThemeResource SidebarNavButtonStyle}" Click="NavigationButton_Click" Tag="Products">
                         <Grid ColumnSpacing="12">
@@ -78,7 +79,7 @@
                         </Grid>
                     </Button>
 
-                    <Button x:Name="ReportsButton" Style="{ThemeResource SidebarNavButtonStyle}" Click="NavigationButton_Click" Tag="Reports">
+                        <Button x:Name="ReportsButton" Style="{ThemeResource SidebarNavButtonStyle}" Click="NavigationButton_Click" Tag="Reports">
                         <Grid ColumnSpacing="12">
                             <Grid.ColumnDefinitions><ColumnDefinition Width="Auto" /><ColumnDefinition Width="*" /></Grid.ColumnDefinitions>
                             <FontIcon Style="{ThemeResource SidebarNavIconStyle}" FontFamily="Segoe Fluent Icons" Glyph="&#xE9D2;" />
@@ -86,14 +87,31 @@
                         </Grid>
                     </Button>
 
-                    <Button x:Name="SettingsButton" Style="{ThemeResource SidebarNavButtonStyle}" Click="NavigationButton_Click" Tag="Settings">
-                        <Grid ColumnSpacing="12">
-                            <Grid.ColumnDefinitions><ColumnDefinition Width="Auto" /><ColumnDefinition Width="*" /></Grid.ColumnDefinitions>
-                            <FontIcon Style="{ThemeResource SidebarNavIconStyle}" FontFamily="Segoe Fluent Icons" Glyph="&#xE713;" />
-                            <TextBlock Grid.Column="1" Style="{ThemeResource SidebarNavTextBlockStyle}" VerticalAlignment="Center" Text="Settings" />
-                        </Grid>
-                    </Button>
-                </StackPanel>
+                        <Button x:Name="GraphQlButton" Style="{ThemeResource SidebarNavButtonStyle}" Click="NavigationButton_Click" Tag="GraphQL">
+                            <Grid ColumnSpacing="12">
+                                <Grid.ColumnDefinitions><ColumnDefinition Width="Auto" /><ColumnDefinition Width="*" /></Grid.ColumnDefinitions>
+                                <FontIcon Style="{ThemeResource SidebarNavIconStyle}" FontFamily="Segoe Fluent Icons" Glyph="&#xE943;" />
+                                <TextBlock Grid.Column="1" Style="{ThemeResource SidebarNavTextBlockStyle}" VerticalAlignment="Center" Text="GraphQL" />
+                            </Grid>
+                        </Button>
+
+                        <Button x:Name="PluginsButton" Style="{ThemeResource SidebarNavButtonStyle}" Click="NavigationButton_Click" Tag="Plugins">
+                            <Grid ColumnSpacing="12">
+                                <Grid.ColumnDefinitions><ColumnDefinition Width="Auto" /><ColumnDefinition Width="*" /></Grid.ColumnDefinitions>
+                                <FontIcon Style="{ThemeResource SidebarNavIconStyle}" FontFamily="Segoe Fluent Icons" Glyph="&#xECAA;" />
+                                <TextBlock Grid.Column="1" Style="{ThemeResource SidebarNavTextBlockStyle}" VerticalAlignment="Center" Text="Plugins" />
+                            </Grid>
+                        </Button>
+
+                        <Button x:Name="SettingsButton" Style="{ThemeResource SidebarNavButtonStyle}" Click="NavigationButton_Click" Tag="Settings">
+                            <Grid ColumnSpacing="12">
+                                <Grid.ColumnDefinitions><ColumnDefinition Width="Auto" /><ColumnDefinition Width="*" /></Grid.ColumnDefinitions>
+                                <FontIcon Style="{ThemeResource SidebarNavIconStyle}" FontFamily="Segoe Fluent Icons" Glyph="&#xE713;" />
+                                <TextBlock Grid.Column="1" Style="{ThemeResource SidebarNavTextBlockStyle}" VerticalAlignment="Center" Text="Settings" />
+                            </Grid>
+                        </Button>
+                    </StackPanel>
+                </ScrollViewer>
 
                 <Button x:Name="LogoutButton" Grid.Row="2" Style="{ThemeResource SidebarNavButtonStyle}" Click="LogoutButton_Click" Tag="Logout">
                     <Grid ColumnSpacing="12">

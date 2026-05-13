@@ -39,6 +39,8 @@ public sealed partial class MainWindow : Window, INotifyPropertyChanged
             ["Orders"] = OrdersButton,
             ["Customers"] = CustomersButton,
             ["Reports"] = ReportsButton,
+            ["GraphQL"] = GraphQlButton,
+            ["Plugins"] = PluginsButton,
             ["Settings"] = SettingsButton
         };
 
@@ -100,6 +102,8 @@ public sealed partial class MainWindow : Window, INotifyPropertyChanged
         _navigationService.Register("Orders", typeof(OrdersPage));
         _navigationService.Register("Customers", typeof(CustomersPage));
         _navigationService.Register("Reports", typeof(ReportsPage));
+        _navigationService.Register("GraphQL", typeof(GraphQlPage));
+        _navigationService.Register("Plugins", typeof(PluginsPage));
         _navigationService.Register("Settings", typeof(SettingsPage));
         _isNavigationReady = true;
 
@@ -193,7 +197,7 @@ public sealed partial class MainWindow : Window, INotifyPropertyChanged
         var dialog = new ContentDialog
         {
             Title = "Welcome to MyShop POS",
-            Content = "Use Dashboard for store health, Products for catalog work, Orders for sales, Customers for profiles and history, Reports for revenue, and Settings for app configuration.",
+            Content = "Use Dashboard for store health, Products for catalog work, Orders for sales, Customers for profiles and history, Reports for revenue, GraphQL for API demos, Plugins for extensions, and Settings for app configuration.",
             PrimaryButtonText = "Start",
             CloseButtonText = "Skip",
             XamlRoot = ContentFrame.XamlRoot
@@ -410,6 +414,16 @@ public sealed partial class MainWindow : Window, INotifyPropertyChanged
             return "Reports";
         }
 
+        if (pageType == typeof(GraphQlPage))
+        {
+            return "GraphQL";
+        }
+
+        if (pageType == typeof(PluginsPage))
+        {
+            return "Plugins";
+        }
+
         if (pageType == typeof(SettingsPage))
         {
             return "Settings";
@@ -441,6 +455,8 @@ public sealed partial class MainWindow : Window, INotifyPropertyChanged
             "Orders" => "Create and edit orders, track payment status, and keep inventory synchronized.",
             "Customers" => "Customer profiles and purchase history.",
             "Reports" => "Compare revenue, profit, and sales trends across multiple reporting ranges.",
+            "GraphQL" => "Run lightweight POS API queries.",
+            "Plugins" => "Review and reload local extensions.",
             "Settings" => "Adjust page size and saved-login behavior for the application.",
             _ => "Move between the main work areas of the store application."
         };

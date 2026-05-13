@@ -78,6 +78,7 @@ public class PluginService
             Id = "sample",
             Name = "Sample MyShop Plugin",
             Version = "1.0.0",
+            Description = "Sample manifest used to verify plugin discovery.",
             Status = "Manifest sample"
         }, new JsonSerializerOptions { WriteIndented = true }));
     }

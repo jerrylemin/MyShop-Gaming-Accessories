@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Page
+    x:Class="ProjectTest.Views.Pages.GraphQlPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    RequestedTheme="Light"
+    Background="{ThemeResource AppCanvasBrush}">
+
+    <ScrollViewer>
+        <StackPanel Margin="28" Spacing="18">
+            <Border Style="{ThemeResource HeroCardBorderStyle}">
+                <Grid ColumnSpacing="18">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="Auto" />
+                    </Grid.ColumnDefinitions>
+                    <StackPanel Spacing="10">
+                        <Border HorizontalAlignment="Left" Style="{ThemeResource BadgeBorderStyle}">
+                            <TextBlock Style="{ThemeResource BadgeTextBlockStyle}" Text="GraphQL" />
+                        </Border>
+                        <TextBlock FontFamily="Segoe UI Variable Display Semib" FontSize="32" FontWeight="SemiBold" Text="GraphQL" />
+                    </StackPanel>
+                    <Grid Grid.Column="1" ColumnSpacing="12">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto" />
+                            <ColumnDefinition Width="Auto" />
+                        </Grid.ColumnDefinitions>
+                        <Button Grid.Column="0" Style="{ThemeResource AccentButtonStyle}" Command="{Binding ExecuteGraphQlCommand}" Content="Execute" />
+                        <Button Grid.Column="1" Style="{ThemeResource SubtleButtonStyle}" Command="{Binding LoadSampleGraphQlCommand}" Content="Load Sample" />
+                    </Grid>
+                </Grid>
+            </Border>
+
+            <Border Style="{ThemeResource CardBorderStyle}">
+                <StackPanel Spacing="14">
+                    <TextBlock Style="{ThemeResource SectionHeaderTextBlockStyle}" Text="Query" />
+                    <TextBox
+                        AcceptsReturn="True"
+                        FontFamily="Consolas"
+                        MinHeight="240"
+                        Text="{Binding GraphQlQuery, Mode=TwoWay}"
+                        TextWrapping="Wrap" />
+                    <TextBlock Foreground="{ThemeResource AccentBrush}" Text="{Binding StatusMessage}" TextWrapping="WrapWholeWords" />
+                </StackPanel>
+            </Border>
+
+            <Border Style="{ThemeResource CardBorderStyle}">
+                <StackPanel Spacing="14">
+                    <TextBlock Style="{ThemeResource SectionHeaderTextBlockStyle}" Text="Result" />
+                    <TextBox
+                        AcceptsReturn="True"
+                        FontFamily="Consolas"
+                        IsReadOnly="True"
+                        MinHeight="280"
+                        Text="{Binding GraphQlResult}"
+                        TextWrapping="Wrap" />
+                </StackPanel>
+            </Border>
+        </StackPanel>
+    </ScrollViewer>
+</Page>

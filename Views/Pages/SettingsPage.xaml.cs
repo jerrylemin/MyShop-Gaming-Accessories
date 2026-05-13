@@ -12,9 +12,7 @@ public sealed partial class SettingsPage : Page
             App.Current.Services.AuthenticationService,
             App.Current.Services.LicenseService,
             App.Current.Services.BackupRestoreService,
-            App.Current.Services.PluginService,
-            App.Current.Services.GraphQlPosService,
-            App.Current.Services.CustomerRepository);
+            App.Current.Services.LlmAssistantService);
         InitializeComponent();
         DataContext = ViewModel;
         Loaded += SettingsPage_Loaded;
