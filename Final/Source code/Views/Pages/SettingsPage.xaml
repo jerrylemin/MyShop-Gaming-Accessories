@@ -1,0 +1,114 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Page
+    x:Class="ProjectTest.Views.Pages.SettingsPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    RequestedTheme="Light"
+    Background="{ThemeResource AppCanvasBrush}">
+
+    <ScrollViewer>
+        <StackPanel Margin="28" Spacing="18">
+            <Border Style="{ThemeResource HeroCardBorderStyle}">
+                <StackPanel Spacing="10">
+                    <Border Style="{ThemeResource BadgeBorderStyle}">
+                        <TextBlock
+                            Style="{ThemeResource BadgeTextBlockStyle}"
+                            Text="Preferences" />
+                    </Border>
+                    <TextBlock
+                        FontFamily="Segoe UI Variable Display Semib"
+                        FontSize="32"
+                        FontWeight="SemiBold"
+                        Text="Settings" />
+                    <TextBlock
+                        Style="{ThemeResource PageIntroTextBlockStyle}"
+                        Text="Manage app preferences and tools." />
+                </StackPanel>
+            </Border>
+
+            <Border Style="{ThemeResource CardBorderStyle}">
+                <StackPanel Spacing="14">
+                    <TextBlock
+                        Style="{ThemeResource SectionHeaderTextBlockStyle}"
+                        Text="General" />
+                    <StackPanel Spacing="6">
+                        <TextBlock Text="Items per page" />
+                        <ComboBox
+                            ItemsSource="{Binding PageSizeOptions}"
+                            SelectedItem="{Binding SelectedItemsPerPage, Mode=TwoWay}" />
+                    </StackPanel>
+                    <StackPanel Spacing="6">
+                        <TextBlock Text="Last opened screen" />
+                        <TextBox
+                            IsReadOnly="True"
+                            Text="{Binding LastOpenedScreen}" />
+                    </StackPanel>
+                </StackPanel>
+            </Border>
+
+            <Border Style="{ThemeResource CardBorderStyle}">
+                <StackPanel Spacing="14">
+                    <TextBlock
+                        Style="{ThemeResource SectionHeaderTextBlockStyle}"
+                        Text="Credentials" />
+                    <TextBlock
+                        Text="{Binding CredentialStatus}"
+                        TextWrapping="WrapWholeWords" />
+                    <Button
+                        Command="{Binding ClearCredentialsCommand}"
+                        Style="{ThemeResource SubtleButtonStyle}"
+                        Content="Clear Saved Login" />
+                </StackPanel>
+            </Border>
+
+            <Border Style="{ThemeResource CardBorderStyle}">
+                <StackPanel Spacing="14">
+                    <TextBlock Style="{ThemeResource SectionHeaderTextBlockStyle}" Text="License" />
+                    <TextBlock Text="{Binding LicenseStatus}" TextWrapping="WrapWholeWords" />
+                    <TextBlock
+                        Style="{ThemeResource CaptionTextBlockStyle}"
+                        Text="Trial lasts 15 days. If the trial expires, enter an activation code that starts with MYSHOP- and is at least 16 characters. Demo activation code: MYSHOP-DEMO-2026."
+                        TextWrapping="WrapWholeWords" />
+                    <TextBox PlaceholderText="Activation code" Text="{Binding ActivationCode, Mode=TwoWay}" />
+                    <Button Command="{Binding ActivateCommand}" Content="Activate" />
+                </StackPanel>
+            </Border>
+
+            <Border Style="{ThemeResource CardBorderStyle}">
+                <StackPanel Spacing="14">
+                    <TextBlock Style="{ThemeResource SectionHeaderTextBlockStyle}" Text="Backup / Restore" />
+                    <TextBox PlaceholderText="Backup file path" Text="{Binding BackupPath, Mode=TwoWay}" />
+                    <Button Command="{Binding BackupCommand}" Content="Backup database" />
+                    <TextBox PlaceholderText="Restore file path" Text="{Binding RestorePath, Mode=TwoWay}" />
+                    <Button Command="{Binding RestoreCommand}" Content="Restore database" />
+                </StackPanel>
+            </Border>
+
+            <Border Style="{ThemeResource CardBorderStyle}">
+                <StackPanel Spacing="14">
+                    <TextBlock Style="{ThemeResource SectionHeaderTextBlockStyle}" Text="LLM / SLM Assistant" />
+                    <TextBlock
+                        Style="{ThemeResource CaptionTextBlockStyle}"
+                        Text="Configure the Assistant used in Reports. Use an OpenAI-compatible chat completions endpoint, or set MYSHOP_LLM_API_KEY as an environment variable. Do not hardcode real keys in code."
+                        TextWrapping="WrapWholeWords" />
+                    <TextBox PlaceholderText="API key or use MYSHOP_LLM_API_KEY" Text="{Binding LlmApiKey, Mode=TwoWay}" />
+                    <TextBox PlaceholderText="Endpoint" Text="{Binding LlmEndpoint, Mode=TwoWay}" />
+                    <Button Style="{ThemeResource SubtleButtonStyle}" Command="{Binding TestAssistantCommand}" Content="Test Assistant Connection" />
+                </StackPanel>
+            </Border>
+
+            <TextBlock
+                Foreground="{ThemeResource AccentBrush}"
+                Text="{Binding StatusMessage}"
+                TextWrapping="WrapWholeWords" />
+
+            <Button
+                Style="{ThemeResource AccentButtonStyle}"
+                Command="{Binding SaveCommand}"
+                Content="Save Settings" />
+        </StackPanel>
+    </ScrollViewer>
+</Page>

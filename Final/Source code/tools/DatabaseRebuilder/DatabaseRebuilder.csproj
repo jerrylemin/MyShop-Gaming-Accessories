@@ -1,0 +1,40 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="8.0.22" />
+    <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="8.0.11" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Include="..\..\Helpers\CurrencyFormatter.cs" Link="Helpers\CurrencyFormatter.cs" />
+    <Compile Include="..\..\Models\AppUser.cs" Link="Models\AppUser.cs" />
+    <Compile Include="..\..\Models\Category.cs" Link="Models\Category.cs" />
+    <Compile Include="..\..\Models\Customer.cs" Link="Models\Customer.cs" />
+    <Compile Include="..\..\Models\CustomerLoyaltyTransaction.cs" Link="Models\CustomerLoyaltyTransaction.cs" />
+    <Compile Include="..\..\Models\DiscountType.cs" Link="Models\DiscountType.cs" />
+    <Compile Include="..\..\Models\Order.cs" Link="Models\Order.cs" />
+    <Compile Include="..\..\Models\OrderItem.cs" Link="Models\OrderItem.cs" />
+    <Compile Include="..\..\Models\OrderStatus.cs" Link="Models\OrderStatus.cs" />
+    <Compile Include="..\..\Models\Promotion.cs" Link="Models\Promotion.cs" />
+    <Compile Include="..\..\Models\Product.cs" Link="Models\Product.cs" />
+    <Compile Include="..\..\Models\UserRole.cs" Link="Models\UserRole.cs" />
+    <Compile Include="..\..\DataAccess\MyShopDbContext.cs" Link="DataAccess\MyShopDbContext.cs" />
+    <Compile Include="..\..\DataAccess\MyShopDbContextFactory.cs" Link="DataAccess\MyShopDbContextFactory.cs" />
+    <Compile Include="..\..\DataAccess\Migrations\20260309120000_InitialCreate.cs" Link="DataAccess\Migrations\20260309120000_InitialCreate.cs" />
+    <Compile Include="..\..\DataAccess\Migrations\20260423143000_AddOrderItemUnitCostPrice.cs" Link="DataAccess\Migrations\20260423143000_AddOrderItemUnitCostPrice.cs" />
+    <Compile Include="..\..\DataAccess\Migrations\20260512120000_AdvancedPosFeatures.cs" Link="DataAccess\Migrations\20260512120000_AdvancedPosFeatures.cs" />
+    <Compile Include="..\..\DataAccess\Migrations\MyShopDbContextModelSnapshot.cs" Link="DataAccess\Migrations\MyShopDbContextModelSnapshot.cs" />
+    <Compile Include="..\..\DataAccess\Seeding\GamingAccessorySeedGenerator.cs" Link="DataAccess\Seeding\GamingAccessorySeedGenerator.cs" />
+    <Compile Include="..\..\Services\DatabaseInitializer.cs" Link="Services\DatabaseInitializer.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="..\..\DataAccess\Seeding\gaming_accessories_seed_data.json" Link="DataAccess\Seeding\gaming_accessories_seed_data.json" />
+  </ItemGroup>
+</Project>

@@ -1,0 +1,17 @@
+{
+  "profiles": {
+    "ProjectTest (Package)": {
+      "commandName": "MsixPackage"
+    },
+    "ProjectTest (Unpackaged Fast)": {
+      "commandName": "Project",
+      "nativeDebugging": false,
+      "environmentVariables": {
+        "MYSHOP_DEBUG_PROFILE": "UnpackagedFast"
+      }
+    },
+    "ProjectTest (Unpackaged)": {
+      "commandName": "Project"
+    }
+  }
+}

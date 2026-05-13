@@ -1,0 +1,249 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Page
+    x:Class="ProjectTest.Views.Pages.ReportsPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:controls="using:ProjectTest.Controls"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    RequestedTheme="Light"
+    NavigationCacheMode="Required"
+    Background="{ThemeResource AppCanvasBrush}">
+
+    <ScrollViewer HorizontalScrollBarVisibility="Disabled" HorizontalScrollMode="Disabled">
+        <StackPanel Margin="28" Spacing="18">
+            <Border Style="{ThemeResource HeroCardBorderStyle}">
+                <StackPanel Spacing="14">
+                    <Border
+                        HorizontalAlignment="Left"
+                        Style="{ThemeResource BadgeBorderStyle}">
+                        <TextBlock
+                            Style="{ThemeResource BadgeTextBlockStyle}"
+                            Text="Business Insight" />
+                    </Border>
+                    <TextBlock
+                        FontFamily="Segoe UI Variable Display Semib"
+                        FontSize="32"
+                        FontWeight="SemiBold"
+                        Text="Revenue and profit reporting by operating cycle."
+                        TextWrapping="WrapWholeWords" />
+                    <TextBlock
+                        Style="{ThemeResource PageIntroTextBlockStyle}"
+                        Text="Review revenue by day, week, month, and year, then compare profit and top-selling products in the selected range." />
+
+                    <Grid ColumnSpacing="12" RowSpacing="12">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto" />
+                            <RowDefinition Height="Auto" />
+                        </Grid.RowDefinitions>
+
+                        <DatePicker Grid.Row="0" Grid.Column="0" Date="{Binding FromDate, Mode=TwoWay}" />
+                        <DatePicker Grid.Row="0" Grid.Column="1" Date="{Binding ToDate, Mode=TwoWay}" />
+                        <Button
+                            Grid.Row="1"
+                            Grid.ColumnSpan="2"
+                            Style="{ThemeResource AccentButtonStyle}"
+                            Command="{Binding RefreshCommand}"
+                            Content="Apply Range" />
+                    </Grid>
+                </StackPanel>
+            </Border>
+
+            <Border Style="{ThemeResource CardBorderStyle}">
+                <Grid ColumnSpacing="12">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <ProgressRing
+                        Width="24"
+                        Height="24"
+                        IsActive="{Binding IsLoading}"
+                        IsHitTestVisible="False"
+                        VerticalAlignment="Center" />
+                    <StackPanel Grid.Column="1" Spacing="4">
+                        <TextBlock
+                            Style="{ThemeResource CaptionTextBlockStyle}"
+                            Text="{Binding RangeLabel}" />
+                        <TextBlock
+                            Style="{ThemeResource CaptionTextBlockStyle}"
+                            Text="{Binding StatusMessage}"
+                            TextWrapping="WrapWholeWords" />
+                    </StackPanel>
+                </Grid>
+            </Border>
+
+            <Border Style="{ThemeResource CardBorderStyle}">
+                <StackPanel Spacing="8">
+                    <TextBlock
+                        Style="{ThemeResource CaptionTextBlockStyle}"
+                        Text="Total Revenue In Range" />
+                    <TextBlock
+                        FontFamily="Segoe UI Variable Display Semib"
+                        FontSize="28"
+                        FontWeight="SemiBold"
+                        Text="{Binding TotalRevenueText}"
+                        TextWrapping="WrapWholeWords" />
+                </StackPanel>
+            </Border>
+
+            <Border Style="{ThemeResource CardBorderStyle}">
+                <StackPanel Spacing="8">
+                    <TextBlock
+                        Style="{ThemeResource CaptionTextBlockStyle}"
+                        Text="Total Profit In Range" />
+                    <TextBlock
+                        FontFamily="Segoe UI Variable Display Semib"
+                        FontSize="28"
+                        FontWeight="SemiBold"
+                        Text="{Binding TotalProfitText}"
+                        TextWrapping="WrapWholeWords" />
+                </StackPanel>
+            </Border>
+
+            <Border Style="{ThemeResource CardBorderStyle}">
+                <StackPanel Spacing="14">
+                    <TextBlock
+                        Style="{ThemeResource SectionHeaderTextBlockStyle}"
+                        Text="Revenue by Day" />
+                    <controls:SimpleLineChart ItemsSource="{Binding RevenueByDay}" />
+                </StackPanel>
+            </Border>
+
+            <Border Style="{ThemeResource CardBorderStyle}">
+                <StackPanel Spacing="14">
+                    <TextBlock
+                        Style="{ThemeResource SectionHeaderTextBlockStyle}"
+                        Text="Profit by Day" />
+                    <controls:SimpleLineChart ItemsSource="{Binding ProfitByDay}" />
+                </StackPanel>
+            </Border>
+
+            <Border Style="{ThemeResource CardBorderStyle}">
+                <StackPanel Spacing="14">
+                    <TextBlock
+                        Style="{ThemeResource SectionHeaderTextBlockStyle}"
+                        Text="Revenue by Week" />
+                    <controls:SimpleBarChart ItemsSource="{Binding RevenueByWeek}" />
+                </StackPanel>
+            </Border>
+
+            <Border Style="{ThemeResource CardBorderStyle}">
+                <StackPanel Spacing="14">
+                    <TextBlock
+                        Style="{ThemeResource SectionHeaderTextBlockStyle}"
+                        Text="Profit by Week" />
+                    <controls:SimpleBarChart ItemsSource="{Binding ProfitByWeek}" />
+                </StackPanel>
+            </Border>
+
+            <Border Style="{ThemeResource CardBorderStyle}">
+                <StackPanel Spacing="14">
+                    <TextBlock
+                        Style="{ThemeResource SectionHeaderTextBlockStyle}"
+                        Text="Revenue by Month" />
+                    <controls:SimpleBarChart ItemsSource="{Binding RevenueByMonth}" />
+                </StackPanel>
+            </Border>
+
+            <Border Style="{ThemeResource CardBorderStyle}">
+                <StackPanel Spacing="14">
+                    <TextBlock
+                        Style="{ThemeResource SectionHeaderTextBlockStyle}"
+                        Text="Profit by Month" />
+                    <controls:SimpleBarChart ItemsSource="{Binding ProfitByMonth}" />
+                </StackPanel>
+            </Border>
+
+            <Border Style="{ThemeResource CardBorderStyle}">
+                <StackPanel Spacing="14">
+                    <TextBlock
+                        Style="{ThemeResource SectionHeaderTextBlockStyle}"
+                        Text="Revenue by Year" />
+                    <controls:SimpleBarChart ItemsSource="{Binding RevenueByYear}" />
+                </StackPanel>
+            </Border>
+
+            <Border Style="{ThemeResource CardBorderStyle}">
+                <StackPanel Spacing="14">
+                    <TextBlock
+                        Style="{ThemeResource SectionHeaderTextBlockStyle}"
+                        Text="Profit by Year" />
+                    <controls:SimpleBarChart ItemsSource="{Binding ProfitByYear}" />
+                </StackPanel>
+            </Border>
+
+            <Border Style="{ThemeResource CardBorderStyle}">
+                <StackPanel Spacing="14">
+                    <TextBlock
+                        Style="{ThemeResource SectionHeaderTextBlockStyle}"
+                        Text="Top Selling Gaming Accessories" />
+                    <controls:SimpleBarChart ItemsSource="{Binding ProductSalesByRange}" />
+                </StackPanel>
+            </Border>
+
+            <Border Style="{ThemeResource CardBorderStyle}">
+                <StackPanel Spacing="14">
+                    <TextBlock
+                        Style="{ThemeResource SectionHeaderTextBlockStyle}"
+                        Text="Gaming Accessories Sales Share" />
+                    <controls:SimplePieChart ItemsSource="{Binding ProductSalesShare}" />
+                </StackPanel>
+            </Border>
+
+            <Border Style="{ThemeResource CardBorderStyle}">
+                <StackPanel Spacing="14">
+                    <TextBlock Style="{ThemeResource SectionHeaderTextBlockStyle}" Text="Sale Commission / KPI" />
+                    <ListView ItemsSource="{Binding SalesCommissions}" SelectionMode="None">
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <Grid Margin="0,6" ColumnSpacing="12">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*" />
+                                        <ColumnDefinition Width="Auto" />
+                                        <ColumnDefinition Width="Auto" />
+                                    </Grid.ColumnDefinitions>
+                                    <TextBlock FontWeight="SemiBold" Text="{Binding Salesperson}" />
+                                    <TextBlock Grid.Column="1" Text="{Binding RevenueText}" />
+                                    <TextBlock Grid.Column="2" Text="{Binding CommissionText}" />
+                                </Grid>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+                </StackPanel>
+            </Border>
+
+            <Border Style="{ThemeResource CardBorderStyle}">
+                <StackPanel Spacing="14">
+                    <TextBlock Style="{ThemeResource SectionHeaderTextBlockStyle}" Text="ML.Net Forecast and Restock Insights" />
+                    <ListView ItemsSource="{Binding MlInsights}" SelectionMode="None">
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <StackPanel Margin="0,6" Spacing="2">
+                                    <TextBlock FontWeight="SemiBold" Text="{Binding Title}" />
+                                    <TextBlock Text="{Binding Detail}" TextWrapping="WrapWholeWords" />
+                                </StackPanel>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+                </StackPanel>
+            </Border>
+
+            <Border Style="{ThemeResource CardBorderStyle}">
+                <StackPanel Spacing="10">
+                    <TextBlock Style="{ThemeResource SectionHeaderTextBlockStyle}" Text="Assistant" />
+                    <TextBlock
+                        Style="{ThemeResource CaptionTextBlockStyle}"
+                        Text="Configure the LLM / SLM Assistant in Settings, then refresh Reports."
+                        TextWrapping="WrapWholeWords" />
+                    <TextBlock Text="{Binding AssistantSummary}" TextWrapping="WrapWholeWords" />
+                </StackPanel>
+            </Border>
+        </StackPanel>
+    </ScrollViewer>
+</Page>

@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Window
+    x:Class="ProjectTest.Views.LoginWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Title="MyShop Gaming Accessories">
+
+    <ScrollViewer
+        x:Name="RootGrid"
+        Background="{ThemeResource AppCanvasBrush}"
+        HorizontalScrollBarVisibility="Disabled"
+        HorizontalScrollMode="Disabled"
+        VerticalScrollBarVisibility="Auto">
+        <Grid
+            MaxWidth="1100"
+            Margin="24"
+            HorizontalAlignment="Center">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+
+            <Border
+                Padding="36"
+                Background="{StaticResource LoginHeroBrush}"
+                CornerRadius="34,34,0,0">
+                <Grid>
+                    <Ellipse
+                        Width="420"
+                        Height="420"
+                        Margin="-110,-100,0,0"
+                        HorizontalAlignment="Left"
+                        VerticalAlignment="Top"
+                        Fill="#22FFFFFF" />
+                    <Ellipse
+                        Width="360"
+                        Height="360"
+                        Margin="0,0,-120,-120"
+                        HorizontalAlignment="Right"
+                        VerticalAlignment="Bottom"
+                        Fill="#1EFFFFFF" />
+
+                    <StackPanel
+                        MaxWidth="620"
+                        VerticalAlignment="Center"
+                        Spacing="16">
+                        <Border
+                            HorizontalAlignment="Left"
+                            Padding="14,7"
+                            Background="#26FFFFFF"
+                            CornerRadius="999">
+                            <TextBlock
+                                FontSize="12"
+                                FontWeight="SemiBold"
+                                Foreground="White"
+                                Text="MyShop Gaming Accessories" />
+                        </Border>
+
+                        <TextBlock
+                            FontFamily="Segoe UI Variable Display Semib"
+                            FontSize="44"
+                            FontWeight="SemiBold"
+                            Foreground="White"
+                            Text="MyShop Gaming Accessories" />
+                    </StackPanel>
+                </Grid>
+            </Border>
+
+            <Border
+                Grid.Row="1"
+                Padding="36"
+                Background="{ThemeResource PageSurfaceBrush}"
+                BorderBrush="{ThemeResource CardStrokeBrush}"
+                BorderThickness="1"
+                CornerRadius="0,0,34,34">
+                <Grid>
+                    <StackPanel
+                        MaxWidth="520"
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Center"
+                        Spacing="18">
+                        <StackPanel Spacing="10">
+                            <Border
+                                HorizontalAlignment="Left"
+                                Style="{ThemeResource BadgeBorderStyle}">
+                                <TextBlock
+                                    Style="{ThemeResource BadgeTextBlockStyle}"
+                                    Text="{Binding VersionText}" />
+                            </Border>
+                            <TextBlock
+                                Style="{ThemeResource PageTitleTextBlockStyle}"
+                                Text="Login" />
+                            <TextBlock
+                                Style="{ThemeResource PageIntroTextBlockStyle}"
+                                Text="Use your local account to continue. Saved credentials remain encrypted for the next launch." />
+                        </StackPanel>
+
+                        <StackPanel Spacing="8">
+                            <TextBlock
+                                Style="{ThemeResource FieldLabelTextBlockStyle}"
+                                Text="Username" />
+                            <TextBox
+                                PlaceholderText="Enter your username"
+                                Text="{Binding Username, Mode=TwoWay}" />
+                        </StackPanel>
+
+                        <StackPanel Spacing="8">
+                            <TextBlock
+                                Style="{ThemeResource FieldLabelTextBlockStyle}"
+                                Text="Password" />
+                            <PasswordBox PasswordChanged="PasswordBox_PasswordChanged" />
+                        </StackPanel>
+
+                        <Border
+                            Padding="14"
+                            Background="{ThemeResource AccentSoftBrush}"
+                            CornerRadius="18">
+                            <StackPanel Spacing="4">
+                                <TextBlock
+                                    FontSize="12"
+                                    FontWeight="SemiBold"
+                                    Foreground="{ThemeResource AccentBrush}"
+                                    Text="Default account" />
+                                <TextBlock
+                                    Foreground="{ThemeResource AccentBrush}"
+                                    Text="{Binding DefaultCredentialsHint}"
+                                    TextWrapping="WrapWholeWords" />
+                            </StackPanel>
+                        </Border>
+
+                        <TextBlock
+                            Foreground="{ThemeResource DangerBrush}"
+                            Text="{Binding ErrorMessage}"
+                            TextWrapping="WrapWholeWords" />
+
+                        <Grid ColumnSpacing="12">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+
+                            <Button
+                                Grid.Column="0"
+                                Style="{ThemeResource AccentButtonStyle}"
+                                Command="{Binding LoginCommand}"
+                                Content="Sign in" />
+                            <Button
+                                Grid.Column="1"
+                                Style="{ThemeResource SubtleButtonStyle}"
+                                Click="ServerConfigButton_Click"
+                                Content="Server config" />
+                        </Grid>
+                    </StackPanel>
+                </Grid>
+            </Border>
+        </Grid>
+    </ScrollViewer>
+</Window>

@@ -1,0 +1,16 @@
+<Project>
+  <PropertyGroup Condition="'$(MSBuildProjectName)' != 'DatabaseRebuilder' and '$(MSBuildProjectName)' != 'VerificationRunner' and '$(MSBuildProjectName)' != 'ProjectTest.Tests' and '$(MSBuildProjectName)' != 'SampleMyShopPlugin'">
+    <BaseOutputPath>$(LocalAppData)\ProjectTest\artifacts\bin\</BaseOutputPath>
+    <BaseIntermediateOutputPath>$(LocalAppData)\ProjectTest\artifacts\obj\</BaseIntermediateOutputPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)' == 'Debug'">
+    <DebugType>portable</DebugType>
+    <GenerateDocumentationFile>false</GenerateDocumentationFile>
+    <RunAnalyzersDuringBuild>false</RunAnalyzersDuringBuild>
+    <RunAnalyzersDuringLiveAnalysis>false</RunAnalyzersDuringLiveAnalysis>
+    <EnableNETAnalyzers>false</EnableNETAnalyzers>
+    <PublishReadyToRun>false</PublishReadyToRun>
+    <PublishTrimmed>false</PublishTrimmed>
+    <SelfContained>false</SelfContained>
+  </PropertyGroup>
+</Project>
