@@ -8,6 +8,7 @@ namespace ProjectTest.Repositories;
 
 public class ProductRepository
 {
+    private const decimal MaxCurrencyValue = 9999999999.99m;
     private readonly MyShopDbContextFactory _dbContextFactory;
 
     public ProductRepository(MyShopDbContextFactory dbContextFactory)
@@ -125,6 +126,16 @@ public class ProductRepository
                 return OperationResult<int>.Fail($"SKU '{normalizedSku}' already exists. Enter a different SKU.");
             }
 
+            if (product.ImportPrice < 0 || product.SalePrice < 0 || product.Stock < 0)
+            {
+                return OperationResult<int>.Fail("Prices and stock cannot be negative.");
+            }
+
+            if (product.ImportPrice > MaxCurrencyValue || product.SalePrice > MaxCurrencyValue)
+            {
+                return OperationResult<int>.Fail("Import price and sale price must be less than 10,000,000,000.00.");
+            }
+
             product.SKU = normalizedSku;
             product.Image1 = string.IsNullOrWhiteSpace(product.Image1) ? ImageSourceHelper.DefaultProductImagePath : product.Image1;
             product.Image2 = string.IsNullOrWhiteSpace(product.Image2) ? ImageSourceHelper.DefaultProductImagePath : product.Image2;
@@ -167,6 +178,10 @@ public class ProductRepository
         catch (DbUpdateException ex) when (ex.GetBaseException() is PostgresException { SqlState: PostgresErrorCodes.UniqueViolation })
         {
             return OperationResult<int>.Fail($"SKU '{product.SKU.Trim()}' already exists. Enter a different SKU.");
+        }
+        catch (DbUpdateException ex) when (ex.GetBaseException() is PostgresException { SqlState: PostgresErrorCodes.NumericValueOutOfRange })
+        {
+            return OperationResult<int>.Fail("Import price and sale price must be less than 10,000,000,000.00.");
         }
     }
 

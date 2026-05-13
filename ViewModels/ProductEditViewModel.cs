@@ -8,6 +8,7 @@ namespace ProjectTest.ViewModels;
 
 public class ProductEditViewModel : ViewModelBase
 {
+    private const decimal MaxCurrencyValue = 9999999999.99m;
     private readonly ProductRepository _productRepository;
     private readonly CategoryRepository _categoryRepository;
     private readonly AutoSaveService _autoSaveService = new();
@@ -252,6 +253,18 @@ public class ProductEditViewModel : ViewModelBase
             !int.TryParse(Stock, out var stockValue))
         {
             StatusMessage = "Enter valid numeric values for prices and stock.";
+            return;
+        }
+
+        if (importPrice < 0 || salePrice < 0 || stockValue < 0)
+        {
+            StatusMessage = "Prices and stock cannot be negative.";
+            return;
+        }
+
+        if (importPrice > MaxCurrencyValue || salePrice > MaxCurrencyValue)
+        {
+            StatusMessage = "Import price and sale price must be less than 10,000,000,000.00.";
             return;
         }
 
