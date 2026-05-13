@@ -234,7 +234,20 @@ public class SettingsViewModel : ViewModelBase
 
     private async Task ExecuteGraphQlAsync()
     {
-        GraphQlResult = await _graphQlPosService.ExecuteAsync(GraphQlQuery);
-        StatusMessage = "GraphQL query executed.";
+        GraphQlResult = "Running...";
+        StatusMessage = "Running GraphQL query...";
+
+        try
+        {
+            GraphQlResult = await _graphQlPosService.ExecuteAsync(GraphQlQuery);
+            StatusMessage = "GraphQL query executed.";
+        }
+        catch (Exception ex)
+        {
+            GraphQlResult = System.Text.Json.JsonSerializer.Serialize(
+                new { errors = new[] { new { message = ex.Message } } },
+                new System.Text.Json.JsonSerializerOptions { WriteIndented = true });
+            StatusMessage = $"GraphQL query failed: {ex.Message}";
+        }
     }
 }

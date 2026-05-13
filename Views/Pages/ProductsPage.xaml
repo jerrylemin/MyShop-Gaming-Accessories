@@ -35,18 +35,14 @@
                         Style="{ThemeResource BadgeBorderStyle}">
                         <TextBlock
                             Style="{ThemeResource BadgeTextBlockStyle}"
-                            Text="Master Data" />
+                            Text="Products" />
                     </Border>
                     <TextBlock
                         FontFamily="Segoe UI Variable Display Semib"
                         FontSize="32"
                         FontWeight="SemiBold"
-                        Text="Manage products with a side-by-side catalog view."
+                        Text="Manage products"
                         TextWrapping="WrapWholeWords" />
-                    <TextBlock
-                        MaxWidth="820"
-                        Style="{ThemeResource PageIntroTextBlockStyle}"
-                        Text="Browse the catalog on the left, then inspect details and manage categories on the right without losing context." />
                 </StackPanel>
 
                 <Grid
@@ -386,7 +382,7 @@
                         <TextBlock
                             Grid.Row="1"
                             Style="{ThemeResource PageIntroTextBlockStyle}"
-                            Text="Add, edit, and delete categories safely. Categories that are still used by products cannot be deleted." />
+                            Text="Manage product categories." />
 
                         <Grid
                             Grid.Row="2"

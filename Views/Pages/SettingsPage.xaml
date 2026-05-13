@@ -22,10 +22,10 @@
                         FontFamily="Segoe UI Variable Display Semib"
                         FontSize="32"
                         FontWeight="SemiBold"
-                        Text="Configure the POS tools used in daily store operations." />
+                        Text="Settings" />
                     <TextBlock
                         Style="{ThemeResource PageIntroTextBlockStyle}"
-                        Text="Adjust paging, saved login behavior, LLM settings, GraphQL demo queries, plugins, and customer loyalty data." />
+                        Text="Manage app preferences and tools." />
                 </StackPanel>
             </Border>
 
@@ -96,7 +96,7 @@
                     <TextBlock Style="{ThemeResource SectionHeaderTextBlockStyle}" Text="GraphQL Demo" />
                     <TextBlock
                         Style="{ThemeResource CaptionTextBlockStyle}"
-                        Text="Run schema-backed POS queries and mutations for products, orders, reports, saveProduct, and saveOrder."
+                        Text="Run POS GraphQL queries."
                         TextWrapping="WrapWholeWords" />
                     <TextBox
                         AcceptsReturn="True"

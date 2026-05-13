@@ -29,7 +29,6 @@ public class NavigationService
 
     public bool Navigate(string key, object? parameter = null, bool persist = true)
     {
-        EnsurePage(key);
         if (_frame is null || !_pageMap.TryGetValue(key, out var pageType))
         {
             return false;
@@ -50,15 +49,6 @@ public class NavigationService
         }
 
         return true;
-    }
-
-    private void EnsurePage(string key)
-    {
-        if (_pageMap.ContainsKey(key)) return;
-        if (key.Equals("Customers", StringComparison.OrdinalIgnoreCase))
-        {
-            _pageMap[key] = Type.GetType("ProjectTest.Views.Pages.CustomersPage")!;
-        }
     }
 
     private async Task SaveSettingsSafelyAsync(AppSettings settings)

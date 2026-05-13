@@ -2,6 +2,47 @@
 
 Updated: 2026-05-13
 
+## Customer Management Finish Validation
+
+Updated: 2026-05-13
+
+Changes validated in this pass:
+
+- Pulled `origin/main`; repository was already up to date before edits.
+- Main menu Customers button exists in `Views/MainWindow.xaml` with `x:Name="CustomersButton"`, `Tag="Customers"`, `Click="NavigationButton_Click"`, text `Customers`, and glyph `&#xE77B;`.
+- `Views/MainWindow.xaml.cs` now maps `CustomersButton`, registers `CustomersPage`, resolves `Customers` in `GetPageKey`, preserves `Customers` in startup normalization, shows the requested Customers subtitle, and mentions Customers in onboarding text.
+- Removed `Views/CustomerNavigationSupport.cs` because it only contained the stale `CustomerMenu_Click` partial handler.
+- `Services/NavigationService.cs` no longer uses `Type.GetType("ProjectTest.Views.Pages.CustomersPage")`; navigation depends on explicit registration and saves startup settings asynchronously.
+- Customer page supports list, selection, add, edit, delete only when no order history exists, loyalty points, lifetime spend, order history, and purchased products. Empty customers and customers without orders are handled by the view model/repository paths.
+- Products and Orders page headers were shortened to the requested text, and the long helper descriptions were removed or shortened.
+- Settings header and GraphQL helper copy were shortened.
+- GraphQL sample query remains a light products query; product/order GraphQL page sizes are clamped to 20; service timeout is 12 seconds; Settings execute now shows `Running...`, catches exceptions, and writes JSON error output.
+- Installer was inspected only. It has Inno Setup, bootstrap scripts for .NET Desktop Runtime 8, Windows App Runtime 1.8, PostgreSQL, and a database bootstrapper that writes connection config and runs seed initialization. No `setup.exe` rebuild was performed.
+
+Manual test checklist to run with a desktop session:
+
+1. Open app.
+2. Login with `admin / MyShop123!`.
+3. Click Customers in the main menu.
+4. Add a customer.
+5. Edit the customer.
+6. Delete a customer that has no orders.
+7. Select a customer with orders and verify purchased products plus order history.
+8. Open Orders and select a customer for an order.
+9. Open Settings, click Execute GraphQL, and verify JSON output appears.
+10. Open Products and Orders and verify the shorter titles.
+
+Command results from this pass:
+
+```powershell
+dotnet restore .\ProjectTest.csproj
+dotnet build .\ProjectTest.csproj -c Debug -p:Platform=x64
+```
+
+- `dotnet restore .\ProjectTest.csproj`: passed.
+- `dotnet build .\ProjectTest.csproj -c Debug -p:Platform=x64`: passed, 0 warnings, 0 errors.
+- Launch smoke: started the Debug x64 `ProjectTest.exe`, waited 8 seconds, verified the process was still running and responding, then stopped it. No long startup hang was observed.
+
 ## Visual Studio Debug Build Optimization
 
 - Added `global.json` to pin stable .NET 8 SDK. This machine initially had only SDK `10.0.300-preview`; SDK `8.0.420` was installed with `winget` and is now selected by the repo pin.

@@ -37,6 +37,7 @@ public sealed partial class MainWindow : Window, INotifyPropertyChanged
             ["Dashboard"] = DashboardButton,
             ["Products"] = ProductsButton,
             ["Orders"] = OrdersButton,
+            ["Customers"] = CustomersButton,
             ["Reports"] = ReportsButton,
             ["Settings"] = SettingsButton
         };
@@ -97,6 +98,7 @@ public sealed partial class MainWindow : Window, INotifyPropertyChanged
         _navigationService.Register("Products", typeof(ProductsPage));
         _navigationService.Register("ProductEdit", typeof(ProductEditPage));
         _navigationService.Register("Orders", typeof(OrdersPage));
+        _navigationService.Register("Customers", typeof(CustomersPage));
         _navigationService.Register("Reports", typeof(ReportsPage));
         _navigationService.Register("Settings", typeof(SettingsPage));
         _isNavigationReady = true;
@@ -191,7 +193,7 @@ public sealed partial class MainWindow : Window, INotifyPropertyChanged
         var dialog = new ContentDialog
         {
             Title = "Welcome to MyShop POS",
-            Content = "Use Dashboard for store health, Products for catalog work, Orders for sales, Reports for revenue and KPI, and Settings for license, backup, plugins, and assistant configuration.",
+            Content = "Use Dashboard for store health, Products for catalog work, Orders for sales, Customers for profiles and history, Reports for revenue, and Settings for app configuration.",
             PrimaryButtonText = "Start",
             CloseButtonText = "Skip",
             XamlRoot = ContentFrame.XamlRoot
@@ -398,6 +400,11 @@ public sealed partial class MainWindow : Window, INotifyPropertyChanged
             return "Orders";
         }
 
+        if (pageType == typeof(CustomersPage))
+        {
+            return "Customers";
+        }
+
         if (pageType == typeof(ReportsPage))
         {
             return "Reports";
@@ -417,6 +424,7 @@ public sealed partial class MainWindow : Window, INotifyPropertyChanged
         {
             "Products" => "Products",
             "Orders" => "Orders",
+            "Customers" => "Customers",
             "Settings" => "Settings",
             "Dashboard" => "Dashboard",
             _ => "Dashboard"
@@ -431,6 +439,7 @@ public sealed partial class MainWindow : Window, INotifyPropertyChanged
             "Products" => "Manage categories, products, filters, and imported catalog data.",
             "Product Editor" => "Update product details, images, pricing, and storefront specs.",
             "Orders" => "Create and edit orders, track payment status, and keep inventory synchronized.",
+            "Customers" => "Customer profiles and purchase history.",
             "Reports" => "Compare revenue, profit, and sales trends across multiple reporting ranges.",
             "Settings" => "Adjust page size and saved-login behavior for the application.",
             _ => "Move between the main work areas of the store application."

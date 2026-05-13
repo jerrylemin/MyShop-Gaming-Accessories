@@ -36,18 +36,14 @@
                         Style="{ThemeResource BadgeBorderStyle}">
                         <TextBlock
                             Style="{ThemeResource BadgeTextBlockStyle}"
-                            Text="Transaction Workspace" />
+                            Text="Orders" />
                     </Border>
                     <TextBlock
                         FontFamily="Segoe UI Variable Display Semib"
                         FontSize="32"
                         FontWeight="SemiBold"
-                        Text="Create and manage orders in a split workspace."
+                        Text="Manage orders"
                         TextWrapping="WrapWholeWords" />
-                    <TextBlock
-                        MaxWidth="820"
-                        Style="{ThemeResource PageIntroTextBlockStyle}"
-                        Text="Keep order history on the left and the active draft on the right so new orders can be created without extra scrolling." />
                 </StackPanel>
 
                 <Grid
@@ -273,7 +269,7 @@
                                 Text="Order Editor" />
                             <TextBlock
                                 Style="{ThemeResource CaptionTextBlockStyle}"
-                                Text="Paid and cancelled orders remain visible for detail review but can no longer be changed." />
+                                Text="Paid and cancelled orders are read-only." />
                         </StackPanel>
                         <Button
                             Grid.Column="1"
