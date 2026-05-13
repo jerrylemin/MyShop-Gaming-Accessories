@@ -1,5 +1,6 @@
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
+using ProjectTest.Models;
 using ProjectTest.ViewModels;
 
 namespace ProjectTest.Views.Pages;
@@ -18,6 +19,7 @@ public sealed partial class OrdersPage : Page
             App.Current.Services.InvoiceExportService);
         InitializeComponent();
         DataContext = ViewModel;
+        ViewModel.CreateCustomerRequested += ViewModel_CreateCustomerRequested;
         Loaded += OrdersPage_Loaded;
         SizeChanged += OrdersPage_SizeChanged;
     }
@@ -69,5 +71,88 @@ public sealed partial class OrdersPage : Page
         {
             ViewModel.RemoveLine(line);
         }
+    }
+
+    private async void ViewModel_CreateCustomerRequested(object? sender, CreateCustomerRequestedEventArgs e)
+    {
+        var nameBox = new TextBox
+        {
+            Header = "Customer name",
+            PlaceholderText = "Enter customer name"
+        };
+        var phoneBox = new TextBox
+        {
+            Header = "Phone",
+            Text = e.Phone,
+            IsReadOnly = true
+        };
+        var emailBox = new TextBox
+        {
+            Header = "Email (optional)",
+            PlaceholderText = "customer@example.com"
+        };
+        var panel = new StackPanel { Spacing = 12 };
+        panel.Children.Add(new TextBlock
+        {
+            Text = "This phone number is not in Customers yet. Add the customer now to save this order.",
+            TextWrapping = TextWrapping.WrapWholeWords
+        });
+        panel.Children.Add(nameBox);
+        panel.Children.Add(phoneBox);
+        panel.Children.Add(emailBox);
+
+        var dialog = new ContentDialog
+        {
+            Title = "New customer",
+            Content = panel,
+            PrimaryButtonText = "Save customer",
+            CloseButtonText = "Cancel",
+            DefaultButton = ContentDialogButton.Primary,
+            XamlRoot = XamlRoot
+        };
+
+        var result = await dialog.ShowAsync();
+        if (result != ContentDialogResult.Primary)
+        {
+            e.SetResult(null);
+            return;
+        }
+
+        if (string.IsNullOrWhiteSpace(nameBox.Text))
+        {
+            var validationDialog = new ContentDialog
+            {
+                Title = "Customer name required",
+                Content = "Enter a customer name before saving the order.",
+                CloseButtonText = "OK",
+                XamlRoot = XamlRoot
+            };
+            await validationDialog.ShowAsync();
+            e.SetResult(null);
+            return;
+        }
+
+        var saveResult = await App.Current.Services.CustomerRepository.SaveAsync(new Customer
+        {
+            Name = nameBox.Text.Trim(),
+            Phone = e.Phone,
+            Email = emailBox.Text.Trim()
+        });
+
+        if (!saveResult.Success)
+        {
+            var errorDialog = new ContentDialog
+            {
+                Title = "Customer was not saved",
+                Content = saveResult.Message,
+                CloseButtonText = "OK",
+                XamlRoot = XamlRoot
+            };
+            await errorDialog.ShowAsync();
+            e.SetResult(null);
+            return;
+        }
+
+        e.SetResult(await App.Current.Services.CustomerRepository.GetByIdAsync(saveResult.Value));
     }
 }

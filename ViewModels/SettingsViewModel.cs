@@ -20,6 +20,8 @@ public class SettingsViewModel : ViewModelBase
     private string _activationCode = string.Empty;
     private string _backupPath = string.Empty;
     private string _restorePath = string.Empty;
+    private string _postgresSqlToolsPath = string.Empty;
+    private string _postgresSqlToolsStatus = string.Empty;
     private string _llmApiKey = string.Empty;
     private string _llmEndpoint = string.Empty;
 
@@ -40,6 +42,7 @@ public class SettingsViewModel : ViewModelBase
         ActivateCommand = new AsyncRelayCommand(ActivateAsync);
         BackupCommand = new AsyncRelayCommand(BackupAsync);
         RestoreCommand = new AsyncRelayCommand(RestoreAsync);
+        RefreshCommand = new AsyncRelayCommand(LoadAsync);
         TestAssistantCommand = new AsyncRelayCommand(TestAssistantAsync);
 
         PageSizeOptions = new ObservableCollection<int>([5, 10, 15, 20]);
@@ -56,6 +59,8 @@ public class SettingsViewModel : ViewModelBase
     public AsyncRelayCommand BackupCommand { get; }
 
     public AsyncRelayCommand RestoreCommand { get; }
+
+    public AsyncRelayCommand RefreshCommand { get; }
 
     public AsyncRelayCommand TestAssistantCommand { get; }
 
@@ -107,6 +112,25 @@ public class SettingsViewModel : ViewModelBase
         set => SetProperty(ref _restorePath, value);
     }
 
+    public string PostgreSqlToolsPath
+    {
+        get => _postgresSqlToolsPath;
+        set
+        {
+            if (SetProperty(ref _postgresSqlToolsPath, value))
+            {
+                _backupRestoreService.PostgreSqlToolsDirectory = value;
+                PostgreSqlToolsStatus = BackupRestoreService.GetToolStatus(value);
+            }
+        }
+    }
+
+    public string PostgreSqlToolsStatus
+    {
+        get => _postgresSqlToolsStatus;
+        set => SetProperty(ref _postgresSqlToolsStatus, value);
+    }
+
     public string LlmApiKey
     {
         get => _llmApiKey;
@@ -126,6 +150,8 @@ public class SettingsViewModel : ViewModelBase
         LastOpenedScreen = settings.LastOpenedScreen;
         LlmApiKey = settings.LlmApiKey;
         LlmEndpoint = settings.LlmEndpoint;
+        PostgreSqlToolsPath = settings.PostgreSqlToolsPath;
+        PostgreSqlToolsStatus = BackupRestoreService.GetToolStatus(PostgreSqlToolsPath);
 
         BackupPath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), $"myshop-backup-{DateTime.Today:yyyyMMdd}.dump");
         CredentialStatus = await _authenticationService.HasSavedCredentialsAsync()
@@ -144,10 +170,12 @@ public class SettingsViewModel : ViewModelBase
             ItemsPerPage = SelectedItemsPerPage,
             LastOpenedScreen = string.IsNullOrWhiteSpace(LastOpenedScreen) ? "Dashboard" : LastOpenedScreen,
             LlmApiKey = LlmApiKey.Trim(),
-            LlmEndpoint = LlmEndpoint.Trim()
+            LlmEndpoint = LlmEndpoint.Trim(),
+            PostgreSqlToolsPath = PostgreSqlToolsPath.Trim()
         };
 
         await _settingsService.SaveAsync(settings);
+        _backupRestoreService.PostgreSqlToolsDirectory = settings.PostgreSqlToolsPath;
         StatusMessage = "Settings saved.";
     }
 
@@ -167,6 +195,7 @@ public class SettingsViewModel : ViewModelBase
 
     private async Task BackupAsync()
     {
+        await SaveAsync();
         var result = await _backupRestoreService.BackupAsync(BackupPath);
         StatusMessage = result.Message;
         if (result.Success)
@@ -177,6 +206,7 @@ public class SettingsViewModel : ViewModelBase
 
     private async Task RestoreAsync()
     {
+        await SaveAsync();
         var result = await _backupRestoreService.RestoreAsync(RestorePath);
         StatusMessage = result.Message;
     }

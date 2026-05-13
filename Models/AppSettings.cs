@@ -9,4 +9,6 @@ public class AppSettings
     public string LlmApiKey { get; set; } = string.Empty;
 
     public string LlmEndpoint { get; set; } = string.Empty;
+
+    public string PostgreSqlToolsPath { get; set; } = string.Empty;
 }
