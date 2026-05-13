@@ -199,8 +199,8 @@ if (-not $SkipPrerequisiteDownload) {
         -Url 'https://aka.ms/windowsappsdk/1.8/latest/windowsappruntimeinstall-x64.exe' `
         -OutputPath (Join-Path $prereqRoot 'windowsappruntimeinstall-x64.exe')
     Save-Download `
-        -Url 'https://get.enterprisedb.com/postgresql/postgresql-16.11-1-windows-x64.exe' `
-        -OutputPath (Join-Path $prereqRoot 'postgresql-16-windows-x64.exe')
+        -Url 'https://get.enterprisedb.com/postgresql/postgresql-18.3-1-windows-x64.exe' `
+        -OutputPath (Join-Path $prereqRoot 'postgresql-18-windows-x64.exe')
 }
 
 Write-Step 'Compiling setup.exe with Inno Setup.'

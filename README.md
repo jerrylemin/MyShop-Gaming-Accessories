@@ -91,6 +91,23 @@ Important schema note:
 
 ## Setup Instructions
 
+### How to install for grading
+
+1. Run `setup.exe` from the installer output folder.
+2. Wait while the installer checks .NET 8 Desktop Runtime, Windows App Runtime, PostgreSQL, database creation, and demo data.
+3. Open the app from the Desktop or Start Menu shortcut named `MyShop Gaming Accessories POS`.
+4. Login with one of these demo accounts:
+
+```text
+admin / MyShop123!
+moderator / MyShop123!
+sale / MyShop123!
+```
+
+The installer restores the demo database from `installer/database/myshop_demo.dump` when that file exists. If the dump is missing or PostgreSQL restore tools are unavailable, the installer falls back to the EF Core initializer and `GamingAccessorySeedGenerator` seed data.
+
+If PostgreSQL port `5432` is already used and no `MYSHOP_POSTGRES_ADMIN_PASSWORD` is provided, setup installs an isolated MyShop PostgreSQL service on the next free port and writes the app connection string to `myshop.database.json` in the install folder. If Windows blocks startup or WinUI fails with a Windows App Runtime error, rerun setup as administrator and install the bundled Windows App Runtime prerequisite from the installer prerequisites folder.
+
 ### Prerequisites
 
 - Windows 10/11 with WinUI 3 development support

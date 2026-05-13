@@ -1,4 +1,4 @@
-#define AppName "MyShop POS"
+#define AppName "MyShop Gaming Accessories POS"
 #define AppPublisher "MyShop Gaming Accessories POS"
 #define AppExeName "ProjectTest.exe"
 #define InstallerRoot SourcePath
@@ -32,17 +32,43 @@ Name: "english"; MessagesFile: "compiler:Default.isl"
 Source: "{#InstallerRoot}\staging\app\*"; DestDir: "{app}"; Flags: ignoreversion recursesubdirs createallsubdirs
 Source: "{#InstallerRoot}\staging\database\*"; DestDir: "{app}\installer\database"; Flags: ignoreversion recursesubdirs createallsubdirs
 Source: "{#InstallerRoot}\install-bootstrap.ps1"; DestDir: "{app}\installer"; Flags: ignoreversion
+Source: "{#InstallerRoot}\..\scripts\restore-demo-database.ps1"; DestDir: "{app}\scripts"; Flags: ignoreversion
+#ifexist InstallerRoot + "\database\myshop_demo.dump"
+Source: "{#InstallerRoot}\database\myshop_demo.dump"; DestDir: "{app}\installer\database"; Flags: ignoreversion
+#endif
 Source: "{#InstallerRoot}\prerequisites\windowsdesktop-runtime-8-win-x64.exe"; DestDir: "{app}\installer\prerequisites"; Flags: ignoreversion
 Source: "{#InstallerRoot}\prerequisites\windowsappruntimeinstall-x64.exe"; DestDir: "{app}\installer\prerequisites"; Flags: ignoreversion
-Source: "{#InstallerRoot}\prerequisites\postgresql-16-windows-x64.exe"; DestDir: "{app}\installer\prerequisites"; Flags: ignoreversion
+Source: "{#InstallerRoot}\prerequisites\postgresql-18-windows-x64.exe"; DestDir: "{app}\installer\prerequisites"; Flags: ignoreversion
 
-[Run]
-Filename: "{sys}\WindowsPowerShell\v1.0\powershell.exe"; Parameters: "-NoProfile -ExecutionPolicy Bypass -File ""{app}\installer\install-bootstrap.ps1"" -AppDir ""{app}"" -PrereqDir ""{app}\installer\prerequisites"" -DatabaseTool ""{app}\installer\database\MyShop.DatabaseBootstrapper.exe"""; StatusMsg: "Installing prerequisites and preparing local database..."; Flags: waituntilterminated runhidden
+[Code]
+procedure CurStepChanged(CurStep: TSetupStep);
+var
+  ResultCode: Integer;
+  Parameters: String;
+begin
+  if CurStep = ssPostInstall then
+  begin
+    Parameters :=
+      '-NoProfile -ExecutionPolicy Bypass -File "' + ExpandConstant('{app}\installer\install-bootstrap.ps1') + '"' +
+      ' -AppDir "' + ExpandConstant('{app}') + '"' +
+      ' -PrereqDir "' + ExpandConstant('{app}\installer\prerequisites') + '"' +
+      ' -DatabaseTool "' + ExpandConstant('{app}\installer\database\MyShop.DatabaseBootstrapper.exe') + '"' +
+      ' -RestoreScript "' + ExpandConstant('{app}\scripts\restore-demo-database.ps1') + '"' +
+      ' -DemoDump "' + ExpandConstant('{app}\installer\database\myshop_demo.dump') + '"';
+
+    WizardForm.StatusLabel.Caption := 'Installing prerequisites and preparing local database...';
+    if not Exec(ExpandConstant('{sys}\WindowsPowerShell\v1.0\powershell.exe'), Parameters, '', SW_HIDE, ewWaitUntilTerminated, ResultCode) then
+      RaiseException('Could not start MyShop installer bootstrap.');
+
+    if ResultCode <> 0 then
+      RaiseException('MyShop installer bootstrap failed. See C:\ProgramData\MyShop POS\Logs\setup-log.txt.');
+  end;
+end;
 
 [Icons]
-Name: "{group}\MyShop POS"; Filename: "{app}\{#AppExeName}"; WorkingDir: "{app}"; IconFilename: "{app}\MyShop.ico"
-Name: "{group}\Uninstall MyShop POS"; Filename: "{uninstallexe}"; IconFilename: "{uninstallexe}"
-Name: "{autodesktop}\MyShop POS"; Filename: "{app}\{#AppExeName}"; WorkingDir: "{app}"; IconFilename: "{app}\MyShop.ico"; Tasks: desktopicon
+Name: "{group}\MyShop Gaming Accessories POS"; Filename: "{app}\{#AppExeName}"; WorkingDir: "{app}"; IconFilename: "{app}\MyShop.ico"
+Name: "{group}\Uninstall MyShop Gaming Accessories POS"; Filename: "{uninstallexe}"; IconFilename: "{uninstallexe}"
+Name: "{autodesktop}\MyShop Gaming Accessories POS"; Filename: "{app}\{#AppExeName}"; WorkingDir: "{app}"; IconFilename: "{app}\MyShop.ico"; Tasks: desktopicon
 
 [Tasks]
 Name: "desktopicon"; Description: "Create a desktop shortcut"; GroupDescription: "Shortcuts:"; Flags: checkedonce

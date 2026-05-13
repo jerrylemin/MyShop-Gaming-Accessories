@@ -330,3 +330,13 @@ Results from 2026-05-12:
 - Implemented `FileSavePicker` in Orders print/export command.
 - Debug x64 build passed after this change.
 - Demo: open Orders, select or create an order, click `Print / Export invoice`, choose a `.pdf` location, then open the saved PDF with the default PDF reader.
+# Installer completion update - 2026-05-13
+
+- Pulled latest `main`: already up to date.
+- Added dump-first installer database flow with `scripts/export-demo-database.ps1`, `scripts/restore-demo-database.ps1`, and `installer/database/myshop_demo.dump`.
+- Updated Inno installer and bootstrap to include .NET Desktop Runtime, Windows App Runtime, PostgreSQL 18, dump restore, seed fallback, app connection config, Desktop shortcut, Start Menu shortcut, and setup/restore logs.
+- Built final setup at `installer/output-final/setup.exe`; previous `installer/output/setup.exe` was left untouched because an elevated test process locked it.
+- Ran Debug and Release builds successfully.
+- Ran `tools/VerificationRunner` successfully after fixing stale service stubs.
+- Ran installer validation script; it exposed real bootstrap issues that were fixed. A later silent installer run timed out because the earlier elevated Inno process could not be killed from this shell, so the final setup was compiled to `installer/output-final`.
+- Full command log and environment notes are in `codex_installer_validation.md`.

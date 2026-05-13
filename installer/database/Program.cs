@@ -9,15 +9,23 @@ Directory.CreateDirectory(Path.GetDirectoryName(options.LogPath)!);
 try
 {
     Log(options.LogPath, "Starting database bootstrap.");
-    await EnsureDatabaseAsync(options);
 
-    var appConnectionString = BuildConnectionString(
-        options.Host,
-        options.Port,
-        options.Database,
-        options.AppUser,
-        options.AppPassword,
-        options.IncludeErrorDetail);
+    var appConnectionString = options.ConnectionString;
+    if (string.IsNullOrWhiteSpace(appConnectionString))
+    {
+        await EnsureDatabaseAsync(options);
+        appConnectionString = BuildConnectionString(
+            options.Host,
+            options.Port,
+            options.Database,
+            options.AppUser,
+            options.AppPassword,
+            options.IncludeErrorDetail);
+    }
+    else
+    {
+        Log(options.LogPath, "Using provided app connection string.");
+    }
 
     var initializer = new DatabaseInitializer(new MyShopDbContextFactory(appConnectionString));
     await initializer.InitializeAsync();
@@ -132,6 +140,7 @@ internal sealed class BootstrapOptions
     public string AppUser { get; private init; } = "myshop_app";
     public string AppPassword { get; private init; } = "MyShopApp#2026";
     public string Database { get; private init; } = "myshop_gaming_accessories";
+    public string ConnectionString { get; private init; } = string.Empty;
     public string AppDirectory { get; private init; } = AppContext.BaseDirectory;
     public string LogPath { get; private init; } = Path.Combine(
         Environment.GetFolderPath(Environment.SpecialFolder.CommonApplicationData),
@@ -162,6 +171,7 @@ internal sealed class BootstrapOptions
             AppUser = Get(values, "app-user", "myshop_app"),
             AppPassword = Get(values, "app-password", "MyShopApp#2026"),
             Database = Get(values, "database", "myshop_gaming_accessories"),
+            ConnectionString = Get(values, "connection-string", string.Empty),
             AppDirectory = Get(values, "app-dir", AppContext.BaseDirectory),
             LogPath = Get(
                 values,
